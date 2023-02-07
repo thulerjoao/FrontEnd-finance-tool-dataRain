@@ -18,7 +18,7 @@ export const AllContainer = styled.div`
   display: flex;
 `;
 
-export const ProjectNavbar = styled.div`
+export const ProjectAsidebar = styled.div`
   width: 25vw;
 `;
 

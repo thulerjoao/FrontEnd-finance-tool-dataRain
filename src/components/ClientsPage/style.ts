@@ -18,7 +18,7 @@ export const ClientsAllContent = styled.div`
   height: 100vh;
 `;
 
-export const ClientsNavbar = styled.div`
+export const ClientsAsidebar = styled.div`
   width: 25%;
   height: 100%;
   background-color: red;

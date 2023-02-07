@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../../contexts/auth";
 import { useProject } from "../../contexts/projectContext";
 import Api from "../../services/api";
+import AsideBar from "../AsideBar";
 import Header from "../Header";
 import ModalCreateProject from "../ModalCreateProject";
-import Navbar from "../Navbar";
 import ProjectLi from "../ProjectLi";
 import * as S from "./style";
 
@@ -35,9 +35,9 @@ const AllProjects = () => {
     <S.MainSection>
       <Header setSearch={""}/>
       <S.AllContainer>
-        <S.ProjectNavbar>
-          <Navbar />
-        </S.ProjectNavbar>
+        <S.ProjectAsidebar>
+          <AsideBar />
+        </S.ProjectAsidebar>
         <S.ProjectsContainer>
           <S.ProjectsHeader>
             <S.ProjectsTitle>Central de Controle - Projetos</S.ProjectsTitle>

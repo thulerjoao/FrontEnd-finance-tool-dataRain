@@ -3,10 +3,10 @@ import { useAuth } from "../../contexts/auth";
 import { useTeam } from "../../contexts/teamContext";
 import Header from "../Header";
 import ModalCreateTeam from "../ModalCreateTeam";
-import Navbar from "../Navbar";
 import TeamsLi from "../TeamsLi";
 import * as S from "./style";
 import React from "react";
+import AsideBar from "../AsideBar";
 
 
 const Teams = () => {
@@ -23,9 +23,9 @@ const Teams = () => {
     <S.MainSection>
       <Header setSearch={""}/>
       <S.TeamsAllContainer>
-        <S.TeamsNavbar>
-          <Navbar />
-        </S.TeamsNavbar>
+        <S.TeamsAsidebar>
+          <AsideBar />
+        </S.TeamsAsidebar>
         <S.TeamsContainer>
           <S.TeamsHeader>
             <S.TeamsTitle>Central de Controle - Equipes</S.TeamsTitle>

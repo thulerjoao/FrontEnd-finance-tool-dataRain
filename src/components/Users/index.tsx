@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useUsers } from "../../contexts/userContext";
 import Header from "../Header";
-import Navbar from "../Navbar";
 import UserCard from "../UserCard/indext";
 import * as S from "./style";
 import React from "react";
+import AsideBar from "../AsideBar";
 
 
 const UsersPage = () => {
@@ -17,9 +17,9 @@ const { handleGetUsers, user } = useUsers()
     <S.MainSection>
       <Header setSearch={""} />
       <S.UserAllContent>
-        <S.UserNavbar>
-          <Navbar />
-        </S.UserNavbar>
+        <S.UserAsidebar>
+          <AsideBar />
+        </S.UserAsidebar>
           <S.UsersPageContainer>
             <S.UsersPageHeader>
               <S.UsersPageTitle>Central de Controle - Usuários</S.UsersPageTitle>

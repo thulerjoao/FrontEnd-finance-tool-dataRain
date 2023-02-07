@@ -18,7 +18,7 @@ export const ALlProfilePageContainer = styled.div`
   display: flex;
 `;
 
-export const ProfileNavbar = styled.div`
+export const ProfileAsidebar = styled.div`
   width: 25%;
 `;
 

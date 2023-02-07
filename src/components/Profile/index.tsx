@@ -3,11 +3,11 @@ import { useAuth } from "../../contexts/auth";
 import userDefault from "../../assets/images/default.png";
 import Header from "../Header";
 import ModalEditUser from "../ModalEditUser";
-import Navbar from "../Navbar";
 import * as S from "./style";
 
 // enviar imagens dependencias
 import ModalUploadImg from "../ModalUploadImg";
+import AsideBar from "../AsideBar";
 
 const Profile = () => {
   const [openUploadModal, setOpenUploadModal] = useState<boolean>(false);
@@ -18,9 +18,9 @@ const Profile = () => {
     <S.MainSection>
       <Header setSearch={""}/>
       <S.ALlProfilePageContainer>
-        <S.ProfileNavbar>
-          <Navbar />
-        </S.ProfileNavbar>
+        <S.ProfileAsidebar>
+          <AsideBar />
+        </S.ProfileAsidebar>
         <S.ProfilePageContainer>
           <S.ProfileHeader>
             <S.ProfileTitle>Perfil do usuário</S.ProfileTitle>

@@ -18,7 +18,7 @@ export const UserAllContent = styled.div`
   height: 100vh;
 `;
 
-export const UserNavbar = styled.div`
+export const UserAsidebar = styled.div`
   width: 25%;
   height: 100%;
   background-color: red;

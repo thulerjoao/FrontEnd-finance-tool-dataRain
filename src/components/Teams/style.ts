@@ -18,7 +18,7 @@ export const TeamsAllContainer = styled.div`
   display: flex;
 `;
 
-export const TeamsNavbar = styled.div`
+export const TeamsAsidebar = styled.div`
   width: 25vw;
 `
 
