@@ -7,8 +7,8 @@ export const HomeContainer = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: calc(100vh - 10rem);
-    padding-right: 7rem;
+    max-height: calc(100vh - 18%);
+    padding-right: 3vw;
     box-sizing: border-box;
 
 
@@ -18,6 +18,7 @@ export const HomeContainer = styled.div`
       width: 100%;
       margin-top: 40px;
       margin-bottom: 16px;
+      padding-right: 2vw;
       p{
       font-size: ${theme.constants.fontHeader};
       }
@@ -51,6 +52,7 @@ export const HomeContainer = styled.div`
       display: flex;
       flex-direction: column;
       /* justify-content: space-between; */
+      padding-right: 2vw;
       width: 100%;
       height: 100%;
 

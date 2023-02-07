@@ -22,10 +22,12 @@ export const HomeContainer = styled.div`
 
         .AsideBar{
             width: 25%;
+            height: calc(100vh - 5rem);
         }
 
         .HomeCard{
             width: 75%;
+            height: calc(100vh - 5rem);
             padding-left: 10px;
         }
     }
