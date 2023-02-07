@@ -3,16 +3,20 @@ import { GrProjects } from "react-icons/gr"
 import { ImHourGlass } from "react-icons/im"
 
 
-export const NavbarContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  background-attachment: scroll;
-  background-color: #f2f4f6;
-  height: calc(100vh - 5rem);
-  max-height: calc(100vh - 5rem);
-  /* position: relative; */          
+export const AsidebarContainer = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 85%;
+    background-color: #f2f4f6;
+    height: calc(100vh - 5rem);
+    max-height: calc(100vh - 5rem); 
+    padding-bottom: 2rem;
+    /* margin-right: rem; */
 
+    `} 
   
 `;
 
@@ -24,40 +28,60 @@ export const ExtraHourIcon = styled(ImHourGlass)`
 
 `
 
-export const NavbarWrapper = styled.div`
-  display: block;
-`;
-
-export const NavbarLogo = styled.div`
+export const AsidebarLogo = styled.div`
   display: flex;
   align-items: center;
   padding: 15px 20px;
-  height: 70px;
-  margin-right: 1%;
+  height: 9.2%;
+    padding-bottom: 2rem;
+
+  /* margin-right: 1%; */
   cursor: pointer;
 `;
 
-export const NavbarImg = styled.img`
+export const AsidebarImg = styled.img`
   height: 221px;
   width: 127px;
   margin: 0 auto;
   margin-top: 30px;
 `;
 
-export const NavbarContent = styled.div`
-  position: relative;
-  /* height: calc(100vh - 70px); */
+export const AsidebarContent = styled.div`
+${({ theme }) => css`
   padding: 10px 0;
+  box-sizing: border-box;
   width: 100%;
+  height: 88%;
+  padding-top: 2%;
+
+  
+  overflow-y: scroll;
+              ::-webkit-scrollbar {
+                  width: 10px;
+              }
+              ::-webkit-scrollbar-track {
+                  background: ${theme.colors.inputFontColor};
+                  border-radius:5px;
+              }
+              ::-webkit-scrollbar-thumb {
+                  background: ${theme.colors.tertiaryColor};
+                  border-radius:5px;
+              }
+              ::-webkit-scrollbar-thumb:hover {
+                  background: #ED8107;
+              }
+    `} 
 
 `;
 
-export const NavbarContentUl = styled.ul`
+export const AsidebarContentUl = styled.ul`
   ${({ theme }) => css`
-    display: block;
-    list-style: none;
-    margin-left: 4vw;
-    margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /* list-style: none; */
+  /* margin-top: 20px; */
 
     .active{
         background-color: ${theme.colors.tertiaryColor};
@@ -66,15 +90,14 @@ export const NavbarContentUl = styled.ul`
   `}
 `;
 
-export const NavbarContentLi = styled.li`
+export const AsidebarContentLi = styled.li`
   ${({ theme }) => css`
     display: flex;
-    gap: 10px;
     margin-bottom: 20px;
     align-items: center;
     cursor: pointer;
-    width: 80%;
-    height: 50px;
+    width: 72%;
+    height: 3.12rem;
     border-radius: 5px;
     font-size: ${theme.constants.fontBody};
     transition: 0.3s ease-in-out;
@@ -82,7 +105,7 @@ export const NavbarContentLi = styled.li`
     box-shadow: rgb(0 0 0 / 5%) 1px 1px 10px;
 
     span {
-      margin-left: 20px;
+      margin: 0 20px;
     }
 
     :hover {

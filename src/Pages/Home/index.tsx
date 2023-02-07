@@ -2,7 +2,6 @@ import { useState } from 'react';
 import AsideBar from '../../components/AsideBar';
 import Header from '../../components/Header';
 import HomeCard from '../../components/HomeCard';
-import Navbar from '../../components/Navbar';
 import * as Styled from './style';
 
 
@@ -16,8 +15,7 @@ const HomePage = () => {
       <section className="mainSection">
         <div className="mainDiv">
           <div className="AsideBar">
-            {/* <AsideBar /> */}
-            <Navbar />
+            <AsideBar />
           </div>
           <div className="HomeCard">
             <HomeCard search={search}/>

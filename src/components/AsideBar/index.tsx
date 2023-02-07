@@ -1,15 +1,10 @@
 import * as S from "./style";
 import Logo from "../../assets/img/logo.svg";
-
 import {
   AiOutlineHome,
-  AiOutlineUser,
   AiOutlineTeam,
-  AiOutlineMessage,
   AiOutlineUserAdd,
 } from "react-icons/ai";
-import { GiRotaryPhone } from "react-icons/gi";
-import { MdAttachMoney } from "react-icons/md";
 import { BsGraphUp } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/auth";
@@ -18,33 +13,32 @@ import { CgProfile } from "react-icons/cg";
 import { useActive } from "../../contexts/activePage";
 
 const AsideBar = () => {
-  const navigate = useNavigate();
+  const asideigate = useNavigate();
   const { userStorage } = useAuth()
   const { active, setActive } = useActive();
 
   return (
-    <S.NavbarContainer>
-      <S.NavbarWrapper>
-      <S.NavbarLogo onClick={
-          ()=>{navigate("/home");
+    <S.AsidebarContainer>
+      <S.AsidebarLogo onClick={
+          ()=>{asideigate("/home");
           setActive("home")}
           }>
-          <S.NavbarImg src={Logo} alt="Logo da empresa" />
-        </S.NavbarLogo>
-        <S.NavbarContent>
-          <S.NavbarContentUl>
-            <S.NavbarContentLi className={active === "home" || active === ""? "active" : ""} onClick={() => {navigate("/home"); setActive("home")}}>
+          <S.AsidebarImg src={Logo} alt="Logo da empresa" />
+        </S.AsidebarLogo>
+        <S.AsidebarContent>
+          <S.AsidebarContentUl>
+            <S.AsidebarContentLi className={active === "home" || active === ""? "active" : ""} onClick={() => {asideigate("/home"); setActive("home")}}>
               <span>
                 <AiOutlineHome />
               </span>
               Início
-            </S.NavbarContentLi>
+            </S.AsidebarContentLi>
             {userStorage.roleName === "admin" ? (
-              <div>
-                <S.NavbarContentLi
+              <>
+                <S.AsidebarContentLi
                   className={active === "users" ? "active" : ""}
                   onClick={() => {
-                    navigate("/users");
+                    asideigate("/users");
                     setActive("users");
                   }}
                 >
@@ -52,11 +46,11 @@ const AsideBar = () => {
                     <FaUsers />
                   </span>
                   Usuários
-                </S.NavbarContentLi>
-                <S.NavbarContentLi
+                </S.AsidebarContentLi>
+                <S.AsidebarContentLi
                   className={active === "teams" ? "active" : ""}
                   onClick={() => {
-                    navigate("/teams");
+                    asideigate("/teams");
                     setActive("teams");
                   }}
                 >
@@ -64,11 +58,11 @@ const AsideBar = () => {
                     <AiOutlineTeam />
                   </span>
                   Equipes
-                </S.NavbarContentLi>
-                <S.NavbarContentLi
+                </S.AsidebarContentLi>
+                <S.AsidebarContentLi
                   className={active === "clients" ? "active" : ""}
                   onClick={() => {
-                    navigate("/clients");
+                    asideigate("/clients");
                     setActive("clients");
                   }}
                 >
@@ -76,13 +70,13 @@ const AsideBar = () => {
                     <AiOutlineTeam />
                   </span>
                   Clientes
-                </S.NavbarContentLi>
-              </div>
+                </S.AsidebarContentLi>
+              </>
             ) : null}
-            <S.NavbarContentLi
+            <S.AsidebarContentLi
               className={active === "profile" ? "active" : ""}
               onClick={() => {
-                navigate("/profile");
+                asideigate("/profile");
                 setActive("profile");
               }}
             >
@@ -90,12 +84,12 @@ const AsideBar = () => {
                 <CgProfile />
               </span>
               Perfil
-            </S.NavbarContentLi>
+            </S.AsidebarContentLi>
             {userStorage.roleName === "admin" || userStorage.roleName === "manager"? (
-            <S.NavbarContentLi
+            <S.AsidebarContentLi
               className={active === "extra-hour" ? "active" : ""}
               onClick={() => {
-                navigate("/extra-hour");
+                asideigate("/extra-hour");
                 setActive("extra-hour");
               }}
             >
@@ -103,12 +97,12 @@ const AsideBar = () => {
                 <S.ExtraHourIcon/>
               </span>
               Hora Extra
-            </S.NavbarContentLi>
+            </S.AsidebarContentLi>
             ) : null}
-            <S.NavbarContentLi
+            <S.AsidebarContentLi
               className={active === "projects" ? "active" : ""}
               onClick={() => {
-                navigate("/projects");
+                asideigate("/projects");
                 setActive("projects");
               }}
             >
@@ -116,12 +110,12 @@ const AsideBar = () => {
                 <S.ProjectIcon />
               </span>
               Projetos
-            </S.NavbarContentLi>
+            </S.AsidebarContentLi>
             {userStorage.roleName === "admin"? (
-            <S.NavbarContentLi
+            <S.AsidebarContentLi
             className={active === "questoes" ? "active" : ""}
             onClick={() => {
-              navigate("/questoes");
+              asideigate("/questoes");
               setActive("questoes");
             }}
             >
@@ -129,14 +123,14 @@ const AsideBar = () => {
               <BsGraphUp />
             </span>
             Questionário
-          </S.NavbarContentLi>
+          </S.AsidebarContentLi>
             ) : null}
             {userStorage.roleName === "admin" ? (
-              <div>
-                <S.NavbarContentLi
+              <>
+                <S.AsidebarContentLi
                   className={active === "new-user" ? "active" : ""}
                   onClick={() => {
-                    navigate("/new-user");
+                    asideigate("/new-user");
                     setActive("new-user");
                   }}
                 >
@@ -144,24 +138,23 @@ const AsideBar = () => {
                     <AiOutlineUserAdd />
                   </span>
                   Cadastrar Usuário
-                </S.NavbarContentLi>
-                <S.NavbarContentLi
+                </S.AsidebarContentLi>
+                <S.AsidebarContentLi
                 className={active === "new-client" ? "active" : ""} 
                 onClick={() => {
-                  navigate("/new-client");
+                  asideigate("/new-client");
                   setActive("new-client");
                   }}>
                   <span>
                     <AiOutlineUserAdd />
                   </span>
                   Cadastrar Cliente
-                </S.NavbarContentLi>
-              </div>
+                </S.AsidebarContentLi>
+              </>
             ) : null}
-          </S.NavbarContentUl>
-        </S.NavbarContent>
-      </S.NavbarWrapper>
-    </S.NavbarContainer>
+          </S.AsidebarContentUl>
+        </S.AsidebarContent>
+    </S.AsidebarContainer>
   );
 };
 
