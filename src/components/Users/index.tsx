@@ -36,4 +36,4 @@ const { handleGetUsers, user } = useUsers()
   );
 };
 
-export default UsersPage;
+// export default UsersPage;

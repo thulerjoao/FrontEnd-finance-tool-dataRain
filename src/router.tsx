@@ -6,7 +6,6 @@ import Profile from "./components/Profile";
 import ProjectPage from "./components/ProjectPage";
 import ProjectUserPage from "./components/ProjectUserPage";
 import Teams from "./components/Teams";
-import UsersPage from "./components/Users";
 import CreateAccount from "./Pages/CreateAccount";
 import FormPage from "./Pages/Form";
 import HomePage from "./Pages/Home";
@@ -16,6 +15,7 @@ import QuestionsPage from "./Pages/QuestionsPage";
 import RecoverPasswordPage from "./Pages/RecoverPassword";
 import ExtraHour from "./Pages/ExtraHour";
 import { useAuth } from "./contexts/auth";
+import UsersPage from "./Pages/UsersPage";
 
 const Router = () => {
 
@@ -23,13 +23,16 @@ const Router = () => {
 
   return (
     <Routes>
+      <Route path="/users" element={<UsersPage />} />
+      <Route path="/usuarios" element={<UsersPage />} />
+
+      <Route path="/clients" element={<ClientsPage />} />
+
       <Route path="/" element={<Login />} />
       <Route path="/new-user" element={<CreateAccount />} />
       <Route path="/new-client" element={<CreateClientCard />} />
       <Route path="/teams" element={<Teams />} />
-      <Route path="/clients" element={<ClientsPage />} />
       <Route path="/profile" element={<Profile />} />
-      <Route path="/users" element={<UsersPage />} />
       <Route path="/projects" element={<AllProjects />} />
       <Route path="/project-page/:id" element={<ProjectPage />} />
       <Route path="/project-user/:id/:manager" element={<ProjectUserPage />} />
@@ -39,6 +42,9 @@ const Router = () => {
       <Route path="/home" element={<HomePage />} />
       <Route path="/questoes" element={<QuestionsPage />} />
       <Route path="/extra-hour" element={<ExtraHour />} />
+
+
+      
 
       <Route path="*" element={<Navigate to={logged ? "/home" : "/"} />} />
 
