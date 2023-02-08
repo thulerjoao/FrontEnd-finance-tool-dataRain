@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import theme from "../../styles/theme";
 
 
-export const UsersContainer = styled.div`
+export const ProjectsContainer = styled.div`
   ${({ theme }) => css`
     display: flex;
     flex-direction: column;

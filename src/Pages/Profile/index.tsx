@@ -1,13 +1,13 @@
 import AsideBar from '../../components/AsideBar';
-import ExtraHourCard from '../../components/ExtraHourCard';
 import Header from '../../components/Header';
+import ProfileCard from '../../components/ProfileCard';
 import * as Styled from './style';
 
 
-const ExtraHour = () => {
+const ProfilePage = () => {
 
   return (
-    <Styled.ExtraHourContainer>
+    <Styled.ProfileContainer>
       <Header setSearch={""}/>
       <section className="mainSection">
         <div className="mainDiv">
@@ -15,12 +15,12 @@ const ExtraHour = () => {
             <AsideBar />
           </div>
           <div className="HomeCard">
-            <ExtraHourCard/>
+            <ProfileCard/>
           </div>
         </div>
       </section>
-    </Styled.ExtraHourContainer>
+    </Styled.ProfileContainer>
   );
 };
 
-export default ExtraHour;
+export default ProfilePage;

@@ -5,7 +5,7 @@ import ModalRemoveUser from "../ModalRemoveUser";
 import userDefault from "../../assets/images/default.png";
 
 
-const ProjectCard = ({ user, idProject }: any) => {
+const ProjectCardErrada = ({ user, idProject }: any) => {
   const [openRemoveModal, setOpenRemoveModal] = useState<boolean>(false);
 
   return (
@@ -43,4 +43,4 @@ const ProjectCard = ({ user, idProject }: any) => {
   );
 };
 
-export default ProjectCard;
+export default ProjectCardErrada;

@@ -9,7 +9,7 @@ import * as Styled from './style';
 const UsersPage = () => {
 
   return (
-    <Styled.UsersPageContainer>
+    <Styled.UsersContainer>
       <Header setSearch={""}/>
       <section className="mainSection">
         <div className="mainDiv">
@@ -21,7 +21,7 @@ const UsersPage = () => {
           </div>
         </div>
       </section>
-    </Styled.UsersPageContainer>
+    </Styled.UsersContainer>
   );
 };
 

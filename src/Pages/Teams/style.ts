@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-export const UsersContainer = styled.div`
+export const TeamsPageContainer = styled.div`
     padding: 0;
     margin: 0;
     background-color: #f2f4f6;

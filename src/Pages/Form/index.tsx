@@ -1,5 +1,4 @@
 import * as Styled from './style'
-import React from "react";
 import FormCard from '../../components/FormCard'
 import TopBar from '../../components/TopBar'
 

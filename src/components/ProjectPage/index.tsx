@@ -8,7 +8,7 @@ import { ProjectTypes } from "../../types/interface";
 import Header from "../Header";
 import MockedUserCard from "../MockedUserCard";
 import ModalAddClientToProject from "../ModalAddClientProject";
-import ProjectCard from "../ProjectCard";
+import ProjectCard from "../ProjectCard errada";
 import * as S from "./style";
 
 const ProjectPage = () => {

@@ -3,20 +3,20 @@ import * as Style from "./style"
 
 
 
-const UsersCard = () => {
+const ClientsCard = () => {
 
   return (
-          <Style.UsersContainer>
+          <Style.ClientsContainer>
               <section className="section01">
-                <h2>Listagem de Usuários</h2>
+                <h2>Clientes</h2>
                 <section>
                   <div>
                     <p>Contato</p>
                   </div>
                 </section>           
               </section>
-          </Style.UsersContainer>  
+          </Style.ClientsContainer>  
   );
 };
 
-export default UsersCard;
+export default ClientsCard;
