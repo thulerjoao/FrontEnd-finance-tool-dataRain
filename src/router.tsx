@@ -1,9 +1,4 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import AllProjects from "./components/AllProjects";
-import CreateClientCard from "./components/CreateClientCard";
-import ProjectPage from "./components/ProjectPage";
-import ProjectUserPage from "./components/ProjectUserPage";
-import Teams from "./components/Teams";
 import CreateAccount from "./Pages/CreateAccount";
 import FormPage from "./Pages/Form";
 import HomePage from "./Pages/Home";
@@ -18,6 +13,7 @@ import TeamsPage from "./Pages/Teams";
 import ClientsPage from "./Pages/ClientsPage";
 import Profile from "./Pages/Profile";
 import ProjectsPage from "./Pages/Projects";
+import CreateClient from "./Pages/CreateClient";
 
 const Router = () => {
 
@@ -28,7 +24,7 @@ const Router = () => {
       <Route path="/users" element={<UsersPage />} />
       <Route path="/usuarios" element={<UsersPage />} />
 
-      <Route path="/teams" element={<Teams />} />
+      {/* <Route path="/teams" element={<Teams />} /> */}
       <Route path="/equipes" element={<TeamsPage />} />
 
       <Route path="/clients" element={<ClientsPage />} />
@@ -39,15 +35,16 @@ const Router = () => {
 
       <Route path="/projects" element={<ProjectsPage />} />
       <Route path="/projetos" element={<ProjectsPage />} />
-
+{/* 
       <Route path="/project-user/:id/:manager" element={<ProjectUserPage />} />
 
-      <Route path="/project-page/:id" element={<ProjectPage />} />
+      <Route path="/project-page/:id" element={<ProjectPage />} /> */}
 
 
       <Route path="/" element={<Login />} />
       <Route path="/cadastro-novo-usuario" element={<CreateAccount />} />
-      <Route path="/cadastro-novo-cliente" element={<CreateClientCard />} />
+      <Route path="/cadastro-novo-cliente" element={<CreateClient/>} />
+
       <Route path="/novasenha/:param" element={<RecoverPasswordPage/>} />
       <Route path="/form" element={<FormPage />} />
       <Route path="/budget" element={<Budget />} />

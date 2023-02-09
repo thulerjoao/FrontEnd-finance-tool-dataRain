@@ -50,6 +50,7 @@ export const AsidebarContent = styled.div`
 ${({ theme }) => css`
   padding: 10px 0;
   box-sizing: border-box;
+  background-attachment: scroll;
   width: 100%;
   height: 88%;
   padding-top: 2%;

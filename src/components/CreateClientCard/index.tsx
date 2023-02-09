@@ -11,7 +11,7 @@ import TopBar from "../TopBar";
 const CreateClientCard = () => {
   const navigate = useNavigate();
 
-  interface CreateAccountData {
+  interface CreateClientData {
     companyName: string;
     email: string;
     phone: string;
@@ -57,9 +57,9 @@ const CreateClientCard = () => {
     handleSubmit,
     formState: { errors },
     clearErrors,
-  } = useForm<CreateAccountData>({ resolver: yupResolver(registerSchema) });
+  } = useForm<CreateClientData>({ resolver: yupResolver(registerSchema) });
 
-  const handleRegister = (data: CreateAccountData) => {
+  const handleRegister = (data: CreateClientData) => {
     if (
       data.companyName !== "" ||
       data.email !== "" ||
@@ -77,10 +77,8 @@ const CreateClientCard = () => {
   };
 
   return (
-    <Style.MainSection>
-    <TopBar />
-      <Style.CreateAccountContainer>
-        <Style.CreateAccountCard onSubmit={handleSubmit(handleRegister)}>
+    <Style.CreateClientContainer>
+        <Style.CreateClientCard onSubmit={handleSubmit(handleRegister)}>
           <Style.CreateUserTitleContainer>
             <h1 className="h1title">Criar novo cliente</h1>
           </Style.CreateUserTitleContainer>
@@ -117,9 +115,8 @@ const CreateClientCard = () => {
               Cadastrar
             </Button>
           </Style.ButtonsContainer>
-        </Style.CreateAccountCard>
-      </Style.CreateAccountContainer>
-    </Style.MainSection>
+        </Style.CreateClientCard>
+      </Style.CreateClientContainer>
   );
 };
 
