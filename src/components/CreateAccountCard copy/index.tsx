@@ -2,12 +2,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "@mui/material";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { useAsyncValue, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import userDefault from "../../assets/images/userDefault.png";
 import Api from "../../services/api";
 import * as Style from "../../components/CreateAccountCard/style";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useActive } from "../../contexts/activePage";
 
 const CreateAccountCard = () => {

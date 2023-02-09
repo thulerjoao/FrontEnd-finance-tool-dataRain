@@ -103,7 +103,7 @@ export const AsidebarContentLi = styled.li`
     font-size: ${theme.constants.fontBody};
     transition: 0.3s ease-in-out;
     background-color: ${theme.colors.primaryColor};
-    box-shadow: rgb(0 0 0 / 5%) 1px 1px 10px;
+    box-shadow: rgb(0 0 0 / 10%) 1px 1px 10px;
 
     span {
       margin: 0 20px;
