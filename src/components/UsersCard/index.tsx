@@ -20,7 +20,7 @@ const UsersCard = () => {
                     </div>
                     <section>
                       <img src="https://avatars.githubusercontent.com/u/97922574?v=4"></img>
-                      <h2>Joao Pedro</h2>
+                      <h2>João Pedro</h2>
                       <p>thuler_lima@hotmail.com</p>
                       <p>Billable: Sim</p>
                     </section>

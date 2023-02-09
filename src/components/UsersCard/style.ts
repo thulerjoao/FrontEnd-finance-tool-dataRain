@@ -61,7 +61,7 @@ export const UsersContainer = styled.div`
 
       .card{
         height: 17.5rem;
-        width: 14.375rem;
+        width: 15.375rem;
         display: flex;
         flex-direction: column;
         justify-content: space-between;

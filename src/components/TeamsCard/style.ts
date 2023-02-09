@@ -1,3 +1,4 @@
+import { BsThreeDotsVertical } from "react-icons/bs";
 import styled, { css } from "styled-components";
 import theme from "../../styles/theme";
 
@@ -8,7 +9,7 @@ export const TeamsContainer = styled.div`
     flex-direction: column;
     width: 100%;
     max-height: calc(100vh - 18%);
-    padding-right: 3vw;
+    /* padding-right: 3vw; */
     box-sizing: border-box;
 
 
@@ -17,29 +18,12 @@ export const TeamsContainer = styled.div`
       flex-direction: column;
       width: 100%;
       margin-top: 40px;
-      margin-bottom: 16px;
-      padding-right: 2vw;
+      padding-right: 3vw;
 
       h2{
         margin-bottom: 3rem;
         color: ${theme.colors.secundaryColor};
         font-size: ${theme.constants.titleFontSize};
-      }
-
-     
-    }
-
-    .section02{
-      display: flex;
-      flex-direction: column;
-      /* padding-right: 2vw; */
-      width: 100%;
-      height: 100%;
-
-      .top{
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
       }
 
       .newTeam{
@@ -48,22 +32,35 @@ export const TeamsContainer = styled.div`
         align-items: center;
         /* background-color: ${theme.colors.primaryColor}; */
         font-size: ${theme.constants.fontHeader};
-        border-bottom: 1px solid ${theme.colors.inputFontColor};
         cursor: pointer;
         padding-bottom: 1.5rem;
 
         height: 2rem;
       }
+     
+    }
 
+    
+
+    .section02{
+      display: flex;
+      flex-direction: column;
+      padding-right: 3vw;
+      width: 100%;
+      height: 100%;
+
+      
       .registerTeam{
-        height: 14rem;
+        min-height: 13rem;
         background-color: #e4ecf2;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding: 0 8%;
+        padding: 2% 8%;
         box-sizing: border-box;
+        border-top: 1px solid ${theme.colors.inputFontColor};
         border-bottom: 1px solid ${theme.colors.inputFontColor};
+        margin-bottom: .3rem;
         
 
 
@@ -82,7 +79,8 @@ export const TeamsContainer = styled.div`
             width: 48%;
             height: 40px;
             border: none;
-            margin-top: 13px;
+            margin-top: 20px;
+            margin-bottom: 20px;
             margin-left: 20px;
             border-radius: 5px;
             padding-left: 19px;
@@ -106,12 +104,23 @@ export const TeamsContainer = styled.div`
         }
       }
 
-      
 
+      .card{
+        width: 100%;
+        height: 3.5rem;
+        margin: .6rem 0;
+        padding: 0 2rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        background-color: ${theme.colors.primaryColor};
+        box-shadow: rgb(0 0 0 / 7%) 1px 1px 15px;
+        border-radius: 8px;
 
+      }
 
-
-      /* overflow-y: scroll;
+      overflow-y: scroll;
             ::-webkit-scrollbar {
                 width: 10px;
             }
@@ -125,9 +134,14 @@ export const TeamsContainer = styled.div`
             }
             ::-webkit-scrollbar-thumb:hover {
                 background: #ED8107;
-            } */
+            }
 
     }
 
   `}
 `;
+
+export const Settings = styled(BsThreeDotsVertical)`
+  height: 5rem;
+  cursor: pointer;
+`
