@@ -1,7 +1,6 @@
 import AsideBar from '../../components/AsideBar';
 import ClientsCard from '../../components/ClientsCard';
 import Header from '../../components/Header';
-import TeamsCard from '../../components/TeamsCard';
 import * as Styled from './style';
 
 
