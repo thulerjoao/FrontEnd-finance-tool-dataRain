@@ -1,6 +1,9 @@
 import { useState } from "react";
 import * as Style from "./style";
 
+const teste = ['','','','','','','','','','','','','']
+
+
 
 const TeamsCard = () => {
 
@@ -10,11 +13,11 @@ const TeamsCard = () => {
           <Style.TeamsContainer>
               <section className="section01">
                 <h2>Equipes</h2>         
-              </section>
-              <section className="section02">
                 <div className="newTeam">
                   <p onClick={()=>setOpenNewTeam(!openNewTeam)}>{`Cadastrar nova equipe ${openNewTeam? '-' : '+'}`}</p>
                 </div>
+              </section>
+              <section className="section02">
                 {openNewTeam && <section className="registerTeam newQuestion animate__animated animate__fadeInDownBig animate__delay-0.5s">
                   <div>
                     <p>Nome da equipe</p>
@@ -26,10 +29,15 @@ const TeamsCard = () => {
                   </div>
                   <p className="confirmNewTeam" onClick={()=>{}}>Cadastrar</p>
                 </section>}
-                <div className="top">
-                  <p>Equipes</p>
-                  <p>Valor/Hora</p>
-                </div>
+                {teste.map((element:any , index:number)=>{
+                  return(
+                    <section className="card">
+                      <p>{`Equipe - Equipe 0${index+1}`}</p>
+                      <p> R$: 160,00 /hr</p>
+                      <Style.Settings/>{" "}
+                    </section>
+                  )
+                  })}
 
               </section>
           </Style.TeamsContainer>  
