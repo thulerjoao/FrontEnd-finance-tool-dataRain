@@ -194,7 +194,7 @@ export const QuestionsContainer = styled.div`
               margin-top: 13px;
               border-radius: 5px;
               padding-left: 19px;
-            font-size: ${theme.constants.fontBody};
+              font-size: ${theme.constants.fontBody};
 
             }
           }

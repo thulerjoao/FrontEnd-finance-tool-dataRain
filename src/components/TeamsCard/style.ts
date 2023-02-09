@@ -19,10 +19,6 @@ export const TeamsContainer = styled.div`
       margin-top: 40px;
       margin-bottom: 16px;
       padding-right: 2vw;
-      p{
-      font-size: ${theme.constants.fontHeader};
-      }
-
 
       h2{
         margin-bottom: 3rem;
@@ -30,75 +26,92 @@ export const TeamsContainer = styled.div`
         font-size: ${theme.constants.titleFontSize};
       }
 
-      section{
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        justify-content: space-between;
-        padding-right: 2%;
-        box-sizing: border-box;
-        font-size: 28px;
-        
-        div{
-          width: 100%;
-          text-align: center;
-        }
-
-      }
-
+     
     }
 
     .section02{
       display: flex;
       flex-direction: column;
-      /* justify-content: space-between; */
-      padding-right: 2vw;
+      /* padding-right: 2vw; */
       width: 100%;
       height: 100%;
 
-      p{
-      font-size: ${theme.constants.fontBody};
-      display: flex;
-      text-align: center;
-      justify-content: center;
-      align-items: center;
-      }
-
-      div{
+      .top{
+        width: 100%;
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
+      }
+
+      .newTeam{
+        width: 100%;
+        display: flex;
         align-items: center;
-        margin-right: 0.5%;
-      }
-      .request{
-        background-color: #ff0000;
-        color: white;
+        /* background-color: ${theme.colors.primaryColor}; */
+        font-size: ${theme.constants.fontHeader};
+        border-bottom: 1px solid ${theme.colors.inputFontColor};
+        cursor: pointer;
+        padding-bottom: 1.5rem;
+
         height: 2rem;
-        width: 12rem;
-        border-radius: 5px;
       }
 
-      .review{
-        background-color: #ef8e1c;
-        color: white;
-        height: 2rem;
-        width: 12rem;
-        border-radius: 5px;
+      .registerTeam{
+        height: 14rem;
+        background-color: #e4ecf2;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 8%;
+        box-sizing: border-box;
+        border-bottom: 1px solid ${theme.colors.inputFontColor};
+        
 
+
+        div{
+          display: flex;
+          width: 100%;
+          justify-content: space-between;
+
+          p{
+            width: 48%;
+            margin-left: 30px;
+
+          }
+
+          input{
+            width: 48%;
+            height: 40px;
+            border: none;
+            margin-top: 13px;
+            margin-left: 20px;
+            border-radius: 5px;
+            padding-left: 19px;
+            font-size: ${theme.constants.fontBody};
+          }
+        }
+
+        .confirmNewTeam{
+          margin-top: 1.5%;
+              cursor: pointer;
+              width: 25%;
+              max-width: 12rem;
+              background-color: ${theme.colors.tertiaryColor};
+              color: white;
+              height: 1.5rem;
+              text-align: center;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              border-radius: 5px;
+        }
       }
+
       
-      .approved{
-        background-color: #50bf16;
-        color: white;
-        height: 2rem;
-        width: 12rem;
-        border-radius: 5px;
-      }
 
 
 
 
-      overflow-y: scroll;
+      /* overflow-y: scroll;
             ::-webkit-scrollbar {
                 width: 10px;
             }
@@ -112,33 +125,8 @@ export const TeamsContainer = styled.div`
             }
             ::-webkit-scrollbar-thumb:hover {
                 background: #ED8107;
-            }
+            } */
 
-      section{
-        display: flex;
-        flex-direction: row;
-        width: 99%;
-        justify-content: space-between;
-        background-color: ${theme.colors.primaryColor};
-        min-height: 5rem;
-        margin-bottom: 16px;
-        align-items: center;
-        /* padding: 0 36px; */
-        border-radius: 5px;
-        box-shadow: rgb(0 0 0 / 5%) 1px 1px 10px;
-        cursor: pointer;
-
-        div{
-          width: 100%;
-          text-align: center;
-        }
-
-      }
-
-      section:hover{
-        background-color: ${theme.colors.tertiaryColor};
-        color: ${theme.colors.primaryColor};
-      }
     }
 
   `}
