@@ -1,13 +1,15 @@
+import { useState } from 'react';
 import AsideBar from '../../components/AsideBar';
-import ExtraHourCard from '../../components/ExtraHourCard';
 import Header from '../../components/Header';
+import HomeCard from '../../components/HomeCard';
+import UsersCard from '../../components/UsersCard';
 import * as Styled from './style';
 
 
-const ExtraHour = () => {
+const UsersPage = () => {
 
   return (
-    <Styled.ExtraHourContainer>
+    <Styled.UsersContainer>
       <Header setSearch={""}/>
       <section className="mainSection">
         <div className="mainDiv">
@@ -15,12 +17,12 @@ const ExtraHour = () => {
             <AsideBar />
           </div>
           <div className="HomeCard">
-            <ExtraHourCard/>
+            <UsersCard/>
           </div>
         </div>
       </section>
-    </Styled.ExtraHourContainer>
+    </Styled.UsersContainer>
   );
 };
 
-export default ExtraHour;
+export default UsersPage;

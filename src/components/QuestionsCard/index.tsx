@@ -292,7 +292,6 @@ const QuestionsCard = () => {
                     }}>Excluir</p>
                 </div>
               </div>
-              <section onClick={()=>setQuestionIndex(index)}>
                 <input
                 onClick={()=>setFillValue(true)}
                 onChange={(e)=>{UpdateTitle(index, e.target.value)}}
@@ -300,6 +299,7 @@ const QuestionsCard = () => {
                 placeholder={element.description}
                 value={fillValue? element.description:undefined}
                 ></input>
+              <section onClick={()=>setQuestionIndex(index)}>
                   <div className="cards">
                     <div className="first">
                       <p>Respostas</p>

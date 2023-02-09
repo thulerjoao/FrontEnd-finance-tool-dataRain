@@ -1,31 +1,17 @@
 import styled, { css } from "styled-components";
 import theme from "../../styles/theme";
 
-
-export const MainSection = styled.div`
-  ${({ theme }) => css`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    background-color: #f2f4f6;
-  `}
-`;
-
-
-export const CreateAccountContainer = styled.div`
+export const CreateClientContainer = styled.div`
   ${({ theme }) => css`
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: calc(100vh - 5.3rem);
-    /* background-color: #f2f4f6; */
   `}
 `;
 
-export const CreateAccountCard = styled.form`
+export const CreateClientCard = styled.form`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -38,9 +24,6 @@ export const CreateAccountCard = styled.form`
   padding: 0;
   margin-top: -1rem;
 `;
-
-
-
 
 export const CreateUserTitleContainer = styled.div`
     border-radius: 15px 15px 0 0;
@@ -82,6 +65,26 @@ export const InputsContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
+  section{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+
+    select{
+              height: 3.5vh;
+              border: none;
+              border-radius: 5px;
+              border: 1px solid #D1D1D1;
+
+              option{
+                width: 100%;
+                text-align: center;
+                font-size: ${theme.constants.fontBody};
+              }
+
+            }
+  }
 `;
 
 export const Inputs = styled.input`
@@ -140,4 +143,3 @@ export const InputLabel = styled.label`
     font-size: ${theme.constants.smallFont};
     color: ${theme.colors.fundamentalColor}
 `;
- 

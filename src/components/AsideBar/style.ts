@@ -9,12 +9,12 @@ export const AsidebarContainer = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    width: 85%;
+    width: 80%;
     background-color: #f2f4f6;
     height: calc(100vh - 5rem);
     max-height: calc(100vh - 5rem); 
     padding-bottom: 2rem;
-    /* margin-right: rem; */
+    margin-right: 8%;
 
     `} 
   
@@ -33,9 +33,9 @@ export const AsidebarLogo = styled.div`
   align-items: center;
   padding: 15px 20px;
   height: 9.2%;
-    padding-bottom: 2rem;
+  padding-bottom: 2rem;
 
-  /* margin-right: 1%; */
+  margin-top: 1%;
   cursor: pointer;
 `;
 
@@ -50,6 +50,7 @@ export const AsidebarContent = styled.div`
 ${({ theme }) => css`
   padding: 10px 0;
   box-sizing: border-box;
+  background-attachment: scroll;
   width: 100%;
   height: 88%;
   padding-top: 2%;
@@ -102,7 +103,7 @@ export const AsidebarContentLi = styled.li`
     font-size: ${theme.constants.fontBody};
     transition: 0.3s ease-in-out;
     background-color: ${theme.colors.primaryColor};
-    box-shadow: rgb(0 0 0 / 5%) 1px 1px 10px;
+    box-shadow: rgb(0 0 0 / 10%) 1px 1px 10px;
 
     span {
       margin: 0 20px;

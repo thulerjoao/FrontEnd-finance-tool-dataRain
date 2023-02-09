@@ -8,26 +8,28 @@ import {
 import { BsGraphUp } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/auth";
-import { FaUsers } from "react-icons/fa";
+import { FaPeopleArrows, FaUsers } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { useActive } from "../../contexts/activePage";
+import { MdOutlinePersonPin } from "react-icons/md";
+import { IoIosPeople } from "react-icons/io";
 
 const AsideBar = () => {
-  const asideigate = useNavigate();
+  const navigate = useNavigate();
   const { userStorage } = useAuth()
   const { active, setActive } = useActive();
 
   return (
     <S.AsidebarContainer>
       <S.AsidebarLogo onClick={
-          ()=>{asideigate("/home");
+          ()=>{navigate("/home");
           setActive("home")}
           }>
           <S.AsidebarImg src={Logo} alt="Logo da empresa" />
         </S.AsidebarLogo>
         <S.AsidebarContent>
           <S.AsidebarContentUl>
-            <S.AsidebarContentLi className={active === "home" || active === ""? "active" : ""} onClick={() => {asideigate("/home"); setActive("home")}}>
+            <S.AsidebarContentLi className={active === "home" || active === ""? "active" : ""} onClick={() => {navigate("/home"); setActive("home")}}>
               <span>
                 <AiOutlineHome />
               </span>
@@ -38,23 +40,25 @@ const AsideBar = () => {
                 <S.AsidebarContentLi
                   className={active === "users" ? "active" : ""}
                   onClick={() => {
-                    asideigate("/users");
+                    navigate("/usuarios");
                     setActive("users");
                   }}
                 >
                   <span>
-                    <FaUsers />
+                  
+                    <FaPeopleArrows />
                   </span>
                   Usuários
                 </S.AsidebarContentLi>
                 <S.AsidebarContentLi
                   className={active === "teams" ? "active" : ""}
                   onClick={() => {
-                    asideigate("/teams");
+                    navigate("/equipes");
                     setActive("teams");
                   }}
                 >
                   <span>
+                  
                     <AiOutlineTeam />
                   </span>
                   Equipes
@@ -62,12 +66,12 @@ const AsideBar = () => {
                 <S.AsidebarContentLi
                   className={active === "clients" ? "active" : ""}
                   onClick={() => {
-                    asideigate("/clients");
+                    navigate("/clientes");
                     setActive("clients");
                   }}
                 >
                   <span>
-                    <AiOutlineTeam />
+                    <FaUsers />
                   </span>
                   Clientes
                 </S.AsidebarContentLi>
@@ -76,7 +80,7 @@ const AsideBar = () => {
             <S.AsidebarContentLi
               className={active === "profile" ? "active" : ""}
               onClick={() => {
-                asideigate("/profile");
+                navigate("/perfil");
                 setActive("profile");
               }}
             >
@@ -89,7 +93,7 @@ const AsideBar = () => {
             <S.AsidebarContentLi
               className={active === "extra-hour" ? "active" : ""}
               onClick={() => {
-                asideigate("/extra-hour");
+                navigate("/pedido-hora-extra");
                 setActive("extra-hour");
               }}
             >
@@ -102,7 +106,7 @@ const AsideBar = () => {
             <S.AsidebarContentLi
               className={active === "projects" ? "active" : ""}
               onClick={() => {
-                asideigate("/projects");
+                navigate("/projetos");
                 setActive("projects");
               }}
             >
@@ -115,7 +119,7 @@ const AsideBar = () => {
             <S.AsidebarContentLi
             className={active === "questoes" ? "active" : ""}
             onClick={() => {
-              asideigate("/questoes");
+              navigate("/questoes");
               setActive("questoes");
             }}
             >
@@ -130,7 +134,7 @@ const AsideBar = () => {
                 <S.AsidebarContentLi
                   className={active === "new-user" ? "active" : ""}
                   onClick={() => {
-                    asideigate("/new-user");
+                    navigate("/cadastro-novo-usuario");
                     setActive("new-user");
                   }}
                 >
@@ -142,7 +146,7 @@ const AsideBar = () => {
                 <S.AsidebarContentLi
                 className={active === "new-client" ? "active" : ""} 
                 onClick={() => {
-                  asideigate("/new-client");
+                  navigate("/cadastro-novo-cliente");
                   setActive("new-client");
                   }}>
                   <span>

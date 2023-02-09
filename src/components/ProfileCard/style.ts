@@ -2,12 +2,13 @@ import styled, { css } from "styled-components";
 import theme from "../../styles/theme";
 
 
-export const HomeContainer = styled.div`
+export const ProfileContainer = styled.div`
   ${({ theme }) => css`
     display: flex;
     flex-direction: column;
     width: 100%;
     max-height: calc(100vh - 18%);
+    padding-right: 3vw;
     box-sizing: border-box;
 
 

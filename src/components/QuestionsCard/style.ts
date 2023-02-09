@@ -8,8 +8,7 @@ export const QuestionsContainer = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: calc(100vh - 10rem);
-    padding-right: 7rem;
+    height: calc(100vh - 18vh);
     box-sizing: border-box;
 
 
@@ -80,9 +79,10 @@ export const QuestionsContainer = styled.div`
     }
 
     .section02{
+      width: calc(100% - 60px);
       display: flex;
       flex-direction: column;
-      width: 100%;
+      /* width: 98%; */
       margin-bottom: 5px;
       padding: 4rem 0;
       border-bottom: 1px solid ${theme.colors.inputFontColor};
@@ -96,14 +96,15 @@ export const QuestionsContainer = styled.div`
         display: flex;
         width: 100%;
         justify-content: space-between;
-        padding-right: 84px;
+        /* padding-right: 3%; */
         padding-left: 2rem;
 
         div{
           display: flex;
           flex-direction: row;
           justify-content: space-between;
-          width: 20%;
+          width: 27%;
+          margin-right: 20px;
         }
         
         p{
@@ -125,14 +126,27 @@ export const QuestionsContainer = styled.div`
         }
       }
 
+      .firstInput{
+          width: 94%;
+          height: 40px;
+          border: none;
+          margin: 22px 60px;
+          margin-left: 60px;
+          border-radius: 5px;
+          padding-left: 19px;
+          font-size: ${theme.constants.fontBody};
+
+        }
+
       section{
-        width: 100%;
-        padding: 0 70px;
+        max-width: calc(100% - 60px);
+        padding-left: 60px;
 
         .newAlternative{
               margin-top: 1.5%;
               cursor: pointer;
-              width: 14%;
+              width: 25%;
+              max-width: 12rem;
               background-color: ${theme.colors.tertiaryColor};
               color: white;
               height: 1.5rem;
@@ -163,20 +177,12 @@ export const QuestionsContainer = styled.div`
           }
 
 
-        .firstInput{
-          width: 100%;
-          height: 40px;
-          border: none;
-          margin: 22px 0;
-          border-radius: 5px;
-          padding-left: 19px;
-          font-size: ${theme.constants.fontBody};
-
-        }
+        
 
         .cards{
           display: flex;
           justify-content: space-between;
+          /* max-width: calc(100%-60px); */
 
           div{
             display: flex;
@@ -195,7 +201,7 @@ export const QuestionsContainer = styled.div`
 
           .first{
             width: 50%;
-            margin-right: 2%;
+            /* margin-right: 2%; */
 
             .newAnswer{
               background-color: #d2d2d290;
@@ -204,8 +210,8 @@ export const QuestionsContainer = styled.div`
           }
 
           .second{
-            width: 30%;
-            margin-right: 2%;
+            width: 23%;
+            /* margin-right: 2%; */
 
             .newTeam{
               background-color: #d2d2d290;

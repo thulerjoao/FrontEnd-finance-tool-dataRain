@@ -7,8 +7,7 @@ export const ExtraHourContainer = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: calc(100vh - 10rem);
-    padding-right: 7rem;
+    max-height: calc(100vh - 18%);
     box-sizing: border-box;
 
 

@@ -43,7 +43,7 @@ const HomeCard = ({search}: SearchProp) => {
   return (
           <Style.HomeContainer>
               <section className="section01">
-                <h2>Central de Controle</h2>
+                <h2>Formulários e Orçamentos</h2>
                 <section>
                   <div>
                     <p>Contato</p>

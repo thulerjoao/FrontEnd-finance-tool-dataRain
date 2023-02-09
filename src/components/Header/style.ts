@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import topBar from "../../assets/images/topBar.png";
 import { IoMdNotificationsOutline } from "react-icons/io";
-import { BsGear } from "react-icons/bs";
+import { BsGear, BsThreeDotsVertical } from "react-icons/bs";
 import "animate.css";
 
 export const HeaderContainer = styled.div`
