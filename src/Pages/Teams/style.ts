@@ -21,14 +21,19 @@ export const TeamsPageContainer = styled.div`
         max-width: 120rem;
 
         .AsideBar{
+            display: flex;
+            justify-content: flex-end;
             width: 25%;
             height: calc(100vh - 5rem);
         }
 
         .HomeCard{
+            display: flex;
+            justify-content: flex-start;
             width: 75%;
             height: calc(100vh - 5rem);
             padding-left: 10px;
+            margin-right: 5%;
         }
     }
 `

@@ -21,42 +21,22 @@ const Router = () => {
 
   return (
     <Routes>
-      <Route path="/users" element={<UsersPage />} />
-      <Route path="/usuarios" element={<UsersPage />} />
-
-      {/* <Route path="/teams" element={<Teams />} /> */}
-      <Route path="/equipes" element={<TeamsPage />} />
-
-      <Route path="/clients" element={<ClientsPage />} />
-      <Route path="/clientes" element={<ClientsPage />} />
-      
-      <Route path="/profile" element={<Profile />} />
-      <Route path="/perfil" element={<Profile />} />
-
-      <Route path="/projects" element={<ProjectsPage />} />
-      <Route path="/projetos" element={<ProjectsPage />} />
-{/* 
-      <Route path="/project-user/:id/:manager" element={<ProjectUserPage />} />
-
-      <Route path="/project-page/:id" element={<ProjectPage />} /> */}
-
-
       <Route path="/" element={<Login />} />
+      <Route path="/home" element={<HomePage />} />
+      <Route path="/budget" element={<Budget />} />
+      <Route path="/usuarios" element={<UsersPage />} />
+      <Route path="/equipes" element={<TeamsPage />} />
+      <Route path="/clientes" element={<ClientsPage />} />
+      <Route path="/perfil" element={<Profile />} />
+      <Route path="/pedido-hora-extra" element={<ExtraHour />} />
+      <Route path="/projetos" element={<ProjectsPage />} />
+      <Route path="/questoes" element={<QuestionsPage />} />
       <Route path="/cadastro-novo-usuario" element={<CreateAccount />} />
       <Route path="/cadastro-novo-cliente" element={<CreateClient/>} />
-
-      <Route path="/novasenha/:param" element={<RecoverPasswordPage/>} />
       <Route path="/form" element={<FormPage />} />
-      <Route path="/budget" element={<Budget />} />
-      <Route path="/home" element={<HomePage />} />
-      <Route path="/questoes" element={<QuestionsPage />} />
-      <Route path="/pedido-hora-extra" element={<ExtraHour />} />
-
-
-      
+      <Route path="/novasenha/:param" element={<RecoverPasswordPage/>} />
 
       <Route path="*" element={<Navigate to={logged ? "/home" : "/"} />} />
-
     </Routes>
   );
 };

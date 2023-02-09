@@ -9,7 +9,6 @@ export const QuestionsContainer = styled.div`
     flex-direction: column;
     width: 100%;
     height: calc(100vh - 18vh);
-    padding-right: 3vw;
     box-sizing: border-box;
 
 

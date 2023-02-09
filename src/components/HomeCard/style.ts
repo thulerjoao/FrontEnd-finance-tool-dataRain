@@ -8,7 +8,6 @@ export const HomeContainer = styled.div`
     flex-direction: column;
     width: 100%;
     max-height: calc(100vh - 18%);
-    padding-right: 3vw;
     box-sizing: border-box;
 
 

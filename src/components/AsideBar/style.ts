@@ -9,12 +9,12 @@ export const AsidebarContainer = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    width: 85%;
+    width: 80%;
     background-color: #f2f4f6;
     height: calc(100vh - 5rem);
     max-height: calc(100vh - 5rem); 
     padding-bottom: 2rem;
-    /* margin-right: rem; */
+    margin-right: 8%;
 
     `} 
   
