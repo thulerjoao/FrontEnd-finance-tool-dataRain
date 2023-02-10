@@ -1,3 +1,4 @@
+import { BsThreeDotsVertical } from "react-icons/bs";
 import styled, { css } from "styled-components";
 import theme from "../../styles/theme";
 
@@ -7,21 +8,22 @@ export const ClientsContainer = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-height: calc(100vh - 18%);
-    padding-right: 3vw;
+    height: calc(100vh - 5rem);
+    max-height: calc(100vh - 8.5rem);
     box-sizing: border-box;
 
 
     .section01{
       display: flex;
       flex-direction: column;
+      justify-content: center;
+      /* height: 100%; */
       width: 100%;
       margin-top: 40px;
       margin-bottom: 16px;
-      padding-right: 2vw;
-      p{
+      /* p{
       font-size: ${theme.constants.fontHeader};
-      }
+      } */
 
 
       h2{
@@ -29,7 +31,7 @@ export const ClientsContainer = styled.div`
         color: ${theme.colors.secundaryColor};
         font-size: ${theme.constants.titleFontSize};
       }
-
+/* 
       section{
         display: flex;
         flex-direction: row;
@@ -44,55 +46,67 @@ export const ClientsContainer = styled.div`
           text-align: center;
         }
 
-      }
+      } */
 
     }
 
     .section02{
       display: flex;
-      flex-direction: column;
-      /* justify-content: space-between; */
-      padding-right: 2vw;
+      flex-wrap: wrap;
       width: 100%;
       height: 100%;
+      gap: 2vw;
+      padding-right: 2vw;  
 
-      p{
-      font-size: ${theme.constants.fontBody};
-      display: flex;
-      text-align: center;
-      justify-content: center;
-      align-items: center;
-      }
-
-      div{
+      .card{
+        height: 9rem;
+        /* width: 18.375rem; */
+        width: 22%;
         display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-right: 0.5%;
-      }
-      .request{
-        background-color: #ff0000;
-        color: white;
-        height: 2rem;
-        width: 12rem;
-        border-radius: 5px;
-      }
+        flex-direction: column;
+        justify-content: space-between;
+        padding-bottom: 2rem;
+        margin: 0 auto;
+        margin-bottom: 1%;
+        border-radius: 8px;
+        box-shadow: rgb(0 0 0 / 10%) 1px 1px 10px;
+        background-color: ${theme.colors.primaryColor};
+        
+        
+        /* margin: 0 auto; */
 
-      .review{
-        background-color: #ef8e1c;
-        color: white;
-        height: 2rem;
-        width: 12rem;
-        border-radius: 5px;
+        div{
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          height: 2rem;
+          align-items: center;
+          margin: 11px;
 
-      }
-      
-      .approved{
-        background-color: #50bf16;
-        color: white;
-        height: 2rem;
-        width: 12rem;
-        border-radius: 5px;
+          h2{
+            max-width: 80%;
+            border-radius: 3px;
+            padding: 0.2rem 0.3rem;
+            /* color: ${theme.colors.primaryColor};
+            background-color: ${theme.colors.secundaryColor}; */
+            font-size: ${theme.constants.smallFont};
+          }
+        }
+
+        section{
+          height: 50%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0.5rem 0;
+
+          p{
+            font-size: ${theme.constants.buttonFontSize};
+          }
+        }
+
+
       }
 
 
@@ -114,32 +128,10 @@ export const ClientsContainer = styled.div`
                 background: #ED8107;
             }
 
-      section{
-        display: flex;
-        flex-direction: row;
-        width: 99%;
-        justify-content: space-between;
-        background-color: ${theme.colors.primaryColor};
-        min-height: 5rem;
-        margin-bottom: 16px;
-        align-items: center;
-        /* padding: 0 36px; */
-        border-radius: 5px;
-        box-shadow: rgb(0 0 0 / 5%) 1px 1px 10px;
-        cursor: pointer;
-
-        div{
-          width: 100%;
-          text-align: center;
-        }
-
-      }
-
-      section:hover{
-        background-color: ${theme.colors.tertiaryColor};
-        color: ${theme.colors.primaryColor};
-      }
-    }
-
   `}
 `;
+
+export const Settings = styled(BsThreeDotsVertical)`
+  height: 5rem;
+  cursor: pointer;
+`

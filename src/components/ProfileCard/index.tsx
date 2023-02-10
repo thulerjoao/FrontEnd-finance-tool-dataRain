@@ -8,12 +8,7 @@ const TeamsCard = () => {
   return (
           <Style.ProfileContainer>
               <section className="section01">
-                <h2>Perfil</h2>
-                <section>
-                  <div>
-                    <p>Contato</p>
-                  </div>
-                </section>           
+                <h2>Perfil de usuário</h2>          
               </section>
           </Style.ProfileContainer>  
   );
