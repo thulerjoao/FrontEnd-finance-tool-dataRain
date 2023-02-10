@@ -44,9 +44,9 @@ export const ProfileContainer = styled.div`
         display: flex;
         justify-content: space-evenly;
         align-items: center;
-        width: 100%;
+        width: 90%;
         height: 50vh;
-        border-radius: 8px;
+        border-radius: 12px;
         background-color: ${theme.colors.primaryColor};
         box-shadow: rgb(0 0 0 / 7%) 1px 1px 15px;
 
@@ -87,7 +87,7 @@ export const ProfileContainer = styled.div`
           .updateImg{
               margin-top: 3%;
               cursor: pointer;
-              width: 25%;
+              width: 45%;
               max-width: 12rem;
               background-color: ${theme.colors.tertiaryColor};
               color: white;
@@ -98,12 +98,6 @@ export const ProfileContainer = styled.div`
               border-radius: 5px;
               height: 1.5rem;
           }
-
-          .settings{
-            background-color: #d1d1d1;
-            margin-top: 2%;
-
-          }
         }
       }
 
@@ -113,8 +107,8 @@ export const ProfileContainer = styled.div`
 `;
 
 export const Gear = styled(BsGear)`
-  width: 2rem;
-  height: 2rem;
+  width: 1.8rem;
+  height: 1.8rem;
   cursor: pointer;
   margin-left: 1rem;
 `
