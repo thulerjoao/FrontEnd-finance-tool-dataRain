@@ -119,7 +119,7 @@ export const HomeContainer = styled.div`
         width: 99%;
         justify-content: space-between;
         background-color: ${theme.colors.primaryColor};
-        min-height: 5rem;
+        min-height: 4.7rem;
         margin-bottom: 16px;
         align-items: center;
         /* padding: 0 36px; */

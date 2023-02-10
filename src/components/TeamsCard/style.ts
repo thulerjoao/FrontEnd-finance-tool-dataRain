@@ -89,7 +89,7 @@ export const TeamsContainer = styled.div`
         }
 
         .confirmNewTeam{
-          margin-top: 1.5%;
+              margin-top: 1.5%;
               cursor: pointer;
               width: 25%;
               max-width: 12rem;

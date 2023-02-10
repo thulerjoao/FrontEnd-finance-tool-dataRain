@@ -1,3 +1,4 @@
+import { BsGear } from "react-icons/bs";
 import styled, { css } from "styled-components";
 import theme from "../../styles/theme";
 
@@ -19,9 +20,6 @@ export const ProfileContainer = styled.div`
       margin-top: 40px;
       margin-bottom: 16px;
       padding-right: 2vw;
-      p{
-      font-size: ${theme.constants.fontHeader};
-      }
 
 
       h2{
@@ -30,116 +28,87 @@ export const ProfileContainer = styled.div`
         font-size: ${theme.constants.titleFontSize};
       }
 
-      section{
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        justify-content: space-between;
-        padding-right: 2%;
-        box-sizing: border-box;
-        font-size: 28px;
-        
-        div{
-          width: 100%;
-          text-align: center;
-        }
-
-      }
-
     }
 
     .section02{
-      display: flex;
-      flex-direction: column;
-      /* justify-content: space-between; */
-      padding-right: 2vw;
       width: 100%;
       height: 100%;
-
-      p{
-      font-size: ${theme.constants.fontBody};
       display: flex;
-      text-align: center;
       justify-content: center;
       align-items: center;
-      }
 
-      div{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-right: 0.5%;
-      }
-      .request{
-        background-color: #ff0000;
-        color: white;
-        height: 2rem;
-        width: 12rem;
-        border-radius: 5px;
-      }
-
-      .review{
-        background-color: #ef8e1c;
-        color: white;
-        height: 2rem;
-        width: 12rem;
-        border-radius: 5px;
-
-      }
-      
-      .approved{
-        background-color: #50bf16;
-        color: white;
-        height: 2rem;
-        width: 12rem;
-        border-radius: 5px;
-      }
-
-
-
-
-      overflow-y: scroll;
-            ::-webkit-scrollbar {
-                width: 10px;
-            }
-            ::-webkit-scrollbar-track {
-                background: ${theme.colors.inputFontColor};
-                border-radius:5px;
-            }
-            ::-webkit-scrollbar-thumb {
-                background: ${theme.colors.tertiaryColor};
-                border-radius:5px;
-            }
-            ::-webkit-scrollbar-thumb:hover {
-                background: #ED8107;
-            }
 
       section{
         display: flex;
         flex-direction: row;
-        width: 99%;
-        justify-content: space-between;
-        background-color: ${theme.colors.primaryColor};
-        min-height: 5rem;
-        margin-bottom: 16px;
+        display: flex;
+        justify-content: space-evenly;
         align-items: center;
-        /* padding: 0 36px; */
-        border-radius: 5px;
-        box-shadow: rgb(0 0 0 / 5%) 1px 1px 10px;
-        cursor: pointer;
+        width: 90%;
+        height: 50vh;
+        border-radius: 12px;
+        background-color: ${theme.colors.primaryColor};
+        box-shadow: rgb(0 0 0 / 7%) 1px 1px 15px;
 
-        div{
-          width: 100%;
-          text-align: center;
+
+        img{
+          width: 20rem;
+          height: 20rem;
+          border-radius: 50%;
+          /* margin-left: 10%; */
+          box-shadow: rgb(0 0 0 / 50%) 1px 1px 0px;
         }
+  
+        div{
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          width: 50%;
+          height: 30%;
 
+          .top{
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+
+            h2{
+              /* color: ${theme.colors.secundaryColor}; */
+              font-size: ${theme.constants.titleFontSize};
+              margin-bottom: 2%;
+            }
+          }
+
+
+          p{
+            font-size: ${theme.constants.smallFont};
+          }
+
+          .updateImg{
+              margin-top: 3%;
+              cursor: pointer;
+              width: 45%;
+              max-width: 12rem;
+              background-color: ${theme.colors.tertiaryColor};
+              color: white;
+              text-align: center;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              border-radius: 5px;
+              height: 1.5rem;
+          }
+        }
       }
 
-      section:hover{
-        background-color: ${theme.colors.tertiaryColor};
-        color: ${theme.colors.primaryColor};
-      }
     }
 
   `}
 `;
+
+export const Gear = styled(BsGear)`
+  width: 1.8rem;
+  height: 1.8rem;
+  cursor: pointer;
+  margin-left: 1rem;
+`
