@@ -89,7 +89,7 @@ export const ProjectsContainer = styled.div`
           }
         }
 
-        .confirmNewTeam{
+        .confirmNewProject{
               margin-top: 1.5%;
               cursor: pointer;
               width: 25%;

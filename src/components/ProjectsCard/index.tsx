@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Api from "../../services/api";
 import * as Style from "./style";
 
 const teste = ['','','','','','','','','','','','','']
@@ -7,7 +9,26 @@ const teste = ['','','','','','','','','','','','','']
 
 const ProjectsCard = () => {
 
+  const navigate = useNavigate()
   const [ openNewTeam, setOpenNewTeam ] = useState<boolean>(false)
+  const [ allProjects, setAllProjects ] = useState<any>([])
+
+  const handleAllProjects = () =>{
+    Api.get("/project")
+    .then((res)=>{
+        setAllProjects(res.data)
+    })
+    .catch((err)=>{})
+  }
+
+  const handleNext = (projectId: string) =>{
+    projectId && sessionStorage.setItem("projectId", projectId);
+    navigate("/projeto")
+  }
+
+useEffect(()=>{
+  handleAllProjects()
+},[])
 
   return (
           <Style.ProjectsContainer>
@@ -27,13 +48,15 @@ const ProjectsCard = () => {
                     <p >Decrição</p>
                     <input type="text" className="inputDescription"></input>
                   </div>
-                  <p className="confirmNewTeam" onClick={()=>{}}>Cadastrar</p>
+                  <p className="confirmNewProject" onClick={()=>{}}>Cadastrar</p>
                 </section>}
                 <section className="allCards">
-                {teste.map((element:any , index:number)=>{
+                {allProjects && allProjects.map((element:any , index:number)=>{
                   return(
-                  <div className="card">
-                        <p>{`Projeto 0${index+1}`}</p>
+                  <div key={index} className="card" onClick={()=>{
+                    handleNext(element.id);
+                    }}>
+                        <p>{`Projeto ${element.name}`}</p>
                         <Style.Settings/>{" "}
                   </div>
                   )
