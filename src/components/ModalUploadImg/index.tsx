@@ -20,8 +20,8 @@ const style = {
   bgcolor: "background.paper",
   border: "0",
   boxShadow: 24,
-  borderRadius: 6,
-  p: 4,
+  borderRadius: 2,
+  p: 0,
 };
 
 interface ModalUdpateProps {
@@ -42,24 +42,20 @@ export default function ModalUploadImg({
   const { getUserByToken } = useAuth();
 
   const handleImage = () => {
+
     const data = new FormData();
-
     let input = document.querySelector("#arquivo") as HTMLInputElement;
-
 
     data.append('file', input.files![0]);
     Api.post("/user/profile-picture", data)
       .then((res) => {
         toast.success("Imagem atualizada");
         getUserByToken();
+        handleClose();
       })
       .catch((err) => {
         toast.error("Falha ao atualizar imagem");
-        console.log(err);
       });
-
-
-    handleClose();
   };
 
   return (
@@ -79,12 +75,11 @@ export default function ModalUploadImg({
           sx={style}
         >
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Trocar imagem de perfil
+            Alterar imagem de perfil
           </Typography>
           <S.FormUpload onSubmit={(e) => e.preventDefault()}>
             <S.LabelUpload htmlFor="name">
               {" "}
-              Imagem:
               <S.InputUpload
                 name="image"
                 type="file"
