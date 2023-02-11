@@ -22,18 +22,38 @@ export const ProjectContainer = styled.div`
             padding: 1%;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            /* justify-content: space-between; */
 
-            div{
+            .top{
+                height: 25%;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+                margin-left: 3rem;
+
+                 h2{
+                    color: ${theme.colors.secundaryColor};
+                    font-size: ${theme.constants.titleFontSize};
+                }
+
+                p{
+                    color: ${theme.colors.fundamentalColor}
+                    font-size: ${theme.constants.fontFamily};
+                }
+            }
+
+            .newClient{
                 height: 20%;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: space-between;
-                margin-bottom: 30%;
+                margin-top: 8%;
 
                 h2{
                     font-size: ${theme.constants.fontHeader};
+                    color: ${theme.colors.fundamentalColor}
                 }
 
                 select{

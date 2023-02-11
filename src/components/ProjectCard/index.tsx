@@ -53,8 +53,14 @@ const ProjectCard = () =>{
                     {" "}
                     <Style.BackIcon onClick={() => navigate("/projetos")} />{" "}
                 </Style.ProjectPageReturn>
+                {project &&
+                <div className="top">
+                     <h2>{project.name}</h2>
+                    <p>{project.description}</p>
+                </div>
+                }
                 {client === undefined ? 
-                <div>
+                <div className="newClient">
                     <h2>Para gerenciar a equipe, adicione um cliente ao projeto</h2>
                     <select onChange={(e)=>setClientId(e.target.value)}>
                         {
