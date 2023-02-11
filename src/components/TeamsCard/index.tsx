@@ -33,7 +33,7 @@ const TeamsCard = () => {
                   return(
                     <section className="card">
                       <p>{`Equipe - Equipe 0${index+1}`}</p>
-                      <p> R$: 160,00 /hr</p>
+                      <p>{`R$: ${100+(5*index)},00 /hr`}</p>
                       <Style.Settings/>{" "}
                     </section>
                   )

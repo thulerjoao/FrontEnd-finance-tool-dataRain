@@ -45,15 +45,15 @@ export const ProfileContainer = styled.div`
         justify-content: space-evenly;
         align-items: center;
         width: 90%;
-        height: 50vh;
+        height: 40vh;
         border-radius: 12px;
         background-color: ${theme.colors.primaryColor};
         box-shadow: rgb(0 0 0 / 7%) 1px 1px 15px;
 
 
         img{
-          width: 20rem;
-          height: 20rem;
+          width: 15rem;
+          height: 15rem;
           border-radius: 50%;
           /* margin-left: 10%; */
           box-shadow: rgb(0 0 0 / 50%) 1px 1px 0px;
