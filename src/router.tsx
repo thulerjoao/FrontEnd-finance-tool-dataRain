@@ -14,6 +14,7 @@ import ClientsPage from "./Pages/ClientsPage";
 import Profile from "./Pages/Profile";
 import ProjectsPage from "./Pages/Projects";
 import CreateClient from "./Pages/CreateClient";
+import Project from "./Pages/Project";
 
 const Router = () => {
 
@@ -30,6 +31,7 @@ const Router = () => {
       <Route path="/perfil" element={<Profile />} />
       <Route path="/pedido-hora-extra" element={<ExtraHour />} />
       <Route path="/projetos" element={<ProjectsPage />} />
+      <Route path="/projeto" element={<Project/>} />
       <Route path="/questoes" element={<QuestionsPage />} />
       <Route path="/cadastro-novo-usuario" element={<CreateAccount />} />
       <Route path="/cadastro-novo-cliente" element={<CreateClient/>} />
