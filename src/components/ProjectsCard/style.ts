@@ -1,3 +1,4 @@
+import { BsThreeDotsVertical } from "react-icons/bs";
 import styled, { css } from "styled-components";
 import theme from "../../styles/theme";
 
@@ -8,7 +9,7 @@ export const ProjectsContainer = styled.div`
     flex-direction: column;
     width: 100%;
     max-height: calc(100vh - 18%);
-    padding-right: 3vw;
+    /* padding-right: 3vw; */
     box-sizing: border-box;
 
 
@@ -17,12 +18,7 @@ export const ProjectsContainer = styled.div`
       flex-direction: column;
       width: 100%;
       margin-top: 40px;
-      margin-bottom: 16px;
-      padding-right: 2vw;
-      p{
-      font-size: ${theme.constants.fontHeader};
-      }
-
+      padding-right: 3vw;
 
       h2{
         margin-bottom: 3rem;
@@ -30,72 +26,120 @@ export const ProjectsContainer = styled.div`
         font-size: ${theme.constants.titleFontSize};
       }
 
-      section{
-        display: flex;
-        flex-direction: row;
+      .newTeam{
         width: 100%;
-        justify-content: space-between;
-        padding-right: 2%;
-        box-sizing: border-box;
-        font-size: 28px;
-        
-        div{
-          width: 100%;
-          text-align: center;
-        }
+        display: flex;
+        align-items: center;
+        /* background-color: ${theme.colors.primaryColor}; */
+        font-size: ${theme.constants.fontHeader};
+        cursor: pointer;
+        padding-bottom: 1.5rem;
 
+        height: 2rem;
       }
-
+     
     }
+
+    
 
     .section02{
       display: flex;
       flex-direction: column;
-      /* justify-content: space-between; */
-      padding-right: 2vw;
+      padding-right: 3vw;
       width: 100%;
       height: 100%;
 
-      p{
-      font-size: ${theme.constants.fontBody};
-      display: flex;
-      text-align: center;
-      justify-content: center;
-      align-items: center;
-      }
-
-      div{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-right: 0.5%;
-      }
-      .request{
-        background-color: #ff0000;
-        color: white;
-        height: 2rem;
-        width: 12rem;
-        border-radius: 5px;
-      }
-
-      .review{
-        background-color: #ef8e1c;
-        color: white;
-        height: 2rem;
-        width: 12rem;
-        border-radius: 5px;
-
-      }
       
-      .approved{
-        background-color: #50bf16;
-        color: white;
-        height: 2rem;
-        width: 12rem;
-        border-radius: 5px;
+      .registerTeam{
+        min-height: 14rem;
+        background-color: #e4ecf2;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 2% 8%;
+        box-sizing: border-box;
+        border-top: 1px solid ${theme.colors.inputFontColor};
+        border-bottom: 1px solid ${theme.colors.inputFontColor};
+        margin-bottom: .3rem;
+        
+
+
+        div{
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          justify-content: space-between;
+
+          p{
+            width: 48%;
+            margin-left: 30px;
+
+          }
+
+          input{
+            width: 100%;
+            height: 40px;
+            border: none;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            margin-left: 20px;
+            border-radius: 5px;
+            padding-left: 19px;
+            font-size: ${theme.constants.fontBody};
+          }
+        }
+
+        .confirmNewTeam{
+              margin-top: 1.5%;
+              cursor: pointer;
+              width: 25%;
+              max-width: 12rem;
+              background-color: ${theme.colors.tertiaryColor};
+              color: white;
+              height: 1.5rem;
+              text-align: center;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              border-radius: 5px;
+        }
       }
 
+    .allCards{
+      width: 100%;
+      height: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
 
+        .card{
+          width: 49%;
+          height: 3.5rem;
+          margin: .6rem 0;
+          padding: 0 2rem;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          background-color: ${theme.colors.primaryColor};
+          box-shadow: rgb(0 0 0 / 7%) 1px 1px 15px;
+          border-radius: 8px;
+          cursor: pointer;
+        
+          p{
+          margin-left: 2rem;
+          }
+        
+        }
+
+        .card:hover{
+          background-color: ${theme.colors.tertiaryColor};
+          color: ${theme.colors.primaryColor};
+        }
+
+      }
+  
 
 
       overflow-y: scroll;
@@ -114,32 +158,12 @@ export const ProjectsContainer = styled.div`
                 background: #ED8107;
             }
 
-      section{
-        display: flex;
-        flex-direction: row;
-        width: 99%;
-        justify-content: space-between;
-        background-color: ${theme.colors.primaryColor};
-        min-height: 5rem;
-        margin-bottom: 16px;
-        align-items: center;
-        /* padding: 0 36px; */
-        border-radius: 5px;
-        box-shadow: rgb(0 0 0 / 5%) 1px 1px 10px;
-        cursor: pointer;
-
-        div{
-          width: 100%;
-          text-align: center;
-        }
-
-      }
-
-      section:hover{
-        background-color: ${theme.colors.tertiaryColor};
-        color: ${theme.colors.primaryColor};
-      }
     }
 
   `}
 `;
+
+export const Settings = styled(BsThreeDotsVertical)`
+  height: 5rem;
+  cursor: pointer;
+`

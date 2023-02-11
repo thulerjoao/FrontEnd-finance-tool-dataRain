@@ -132,5 +132,19 @@ export const ExtraHourContainer = styled.div`
             }
     }
 
+    .section03{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      flex-direction: column;
+
+      p{
+        font-size: ${theme.constants.fontBody};
+      }
+    }
+
   `}
 `;

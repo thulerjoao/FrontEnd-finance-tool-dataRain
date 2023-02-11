@@ -3,9 +3,18 @@ import styled from "styled-components";
 export const FormUpload = styled.form`
   display: flex;
   width: 90%;
-  height: 80%;
+  height: 50%;
   flex-direction: column;
   align-items: center;
+
+  .buttonCancel:hover{
+    background-color: #f2f4f6;
+    color: #9faec0
+  }
+
+  .buttonSave:hover{
+    background-color: #ef8e1c;
+  }
 `;
 
 export const LabelUpload = styled.label`

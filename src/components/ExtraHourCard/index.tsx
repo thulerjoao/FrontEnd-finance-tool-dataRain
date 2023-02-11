@@ -11,6 +11,8 @@ const ExtraHourCard = () => {
 
   const [ requests, setRequests ] = useState<any>()
   const [ test, setTest ] = useState <boolean>(true)
+  const empty:number = requests && requests.length()
+  console.log(empty)
 
 
     useEffect(()=> handleGetRequest(),[])
@@ -62,7 +64,7 @@ const ExtraHourCard = () => {
               <section className="section01">
                 <h2>Pedidos de hora extra</h2>            
               </section>
-              <section className="section02">
+              {empty !== undefined && empty !== 0? <section className="section02">
                 {requests && requests.map((element:any)=>{
                 return( 
                 <section>
@@ -87,6 +89,11 @@ const ExtraHourCard = () => {
                 )}
                 )}
               </section>
+              :
+                  <section className="section03">
+                    <p>Não há pedidos de hora extra</p>
+                  </section>
+              }
           </Style.ExtraHourContainer>  
   );
 };
