@@ -36,7 +36,7 @@ export const ProjectProvider = ({ children }: ProjectProviderProps) => {
   const handleGetProjects = () => {
     Api.get("/project")
       .then((res) => setProject(res.data))
-      .catch((err) => console.log(err));
+      .catch((err) => {});
   };
 
   useEffect(() => {

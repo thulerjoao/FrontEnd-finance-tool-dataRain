@@ -73,7 +73,6 @@ const BudgetCard = () =>{
         Api.get(`/budget-request/${clientId}`)
             .then((res)=>{
                 setAnswers(res.data);
-                // setBudGetId(res.data)
                 setBudGet(res.data.formResponses.map((element: any)=>{
                     return {
                         id: element.id,
@@ -82,7 +81,7 @@ const BudgetCard = () =>{
                     }   
                 })) 
             })
-            .catch((err)=>{console.log(err)})
+            .catch((err)=>{})
     }
 
     const handleUpdateHour = (index: number , value:number) =>{

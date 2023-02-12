@@ -41,8 +41,6 @@ const FormModal = ({ isModalOpen, data, setIsModalOpen, setStepNumber }: FormMod
                 setStepNumber(3)
             })
             .catch((error)=>{
-                console.log(error);
-                console.log(data)
                 toast.error("Erro ao enviar formulário");
             })
     }

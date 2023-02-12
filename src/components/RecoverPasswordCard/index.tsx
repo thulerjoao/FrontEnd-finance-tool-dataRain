@@ -35,11 +35,9 @@ const RecoverPassword = () => {
             .then((res)=>{
                 toast.success("Conta validada")
                 login({token: res.data.token, user: res.data.user, isChecked: true})
-                console.log(res)
             })
             .catch((err)=>{
                 toast.error("Erro ao validar conta")
-                console.log(err)
             })
     }
     

@@ -46,9 +46,7 @@ export const AuthProvider = ({children}:AuthProviderProps)=>{
         .then((res)=>{
             setUserStorage(res.data)
         })
-        .catch((err)=>{
-            console.log(err)
-        })
+        .catch((err)=>{})
     }
 
     const checkTokenExpiration = ()=>{

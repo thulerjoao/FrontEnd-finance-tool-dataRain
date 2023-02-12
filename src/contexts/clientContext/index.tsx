@@ -31,7 +31,7 @@ export const ClientProvider = ({ children }: ClientProviderProps) => {
 
     Api.get("/client", headers)
       .then((res) => setClients(res.data))
-      .catch((err) => console.log(err));
+      .catch((err) =>{});
   };
 
   useEffect(() => {
