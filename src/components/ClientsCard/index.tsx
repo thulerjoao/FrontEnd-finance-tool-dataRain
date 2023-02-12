@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useClient } from "../../contexts/clientContext";
 import Api from "../../services/api";
 import ClientCard from "../ClientCard";
 import * as Style from "./style"
@@ -9,27 +10,7 @@ const teste = ['','','','','','','','','','','','','']
 
 const ClientsCard = () => {
 
-  const [ clients, setClients ] = useState<any>()
-
-  useEffect(()=>{getAllClients()},[])
-
-  const getAllClients = () =>{
-    Api.get("/client")
-    .then((res)=>{
-      setClients(res.data)
-    })
-    .catch((err)=>{})
-  }
-
-  const phoneMask = (prop:string) => {
-    let value = prop.toString()
-    if (!value) return ""
-    value = value.replace(/\D/g,'')
-    value = value.replace(/(\d{2})(\d)/,"($1) $2")
-    value = value.replace(/(\d)(\d{4})$/,"$1-$2")
-    return value
-  }
-
+  const { clients } = useClient()
 
   return (
           <Style.ClientsContainer>
@@ -39,7 +20,7 @@ const ClientsCard = () => {
               <section className="section02">
                   {clients && clients.map((element:any, index:number)=>{
                   return(
-                    <ClientCard element={element}/> 
+                    <ClientCard element={element} key={index}/> 
                   )})
                   }
               </section>  

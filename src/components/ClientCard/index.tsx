@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { BsPencil, BsTrash } from "react-icons/bs";
 import Api from "../../services/api";
+import ClientSettings from "../ModalEditClient";
 import * as Style from "./style"
 
 
 const teste = ['','','','','','','','','','','','','']
 
 
-const ClientCard = (element:any) => {
+const ClientCard = (element:any, setClient:any) => {
 
   const [ open, setOpen ] = useState<boolean>(false)
   const [ isDeleteOpen, setIsDeleteOpen ] = useState<boolean>(false)
@@ -42,7 +43,19 @@ const ClientCard = (element:any) => {
                             <div onClick={()=>setIsDeleteOpen(true)}>Excluir <BsTrash/> </div>
                             <div onClick={()=>setIsEditeOpen(true)}>Editar <BsPencil/> </div>
                         </section>
-                    }   
+                    }
+                    {/* <DeleteUser 
+                    isModalOpen={isDeleteOpen}
+                    setIsModalOpen={setIsDeleteOpen}
+                    userId={element.element.id}
+                    userName={element.element.name}
+                  /> */}
+                  <ClientSettings
+                    isModalOpen={isEditeOpen}
+                    setIsModalOpen={setIsEditeOpen}
+                    client={element.element}
+                    setClient={setClient}
+                  />   
           </Style.ClientContainer>  
   );
 };
