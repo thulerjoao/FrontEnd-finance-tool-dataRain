@@ -1,20 +1,23 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { useProject } from "../../contexts/projectContext";
 import Api from "../../services/api";
+import ProjectIndividualCard from "../ProjectsIndividualCard";
 import * as Style from "./style";
-
-const teste = ['','','','','','','','','','','','','']
-
-
 
 const ProjectsCard = () => {
 
   const navigate = useNavigate()
   const [ openNewTeam, setOpenNewTeam ] = useState<boolean>(false)
-  const [ allProjects, setAllProjects ] = useState<any>([])
+  // const [ allProjects, setAllProjects ] = useState<any>([])
   const [ newTeam, setNewTeam ] = useState<string>()
   const [ newTeamValue, setNewTeamValue ] = useState<string>()
+  const { projects, handleGetProjects } = useProject()
+
+  console.log(projects)
+
+  const allProjects = projects || []
 
   const handleNewProject = () =>{
     if(newTeam !== "" && newTeamValue !== ""){
@@ -25,7 +28,7 @@ const ProjectsCard = () => {
       }
       )
       .then(()=>{
-        handleAllProjects()
+        handleGetProjects()
         setOpenNewTeam(false)
         toast.success("Projeto criado")
       }).catch(()=>{
@@ -34,22 +37,19 @@ const ProjectsCard = () => {
     }
   }
 
-  const handleAllProjects = () =>{
-    Api.get("/project")
-    .then((res)=>{
-        setAllProjects(res.data)
-    })
-    .catch((err)=>{})
-  }
+  // const handleAllProjects = () =>{
+  //   Api.get("/project")
+  //   .then((res)=>{
+  //       setAllProjects(res.data)
+  //   })
+  //   .catch((err)=>{})
+  // }
 
-  const handleNext = (projectId: string) =>{
-    projectId && sessionStorage.setItem("projectId", projectId);
-    navigate("/projeto")
-  }
+  // const handleNext = (projectId: string) =>{
+  //   projectId && sessionStorage.setItem("projectId", projectId);
+  //   navigate("/projeto")
+  // }
 
-useEffect(()=>{
-  handleAllProjects()
-},[])
 
   return (
           <Style.ProjectsContainer>
@@ -74,12 +74,7 @@ useEffect(()=>{
                 <section className="allCards">
                 {allProjects && allProjects.map((element:any , index:number)=>{
                   return(
-                  <div key={index} className="card" onClick={()=>{
-                    handleNext(element.id);
-                    }}>
-                        <p>{`${index<9? `0${index+1}`: index+1} - ${element.name}`}</p>
-                        <Style.Settings/>{" "}
-                  </div>
+                  <ProjectIndividualCard count={index} team={element}/>
                   )
                   })}
                   </section>
