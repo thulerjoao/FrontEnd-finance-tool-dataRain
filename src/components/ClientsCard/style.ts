@@ -52,6 +52,9 @@ export const ClientsContainer = styled.div`
 
     .section02{
       display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: flex-start;
       flex-wrap: wrap;
       width: 100%;
       height: 100%;
@@ -66,7 +69,7 @@ export const ClientsContainer = styled.div`
         flex-direction: column;
         justify-content: space-between;
         padding-bottom: 2rem;
-        margin: 0 auto;
+        /* margin: 0 auto; */
         margin-bottom: 1%;
         border-radius: 8px;
         box-shadow: rgb(0 0 0 / 10%) 1px 1px 10px;

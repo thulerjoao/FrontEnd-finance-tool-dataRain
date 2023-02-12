@@ -8,7 +8,7 @@ interface ClientProviderProps {
 }
 
 interface ClientProviderData {
-  client: ClientTypes[];
+  clients: ClientTypes[];
   handleGetClients: () => void;
 }
 
@@ -17,7 +17,7 @@ const ClientContext = createContext<ClientProviderData>(
 );
 
 export const ClientProvider = ({ children }: ClientProviderProps) => {
-  const [client, setClient] = useState<ClientTypes[]>([]);
+  const [clients, setClients] = useState<ClientTypes[]>([]);
   const { logged } = useAuth();
 
   const handleGetClients = () => {
@@ -30,7 +30,7 @@ export const ClientProvider = ({ children }: ClientProviderProps) => {
     };
 
     Api.get("/client", headers)
-      .then((res) => setClient(res.data))
+      .then((res) => setClients(res.data))
       .catch((err) => console.log(err));
   };
 
@@ -39,7 +39,7 @@ export const ClientProvider = ({ children }: ClientProviderProps) => {
   }, [logged]);
 
   return (
-    <ClientContext.Provider value={{ client, handleGetClients}}>
+    <ClientContext.Provider value={{ clients, handleGetClients}}>
       {children}
     </ClientContext.Provider>
   );

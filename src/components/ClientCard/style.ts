@@ -1,23 +1,28 @@
 import { BsThreeDotsVertical } from "react-icons/bs";
-import { GoThreeBars } from "react-icons/go";
 import styled, { css } from "styled-components";
 import theme from "../../styles/theme";
 
 
-export const UserContainer = styled.div`
+export const ClientContainer = styled.div`
   ${({ theme }) => css`
-  .card{
-        height: 17.5rem;
-        width: 15.375rem;
+      width: 22%;
+      position: relative;
+
+
+      .card{
+        height: 9rem;
+        min-width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        padding-bottom: 2rem;
         margin: 0 auto;
-        margin-bottom: 2%;
+        margin-bottom: 1%;
         border-radius: 8px;
         box-shadow: rgb(0 0 0 / 10%) 1px 1px 10px;
         background-color: ${theme.colors.primaryColor};
-        position: relative;
+        
+        
         
         /* margin: 0 auto; */
 
@@ -29,72 +34,57 @@ export const UserContainer = styled.div`
           align-items: center;
           margin: 11px;
 
-          #menuItem{
-            background-color: pink;
-            width: 5rem;
-        }
-
-          p{
+          h2{
             max-width: 80%;
             border-radius: 3px;
             padding: 0.2rem 0.3rem;
-            color: ${theme.colors.primaryColor};
-            background-color: ${theme.colors.secundaryColor};
+            /* color: ${theme.colors.primaryColor};
+            background-color: ${theme.colors.secundaryColor}; */
             font-size: ${theme.constants.smallFont};
           }
         }
 
-        
-
         section{
-          height: 100%;
+          height: 50%;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
           align-items: center;
           padding: 0.5rem 0;
 
-          img{
-            border-radius: 50%;
-            height: 7rem;
-            width: 7rem;
-            /* box-shadow: rgb(0 0 0 / 5%) 1px 1px 5px; */
-
-          }
-
-          h2{
-            font-size: ${theme.constants.fontBody};
-          }
-
           p{
             font-size: ${theme.constants.buttonFontSize};
           }
         }
-
-
       }
 
       .dropMenu{
         right: 0;
+        top: 0;
+        margin: 0.5rem;
         display: flex;
         flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
         position: absolute;
         width: 8.5rem;
-        max-height: 30%;
+        min-height: 4rem;
         background-color: white;
         box-shadow: rgb(0 0 0 / 10%) 1px 1px 10px;
         z-index: 1;
-        border-radius: 6px;
-        margin: .5rem;
-        padding: 0;
         border: 1px solid #E8E8E9;
+        border-radius: 6px;
+        /* margin: .5rem; */
+        padding: 0;
 
           div{
             font-size: ${theme.constants.smallFont};
             width: 100%;
             height: 50%;
-            padding: 0 17%;
+            padding: 2% 17%;
             margin: 0;
+            display: flex;
+            justify-content: space-around;
           }
 
           div:hover{

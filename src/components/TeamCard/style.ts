@@ -129,6 +129,7 @@ export const TeamContainer = styled.div`
         box-shadow: rgb(0 0 0 / 10%) 1px 1px 10px;
         z-index: 1;
         border-radius: 6px;
+        border: 1px solid #E8E8E9;
         /* margin: .5rem; */
         padding: 0;
 
