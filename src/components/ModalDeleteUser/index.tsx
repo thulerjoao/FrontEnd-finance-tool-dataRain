@@ -39,7 +39,6 @@ const DeleteUser = ({
   const { handleGetUsers } = useUsers()
 
   const handleCloseModal = () => {
-    handleGetUsers()
     setIsModalOpen(false);
   };
   

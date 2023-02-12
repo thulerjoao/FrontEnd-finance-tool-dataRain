@@ -124,8 +124,8 @@ const CreateAccountCard = () => {
             <Style.InputLabel>Billable</Style.InputLabel>
             {/* onChange={(e)=>setValue(e.target.value) */}
             <select onChange={(e)=> handleBillable(e.target.value)}>
-              <option value={"sim"} >Sim</option>
-              <option value={"nao"}>Não</option>
+              <option value={"Sim"} >Sim</option>
+              <option value={"Nao"}>Não</option>
             </select>
           </section>
         </Style.InputsContainer>

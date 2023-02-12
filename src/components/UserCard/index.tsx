@@ -5,11 +5,13 @@ import React, { useState } from "react";
 import * as Style from "./style"
 import DeleteUser from "../ModalDeleteUser";
 import { useUsers } from "../../contexts/userContext";
+import UserSettings from "../ModalEditUser";
 
 const UserCard = (element: any) => {
 
   const [ open, setOpen ] = useState<boolean>(false)
-  const [ isModalOpen, setIsModalOpen ] = useState<boolean>(false)
+  const [ isDeleteOpen, setIsDeleteOpen ] = useState<boolean>(false)
+  const [ isEditeOpen, setIsEditeOpen ] = useState<boolean>(false)
 
   return (
           <Style.UserContainer>
@@ -31,15 +33,20 @@ const UserCard = (element: any) => {
                     </section>
                     {open && 
                     <section className="dropMenu" onMouseLeave={()=>setOpen(false)}>
-                        <div onClick={()=>setIsModalOpen(true)}>Excluir <BsTrash/> </div>
-                        <div>Editar <BsPencil/> </div>
+                        <div onClick={()=>setIsDeleteOpen(true)}>Excluir <BsTrash/> </div>
+                        <div onClick={()=>setIsEditeOpen(true)}>Editar <BsPencil/> </div>
                     </section>}         
                   </div>
                   <DeleteUser 
-                    isModalOpen={isModalOpen}
-                    setIsModalOpen={setIsModalOpen}
+                    isModalOpen={isDeleteOpen}
+                    setIsModalOpen={setIsDeleteOpen}
                     userId={element.element.id}
                     userName={element.element.name}
+                  />
+                  <UserSettings
+                    isModalOpen={isEditeOpen}
+                    setIsModalOpen={setIsEditeOpen}
+                    user={element.element}
                   />
           </Style.UserContainer>  
   );
