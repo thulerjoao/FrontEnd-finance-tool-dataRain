@@ -3,47 +3,17 @@ import styled, { css } from "styled-components";
 import theme from "../../styles/theme";
 
 
-export const TeamsContainer = styled.div`
+export const TeamContainer = styled.div`
   ${({ theme }) => css`
     display: flex;
     flex-direction: column;
     width: 100%;
     max-height: calc(100vh - 18%);
-    /* padding-right: 3vw; */
     box-sizing: border-box;
-
-
-    .section01{
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      margin-top: 40px;
-      padding-right: 3vw;
-
-      h2{
-        margin-bottom: 3rem;
-        color: ${theme.colors.secundaryColor};
-        font-size: ${theme.constants.titleFontSize};
-      }
-
-      .newTeam{
-        width: 100%;
-        display: flex;
-        align-items: center;
-        /* background-color: ${theme.colors.primaryColor}; */
-        font-size: ${theme.constants.fontHeader};
-        cursor: pointer;
-        padding-bottom: 1.5rem;
-
-        height: 2rem;
-      }
-     
-    }
-
-    
+    position: relative;
 
     .section02{
-      display: flex;
+      /* display: flex;
       flex-direction: column;
       padding-right: 3vw;
       width: 100%;
@@ -102,7 +72,7 @@ export const TeamsContainer = styled.div`
               align-items: center;
               border-radius: 5px;
         }
-      }
+      } */
 
 
       .card{
@@ -117,12 +87,16 @@ export const TeamsContainer = styled.div`
         background-color: ${theme.colors.primaryColor};
         box-shadow: rgb(0 0 0 / 7%) 1px 1px 15px;
         border-radius: 8px;
+        
+
 
         p{
           width: 50%;
         }
 
       }
+
+      
 
       overflow-y: scroll;
             ::-webkit-scrollbar {
@@ -141,6 +115,40 @@ export const TeamsContainer = styled.div`
             }
 
     }
+
+    .dropMenu{
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        position: absolute;
+        width: 8.5rem;
+        min-height: 3.8rem;
+        background-color: white;
+        box-shadow: rgb(0 0 0 / 10%) 1px 1px 10px;
+        z-index: 1;
+        border-radius: 6px;
+        /* margin: .5rem; */
+        padding: 0;
+
+          div{
+            font-size: ${theme.constants.smallFont};
+            width: 100%;
+            height: 50%;
+            padding: 2% 17%;
+            margin: 0;
+            display: flex;
+            justify-content: space-around;
+          }
+
+          div:hover{
+            cursor: pointer;
+            background-color: ${theme.colors.tertiaryColor};
+            color: ${theme.colors.primaryColor};;
+          }
+
+      }
 
   `}
 `;

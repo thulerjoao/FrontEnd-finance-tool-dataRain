@@ -2,7 +2,7 @@ import styled,{css} from "styled-components";
 import { MdArrowBackIos } from "react-icons/md";
 import theme from "../../styles/theme";
 
-export const ModalUserContainer = styled.div`
+export const ModalTeamContainer = styled.div`
 ${({theme})=>css`
     width: 35.5rem;
     /* max-width: 54.5rem; */
@@ -47,27 +47,30 @@ ${({theme})=>css`
 
         p{
             text-align:start;
-            width: 80%;
+            width: 100%;
             font-size: ${theme.constants.smallFont};
             color: ${theme.colors.fundamentalColor};
             margin-bottom: 0.5rem;
-            margin-top: 1rem;
-            margin-left: 2rem;
+            margin-left: 1rem;
         }
-        
-        select{
-            width: 80%;
-            height: 3.5vh;
-            border: none;
-              border-radius: 5px;
-              border: 1px solid #D1D1D1;
-              font-size: ${theme.constants.smallFont};
 
-            option{
-                width: 100%;
-                text-align: center;
-                font-size: ${theme.constants.smallFont};
-              }
+        input{
+            display:flex;
+            justify-content: flex-start;
+            all: unset;
+            border: 1px solid #D1D1D1;
+            border-radius: 4px;
+            font-size: ${theme.constants.smallFont};
+            padding: 5px 15px;
+            margin-bottom: 0.5rem;
+            box-sizing: border-box;
+            width: 100%;
+
+
+            ::-webkit-input-placeholder {
+            color: ${theme.colors.inputFontColor};
+            text-align: start;
+        }
         }
     }
 

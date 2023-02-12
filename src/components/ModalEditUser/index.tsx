@@ -121,16 +121,6 @@ const UserSettings = ({
               )
             })}
           </select>
-
-
-          {/* <p>Nome</p>
-          <input placeholder="Digite o email para recuperação" />
-          <p>Nova senha</p>
-          <input placeholder="Digite o email para recuperação" />
-          <p>Confirmação de nova senha</p>
-          <input placeholder="Digite o email para recuperação" />
-          <p>Senha Atual *</p>
-          <input placeholder="Digite o email para recuperação" className="currentPassword"/> */}
         </section>
         <section className="botton">
           <Button variant="contained" className="buttonEnter cancel" onClick={()=>handleCloseModal()}>
