@@ -12,7 +12,6 @@ interface ModalClientProps {
   isModalOpen: boolean;
   setIsModalOpen: Dispatch<SetStateAction<boolean>>;
   client: any;
-  setClient: any;
 }
 
 export const customStyles = {
@@ -34,7 +33,6 @@ const ClientSettings = ({
   isModalOpen,
   setIsModalOpen,
   client,
-  setClient
 
 }: ModalClientProps) => {
 
