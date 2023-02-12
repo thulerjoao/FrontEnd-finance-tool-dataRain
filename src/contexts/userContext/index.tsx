@@ -5,7 +5,7 @@ import { useAuth } from "../auth";
 import React from "react";
 
 interface userProviderData {
-    user: UserTypes[];
+    allUsers: UserTypes[];
     budgets: any;
     handleGetUsers: () => void;
     handleGetBudgets: () => void;
@@ -18,21 +18,21 @@ interface userProviderProps {
 const UserContex = createContext<userProviderData>({} as userProviderData)
 
 export const UserProvider = ({children}: userProviderProps) => {
-    const[ user , setUser] = useState<UserTypes[]>([])
+    const[ allUsers , setAllUsers] = useState<UserTypes[]>([])
     const[ budgets, setBudgets ] = useState()
 
     const{ logged } = useAuth()
 
     const handleGetUsers = () => {
         Api.get("/user")
-          .then((res) => setUser(res.data))
-          .catch((error) => console.log(error));
+          .then((res) => setAllUsers(res.data))
+          .catch((error) => {});
       };
 
     const handleGetBudgets = () => {
       Api.get("/budget-request")
         .then((res)=>setBudgets(res.data))
-        .catch((error)=>console.log(error))
+        .catch((error)=>{})
     }
   
       useEffect(() => {
@@ -45,7 +45,7 @@ export const UserProvider = ({children}: userProviderProps) => {
 
 
     return (
-        <UserContex.Provider value={{user, budgets, handleGetUsers, handleGetBudgets}}>{children}</UserContex.Provider>
+        <UserContex.Provider value={{allUsers, budgets, handleGetUsers, handleGetBudgets}}>{children}</UserContex.Provider>
     )
 }
 

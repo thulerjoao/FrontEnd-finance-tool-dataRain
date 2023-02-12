@@ -1,9 +1,19 @@
+import { Badge, Menu, MenuItem } from "@mui/material";
+import { BsPencil, BsTrash } from "react-icons/bs";
+
+import React, { useEffect, useState } from "react";
 import * as Style from "./style"
+import UserCard from "../UserCard";
+import Api from "../../services/api";
+import { useUsers } from "../../contexts/userContext";
 
 const teste = ['','','','','','','','','','','','','']
 
 
 const UsersCard = () => {
+
+  const allUsers = useUsers()
+  const users = allUsers.allUsers
 
   return (
           <Style.UsersContainer>
@@ -11,23 +21,12 @@ const UsersCard = () => {
                 <h2>Listagem de Usuários</h2>
               </section>
               <section className="section02">
-                  {teste && teste.map((element)=>{
+                  {users && users.map((element: any, index:number)=>{
                   return(
-                    <div className="card">
-                      <div>
-                      <p>Professional Service</p>
-                      <Style.Settings/>{' '}
-                    </div>
-                    <section>
-                      <img src="https://avatars.githubusercontent.com/u/97922574?v=4"></img>
-                      <h2>João Pedro</h2>
-                      <p>thuler_lima@hotmail.com</p>
-                      <p>Billable: Sim</p>
-                    </section>
-                  </div>
+                    <UserCard element={element} key={index}/>
                   )})
                   }
-              </section>           
+              </section>
           </Style.UsersContainer>  
   );
 };
