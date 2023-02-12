@@ -4,14 +4,15 @@ import * as Style from "./style";
 import Modal from "react-modal";
 import Api from "../../services/api";
 import { toast } from "react-hot-toast";
-import { useQuestions } from "../../contexts/questions";
-import { useUsers } from "../../contexts/userContext";
+import { useTeam } from "../../contexts/teamContext";
+
+
 
 interface DeleteProps {
   isModalOpen: boolean;
   setIsModalOpen: Dispatch<SetStateAction<boolean>>;
-  userId: string;
-  userName: string;
+  teamId: string;
+  teamName: string;
 }
 
 export const customStyles = {
@@ -29,28 +30,28 @@ export const customStyles = {
   },
 };
 
-const DeleteUser = ({
+const DeleteTeam = ({
   isModalOpen,
   setIsModalOpen,
-  userId,
-  userName,
+  teamId,
+  teamName,
 }: DeleteProps) => {
 
 
-  const { handleGetUsers } = useUsers()
+  const { handleGetTeam } = useTeam()
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
   
-  const handleDeleteUser = () =>{
-    Api.delete(`/user/${userId}`)
+  const handleDeleteTeam = () =>{
+    Api.delete(`/team/${teamId}`)
     .then((res)=>{
-      handleGetUsers()
+      handleGetTeam()
       handleCloseModal()
     })
     .catch((err)=>{
-      toast.error('Erro ao excluir usuário')
+      toast.error('Erro ao excluir')
     })
   }
  
@@ -60,23 +61,23 @@ const DeleteUser = ({
       onRequestClose={handleCloseModal}
       style={customStyles}
     >
-      <Style.AddUserContainer>
+      <Style.AddTeamContainer>
         <div>
           <Style.BackArrow onClick={handleCloseModal} />
         </div>
-        <h2>{`Deseja realemente excluir o usuário?`}</h2>
+        <h2>{`Equipe ${teamName} será excluida permanentemente`}</h2>
         <section>
           <Button variant="contained" className="buttonEnter cancel" onClick={()=>handleCloseModal()}>
             Cancelar
           </Button>
-          <Button variant="contained" className="buttonEnter" onClick={()=>handleDeleteUser()}>
+          <Button variant="contained" className="buttonEnter" onClick={()=>handleDeleteTeam()}>
             Confirmar
           </Button>
         </section>
         
-      </Style.AddUserContainer>
+      </Style.AddTeamContainer>
     </Modal>
   );
 };
 
-export default DeleteUser;
+export default DeleteTeam;

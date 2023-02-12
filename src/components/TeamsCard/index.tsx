@@ -1,13 +1,35 @@
 import { useState } from "react";
+import { toast } from "react-hot-toast";
+import { useTeam } from "../../contexts/teamContext";
+import Api from "../../services/api";
+import TeamCard from "../TeamCard";
 import * as Style from "./style";
-
-const teste = ['','','','','','','','','','','','','']
 
 
 
 const TeamsCard = () => {
 
   const [ openNewTeam, setOpenNewTeam ] = useState<boolean>(false)
+  const [ teamName, setTeamName ] = useState<string>()
+  const [ teamValue, setTeamValue ] = useState<number>()
+
+  const { team, firstTeamId, handleGetTeam } = useTeam()
+
+  const handleNewTeam = () =>{
+    if(teamName !=="" && teamValue !== undefined && teamValue >= 0){
+      Api.post("/team",
+      {
+        name: teamName,
+        valuePerHour: teamValue
+      })
+      .then(()=>{
+        toast.success("Equipe cadastrada")
+        handleGetTeam()
+      })
+    }else{
+      toast.error("Valores inválidos")
+    }
+  }
 
   return (
           <Style.TeamsContainer>
@@ -24,18 +46,14 @@ const TeamsCard = () => {
                     <p >Valor por hora</p>
                   </div>
                   <div>
-                    <input type="text"></input>
-                    <input type="number"></input>
+                    <input type="text" defaultValue={teamName} onChange={(e)=> setTeamName(e.target.value)}></input>
+                    <input type="number" defaultValue={teamValue} onChange={(e)=> setTeamValue(e.target.valueAsNumber)}></input>
                   </div>
-                  <p className="confirmNewTeam" onClick={()=>{}}>Cadastrar</p>
+                  <p className="confirmNewTeam" onClick={()=>{handleNewTeam()}}>Cadastrar</p>
                 </section>}
-                {teste.map((element:any , index:number)=>{
+                {team.map((element:any , index)=>{
                   return(
-                    <section className="card">
-                      <p>{`Equipe - Equipe 0${index+1}`}</p>
-                      <p>{`R$: ${100+(5*index)},00 /hr`}</p>
-                      <Style.Settings/>{" "}
-                    </section>
+                    <TeamCard count={index} team={element}/>
                   )
                   })}
 

@@ -30,15 +30,8 @@ export const TeamProvider = ({ children }: TeamProviderProps) => {
   const { logged } = useAuth();
 
   const handleGetTeam = () => {
-    const token = localStorage.getItem("token");
 
-    const headers = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
-
-    Api.get("/team", headers).then((res) => {
+    Api.get("/team").then((res) => {
       setTeam(res.data);
       setFirstTeamId(res.data[0].id)
     });

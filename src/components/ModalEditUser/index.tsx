@@ -31,16 +31,32 @@ export const customStyles = {
 const UserSettings = ({
   isModalOpen,
   setIsModalOpen,
-  user
+  user,
+
 }: ModalUserProps) => {
+
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
 
+  
   const { handleGetUsers } = useUsers()
-  const [ billable, setBillable] = useState<boolean>(true)
+  const [ billable, setBillable] = useState<boolean>(user.billable)
   const [ role, setRole] = useState<any[]>()
   const [ selectedRole, setSelectedRole] = useState<string>()
+
+  const handleFirstRoleId = (prop: any) =>{
+    const firstRole = prop.filter((element: any)=>element.name.includes(user.roleName))[0]
+    setSelectedRole(firstRole.id)
+  }
+
+  const firstBilable = () =>{
+    if(billable){
+      return "sim"
+    }else{
+      return "nao"
+    }
+  }
 
   const handleBillable = (prop:string) => {
     if(prop === "sim"){
@@ -54,10 +70,11 @@ const UserSettings = ({
     Api.get("/role")
       .then((res) => {
         setRole(res.data)
-        setSelectedRole(res.data[0].id)
+        handleFirstRoleId(res.data)
       })
-      .catch((err) => toast.error("Falha ao buscar posições"));
+      .catch((err) => {});
   };
+
 
   const handleUpdateUser = () =>{
     Api.patch(`user/${user.id}`,
@@ -92,9 +109,9 @@ const UserSettings = ({
         <section>
           <h3>{user.name}</h3>
           <p>Billable</p>
-          <select onChange={(e)=> handleBillable(e.target.value)}>
-              <option value={"Sim"} >Sim</option>
-              <option value={"Nao"}>Não</option>
+          <select value={firstBilable()} onChange={(e)=> handleBillable(e.target.value)}>
+              <option value={"sim"} >Sim</option>
+              <option value={"nao"}>Não</option>
           </select>
           <p>Posição</p>
           <select value={selectedRole} onChange={(e)=> setSelectedRole(e.target.value)}>
@@ -104,16 +121,6 @@ const UserSettings = ({
               )
             })}
           </select>
-
-
-          {/* <p>Nome</p>
-          <input placeholder="Digite o email para recuperação" />
-          <p>Nova senha</p>
-          <input placeholder="Digite o email para recuperação" />
-          <p>Confirmação de nova senha</p>
-          <input placeholder="Digite o email para recuperação" />
-          <p>Senha Atual *</p>
-          <input placeholder="Digite o email para recuperação" className="currentPassword"/> */}
         </section>
         <section className="botton">
           <Button variant="contained" className="buttonEnter cancel" onClick={()=>handleCloseModal()}>
