@@ -14,6 +14,7 @@ ${({theme})=>css`
     align-items: center;
     flex-direction: column;
     user-select: none;
+    z-index: 2;
 
 
     div{

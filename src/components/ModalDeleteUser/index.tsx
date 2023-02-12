@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import * as Style from "./style";
 import Modal from "react-modal";
 import Api from "../../services/api";
@@ -33,8 +33,9 @@ const DeleteUser = ({
   isModalOpen,
   setIsModalOpen,
   userId,
-  userName
+  userName,
 }: DeleteProps) => {
+
 
   const { handleGetUsers } = useUsers()
 
