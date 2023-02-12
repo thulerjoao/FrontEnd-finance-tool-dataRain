@@ -3,6 +3,7 @@ import { toast } from "react-hot-toast";
 import { BsPencil, BsTrash } from "react-icons/bs";
 import { useTeam } from "../../contexts/teamContext";
 import Api from "../../services/api";
+import DeleteTeam from "../ModalDeleteTeam";
 import TeamSettings from "../ModalEditTeam";
 
 import * as Style from "./style";
@@ -32,6 +33,12 @@ const [ isEditeOpen, setIsEditeOpen ] = useState<boolean>(false)
                         </section>
                     }   
                     </section>
+                    <DeleteTeam
+                    isModalOpen={isDeleteOpen}
+                    setIsModalOpen={setIsDeleteOpen}
+                    teamId={element.id}
+                    teamName={element.name}
+                  />
                     <TeamSettings
                     isModalOpen={isEditeOpen}
                     setIsModalOpen={setIsEditeOpen}
