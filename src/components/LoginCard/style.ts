@@ -18,7 +18,7 @@ export const LoginCard = styled.div`
     max-width: 39rem;
     height: 64vh;
     box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
-    padding: 2.8vw;
+    padding: 2%;
     margin-top: -2.5rem;
     border-radius: 16px;
     background-color: white;
@@ -95,10 +95,14 @@ export const LoginCard = styled.div`
         display: flex;
         align-items: center;
         justify-content: space-between;
-        width: 6.9vw;
+        width: 43%;
 
         input{
           cursor: pointer;
+        }
+
+        p{
+          width: 100%;
         }
       }
       
@@ -173,6 +177,9 @@ export const RemindMe = styled.h2`
     font-size: ${theme.constants.smallFont};
     color: ${theme.colors.darkGrey};
     font-weight: 500;
+    width: 90%;
+    text-align: end;
+    padding-right: 2%;
     `}
 `;
 
