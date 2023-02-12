@@ -74,7 +74,7 @@ ${({theme})=>css`
         .buttonEnter{
               background-color: ${theme.colors.tertiaryColor};
               height: 3rem;
-              width: 30%;
+              width: 40%;
               font-size: ${theme.constants.buttonFontSize};
             }
             .buttonEnter:hover{

@@ -63,10 +63,11 @@ const DeleteQuestion = ({
         </div>
         <h2>{`A questão ${questionIndex+1} será excluida permanentemente`}</h2>
         <section>
+          <Button variant="contained" className="buttonEnter cancel" onClick={()=>handleCloseModal()}>
+            Cancelar
+          </Button>
           <Button variant="contained" className="buttonEnter" onClick={()=> handleDelete()}>
             Confirmar
-          </Button><Button variant="contained" className="buttonEnter cancel" onClick={()=>handleCloseModal()}>
-            Cancelar
           </Button>
         </section>
         
