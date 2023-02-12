@@ -117,7 +117,9 @@ export const TeamContainer = styled.div`
     }
 
     .dropMenu{
-        right: 0;
+        right: -0.5rem;
+        top: 0;
+        margin: 1rem;
         display: flex;
         flex-direction: column;
         align-items: center;

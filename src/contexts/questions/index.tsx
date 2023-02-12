@@ -22,10 +22,8 @@ export const QuestionsProvider = ({children}:QuestionsProviderProps)=>{
         Api.get("/question")
         .then((res)=> {
             setQuestions(res.data);
-            // console.log(res.data[0].alternatives[0].description)
-            // console.log(res.data[0].description)
         })
-        .catch(()=> console.log("erro ao atualizar questionário"))
+        .catch(()=>{})
     }
     
     useEffect(() => updateQuestion(), [])

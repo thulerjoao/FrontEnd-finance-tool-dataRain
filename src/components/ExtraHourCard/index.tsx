@@ -12,7 +12,7 @@ const ExtraHourCard = () => {
   const [ requests, setRequests ] = useState<any>()
   const [ test, setTest ] = useState <boolean>(true)
   const empty:number = requests && requests.length()
-  console.log(empty)
+
 
 
     useEffect(()=> handleGetRequest(),[])

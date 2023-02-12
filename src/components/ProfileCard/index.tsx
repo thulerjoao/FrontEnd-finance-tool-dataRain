@@ -7,8 +7,6 @@ const TeamsCard = () => {
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [ openUploadModal, setOpenUploadModal] = useState<boolean>(false);
-  
-  console.log(isModalOpen)
 
 
   return (

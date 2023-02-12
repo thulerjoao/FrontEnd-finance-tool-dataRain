@@ -1,34 +1,55 @@
 import { useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { useProject } from "../../contexts/projectContext";
 import Api from "../../services/api";
+import ProjectIndividualCard from "../ProjectsIndividualCard";
 import * as Style from "./style";
-
-const teste = ['','','','','','','','','','','','','']
-
-
 
 const ProjectsCard = () => {
 
   const navigate = useNavigate()
   const [ openNewTeam, setOpenNewTeam ] = useState<boolean>(false)
-  const [ allProjects, setAllProjects ] = useState<any>([])
+  // const [ allProjects, setAllProjects ] = useState<any>([])
+  const [ newTeam, setNewTeam ] = useState<string>()
+  const [ newTeamValue, setNewTeamValue ] = useState<string>()
+  const { projects, handleGetProjects } = useProject()
 
-  const handleAllProjects = () =>{
-    Api.get("/project")
-    .then((res)=>{
-        setAllProjects(res.data)
-    })
-    .catch((err)=>{})
+  console.log(projects)
+
+  const allProjects = projects || []
+
+  const handleNewProject = () =>{
+    if(newTeam !== "" && newTeamValue !== ""){
+      Api.post("/project",
+      {
+        name: newTeam,
+        description: newTeamValue
+      }
+      )
+      .then(()=>{
+        handleGetProjects()
+        setOpenNewTeam(false)
+        toast.success("Projeto criado")
+      }).catch(()=>{
+        toast.error("Erro ao criar projeto")
+      })
+    }
   }
 
-  const handleNext = (projectId: string) =>{
-    projectId && sessionStorage.setItem("projectId", projectId);
-    navigate("/projeto")
-  }
+  // const handleAllProjects = () =>{
+  //   Api.get("/project")
+  //   .then((res)=>{
+  //       setAllProjects(res.data)
+  //   })
+  //   .catch((err)=>{})
+  // }
 
-useEffect(()=>{
-  handleAllProjects()
-},[])
+  // const handleNext = (projectId: string) =>{
+  //   projectId && sessionStorage.setItem("projectId", projectId);
+  //   navigate("/projeto")
+  // }
+
 
   return (
           <Style.ProjectsContainer>
@@ -42,23 +63,18 @@ useEffect(()=>{
                 {openNewTeam && <section className="registerTeam newQuestion animate__animated animate__fadeInDownBig animate__delay-0.5s">
                   <div>
                     <p>Nome</p>
-                    <input type="text"></input>
+                    <input type="text" onChange={(e)=>setNewTeam(e.target.value)}></input>
                   </div>
                   <div>
                     <p >Decrição</p>
-                    <input type="text" className="inputDescription"></input>
+                    <input type="text" className="inputDescription" onChange={(e)=>setNewTeamValue(e.target.value)}></input>
                   </div>
-                  <p className="confirmNewProject" onClick={()=>{}}>Cadastrar</p>
+                  <p className="confirmNewProject" onClick={()=>{handleNewProject()}}>Cadastrar</p>
                 </section>}
                 <section className="allCards">
                 {allProjects && allProjects.map((element:any , index:number)=>{
                   return(
-                  <div key={index} className="card" onClick={()=>{
-                    handleNext(element.id);
-                    }}>
-                        <p>{`Projeto ${element.name}`}</p>
-                        <Style.Settings/>{" "}
-                  </div>
+                  <ProjectIndividualCard count={index} team={element}/>
                   )
                   })}
                   </section>

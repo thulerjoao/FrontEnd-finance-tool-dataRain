@@ -11,10 +11,6 @@ const ProjectCard = () =>{
     const [ clientId, setClientId ] = useState<string>()
     const [ project, setProject ] = useState<any>()
     const [ client, setClient ] = useState<any>(undefined)
-
-
-
-    console.log(client)
     
     const handleProject = ()=>{
         const projectId = sessionStorage.getItem("projectId")
@@ -24,10 +20,8 @@ const ProjectCard = () =>{
                 if(res.data.client){
                     setClient(res.data.client)
                 }
-                console.log("entrei aqui?")
             })
-            .catch((err)=>{()=>console.log(err)})
-            // console.log(projectId)
+            .catch((err)=>{()=>{}})
         }
 
     const handleAllClients = () =>{

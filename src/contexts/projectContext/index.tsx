@@ -5,12 +5,13 @@ import {
   useEffect,
   useState,
 } from "react";
+import toast from "react-hot-toast";
 import Api from "../../services/api";
 import { ProjectTypes } from "../../types/interface";
 import { useAuth } from "../auth";
 
 interface ProjectProviderData {
-  project: ProjectTypes[];
+  projects: ProjectTypes[];
   handleGetProjects: () => void;
   estado: boolean;
   alteraEstado: () => void;
@@ -25,7 +26,7 @@ const ProjectContext = createContext<ProjectProviderData>(
 );
 
 export const ProjectProvider = ({ children }: ProjectProviderProps) => {
-  const [project, setProject] = useState<ProjectTypes[]>([]);
+  const [projects, setProjects] = useState<ProjectTypes[]>([]);
   const [estado, setEstado] = useState<boolean>(false)
   const { logged } = useAuth();
 
@@ -35,8 +36,8 @@ export const ProjectProvider = ({ children }: ProjectProviderProps) => {
 
   const handleGetProjects = () => {
     Api.get("/project")
-      .then((res) => setProject(res.data))
-      .catch((err) => console.log(err));
+      .then((res) => {setProjects(res.data)})
+      .catch((err) => {});
   };
 
   useEffect(() => {
@@ -45,7 +46,7 @@ export const ProjectProvider = ({ children }: ProjectProviderProps) => {
 
   return (
     <ProjectContext.Provider
-      value={{ project, handleGetProjects, estado, alteraEstado }}
+      value={{ projects, handleGetProjects, estado, alteraEstado }}
     >
       {children}
     </ProjectContext.Provider>

@@ -38,7 +38,6 @@ const SecondPageCard = ({setStepNumber}:FirstPageProp) =>{
         setAnswers(content)
         setValue("")
         setText("")
-        console.log(answers)
     }
 
     const handleBack = () =>{
@@ -77,7 +76,7 @@ const SecondPageCard = ({setStepNumber}:FirstPageProp) =>{
     return(
         <Style.SecondPageCard>
             <section >
-                    <h3 onClick={()=>(console.log(data))}>{`${count+1}- ${questions[count].description}`}</h3>
+                    <h3>{`${count+1}- ${questions[count].description}`}</h3>
                 <FormControl className="FormControl">
                     <RadioGroup className="RadioGroup" defaultValue={value} onChange={(e)=>setValue(e.target.value)}>
                         {questions[count].alternatives.map((e:any)=>{                    
