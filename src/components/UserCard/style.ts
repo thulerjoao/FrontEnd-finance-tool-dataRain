@@ -4,63 +4,9 @@ import styled, { css } from "styled-components";
 import theme from "../../styles/theme";
 
 
-export const UsersContainer = styled.div`
+export const UserContainer = styled.div`
   ${({ theme }) => css`
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: calc(100vh - 5rem);
-    max-height: calc(100vh - 8.5rem);
-    box-sizing: border-box;
-    
-    .section01{
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      /* height: 100%; */
-      width: 100%;
-      margin-top: 40px;
-      margin-bottom: 16px;
-      /* p{
-      font-size: ${theme.constants.fontHeader};
-      } */
-
-
-      h2{
-        margin-bottom: 3rem;
-        color: ${theme.colors.secundaryColor};
-        font-size: ${theme.constants.titleFontSize};
-      }
-/* 
-      section{
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        justify-content: space-between;
-        padding-right: 2%;
-        box-sizing: border-box;
-        font-size: 28px;
-        
-        div{
-          width: 100%;
-          text-align: center;
-        }
-
-      } */
-
-    }
-
-    .section02{
-      display: flex;
-      flex-wrap: wrap;
-      width: 100%;
-      height: 100%;
-      justify-content: space-evenly;
-      gap: 2vw;
-      padding-right: 2vw;
-      
-
-      .card{
+  .card{
         height: 17.5rem;
         width: 15.375rem;
         display: flex;
@@ -112,7 +58,7 @@ export const UsersContainer = styled.div`
             border-radius: 50%;
             height: 7rem;
             width: 7rem;
-            box-shadow: rgb(0 0 0 / 50%) 1px 2px 5px;
+            /* box-shadow: rgb(0 0 0 / 5%) 1px 1px 5px; */
 
           }
 
@@ -158,22 +104,6 @@ export const UsersContainer = styled.div`
 
       }
 
-
-      overflow-y: scroll;
-            ::-webkit-scrollbar {
-                width: 10px;
-            }
-            ::-webkit-scrollbar-track {
-                background: ${theme.colors.inputFontColor};
-                border-radius:5px;
-            }
-            ::-webkit-scrollbar-thumb {
-                background: ${theme.colors.tertiaryColor};
-                border-radius:5px;
-            }
-            ::-webkit-scrollbar-thumb:hover {
-                background: #ED8107;
-            }
 
   `}
 `;
