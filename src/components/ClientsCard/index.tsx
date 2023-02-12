@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+import Api from "../../services/api";
+import ClientCard from "../ClientCard";
 import * as Style from "./style"
 
 
@@ -6,24 +9,37 @@ const teste = ['','','','','','','','','','','','','']
 
 const ClientsCard = () => {
 
+  const [ clients, setClients ] = useState<any>()
+
+  useEffect(()=>{getAllClients()},[])
+
+  const getAllClients = () =>{
+    Api.get("/client")
+    .then((res)=>{
+      setClients(res.data)
+    })
+    .catch((err)=>{})
+  }
+
+  const phoneMask = (prop:string) => {
+    let value = prop.toString()
+    if (!value) return ""
+    value = value.replace(/\D/g,'')
+    value = value.replace(/(\d{2})(\d)/,"($1) $2")
+    value = value.replace(/(\d)(\d{4})$/,"$1-$2")
+    return value
+  }
+
+
   return (
           <Style.ClientsContainer>
               <section className="section01">
                 <h2>Clientes</h2>        
               </section>
               <section className="section02">
-                  {teste && teste.map((element, index)=>{
+                  {clients && clients.map((element:any, index:number)=>{
                   return(
-                    <div className="card">
-                      <div>
-                        <h2>{`Company 0${index + 1}`}</h2>
-                        <Style.Settings/>{' '}
-                      </div>
-                      <section>
-                        <p>{`company0${index + 1}@gmail.com`}</p>
-                        <p>(21) 98745-6321</p>
-                      </section>
-                  </div>
+                    <ClientCard element={element}/> 
                   )})
                   }
               </section>  
