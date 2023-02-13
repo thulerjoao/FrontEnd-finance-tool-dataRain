@@ -215,17 +215,17 @@ const BudgetCard = () =>{
                     </div>
                 </section>
                 <section className="botton">
-                    <Button  variant="contained" className="buttonEnter" onClick={()=>{
-                        handleFinishBudget()
-                        }}>Finalizar orçamento
+                    <Button  variant="contained" className="buttonEnter report" onClick={()=>{
+                        handlePDF()
+                        }}>Gerar Relatório
                     </Button>
                     <Button  variant="contained" className="buttonEnter save" onClick={()=>{
                         handleSave()
                         }}>Salvar alterações
                     </Button>
-                    <Button  variant="contained" className="buttonEnter report" onClick={()=>{
-                        handlePDF()
-                        }}>Gerar Relatório
+                    <Button  variant="contained" className="buttonEnter" onClick={()=>{
+                        handleFinishBudget()
+                        }}>Finalizar orçamento
                     </Button>
                 </section>
             </section>
