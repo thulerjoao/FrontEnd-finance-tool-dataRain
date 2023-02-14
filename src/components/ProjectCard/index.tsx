@@ -8,6 +8,7 @@ import userDefault from "../../assets/images/userDefault.png";
 import { useUsers } from "../../contexts/userContext"
 import logo from "../../assets/images/default.png"
 import NewUserSettings from "../ModalAddUserProject"
+import DeleteUserProject from "../ModalDeleteUserProject"
 
 
 
@@ -15,11 +16,12 @@ const ProjectCard = () =>{
 
     const [ allClients, setAllClients ] = useState<any>([])
     const [ clientId, setClientId ] = useState<string>()
-    const [ newUserId, setNewUserId ] = useState<string>()
+    const [ deleteUserId, setdeleteUserId ] = useState<string>("")
     const [ project, setProject ] = useState<any>()
     const [ client, setClient ] = useState<any>(undefined)
     const [ isManager, setIsManager ] = useState<any>(undefined)
     const [ isModalOpen, setIsModalOpen] = useState<boolean>(false)
+    const [ isModalDeleteOpen, setIsModalDeleteOpen] = useState<boolean>(false)
   
     
     const hegisterNewClient = () =>{
@@ -117,7 +119,12 @@ const ProjectCard = () =>{
                                 <div className="card oldUser"key={index}>
                                    <div>
                                         <p className={element.user.roleName === "manager"? "manager": ""}>{element.user.roleName.toUpperCase()}</p>
-                                        <Style.trash/>{" "}
+                                        <span onClick={()=>{
+                                            setdeleteUserId(element.user.id)
+                                            setIsModalDeleteOpen(true)
+                                        }}>
+                                            <Style.trash/>{" "}
+                                        </span>
                                    </div>
                                    <img src={
                                         element.user.imageUrl === null? logo :
@@ -135,6 +142,13 @@ const ProjectCard = () =>{
                 </div>
                 }
             </section>
+            <DeleteUserProject
+                    isModalOpen={isModalDeleteOpen}
+                    setIsModalOpen={setIsModalDeleteOpen}
+                    project={project}
+                    userId={deleteUserId}
+                    handleGetProject={handleGetProject}
+                  /> 
             <NewUserSettings
                     isModalOpen={isModalOpen}
                     setIsModalOpen={setIsModalOpen}

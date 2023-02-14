@@ -88,9 +88,14 @@ const NewUserSettings = ({
             handleCloseModal()
             toast.success("Cliente adicionado")
             setNewUserValue(undefined)
+            setNewUserId("")
             handleGetUsers()
         })
-        .catch(()=>toast.error("Falha ao adicionar"))
+        .catch(()=>{
+          console.log(userId)
+          console.log(project.id)
+          toast.error("Falha ao adicionar")
+        })
       }else{
         toast.error("Valor inválido")
       }
@@ -114,17 +119,15 @@ const NewUserSettings = ({
           <p>Nome</p>
           <select onChange={(e)=>setNewUserId(e.target.value)}>
             {isManager?
-                    // setNewUserId(avaliableUsers[0].id);
                     avaliableUsers.map((element)=>{
                     return(
-                      <option>{element.name}</option>
+                      <option value={element.id}>{element.name}</option>
                     )
                     })
                     :
                     avaliableMannager.map((element)=>{
-                    // setNewUserId(avaliableMannager[0].id);
                     return(
-                      <option defaultValue={avaliableMannager[0].id} value={element.id}>{element.name}</option>
+                      <option value={element.id}>{element.name}</option>
                     )
                 })
             }
