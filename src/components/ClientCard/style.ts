@@ -6,11 +6,11 @@ import theme from "../../styles/theme";
 export const ClientContainer = styled.div`
   ${({ theme }) => css`
       width: 22%;
+      max-height: 18vh;
       position: relative;
 
 
       .card{
-        height: 9rem;
         min-width: 100%;
         display: flex;
         flex-direction: column;

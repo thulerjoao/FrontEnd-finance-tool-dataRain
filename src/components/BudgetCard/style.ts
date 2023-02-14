@@ -49,7 +49,7 @@ export const BudgetContainer = styled.div`
         width: 100%;
         justify-content: space-around;
         padding-bottom: 1rem;
-        border-bottom: 1px solid black;
+        border-bottom: 1px solid #d1d1d1;
 
     }
 
@@ -76,7 +76,7 @@ export const BudgetContainer = styled.div`
         display: flex;
         justify-content: space-between;
         min-height: 6vh;
-        border-bottom: 1px dotted black;
+        border-bottom: 1px dotted #d1d1d1;
             
         .questions{
             width: 50%;
@@ -98,7 +98,7 @@ export const BudgetContainer = styled.div`
             display: flex;
             flex-direction: column;
             align-items: center;
-            border-left: 1px dotted black;
+            border-left: 1px dotted #d1d1d1;
             justify-content: center;
 
             .section{
@@ -122,7 +122,7 @@ export const BudgetContainer = styled.div`
                     all: unset;
                     width: 3.5rem;
                     text-align: center;
-                    border-bottom: 1px solid black;
+                    border-bottom: 1px solid #d1d1d1;
                 }
 
                 .empty{

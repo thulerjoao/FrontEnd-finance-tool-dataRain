@@ -53,7 +53,6 @@ export const ClientsContainer = styled.div`
     .section02{
       display: flex;
       flex-direction: row;
-      justify-content: space-evenly;
       align-items: flex-start;
       flex-wrap: wrap;
       width: 100%;
@@ -62,14 +61,14 @@ export const ClientsContainer = styled.div`
       padding-right: 2vw;  
 
       .card{
-        height: 9rem;
-        /* width: 18.375rem; */
+        bottom: 0;
+        top: 0;
+        max-height: 18vh;
         width: 22%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         padding-bottom: 2rem;
-        /* margin: 0 auto; */
         margin-bottom: 1%;
         border-radius: 8px;
         box-shadow: rgb(0 0 0 / 10%) 1px 1px 10px;

@@ -118,7 +118,7 @@ const ProjectCard = () =>{
                             return(
                                 <div className="card oldUser"key={index}>
                                    <div>
-                                        <p className={element.user.roleName === "manager"? "manager": ""}>{element.user.roleName.toUpperCase()}</p>
+                                        <p className={element.user.roleName === "manager"? "manager": ""}>{element.user.roleName === "manager"? "MANAGER": "P. SERVICES"}</p>
                                         <span onClick={()=>{
                                             setdeleteUserId(element.user.id)
                                             setIsModalDeleteOpen(true)
