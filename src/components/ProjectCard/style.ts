@@ -33,6 +33,7 @@ export const ProjectContainer = styled.div`
                 justify-content: flex-start;
                 align-items: center;
                 height: 10vh;
+                border-bottom: 1px solid #d1d1d1;
             }
 
             .top{
@@ -43,6 +44,8 @@ export const ProjectContainer = styled.div`
                 align-items: flex-start;
                 justify-content: center;
                 margin-left: 3rem;
+                
+
 
                  h2{
                     color: ${theme.colors.secundaryColor};
