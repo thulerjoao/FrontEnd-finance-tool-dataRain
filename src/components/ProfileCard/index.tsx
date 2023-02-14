@@ -1,12 +1,25 @@
 import { useState } from "react";
+import { useAuth } from "../../contexts/auth";
 import ProfileSettings from "../ModalProfileSettings";
 import ModalUploadImg from "../ModalUploadImg";
 import * as Style from "./style"
+import Logo from "../../assets/images/default.png";
 
 const TeamsCard = () => {
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [ openUploadModal, setOpenUploadModal] = useState<boolean>(false);
+  const { userStorage } = useAuth()
+
+  const phoneMask = (prop:string) => {
+    let value = prop.toString()
+    if (!value) return ""
+    value = value.replace(/\D/g,'')
+    value = value.replace(/(\d{2})(\d)/,"($1) $2")
+    value = value.replace(/(\d)(\d{4})$/,"$1-$2")
+    return value
+  }
+  
 
 
   return (
@@ -17,14 +30,17 @@ const TeamsCard = () => {
               </section>
               <section className="section02">
                 <section>
-                  <img src="https://avatars.githubusercontent.com/u/97922574?v=4"></img>
+                  <img src={
+                    userStorage.imageUrl === null? Logo :
+                    `https://back-btc-finance-tool-production-0df0.up.railway.app${userStorage.imageUrl}`
+                    }></img>
                   <div>
                     <div className="top">
-                      <h2>João Pedro Thuler Lima</h2>
+                      <h2>{userStorage.name}</h2>
                       <Style.Gear onClick={()=> setIsModalOpen(!isModalOpen)}/>{' '}
                     </div>
-                    <p>thuler_lima@hotmail.com</p>
-                    <p>22 9990-9574</p>
+                    <p>{userStorage.email}</p>
+                    {/* <p>{phoneMask(userStorage)}</p> */}
                     <p className="updateImg" onClick={()=> setOpenUploadModal(!openUploadModal)}>Upload de Imagem</p>
                   </div>
                 </section>
