@@ -146,7 +146,7 @@ export const ProjectContainer = styled.div`
                         
 
                         img{
-                            height: 35%;
+                            height: 12vh;
                             /* border-radius: 50%; */
                         }
 
@@ -186,6 +186,11 @@ export const ProjectContainer = styled.div`
 
                     .newUser{
                         border: 1px dashed #55555580;
+                        padding-top: 6vh;
+                        padding-bottom: 5.5vh;
+                        box-sizing: border-box;
+                        cursor: pointer;
+
                     }
 
                     .oldUser{

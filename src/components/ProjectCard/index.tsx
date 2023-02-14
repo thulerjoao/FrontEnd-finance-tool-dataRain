@@ -1,39 +1,42 @@
 import { Button } from "@mui/material"
 import { useEffect, useState } from "react"
-import { ErrorIcon } from "react-hot-toast"
+import { ErrorIcon, toast } from "react-hot-toast"
 import { useNavigate } from "react-router-dom"
 import Api from "../../services/api"
 import * as Style from "./style"
 import userDefault from "../../assets/images/userDefault.png";
 import { useUsers } from "../../contexts/userContext"
 import logo from "../../assets/images/default.png"
+import NewUserSettings from "../ModalAddUserProject"
+
 
 
 const ProjectCard = () =>{
 
     const [ allClients, setAllClients ] = useState<any>([])
     const [ clientId, setClientId ] = useState<string>()
+    const [ newUserId, setNewUserId ] = useState<string>()
     const [ project, setProject ] = useState<any>()
     const [ client, setClient ] = useState<any>(undefined)
     const [ isManager, setIsManager ] = useState<any>(undefined)
-    const { allUsers, budgets, handleGetUsers, handleGetBudgets } = useUsers()
-
-    const teste = ['','','','','','','','','','','','','']
-
-    // filtro para buscar o manager
-  const avaliableMannager = allUsers.filter(
-    (element) => element.roleName === "manager"
-  );
-
-  //filtro para buscar os usuários
-  const avaliableUsers = allUsers.filter(
-    (element) => element.roleName === "professional services"
-  );
-
-  console.log(avaliableUsers);
+    const [ isModalOpen, setIsModalOpen] = useState<boolean>(false)
   
     
-    const handleProject = ()=>{
+    const hegisterNewClient = () =>{
+        Api.post("/project/add-client",
+        {
+            clientId: clientId,
+            projectId: project.id
+        }
+        )
+        .then(()=>{
+            handleGetProject()
+            toast.success("Cliente adicionado")
+        })
+        .catch(()=>toast.error("Falha ao adicionar cliente"))
+    }
+    
+    const handleGetProject = ()=>{
         const projectId = sessionStorage.getItem("projectId")
         Api.get(`/project/${projectId}`)
             .then((res)=>{
@@ -46,7 +49,7 @@ const ProjectCard = () =>{
             .catch((err)=>{()=>{}})
         }
 
-    const handleAllClients = () =>{
+    const handleGetAllClients = () =>{
         Api.get(`/client`)
         .then((res)=>{
             setAllClients(res.data)
@@ -56,8 +59,8 @@ const ProjectCard = () =>{
     }
 
     useEffect(()=>{
-        handleAllClients();
-        handleProject();
+        handleGetAllClients();
+        handleGetProject();
     },[])
 
     const navigate = useNavigate()
@@ -97,30 +100,17 @@ const ProjectCard = () =>{
                         
                     </select>
                     <Button
-                        type="submit"
                         variant="contained"
                         className="buttonSave"
-                        onClick={()=> {}}
+                        onClick={()=> {hegisterNewClient()}}
                         >
-                        Salvar
+                        Cadastrar
                     </Button>
                 </div>:
                 <div className="bottom">
-                        <div className="card newUser">
+                        <div className="card newUser" onClick={()=>setIsModalOpen(true)}>
                             <img src={userDefault}></img>
                             <p>{isManager? "Adicionar colaborador +":'Adicionar Manager +'}</p>
-                            <select>
-                                {
-                                    avaliableMannager.map((element)=>{
-                                        return(
-                                            <option>{element.name}</option>
-                                        )
-                                    })
-                                }
-                            </select>
-                            <Button  variant="contained" className="registe">
-                                Cadastrar
-                            </Button>
                         </div>
                         {  project.users.map((element: any, index:number)=>{
                             return(
@@ -130,7 +120,7 @@ const ProjectCard = () =>{
                                         <Style.trash/>{" "}
                                    </div>
                                    <img src={
-                                        true === null? logo :
+                                        element.user.imageUrl === null? logo :
                                         `https://back-btc-finance-tool-production-0df0.up.railway.app${element.user.imageUrl}`
                                         }>
                                     </img>
@@ -145,6 +135,13 @@ const ProjectCard = () =>{
                 </div>
                 }
             </section>
+            <NewUserSettings
+                    isModalOpen={isModalOpen}
+                    setIsModalOpen={setIsModalOpen}
+                    project={project}
+                    isManager={isManager}
+                    handleGetProject={handleGetProject}
+                  /> 
         </Style.ProjectContainer>
     )
 }
