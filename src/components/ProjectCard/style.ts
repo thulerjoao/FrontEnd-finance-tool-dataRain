@@ -17,7 +17,7 @@ export const ProjectContainer = styled.div`
             box-shadow: rgb(0 0 0 / 10%) 1px 1px 10px;
             background-color: ${theme.colors.primaryColor};
             border-radius: 10px;
-            width: 55%;
+            width: 65%;
             height: 82.5vh;
             margin-top: -3vh;
             padding: 1%;
@@ -130,8 +130,8 @@ export const ProjectContainer = styled.div`
 
                     .card{
                         /* margin: 0 auto; */
-                        margin: 1%;
-                        width: 23%;
+                        margin: 1% 2.4%;
+                        width: 20%;
                         height: 30vh;
                         border: 1px solid #55555530;
                         /* box-shadow: rgb(0 0 0 / 50%) 1px 1px 10px; */
