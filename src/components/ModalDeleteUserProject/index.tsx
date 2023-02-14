@@ -40,8 +40,6 @@ const DeleteUserProject = ({
 const handleCloseModal = () => {
   setIsModalOpen(false);
 };
-
-  console.log(userId);
   
   
   const handleDeleteUserProject = () =>{

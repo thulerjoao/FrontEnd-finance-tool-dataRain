@@ -7,6 +7,7 @@ import { useTeam } from "../../contexts/teamContext";
 import toast from "react-hot-toast";
 import Api from "../../services/api";
 import DeleteQuestion from "../ModalDelete";
+import QuestionCard from "../QuestionCard";
 
 const QuestionsCard = () => {
   
@@ -51,54 +52,6 @@ const QuestionsCard = () => {
       }
   }
 
-  // const handleAddAnswear = () =>{
-  //   if(titleId !== "" || newTitle !==""){
-  //     if(currentAnswer !=="" && teamId !==""){
-  //       if(hours > 0){
-  //         Api.post("/alternative", 
-  //         {
-  //           description: currentAnswer,
-  //           questionId: titleId,
-  //           teams: [
-  //             {
-  //               teamId: teamId,
-  //               workHours: hours
-  //             }
-  //           ]
-  //         }
-  //         )
-  //           .then(()=>{
-  //             setCurrentAnswer("");
-  //             toast.success("Resposta cadastrada")
-  //           })
-  //           .catch((err)=>{toast.error("Erro ao cadastrar resposta")})
-  //       }else{
-  //         toast.error("Quantidade de horas inválida")
-  //       }
-  //     }else{
-  //       toast.error("Preencha todos os campos")
-  //     }
-  //   }else{
-  //     toast.error("A questão deve conter um título")
-  //   }
-  // }
-
-  // const handleCancel = () =>{
-  //   Api.delete(`/question/${titleId}`)
-  //     .then(()=>{
-  //         setTest(!test);
-  //         setNewTitle("");
-  //         setTitleId("")
-  //         setNewAnswer(false)
-  //         setCurrentAnswer("")
-  //         setHours(0)
-  //         setTeamId(firstTeamId)
-  //         setTest(!test);
-  //     })
-  //     .catch(()=> toast.error("Erro ao cancelar"))
-  // }
-
-/////////////////////////////////////////////////////
 /////////////////////////////////////////////////////
 
   //updateOldQuestions states and functions:
@@ -121,33 +74,33 @@ const QuestionsCard = () => {
 
   useEffect(()=>updateQuestion() ,[test])
 
-  const UpdateTitle = (index:number, newTitle:string) =>{
-      let newValues = editQuestions
-    newValues[index].description = newTitle
-    setEditQuestions(newValues)
-    setFillValue(false)
-  }
+  // const UpdateTitle = (index:number, newTitle:string) =>{
+  //     let newValues = editQuestions
+  //   newValues[index].description = newTitle
+  //   setEditQuestions(newValues)
+  //   setFillValue(false)
+  // }
 
-  const UpdateAnswer = (newAnswer:string) =>{
-    let newValues = editQuestions
-    newValues[questionIndex].alternatives[alternativeIndex].description = newAnswer
-    setEditQuestions(newValues)
-    setFillValue(false)
-  }
+  // const UpdateAnswer = (newAnswer:string) =>{
+  //   let newValues = editQuestions
+  //   newValues[questionIndex].alternatives[alternativeIndex].description = newAnswer
+  //   setEditQuestions(newValues)
+  //   setFillValue(false)
+  // }
 
-  const updateTeam = (newTeamId:string) => {
-    let newValues = editQuestions
-    newValues[questionIndex].alternatives[alternativeIndex].teams[0].id = newTeamId
-    setEditQuestions(newValues)
-  }
+  // const updateTeam = (newTeamId:string) => {
+  //   let newValues = editQuestions
+  //   newValues[questionIndex].alternatives[alternativeIndex].teams[0].id = newTeamId
+  //   setEditQuestions(newValues)
+  // }
 
-  const updateHours = (newHour:number) =>{
-    let newValues = editQuestions
-    newValues[questionIndex].alternatives[alternativeIndex].teams[0].workHours = newHour
-    setEditQuestions(newValues)
-    setFillValue(false)
+  // const updateHours = (newHour:number) =>{
+  //   let newValues = editQuestions
+  //   newValues[questionIndex].alternatives[alternativeIndex].teams[0].workHours = newHour
+  //   setEditQuestions(newValues)
+  //   setFillValue(false)
 
-  }
+  // }
   
   //////////////////////////
 
@@ -249,137 +202,12 @@ const QuestionsCard = () => {
               </div>
               <section>
                 <input value={newTitle} className="firstInput" onChange={(e) => setNewTitle(e.target.value)}></input>
-                  {/* {newAnswer && <div className="cards">
-                    <div className="first">
-                      <p>Adicionar alternativa (Opcional)</p>
-                      <input placeholder="Nova resposta objetiva" className="newAnswer" onChange={(e)=> setCurrentAnswer(e.target.value)}></input>
-                    </div>
-                    <div className="second">
-                      <p>Equipes</p>         
-                          <select className="newTeam" onChange={(e)=> setTeamId(e.target.value)}>
-                            {team && team.map((element3:any)=>{                       
-                              return(
-                                <option value={element3.id}>{element3.name}</option>
-                              )
-                            })}
-                          </select>
-                    </div>
-                    <div className="third">
-                      <p>Horas Totais</p>  
-                      <input type="number" value={hours} placeholder="Horas" className="newHour" onChange={(e)=> setHours(e.target.valueAsNumber)}></input>
-                    </div>
-                  </div>}
-                <p className="newAlternative" onClick={()=> handleNewQuestion()}>{newAnswer? "Cadastrar resposta":"Cadastrar questão"}</p>
-              {newAnswer && <div className="finish">
-                <p className="newAlternative" onClick={()=> handleFinish()}>Finalizar</p>
-                <p className="newAlternative cancel" onClick={()=> handleCancel()}>Cancelar</p>
-              </div>} */}
               <p className="newAlternative" onClick={()=> handleNewQuestion()}>{newAnswer? "Cadastrar resposta":"Cadastrar questão"}</p>
               </section>
             </section>}
           {editQuestions && editQuestions.map((element:any, index:any)=>{
-            return(                     
-              <form onSubmit={(e)=>e.preventDefault()} key={index} className="section02">
-              <div className="title">
-                <p>{`Questão ${index+1}`}</p>
-                <div>
-                  <p className="updateButton" onClick={()=>{
-                    updateAlternatives(index, element.id)
-                  }}>Atualizar</p>
-                  <p className="updateButton delete" onClick={()=>{
-                    setQuestionId(element.id)
-                    setIsModalOpen(true);
-                    }}>Excluir</p>
-                </div>
-              </div>
-                <input
-                onClick={()=>setFillValue(true)}
-                onChange={(e)=>{UpdateTitle(index, e.target.value)}}
-                className="firstInput"
-                placeholder={element.description}
-                value={fillValue? element.description:undefined}
-                ></input>
-              <section onClick={()=>setQuestionIndex(index)}>
-                  <div className="cards">
-                    <div className="first">
-                      <p>Respostas</p>
-                      {element.alternatives.map((element1:any, index:number)=>{
-                        return(
-                          <input
-                          onClick={()=>{
-                            setAlternativeIndex(index);
-                            setFillValue(true)
-                          }}
-                          onChange={(e)=>{UpdateAnswer(e.target.value)}}
-                          key={element1.id} 
-                          defaultValue={fillValue?element1.description:undefined}></input>
-                        )
-                      })}
-                      <input placeholder="Nova resposta objetiva" value={catchNewTitle} className="newAnswer" onChange={(e)=>setCatchNewTitle(e.target.value)}></input>
-                    </div>
-                    <div className="second">
-                      <p>Equipes</p>
-                      {element.alternatives.map((element2:any, index:number)=>{
-                        return(              
-                          <select
-                          placeholder={element2.teams[0].id}
-                          value={fillValue?element2.teams[0].id:undefined}
-                          onChange={(e)=>{updateTeam(e.target.value)}}
-                          onClick={()=>{ 
-                            setAlternativeIndex(index);
-                            setFillValue(false)
-                            }
-                          }
-                          >
-                            {team && team.map((element3:any)=>{                       
-                              return(
-                                <option value={element3.id} >{element3.name}</option>
-                              )
-                            })}
-                          </select>                         
-                        )
-                      })}
-                          <select className="newTeam" value={catchNewTeamId} onChange={(e)=>setCatchNewTeamId(e.target.value)}>
-                            {team && team.map((element3:any)=>{                       
-                              return(
-                                <option value={element3.id}>{element3.name}</option>
-                              )
-                            })}
-                          </select>
-                    </div>
-                    <div className="third">
-                      <p>Horas Totais</p>
-                      {element.alternatives.map((element2:any, index:number)=>{
-                        return(
-                          <section>
-                            <input 
-                            onClick={()=>{
-                              setAlternativeIndex(index);
-                              setFillValue(true)
-                            }}
-                            onChange={(e)=>{updateHours(e.target.valueAsNumber)}}
-                            key={element2.id}
-                            placeholder={element2.teams[0].workHours}
-                            value={fillValue? element2.teams[0].workHours: undefined}
-                            type="number" 
-                            ></input>
-                            <div onClick={()=> deleteAnswear(element2.id)}>
-                              <Style.trash/>{" "}
-                            </div>
-                          </section>
-                        )
-                        
-                      })}
-                      <section>
-                        <input type="number" placeholder="Horas" value={catchNewHour}className="newHour" onChange={(e)=>setCatchNewHour(e.target.valueAsNumber)}></input>
-                        <div onClick={()=> registeAnswer(element.id)}>
-                          <Style.plus/>{" "}
-                        </div>
-                      </section>
-                    </div>
-                  </div>
-              </section>
-            </form>
+            return(
+              <QuestionCard element={element} count={index} key={index}/>                     
             )
             })}
         </section>

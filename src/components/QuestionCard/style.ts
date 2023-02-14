@@ -3,80 +3,9 @@ import theme from "../../styles/theme";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { BsFolderPlus } from "react-icons/bs";
 
-export const QuestionsContainer = styled.div`
+export const QuestionContainer = styled.div`
   ${({ theme }) => css`
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: calc(100vh - 18vh);
-    box-sizing: border-box;
-
-
-    .section01{
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      margin-top: 40px;
-      margin-bottom: 16px;
-      p{
-      font-size: ${theme.constants.fontHeader};
-      cursor: pointer;
-      width: 19vw;
-    }
-
-
-      h2{
-        margin-bottom: 3rem;
-        color: ${theme.colors.secundaryColor};
-        font-size: ${theme.constants.titleFontSize};
-      }
-
-      div{
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        justify-content: space-between;
-        padding: 0 7% 0 4.5%;
-        box-sizing: border-box;
-        font-size: 28px;
-
-        .company{
-          margin-left: 10%;
-        }
-
-        .last{
-          margin-right: 5%;
-        }
-
-        .date{
-          margin-left: 6%;
-        }
-
-      }
-
-    }
-
-    .allQuestions{
-      overflow-y: scroll;
-            ::-webkit-scrollbar {
-                width: 10px;
-            }
-            ::-webkit-scrollbar-track {
-                background: ${theme.colors.inputFontColor};
-                border-radius:5px;
-            }
-            ::-webkit-scrollbar-thumb {
-                background: ${theme.colors.tertiaryColor};
-                border-radius:5px;
-            }
-            ::-webkit-scrollbar-thumb:hover {
-                background: #ED8107;
-            }
-    }
-
-    .newQuestion{
-      background-color: #CCDFED60;
-    }
+    
 
     .section02{
       width: calc(100% - 60px);

@@ -92,16 +92,13 @@ const NewUserSettings = ({
             handleGetUsers()
         })
         .catch(()=>{
-          console.log(userId)
-          console.log(project.id)
+
           toast.error("Falha ao adicionar")
         })
       }else{
         toast.error("Valor inválido")
       }
     }
-
-    console.log(newUserValue);
     
 
   return (
