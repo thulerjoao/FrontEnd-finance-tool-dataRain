@@ -15,8 +15,6 @@ const ProjectsCard = () => {
   const [ newTeamValue, setNewTeamValue ] = useState<string>()
   const { projects, handleGetProjects } = useProject()
 
-  console.log(projects)
-
   const allProjects = projects || []
 
   const handleNewProject = () =>{
