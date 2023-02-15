@@ -9,7 +9,6 @@ import { useQuestions } from "../../contexts/questions";
 interface DeleteProps {
   isModalOpen: boolean;
   setIsModalOpen: Dispatch<SetStateAction<boolean>>;
-  questionIndex: number;
   questionId: string
 }
 
@@ -31,7 +30,6 @@ export const customStyles = {
 const DeleteQuestion = ({
   isModalOpen,
   setIsModalOpen,
-  questionIndex,
   questionId
 }: DeleteProps) => {
 
@@ -46,6 +44,7 @@ const DeleteQuestion = ({
       .then(()=>{
         updateQuestion()
         handleCloseModal()
+        toast.success("Feito")
       })
       .catch(()=>{toast.error("Erro ao excluir")})
   }
@@ -61,7 +60,7 @@ const DeleteQuestion = ({
         <div>
           <Style.BackArrow onClick={handleCloseModal} />
         </div>
-        <h2>{`A questão ${questionIndex+1} será excluida permanentemente`}</h2>
+        <h2>{`Excluir questão permanentemente?`}</h2>
         <section>
           <Button variant="contained" className="buttonEnter cancel" onClick={()=>handleCloseModal()}>
             Cancelar
