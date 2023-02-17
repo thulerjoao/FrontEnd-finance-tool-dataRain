@@ -53,9 +53,7 @@ const QuestionCard = (param:{element:any, count:number}) => {
   const deleteAnswear = (answearId:string) =>{
       Api.delete(`/alternative/${answearId}`)
             .then(()=>{
-              setTimeout(() => {
                 updateQuestion();
-              }, 2000)
             })
             .catch(()=>toast.error("Erro ao excluir resposta"))
   }
@@ -117,9 +115,7 @@ const QuestionCard = (param:{element:any, count:number}) => {
             }
             )
               .then(()=>{
-                setTimeout(() => {
                   updateQuestion();
-                }, 2000)
               })
               .catch(()=>toast.error("Erro ao cadastrar nova resposta"))
           }else{
