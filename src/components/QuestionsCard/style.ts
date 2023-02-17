@@ -122,7 +122,7 @@ export const QuestionsContainer = styled.div`
         }
 
         .delete{
-          background-color: #0b7ca3;
+          background-color: ${theme.colors.fourthColor};
         }
       }
 
@@ -166,7 +166,7 @@ export const QuestionsContainer = styled.div`
             margin-bottom: -2%;
 
             .cancel{
-              background-color: #0b7ca3;
+              background-color: ${theme.colors.fourthColor};
               margin-left: 1rem;
             }
 

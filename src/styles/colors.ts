@@ -4,6 +4,8 @@ export const colors = {
     secundaryColor: "#0D78A0", //azul
     backgroundColor: "#F2F4F6", //cinza claro de fundo
     tertiaryColor: "#EF8E1C", //laranja
+    fourthColor: "#0b7ca3", //azul 
     inputFontColor: "#D1D1D1", // cinza claro
-    darkGrey: "#98A9BC", //cinza mais escuro    
+    darkGrey: "#98A9BC", //cinza mais escuro  
+
 }   

@@ -7,8 +7,14 @@ import * as yup from "yup";
 import Api from "../../services/api";
 import * as Style from "./style";
 import TopBar from "../TopBar";
+import { Dispatch, SetStateAction } from "react";
 
-const CreateClientCard = () => {
+interface ChangeProp {
+  change: boolean,
+  setChange: Dispatch<SetStateAction<boolean>>
+}
+
+const CreateClientCard = ({change, setChange}:ChangeProp) => {
   const navigate = useNavigate();
 
   interface CreateClientData {
@@ -80,8 +86,16 @@ const CreateClientCard = () => {
     <Style.CreateClientContainer>
         <Style.CreateClientCard onSubmit={handleSubmit(handleRegister)}>
           <Style.CreateUserTitleContainer>
-            <h1 className="h1title">Criar novo cliente</h1>
+          <div onClick={()=>setChange(true)}>
+            <h1 className="h1title" >Usuário</h1>
+          </div>
+          <div className="active" >
+            <h1 className="h1title">Cliente</h1>
+          </div>
           </Style.CreateUserTitleContainer>
+          <Style.TopContainer>
+            <h2>- Dados do novo cliente -</h2>
+          </Style.TopContainer>
           <Style.InputsContainer>
             <Style.InputLabel>Email</Style.InputLabel>
             <Style.Inputs type="email" {...register("email")} />
