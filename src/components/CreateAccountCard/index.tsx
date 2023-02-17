@@ -7,15 +7,23 @@ import * as yup from "yup";
 import defaultImage from "../../assets/images/userDefault.png";
 import Api from "../../services/api";
 import * as Style from "../../components/CreateAccountCard/style";
-import React, { useEffect, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useActive } from "../../contexts/activePage";
 
-const CreateAccountCard = () => {
+interface ChangeProp {
+  change: boolean
+  setChange: Dispatch<SetStateAction<boolean>>
+}
+
+const CreateAccountCard = ({change, setChange}:ChangeProp) => {
   const navigate = useNavigate();
   const [ role, setRole ] = useState<any[]>();
   const [ selectedRole, setSelectedRole  ] = useState<string>()
   const { setActive } = useActive()
   const [ billable, setBillable] = useState<boolean>(true)
+
+  console.log(change);
+  
 
   const getRoles = () => {
     Api.get("/role")
@@ -99,12 +107,17 @@ const CreateAccountCard = () => {
   return (
     <Style.CreateAccountContainer>
       <Style.CreateAccountCard onSubmit={handleSubmit(handleRegister)}>
-        <Style.CreateUserTitleContainer>
-          <h1 className="h1title">Criar novo usuário</h1>
+        <Style.CreateUserTitleContainer >
+          <div className="active">
+            <h1 className="h1title" >Usuário</h1>
+          </div>
+          <div onClick={()=>setChange(false)}>
+            <h1 className="h1title">Cliente</h1>
+          </div>
         </Style.CreateUserTitleContainer>
-        <Style.UserPhotoContainer>
-          <img className="imagesProfile" src={defaultImage}></img>
-        </Style.UserPhotoContainer>
+        <Style.TopContainer>
+          <h2>- Dados do novo usuário -</h2>
+        </Style.TopContainer>
         <Style.InputsContainer>
           <Style.InputLabel>Nome completo</Style.InputLabel>
           <Style.Inputs type="text" {...register("name")} />

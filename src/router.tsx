@@ -15,6 +15,7 @@ import Profile from "./Pages/Profile";
 import ProjectsPage from "./Pages/Projects";
 import CreateClient from "./Pages/CreateClient";
 import Project from "./Pages/Project";
+import RegisterNewUser from "./Pages/RegisterNewUser";
 
 const Router = () => {
 
@@ -37,6 +38,8 @@ const Router = () => {
       <Route path="/cadastro-novo-cliente" element={<CreateClient/>} />
       <Route path="/form" element={<FormPage />} />
       <Route path="/novasenha/:param" element={<RecoverPasswordPage/>} />
+      <Route path="/cadastro" element={<RegisterNewUser/>} />
+      RegisterNewUser
 
       <Route path="*" element={<Navigate to={logged ? "/home" : "/"} />} />
     </Routes>

@@ -134,16 +134,16 @@ const AsideBar = () => {
                 <S.AsidebarContentLi
                   className={active === "new-user" ? "active" : ""}
                   onClick={() => {
-                    navigate("/cadastro-novo-usuario");
+                    navigate("/cadastro");
                     setActive("new-user");
                   }}
                 >
                   <span>
                     <AiOutlineUserAdd />
                   </span>
-                  Cadastrar Usuário
+                  Cadastro
                 </S.AsidebarContentLi>
-                <S.AsidebarContentLi
+                {/* <S.AsidebarContentLi
                 className={active === "new-client" ? "active" : ""} 
                 onClick={() => {
                   navigate("/cadastro-novo-cliente");
@@ -153,7 +153,7 @@ const AsideBar = () => {
                     <AiOutlineUserAdd />
                   </span>
                   Cadastrar Cliente
-                </S.AsidebarContentLi>
+                </S.AsidebarContentLi> */}
               </>
             ) : null}
           </S.AsidebarContentUl>

@@ -15,7 +15,7 @@ export const CreateClientCard = styled.form`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  height: 80vh;
+  height: 77vh;
   box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
   width: 32vw;
   max-width: 39rem;
@@ -30,32 +30,45 @@ export const CreateUserTitleContainer = styled.div`
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     display: flex;
     width: 100%;
-    height: 4.375rem;
+    height: 4rem;
     align-items: center;
     background-color: ${theme.colors.primaryColor};
 
 
-    .h1title {
-      margin-left: 5%;
-      font-size: ${theme.constants.fontHeader};
-      color: ${theme.colors.fundamentalColor}
+    div{
+      cursor: pointer;
+      width: 50%;
+      border-radius: 15px 15px 0 0;
+      /* background-color: pink; */
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 10px solid ${theme.colors.backgroundColor};
+
+      .h1title {
+        font-size: ${theme.constants.fontHeader};
+        color: ${theme.colors.fundamentalColor};
+        text-align: center;
+        width: 100%;
+       
+      }
+      
+    }
+    .active{
+      background-color: ${theme.colors.backgroundColor};
+      cursor: default;
     }
 `;
 
-export const UserPhotoContainer = styled.div`
+export const TopContainer = styled.div`
   display: flex;
-  height: 12vh;
+  height: 3vh;
   width: 100%;
   justify-content: center;
   align-items: center;
-  margin-top: .5%;
-
-  .imagesProfile {
-    height: 100%;
-    width: 12vh;
-    border-radius: 3px;
-    cursor: pointer;
-  }
+  color: ${theme.colors.fundamentalColor};
+  font-size: ${theme.constants.buttonFontSize};
 `;
 
 export const InputsContainer = styled.div`
