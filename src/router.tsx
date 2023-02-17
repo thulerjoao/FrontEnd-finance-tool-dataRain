@@ -1,5 +1,4 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import CreateAccount from "./Pages/CreateAccount";
 import FormPage from "./Pages/Form";
 import HomePage from "./Pages/Home";
 import Login from "./Pages/Login";
@@ -13,7 +12,6 @@ import TeamsPage from "./Pages/Teams";
 import ClientsPage from "./Pages/ClientsPage";
 import Profile from "./Pages/Profile";
 import ProjectsPage from "./Pages/Projects";
-import CreateClient from "./Pages/CreateClient";
 import Project from "./Pages/Project";
 import RegisterNewUser from "./Pages/RegisterNewUser";
 
@@ -34,11 +32,9 @@ const Router = () => {
       <Route path="/projetos" element={<ProjectsPage />} />
       <Route path="/projeto" element={<Project/>} />
       <Route path="/questoes" element={<QuestionsPage />} />
-      <Route path="/cadastro-novo-usuario" element={<CreateAccount />} />
-      <Route path="/cadastro-novo-cliente" element={<CreateClient/>} />
+      <Route path="/cadastro" element={<RegisterNewUser/>} />
       <Route path="/form" element={<FormPage />} />
       <Route path="/novasenha/:param" element={<RecoverPasswordPage/>} />
-      <Route path="/cadastro" element={<RegisterNewUser/>} />
       RegisterNewUser
 
       <Route path="*" element={<Navigate to={logged ? "/home" : "/"} />} />

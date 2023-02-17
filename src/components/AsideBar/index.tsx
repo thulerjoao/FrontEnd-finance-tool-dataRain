@@ -143,17 +143,6 @@ const AsideBar = () => {
                   </span>
                   Cadastro
                 </S.AsidebarContentLi>
-                {/* <S.AsidebarContentLi
-                className={active === "new-client" ? "active" : ""} 
-                onClick={() => {
-                  navigate("/cadastro-novo-cliente");
-                  setActive("new-client");
-                  }}>
-                  <span>
-                    <AiOutlineUserAdd />
-                  </span>
-                  Cadastrar Cliente
-                </S.AsidebarContentLi> */}
               </>
             ) : null}
           </S.AsidebarContentUl>

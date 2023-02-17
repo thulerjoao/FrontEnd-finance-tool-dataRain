@@ -43,18 +43,19 @@ export const CreateUserTitleContainer = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
-      border-bottom: 10px solid ${theme.colors.backgroundColor};
+      border-bottom: 10px solid ${theme.colors.fourthColor};
+      color: ${theme.colors.fundamentalColor};
 
       .h1title {
         font-size: ${theme.constants.fontHeader};
-        color: ${theme.colors.fundamentalColor};
         text-align: center;
         width: 100%;
        
       }
     }
     .active{
-      background-color: ${theme.colors.backgroundColor};
+      background-color: ${theme.colors.fourthColor};
+      color: ${theme.colors.primaryColor};
       cursor: default;
     }
 
@@ -73,7 +74,7 @@ export const TopContainer = styled.div`
 
 export const InputsContainer = styled.div`
   width: 100%;
-  /* height: 50%; */
+  height: 47vh;
   display: flex;
   align-items: center;
   justify-content: center;

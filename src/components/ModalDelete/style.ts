@@ -52,10 +52,10 @@ ${({theme})=>css`
              background-color: ${theme.colors.tertiaryColor};
            }
        .cancel{
-           background-color: #0b7ca3;
+           background-color: ${theme.colors.fourthColor};
            }
            .cancel:hover{
-             background-color: #0b7ca3;
+             background-color: ${theme.colors.fourthColor};
            }
    }
 
