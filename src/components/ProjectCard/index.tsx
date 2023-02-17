@@ -48,7 +48,7 @@ const ProjectCard = () =>{
                     setIsManager(res.data.containsManager)
                 }
             })
-            .catch((err)=>{()=>{}})
+            .catch((err)=>{()=>{setProject(undefined)}})
         }
 
     const handleGetAllClients = () =>{
@@ -57,7 +57,7 @@ const ProjectCard = () =>{
             setAllClients(res.data)
             setClientId(res.data[0].id)
         })
-        .catch((err)=>{})
+        .catch((err)=>{setAllClients(undefined)})
     }
 
     useEffect(()=>{
@@ -118,7 +118,7 @@ const ProjectCard = () =>{
                             return(
                                 <div className="card oldUser"key={index}>
                                    <div>
-                                        <p className={element.user.roleName === "manager"? "manager": ""}>{element.user.roleName === "manager"? "MANAGER": "P. SERVICES"}</p>
+                                        <p className={element.user.role.name === "manager"? "manager": ""}>{element.user.role.name === "manager"? "MANAGER": "P. SERVICES"}</p>
                                         <span onClick={()=>{
                                             setdeleteUserId(element.user.id)
                                             setIsModalDeleteOpen(true)
@@ -128,7 +128,7 @@ const ProjectCard = () =>{
                                    </div>
                                    <img src={
                                         element.user.imageUrl === null? logo :
-                                        `https://back-btc-finance-tool-production-0df0.up.railway.app${element.user.imageUrl}`
+                                        `https://back-btc-finance-tool-production.up.railway.app${element.user.imageUrl}`
                                         }>
                                     </img>
                                    <h3>{element.user.name}</h3>

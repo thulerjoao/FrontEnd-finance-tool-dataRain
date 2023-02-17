@@ -1,7 +1,4 @@
-import { useNavigate } from "react-router-dom";
 import * as Style from "./style"
-import { useUsers } from "../../contexts/userContext";
-import { useAuth } from "../../contexts/auth";
 import { useEffect, useState } from "react";
 import { Button } from "@mui/material";
 import Api from "../../services/api";
@@ -9,11 +6,8 @@ import { toast } from "react-hot-toast";
 
 const ExtraHourCard = () => {
 
-  const [ requests, setRequests ] = useState<any>()
+  const [ requests, setRequests ] = useState<any>(undefined)
   const [ test, setTest ] = useState <boolean>(true)
-  const empty:number = requests && requests.length()
-
-
 
     useEffect(()=> handleGetRequest(),[])
     useEffect(()=> {
@@ -28,7 +22,7 @@ const ExtraHourCard = () => {
           setRequests(res.data);
           setTest(!test)
         })
-        .catch(()=>{})
+        .catch(()=>{setRequests(undefined)})
     }
 
     const handleAprove = (id: string) =>{
@@ -64,7 +58,7 @@ const ExtraHourCard = () => {
               <section className="section01">
                 <h2>Pedidos de hora extra</h2>            
               </section>
-              {empty !== undefined && empty !== 0? <section className="section02">
+              {requests !== undefined && requests !== 0? <section className="section02">
                 {requests && requests.map((element:any)=>{
                 return( 
                 <section>

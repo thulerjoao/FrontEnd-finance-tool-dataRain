@@ -46,7 +46,7 @@ const UserSettings = ({
   const [ selectedRole, setSelectedRole] = useState<string>()
 
   const handleFirstRoleId = (prop: any) =>{
-    const firstRole = prop.filter((element: any)=>element.name.includes(user.roleName))[0]
+    const firstRole = prop.filter((element: any)=>element.name.includes(user.role.name))[0]
     setSelectedRole(firstRole.id)
   }
 

@@ -5,7 +5,6 @@ import Modal from "react-modal";
 import React from "react";
 import toast from "react-hot-toast";
 import Api from "../../services/api";
-import { useAsyncError } from "react-router-dom";
 import { useUsers } from "../../contexts/userContext";
 
 interface ModalNewUserProps {
@@ -50,12 +49,12 @@ const NewUserSettings = ({
 
     // filtro para buscar o manager
   const avaliableMannager = allUsers.filter(
-    (element) => element.roleName === "manager"
+    (element) => element.role.name === "manager"
   );
 
   //filtro para buscar os usuários
   const avaliableUsers = allUsers.filter(
-    (element) => element.roleName === "professional services"
+    (element) => element.role.name === "professional services"
   );
 
     const handleNewUser = () =>{

@@ -18,7 +18,7 @@ const HomeCard = ({search}: SearchProp) => {
 
   const list = search.length > 0 ? getByCompany[0] ? getByCompany : getByName[0] ? getByName : [] : budgets
 
-  const forms = list&& list.slice(0).reverse();
+  const forms = list && list.slice(0).reverse();
 
   useEffect(()=> handleGetBudgets() ,[])
 
@@ -57,7 +57,7 @@ const HomeCard = ({search}: SearchProp) => {
                   <div>
                     <p className="last">Última Edição</p>
                   </div>
-                  {userStorage.roleName.toUpperCase() =="ADMIN" && <div>
+                  {userStorage.role.name.toUpperCase() =="ADMIN" && <div>
                     <p>Status</p>
                   </div>}
                 </section>           
@@ -81,7 +81,7 @@ const HomeCard = ({search}: SearchProp) => {
                       <div>
                         <p>{element.updatedAt}</p>
                       </div>
-                      {userStorage.roleName.toUpperCase() =="ADMIN" && <div> 
+                      {userStorage.role.name.toUpperCase() =="ADMIN" && <div> 
                         <p className={element.status}>{handleStatus(element.status)}</p>
                       </div>}
                     </section>

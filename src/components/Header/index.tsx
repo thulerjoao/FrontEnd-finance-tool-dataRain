@@ -35,7 +35,7 @@ const Header = ({setSearch}:SearchProp) => {
             ) : (
               <img
                 alt="Imagem do Perfil"
-                src={`https://back-btc-finance-tool-production-0df0.up.railway.app${userStorage.imageUrl}`}
+                src={`https://back-btc-finance-tool-production.up.railway.app${userStorage.imageUrl}`}
               ></img>
             )}
             <p>{userStorage.name}</p>
