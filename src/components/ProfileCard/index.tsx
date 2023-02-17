@@ -21,7 +21,6 @@ const TeamsCard = () => {
   }
   
 
-
   return (
           <>
           <Style.ProfileContainer>
@@ -32,7 +31,7 @@ const TeamsCard = () => {
                 <section>
                   <img src={
                     userStorage.imageUrl === null? Logo :
-                    `https://back-btc-finance-tool-production-0df0.up.railway.app${userStorage.imageUrl}`
+                    `https://back-btc-finance-tool-production.up.railway.app${userStorage.imageUrl}`
                     }></img>
                   <div>
                     <div className="top">

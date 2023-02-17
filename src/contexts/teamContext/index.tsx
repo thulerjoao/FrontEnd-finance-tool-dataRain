@@ -32,7 +32,7 @@ export const TeamProvider = ({ children }: TeamProviderProps) => {
   const handleGetTeam = () => {
 
     Api.get("/team").then((res) => {
-      setTeam(res.data);
+      setTeam(res.data);      
       setFirstTeamId(res.data[0].id)
     });
   };

@@ -37,7 +37,7 @@ export const AuthProvider = ({children}:AuthProviderProps)=>{
         password:"",
         imageUrl: "",
         position: "",
-        roleName: "",
+        role: {name: ""},
         billable: false,
     })
 

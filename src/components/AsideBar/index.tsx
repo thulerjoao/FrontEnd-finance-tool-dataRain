@@ -35,7 +35,7 @@ const AsideBar = () => {
               </span>
               Início
             </S.AsidebarContentLi>
-            {userStorage.roleName === "admin" ? (
+            {userStorage.role.name === "admin" ? (
               <>
                 <S.AsidebarContentLi
                   className={active === "users" ? "active" : ""}
@@ -89,7 +89,7 @@ const AsideBar = () => {
               </span>
               Perfil
             </S.AsidebarContentLi>
-            {userStorage.roleName === "admin" || userStorage.roleName === "manager"? (
+            {userStorage.role.name === "admin" || userStorage.role.name === "manager"? (
             <S.AsidebarContentLi
               className={active === "extra-hour" ? "active" : ""}
               onClick={() => {
@@ -115,7 +115,7 @@ const AsideBar = () => {
               </span>
               Projetos
             </S.AsidebarContentLi>
-            {userStorage.roleName === "admin"? (
+            {userStorage.role.name === "admin"? (
             <S.AsidebarContentLi
             className={active === "questoes" ? "active" : ""}
             onClick={() => {
@@ -129,7 +129,7 @@ const AsideBar = () => {
             Questionário
           </S.AsidebarContentLi>
             ) : null}
-            {userStorage.roleName === "admin" ? (
+            {userStorage.role.name === "admin" ? (
               <>
                 <S.AsidebarContentLi
                   className={active === "new-user" ? "active" : ""}

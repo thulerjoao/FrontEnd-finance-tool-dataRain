@@ -31,7 +31,7 @@ const CreateAccountCard = ({change, setChange}:ChangeProp) => {
         setRole(res.data)
         setSelectedRole(res.data[0].id)
       })
-      .catch((err) => toast.error("Falha ao buscar roles"));
+      .catch((err) => {});
   };
 
   useEffect(()=>{

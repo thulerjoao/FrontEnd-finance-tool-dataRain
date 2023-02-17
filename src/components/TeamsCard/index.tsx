@@ -51,9 +51,9 @@ const TeamsCard = () => {
                   </div>
                   <p className="confirmNewTeam" onClick={()=>{handleNewTeam()}}>Cadastrar</p>
                 </section>}
-                {team.map((element:any , index)=>{
+                {team && team.map((element:any , index)=>{
                   return(
-                    <TeamCard count={index} team={element}/>
+                    <TeamCard key={index} count={index} team={element}/>
                   )
                   })}
 

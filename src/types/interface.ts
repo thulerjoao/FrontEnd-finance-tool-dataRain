@@ -5,7 +5,7 @@ export interface UserTypes {
   password?: string;
   imageUrl: string;
   position: string;
-  roleName: string;
+  role: {name:string};
   billable?: boolean;
   allocated?: boolean;
   createdAt?: Date;

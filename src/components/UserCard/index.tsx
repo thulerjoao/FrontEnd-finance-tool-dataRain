@@ -17,7 +17,7 @@ const UserCard = (element: any) => {
           <Style.UserContainer>
                     <div className="card">
                       <div>
-                      <p>{element.element.roleName}</p>
+                      <p>{element.element.role.name}</p>
                       <span>
                         <Style.Settings onClick={()=>{setOpen(true)}}/>{' '}
                       </span>
@@ -25,7 +25,7 @@ const UserCard = (element: any) => {
                     <section>
                       <img src={
                         element.element.imageUrl === null? logo :
-                        `https://back-btc-finance-tool-production-0df0.up.railway.app${element.element.imageUrl}`
+                        `https://back-btc-finance-tool-production.up.railway.app${element.element.imageUrl}`
                         }></img>
                       <h2>{element.element.name}</h2>
                       <p>{element.element.email}</p>

@@ -32,7 +32,7 @@ export const UserProvider = ({children}: userProviderProps) => {
     const handleGetBudgets = () => {
       Api.get("/budget-request")
         .then((res)=>setBudgets(res.data))
-        .catch((error)=>{})
+        .catch((error)=>{setBudgets(undefined)})
     }
   
       useEffect(() => {
