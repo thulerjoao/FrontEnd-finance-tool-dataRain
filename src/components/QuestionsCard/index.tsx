@@ -14,7 +14,7 @@ const QuestionsCard = () => {
   const { questions, updateQuestion } = useQuestions();
   //newQuestion states and functions:
   const [ newQuestion, setNewQuestion ] = useState<Boolean>(false)
-  const [ newTitle, setNewTitle ] = useState<string>("") //pergunta em si
+  const [ newTitle, setNewTitle ] = useState<string>("")
   
 
   const handleNewQuestion = () =>{
@@ -25,7 +25,7 @@ const QuestionsCard = () => {
           }
         )
           .then((res) => {
-            setTimeout(()=>updateQuestion(),3000)
+            updateQuestion()
             setNewTitle("")
             setNewQuestion(false)
             toast.success("Pergunta cadastrada")
@@ -41,9 +41,6 @@ const QuestionsCard = () => {
   
   const [ ordernedList, setOrdernedList ] = useState<any>()
 
-  console.log(ordernedList);
-  
-
   // const ordernedList = questions && questions.sort(function(a:any,b:any){
   //   return a.id < b.id ? -1 : a.id > b.id ? 1 : 0
   // })
@@ -54,8 +51,8 @@ const QuestionsCard = () => {
     }))
   }
 
-  useEffect(()=>handleOrder,[questions])
-  useEffect(()=>handleOrder,[])
+  useEffect(()=>handleOrder(),[questions])
+  useEffect(()=>handleOrder(),[])
 
        
         

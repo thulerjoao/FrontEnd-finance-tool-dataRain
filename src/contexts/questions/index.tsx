@@ -19,6 +19,7 @@ export const QuestionsProvider = ({children}:QuestionsProviderProps)=>{
     const [ questions, setQuestions ] = useState <any>()
 
     const updateQuestion = () =>{
+        
         Api.get("/question")
         .then((res)=> {
             setQuestions(res.data);
