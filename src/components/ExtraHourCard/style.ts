@@ -39,6 +39,7 @@ export const ExtraHourContainer = styled.div`
       width: 100%;
       height: 100%;
       justify-content: start;
+      align-items: center;
 
       section{
         display: flex;
@@ -46,10 +47,11 @@ export const ExtraHourContainer = styled.div`
         justify-content: space-between;
         margin-right: 1rem;
         margin-bottom: 2.5rem;
-        min-height: 28vh;
+        min-height: 26vh;
         border-radius: 8px;
         padding: 1rem;
-        /* background-color: #E4E5E6; */
+        width: 85%;
+        box-shadow: rgb(0 0 0 / 10%) 1px 1px 10px;
         background-color: white;
 
         div{
@@ -73,7 +75,7 @@ export const ExtraHourContainer = styled.div`
 
           .explanation{
             width: 80%;
-            height: 9vh;
+            height: 7vh;
             text-align: start;
             background-color: #E4E5E6;
             border-radius: 3px;

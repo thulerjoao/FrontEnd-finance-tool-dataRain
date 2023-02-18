@@ -35,20 +35,6 @@ const ProjectsCard = () => {
     }
   }
 
-  // const handleAllProjects = () =>{
-  //   Api.get("/project")
-  //   .then((res)=>{
-  //       setAllProjects(res.data)
-  //   })
-  //   .catch((err)=>{})
-  // }
-
-  // const handleNext = (projectId: string) =>{
-  //   projectId && sessionStorage.setItem("projectId", projectId);
-  //   navigate("/projeto")
-  // }
-
-
   return (
           <Style.ProjectsContainer>
               <section className="section01">

@@ -19,7 +19,8 @@ const RegisterNewUser = () => {
             <AsideBar />
           </div>
           <div className="HomeCard">
-            {change? <CreateAccountCard change={change} setChange={setChange}/>:
+            {change? 
+            <CreateAccountCard change={change} setChange={setChange}/>:
             <CreateClientCard change={change} setChange={setChange}/>}
           </div>
         </div>

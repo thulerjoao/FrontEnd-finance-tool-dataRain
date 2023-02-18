@@ -53,6 +53,10 @@ const DeleteClient = ({
     })
   }
  
+  const firstUp = (prop: string) =>{
+    return(prop.charAt(0).toUpperCase() + prop.slice(1))
+}
+  
   return (
     <Modal
       isOpen={isModalOpen}
@@ -63,7 +67,7 @@ const DeleteClient = ({
         <div>
           <Style.BackArrow onClick={handleCloseModal} />
         </div>
-        <h2>{`Excluir ${client.companyName} permanentemente?`}</h2>
+        <h2>{`Excluir ${firstUp(client.companyName)} permanentemente?`}</h2>
         <section>
           <Button variant="contained" className="buttonEnter cancel" onClick={()=>handleCloseModal()}>
             Cancelar

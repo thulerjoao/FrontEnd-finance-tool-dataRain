@@ -52,6 +52,10 @@ const ExtraHourCard = () => {
       })
       .catch(()=>toast.error("Não foi possível concluir"))
     }
+
+    const firstUp = (prop: string) =>{
+      return(prop.charAt(0).toUpperCase() + prop.slice(1))
+  }
   
   return (
           <Style.ExtraHourContainer>
@@ -68,9 +72,9 @@ const ExtraHourCard = () => {
                     <h2>Cliente</h2>
                   </div>
                   <div>
-                    <p>{element.user.name}</p>
-                    <p>{element.project.name}</p>
-                    <p>{element.client.companyName}</p>
+                    <p>{firstUp(element.user.name)}</p>
+                    <p>{firstUp(element.project.name)}</p>
+                    <p>{firstUp(element.client.companyName)}</p>
                   </div>
                   <div>
                     <p className="explanation">{element.requestDescription}</p>

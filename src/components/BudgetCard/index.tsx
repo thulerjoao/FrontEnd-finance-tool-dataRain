@@ -5,7 +5,6 @@ import * as Styled from "./style"
 import React, { useEffect, useState } from "react";
 import Api from "../../services/api";
 import reportPDF from "../Report/report"
-import { useFunctions } from "../../contexts/functions";
 
 const BudgetCard = () =>{
 
@@ -119,8 +118,6 @@ const BudgetCard = () =>{
                     .catch(()=> toast.error("Erro ao gerar PDF"))
                
         }).catch(()=> toast.error("Erro ao gerar PDF"))
-
-        const { firstUp } = useFunctions()
         
     }
     return(

@@ -3,7 +3,6 @@ import * as Style from "./style"
 import { useUsers } from "../../contexts/userContext";
 import { useAuth } from "../../contexts/auth";
 import { useEffect } from "react";
-import { useFunctions } from "../../contexts/functions";
 
 interface SearchProp {
   search: string
@@ -37,7 +36,9 @@ const HomeCard = ({search}: SearchProp) => {
     }
   }
 
-  const { firstUp } = useFunctions()
+  const firstUp = (prop: string) =>{
+    return(prop.charAt(0).toUpperCase() + prop.slice(1))
+}
 
   return (
           <Style.HomeContainer>

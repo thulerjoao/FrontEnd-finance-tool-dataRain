@@ -22,12 +22,15 @@ const ClientCard = (element:any) => {
     return value
   }
 
+  const firstUp = (prop: string) =>{
+    return(prop.charAt(0).toUpperCase() + prop.slice(1))
+}
 
   return (
           <Style.ClientContainer>
                     <div className="card">
                       <div >
-                        <h2>{element.element.companyName}</h2>
+                        <h2>{firstUp(element.element.companyName)}</h2>
                         <Style.Settings onClick={()=>{setOpen(true)}}/>{' '}
                       </div>
                       <section>
