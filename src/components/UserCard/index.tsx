@@ -12,12 +12,17 @@ const UserCard = (element: any) => {
   const [ open, setOpen ] = useState<boolean>(false)
   const [ isDeleteOpen, setIsDeleteOpen ] = useState<boolean>(false)
   const [ isEditeOpen, setIsEditeOpen ] = useState<boolean>(false)
+  
+  const firstUp = (prop: string) =>{
+    return(prop.charAt(0).toUpperCase() + prop.slice(1))
+}
+
 
   return (
           <Style.UserContainer>
                     <div className="card">
                       <div>
-                      <p>{element.element.role.name}</p>
+                      <p>{firstUp(element.element.role.name)}</p>
                       <span>
                         <Style.Settings onClick={()=>{setOpen(true)}}/>{' '}
                       </span>
@@ -27,7 +32,7 @@ const UserCard = (element: any) => {
                         element.element.imageUrl === null? logo :
                         `https://back-btc-finance-tool-production.up.railway.app${element.element.imageUrl}`
                         }></img>
-                      <h2>{element.element.name}</h2>
+                      <h2>{firstUp(element.element.name)}</h2>
                       <p>{element.element.email}</p>
                       <p>{`Billable: ${element.element.billable?'Sim': 'Não'}`}</p>
                     </section>

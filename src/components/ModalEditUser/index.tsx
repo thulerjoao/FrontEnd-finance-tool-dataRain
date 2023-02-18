@@ -47,8 +47,11 @@ const UserSettings = ({
 
   const handleFirstRoleId = (prop: any) =>{
     const firstRole = prop.filter((element: any)=>element.name.includes(user.role.name))[0]
-    setSelectedRole(firstRole.id)
+    setSelectedRole(firstRole.id)   
   }
+
+  console.log(role);
+  
 
   const firstBilable = () =>{
     if(billable){
@@ -94,6 +97,10 @@ const UserSettings = ({
 
   useEffect(()=> getRoles(), [])
 
+    const firstUp = (prop: string) =>{
+    return(prop.charAt(0).toUpperCase() + prop.slice(1))
+}
+
 
   return (
     <Modal
@@ -107,20 +114,24 @@ const UserSettings = ({
         </div>
         <h2>Editar status do usuário</h2>
         <section>
-          <h3>{user.name}</h3>
+          <h3>{firstUp(user.name)}</h3>
           <p>Billable</p>
           <select value={firstBilable()} onChange={(e)=> handleBillable(e.target.value)}>
               <option value={"sim"} >Sim</option>
               <option value={"nao"}>Não</option>
           </select>
+          {user.name.toUpperCase() !== 'ADMIN' && 
+          <>
           <p>Posição</p>
           <select value={selectedRole} onChange={(e)=> setSelectedRole(e.target.value)}>
             {role && role.map((element:any, index:number)=>{
               return(
-                <option value={element.id} key={index}>{element.name}</option>
+                <option value={element.id} key={index}>{firstUp(element.name)}</option>
               )
             })}
           </select>
+          </>
+          }
         </section>
         <section className="botton">
           <Button variant="contained" className="buttonEnter cancel" onClick={()=>handleCloseModal()}>

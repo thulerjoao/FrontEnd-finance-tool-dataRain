@@ -3,6 +3,7 @@ import * as Style from "./style"
 import { useUsers } from "../../contexts/userContext";
 import { useAuth } from "../../contexts/auth";
 import { useEffect } from "react";
+import { useFunctions } from "../../contexts/functions";
 
 interface SearchProp {
   search: string
@@ -36,10 +37,8 @@ const HomeCard = ({search}: SearchProp) => {
     }
   }
 
-  const handleFirstUpperCase = (prop: string) =>{
-    return prop.charAt(0).toUpperCase() + prop.slice(1)
-  } 
-  
+  const { firstUp } = useFunctions()
+
   return (
           <Style.HomeContainer>
               <section className="section01">
@@ -70,10 +69,10 @@ const HomeCard = ({search}: SearchProp) => {
                       navigate("/budget")
                     }}>
                       <div>
-                        <p>{handleFirstUpperCase(element.client.mainContact)}</p>
+                        <p>{firstUp(element.client.mainContact)}</p>
                       </div>
                       <div>
-                        <p>{handleFirstUpperCase(element.client.companyName)}</p>
+                        <p>{firstUp(element.client.companyName)}</p>
                       </div>
                       <div>
                         <p>{element.createdAt}</p>
