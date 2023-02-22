@@ -18,11 +18,13 @@ const ClientsCard = () => {
                 <h2>Clientes</h2>        
               </section>
               <section className="section02">
+                <span>
                   {clients && clients.map((element:any, index:number)=>{
                   return(
                     <ClientCard element={element} key={index}/> 
                   )})
                   }
+                </span>
               </section>  
           </Style.ClientsContainer>  
   );

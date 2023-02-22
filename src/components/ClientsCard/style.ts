@@ -51,65 +51,44 @@ export const ClientsContainer = styled.div`
     }
 
     .section02{
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-      flex-wrap: wrap;
+      /* display: flex; */
+      /* flex-direction: row; */
+      /* align-items: flex-start; */
+      /* flex-wrap: wrap; */
       width: 100%;
       height: 100%;
-      gap: 2vw;
-      padding-right: 2vw;  
-
-      .card{
-        bottom: 0;
-        top: 0;
-        max-height: 18vh;
-        width: 22%;
+      /* gap: 2vw; */
+      /* padding-right: 2vw;  */
+      
+      span{
         display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding-bottom: 2rem;
-        margin-bottom: 1%;
-        border-radius: 8px;
-        box-shadow: rgb(0 0 0 / 10%) 1px 1px 10px;
-        background-color: ${theme.colors.primaryColor};
-        
-        
-        /* margin: 0 auto; */
+        flex-direction: row;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        width: 100%;
+        height: 0 auto;
+        gap: 2vw;
+        padding-right: 2vw; 
 
-        div{
-          display: flex;
-          flex-direction: row;
-          justify-content: space-between;
-          height: 2rem;
-          align-items: center;
-          margin: 11px;
-
-          h2{
-            max-width: 80%;
-            border-radius: 3px;
-            padding: 0.2rem 0.3rem;
-            /* color: ${theme.colors.primaryColor};
-            background-color: ${theme.colors.secundaryColor}; */
-            font-size: ${theme.constants.smallFont};
+          .card{
+            bottom: 0;
+            top: 0;
+            max-height: 18vh;
+            width: 22%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding-bottom: 2rem;
+            margin-bottom: 1%;
+            border-radius: 8px;
+            box-shadow: rgb(0 0 0 / 10%) 1px 1px 10px;
+            background-color: ${theme.colors.primaryColor};
+    
+    
           }
+
         }
 
-        section{
-          height: 50%;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          align-items: center;
-          padding: 0.5rem 0;
-
-          p{
-            font-size: ${theme.constants.buttonFontSize};
-          }
-        }
-
-
-      }
 
 
 

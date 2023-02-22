@@ -65,7 +65,7 @@ const handleCloseModal = () => {
         <div>
           <Style.BackArrow onClick={handleCloseModal} />
         </div>
-        <h2>{`Deseja realemente excluir o usuário?`}</h2>
+        <h2>{`Deseja realmente excluir o usuário?`}</h2>
         <section>
           <Button variant="contained" className="buttonEnter cancel" onClick={()=>handleCloseModal()}>
             Cancelar

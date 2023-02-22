@@ -52,6 +52,10 @@ const ExtraHourCard = () => {
       })
       .catch(()=>toast.error("Não foi possível concluir"))
     }
+
+    const firstUp = (prop: string) =>{
+      return(prop.charAt(0).toUpperCase() + prop.slice(1))
+  }
   
   return (
           <Style.ExtraHourContainer>
@@ -59,18 +63,18 @@ const ExtraHourCard = () => {
                 <h2>Pedidos de hora extra</h2>            
               </section>
               {requests !== undefined && requests !== 0? <section className="section02">
-                {requests && requests.map((element:any)=>{
+                {requests && requests.map((element:any, index:number)=>{
                 return( 
-                <section>
+                <section key={index}>
                   <div>
                     <h2>Colaborador</h2>
                     <h2>Projeto</h2>
                     <h2>Cliente</h2>
                   </div>
                   <div>
-                    <p>{element.user.name}</p>
-                    <p>{element.project.name}</p>
-                    <p>{element.client.companyName}</p>
+                    <p>{firstUp(element.user.name)}</p>
+                    <p>{firstUp(element.project.name)}</p>
+                    <p>{firstUp(element.client.companyName)}</p>
                   </div>
                   <div>
                     <p className="explanation">{element.requestDescription}</p>

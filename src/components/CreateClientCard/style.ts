@@ -44,7 +44,7 @@ export const CreateUserTitleContainer = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
-      border-bottom: 10px solid ${theme.colors.fourthColor};
+      border-bottom: 10px solid ${theme.colors.inputFontColor};
       color: ${theme.colors.fundamentalColor};
 
       .h1title {
@@ -55,8 +55,7 @@ export const CreateUserTitleContainer = styled.div`
       }
     }
     .active{
-      background-color: ${theme.colors.fourthColor};
-      color: ${theme.colors.primaryColor};
+      background-color: ${theme.colors.inputFontColor};
       cursor: default;
     }
 `;

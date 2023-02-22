@@ -164,6 +164,7 @@ const QuestionCard = (param:{element:any, count:number}) => {
                       {element && element.alternatives.map((element2:any, index:number)=>{
                         return(              
                           <select
+                          key={index}
                           defaultValue={element2.teams[0].id}
                           onChange={(e)=>{updateTeam(e.target.value)}}
                           onClick={()=>{ 
@@ -171,18 +172,18 @@ const QuestionCard = (param:{element:any, count:number}) => {
                             }
                           }
                           >
-                            {team && team.map((element3:any)=>{                       
+                            {team && team.map((element3:any, index:number)=>{                       
                               return(
-                                <option value={element3.id} >{element3.name}</option>
+                                <option key={index} value={element3.id} >{element3.name}</option>
                               )
                             })}
                           </select>                         
                         )
                       })}
                           <select className="newTeam" value={catchNewTeamId} onChange={(e)=>setCatchNewTeamId(e.target.value)}>
-                            {team && team.map((element3:any)=>{                       
+                            {team && team.map((element3:any, index:number)=>{                       
                               return(
-                                <option value={element3.id}>{element3.name}</option>
+                                <option key={index} value={element3.id}>{element3.name}</option>
                               )
                             })}
                           </select>

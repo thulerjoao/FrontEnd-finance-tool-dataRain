@@ -9,9 +9,9 @@ export const ClientContainer = styled.div`
       max-height: 18vh;
       position: relative;
 
-
       .card{
         min-width: 100%;
+        max-height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;

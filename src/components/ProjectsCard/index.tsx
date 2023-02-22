@@ -15,7 +15,10 @@ const ProjectsCard = () => {
   const [ newTeamValue, setNewTeamValue ] = useState<string>()
   const { projects, handleGetProjects } = useProject()
 
-  const allProjects = projects || []
+  // const allProjects = projects
+
+  console.log(projects);
+  
 
   const handleNewProject = () =>{
     if(newTeam !== "" && newTeamValue !== ""){
@@ -34,20 +37,6 @@ const ProjectsCard = () => {
       })
     }
   }
-
-  // const handleAllProjects = () =>{
-  //   Api.get("/project")
-  //   .then((res)=>{
-  //       setAllProjects(res.data)
-  //   })
-  //   .catch((err)=>{})
-  // }
-
-  // const handleNext = (projectId: string) =>{
-  //   projectId && sessionStorage.setItem("projectId", projectId);
-  //   navigate("/projeto")
-  // }
-
 
   return (
           <Style.ProjectsContainer>
@@ -70,9 +59,9 @@ const ProjectsCard = () => {
                   <p className="confirmNewProject" onClick={()=>{handleNewProject()}}>Cadastrar</p>
                 </section>}
                 <section className="allCards">
-                {allProjects && allProjects.map((element:any , index:number)=>{
+                {projects && projects.map((element:any , index:number)=>{
                   return(
-                  <ProjectIndividualCard count={index} team={element}/>
+                  <ProjectIndividualCard key={index} count={index} team={element}/>
                   )
                   })}
                   </section>

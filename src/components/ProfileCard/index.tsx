@@ -19,6 +19,10 @@ const TeamsCard = () => {
     value = value.replace(/(\d)(\d{4})$/,"$1-$2")
     return value
   }
+
+  const firstUp = (prop: string) =>{
+    return(prop.charAt(0).toUpperCase() + prop.slice(1))
+}
   
 
   return (
@@ -35,7 +39,7 @@ const TeamsCard = () => {
                     }></img>
                   <div>
                     <div className="top">
-                      <h2>{userStorage.name}</h2>
+                      <h2>{firstUp(userStorage.name)}</h2>
                       <Style.Gear onClick={()=> setIsModalOpen(!isModalOpen)}/>{' '}
                     </div>
                     <p>{userStorage.email}</p>

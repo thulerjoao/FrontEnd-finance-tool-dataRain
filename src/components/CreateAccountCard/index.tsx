@@ -128,9 +128,9 @@ const CreateAccountCard = ({change, setChange}:ChangeProp) => {
           <section>
           <Style.InputLabel>Cargo</Style.InputLabel>
             <select onChange={(e) => setSelectedRole(e.target.value)}>
-              {role && role.map((element:any)=>{
+              {role && role.map((element:any, index:number)=>{
                 return(
-                  <option value={element.id}>{element.name}</option>
+                  <option key={index} value={element.id}>{element.name}</option>
                 )
               })}
             </select>
