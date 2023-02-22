@@ -63,9 +63,9 @@ const ExtraHourCard = () => {
                 <h2>Pedidos de hora extra</h2>            
               </section>
               {requests !== undefined && requests !== 0? <section className="section02">
-                {requests && requests.map((element:any)=>{
+                {requests && requests.map((element:any, index:number)=>{
                 return( 
-                <section>
+                <section key={index}>
                   <div>
                     <h2>Colaborador</h2>
                     <h2>Projeto</h2>

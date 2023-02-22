@@ -115,15 +115,15 @@ const NewUserSettings = ({
           <p>Nome</p>
           <select onChange={(e)=>setNewUserId(e.target.value)}>
             {isManager?
-                    avaliableUsers.map((element)=>{
+                    avaliableUsers.map((element, index:number)=>{
                     return(
-                      <option value={element.id}>{element.name}</option>
+                      <option key={index} value={element.id}>{element.name}</option>
                     )
                     })
                     :
-                    avaliableMannager.map((element)=>{
+                    avaliableMannager.map((element, index:number)=>{
                     return(
-                      <option value={element.id}>{element.name}</option>
+                      <option key={index} value={element.id}>{element.name}</option>
                     )
                 })
             }

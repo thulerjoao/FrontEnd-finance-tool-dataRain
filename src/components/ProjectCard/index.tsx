@@ -23,6 +23,8 @@ const ProjectCard = () =>{
     const [ isModalOpen, setIsModalOpen] = useState<boolean>(false)
     const [ isModalDeleteOpen, setIsModalDeleteOpen] = useState<boolean>(false)
   
+    console.log(client);
+    
     
     const hegisterNewClient = () =>{
         Api.post("/project/add-client",
@@ -116,7 +118,7 @@ const ProjectCard = () =>{
                         </div>
                         {  project.users.map((element: any, index:number)=>{
                             return(
-                                <div className="card oldUser"key={index}>
+                                <div className="card oldUser" key={index}>
                                    <div>
                                         <p className={element.user.role.name === "manager"? "manager": ""}>{element.user.role.name === "manager"? "MANAGER": "P. SERVICES"}</p>
                                         <span onClick={()=>{

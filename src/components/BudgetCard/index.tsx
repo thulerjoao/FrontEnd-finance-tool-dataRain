@@ -155,7 +155,7 @@ const BudgetCard = () =>{
                 <section className="mainSection">
                 { answers && answers.formResponses.map((element:any, index:any)=>{
                     return( 
-                        <section className="summary">
+                        <section className="summary" key={index}>
                             <div className="questions">
                                     <div>
                                         <h4>{`${index + 1}- `}</h4>
