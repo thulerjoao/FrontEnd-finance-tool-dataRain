@@ -37,7 +37,14 @@ const RecoverPassword = () => {
                 login({token: res.data.token, user: res.data.user, isChecked: true})
             })
             .catch((err)=>{
-                toast.error("Erro ao validar conta")
+                Api.patch(`/auth/password-recovery/${param}`, data)
+                    .then((res)=>{
+                        toast.success("Nova senha definida")
+                        login({token: res.data.token, user: res.data.user, isChecked: true})
+                    })
+                    .catch(()=>{
+                        toast.error("Erro ao registrar nova senha")
+                    })
             })
     }
     
