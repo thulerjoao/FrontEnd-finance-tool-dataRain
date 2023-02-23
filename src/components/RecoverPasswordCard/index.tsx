@@ -34,23 +34,23 @@ const RecoverPassword = ({prop}:modelProp) => {
             password: password,
             confirmPassword: confirmPassword
         }
-        {prop === "first"?
-        Api.patch(`/auth/first-access/${param}`, data)
-            .then((res)=>{
-                toast.success("Conta validada")
-                login({token: res.data.token, user: res.data.user, isChecked: true})
-            })
-            .catch((err)=>{toast.error("Erro ao registrar nova senha")}):
-
-        Api.patch(`/auth/password-recovery/${param}`, data)
-            .then((res)=>{
-                toast.success("Nova senha definida")
-                login({token: res.data.token, user: res.data.user, isChecked: true})
-            })
-            .catch(()=>{
-                toast.error("Erro ao registrar nova senha")
-            })
-        }
+        {prop === "new"?
+            Api.patch(`/auth/first-access/${param}`, data)
+                .then((res)=>{
+                    toast.success("Conta validada")
+                    login({token: res.data.token, user: res.data.user, isChecked: true})
+                })
+                .catch((err)=>{toast.error("Erro ao registrar nova senha")})
+        :
+            Api.patch(`/auth/password-recovery/${param}`, data)
+                .then((res)=>{
+                    toast.success("Senha redefinida")
+                    login({token: res.data.token, user: res.data.user, isChecked: true})
+                })
+                .catch(()=>{
+                    toast.error("Erro ao atualizar senha")
+                })
+            }
     }
     
     return (

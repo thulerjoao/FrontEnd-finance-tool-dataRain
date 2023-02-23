@@ -73,7 +73,7 @@ const CreateAccountCard = ({change, setChange}:ChangeProp) => {
       };
       Api.post("/user", dataCreate)
         .then((res) => {
-          toast.success("Confira sua caixa de entrada e valide seu email");
+          toast.success("Confira sua caixa de entrada");
         })
         .catch((error) => {
           toast.error("Erro ao realizar cadastro");

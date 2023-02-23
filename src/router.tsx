@@ -36,7 +36,7 @@ const Router = () => {
       <Route path="/questoes" element={<QuestionsPage />} />
       <Route path="/cadastro" element={<RegisterNewUser/>} />
       <Route path="/form" element={<FormPage />} />
-      <Route path="/novasenha/:param" element={<RecoverPasswordPage prop={"first"}/>} /> 
+      <Route path="/novasenha/:param" element={<RecoverPasswordPage prop={"new"}/>} /> 
       <Route path="/recuperar-senha/:param" element={<RecoverPasswordPage prop={""}/>} />
       <Route path="*" element={<Navigate to={logged ? "/home" : "/"} />} />
     </Routes>

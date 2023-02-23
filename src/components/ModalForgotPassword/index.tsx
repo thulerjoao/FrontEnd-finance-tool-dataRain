@@ -42,7 +42,7 @@ const ForgotPassword = ({
       email: email
     })
     .then(()=>{
-      toast.success("Enviamos um email para redefinição de senha")
+      toast.success("Confira sua caixa de entrada")
     })
     .catch(()=>{
       toast.error("E-mail inválido ou não cadastrado")
