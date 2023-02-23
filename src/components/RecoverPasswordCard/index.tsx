@@ -6,7 +6,11 @@ import { useAuth } from "../../contexts/auth";
 import Api from "../../services/api";
 import * as Style from "./style";
 
-const RecoverPassword = () => {
+interface modelProp {
+    prop: string
+  }
+
+const RecoverPassword = ({prop}:modelProp) => {
 
     const { param } = useParams();
     const [ password, setPassword] = useState<string>("")
@@ -19,7 +23,6 @@ const RecoverPassword = () => {
         if(password !== "" && confirmPassword !== ""){
             if(password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#!:;/\|.()])[0-9a-zA-Z$*&@#!:;/\|.()]{8,}$/)){
                 if(password === confirmPassword){
-                    toast.success("Nova senha cadastrada");
                     handleNewPassword();
                 }else{toast.error("As senhas devem coincidir")}
             }else{toast.error("A senha deve conter um caracter especial, um número e ao menos uma letra maiúscula")}
@@ -31,21 +34,23 @@ const RecoverPassword = () => {
             password: password,
             confirmPassword: confirmPassword
         }
+        {prop === "first"?
         Api.patch(`/auth/first-access/${param}`, data)
             .then((res)=>{
                 toast.success("Conta validada")
                 login({token: res.data.token, user: res.data.user, isChecked: true})
             })
-            .catch((err)=>{
-                Api.patch(`/auth/password-recovery/${param}`, data)
-                    .then((res)=>{
-                        toast.success("Nova senha definida")
-                        login({token: res.data.token, user: res.data.user, isChecked: true})
-                    })
-                    .catch(()=>{
-                        toast.error("Erro ao registrar nova senha")
-                    })
+            .catch((err)=>{toast.error("Erro ao registrar nova senha")}):
+
+        Api.patch(`/auth/password-recovery/${param}`, data)
+            .then((res)=>{
+                toast.success("Nova senha definida")
+                login({token: res.data.token, user: res.data.user, isChecked: true})
             })
+            .catch(()=>{
+                toast.error("Erro ao registrar nova senha")
+            })
+        }
     }
     
     return (
