@@ -29,7 +29,7 @@ const AuthContext = createContext<AuthProviderData>({} as AuthProviderData)
 export const AuthProvider = ({children}:AuthProviderProps)=>{
     
     const navigate = useNavigate();
-    const [logged, setLogged] = useState<boolean>(false);
+    const [logged, setLogged] = useState<boolean>(true);
     const [userStorage , setUserStorage] = useState<UserTypes>({
         id: "",
         name: "",

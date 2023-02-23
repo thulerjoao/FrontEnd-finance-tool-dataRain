@@ -29,11 +29,23 @@ const AsideBar = () => {
         </S.AsidebarLogo>
         <S.AsidebarContent>
           <S.AsidebarContentUl>
-            <S.AsidebarContentLi className={active === "home" || active === ""? "active" : ""} onClick={() => {navigate("/home"); setActive("home")}}>
+            <S.AsidebarContentLi 
+              className={active === "home" || active === ""? "active" : ""} 
+              onClick={() => {navigate("/home"); 
+              setActive("home")}}>
               <span>
                 <AiOutlineHome />
               </span>
               Início
+            </S.AsidebarContentLi>
+            <S.AsidebarContentLi 
+              className={active === "timeCard" || active === ""? "active" : ""} 
+              onClick={() => {navigate("/cartao-ponto"); 
+              setActive("timeCard")}}>
+              <span>
+                <AiOutlineHome />
+              </span>
+              Cartão de Ponto
             </S.AsidebarContentLi>
             {userStorage.role.name === "admin" ? (
               <>
