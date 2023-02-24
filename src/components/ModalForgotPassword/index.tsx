@@ -1,8 +1,10 @@
 import { Button } from "@mui/material";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import * as Style from "./style";
 import Modal from "react-modal";
 import React from "react";
+import Api from "../../services/api";
+import { toast } from "react-hot-toast";
 
 interface ForgotPasswordProps {
   isModalOpen: boolean;
@@ -32,6 +34,21 @@ const ForgotPassword = ({
     setIsModalOpen(false);
   };
 
+  const [ email, setEmail ] = useState<string>("")
+
+  const handleEmail = () =>{
+    Api.post("user/password-recovery", 
+    {
+      email: email
+    })
+    .then(()=>{
+      toast.success("Confira sua caixa de entrada")
+    })
+    .catch(()=>{
+      toast.error("E-mail inválido ou não cadastrado")
+    })
+  }
+
   return (
     <Modal
       isOpen={isModalOpen}
@@ -45,9 +62,9 @@ const ForgotPassword = ({
         <h2>Recuperação de senha</h2>
         <section>
           <p>Enviaremos um email para que possa concluir a ação</p>
-          <input placeholder="Digite o email para recuperação" />
+          <input value={email} placeholder="Digite o email para recuperação" onChange={(e)=> setEmail(e.target.value)}/>
         </section>
-        <Button variant="contained" className="buttonEnter">
+        <Button variant="contained" className="buttonEnter" onClick={()=>handleEmail()}>
           Enviar
         </Button>
       </Style.ForgotPasswordContainer>

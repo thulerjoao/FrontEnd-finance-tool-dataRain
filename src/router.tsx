@@ -14,6 +14,7 @@ import Profile from "./Pages/Profile";
 import ProjectsPage from "./Pages/Projects";
 import Project from "./Pages/Project";
 import RegisterNewUser from "./Pages/RegisterNewUser";
+import TimeCardPage from "./Pages/TimeCard";
 
 const Router = () => {
 
@@ -25,6 +26,7 @@ const Router = () => {
       <Route path="/home" element={<HomePage />} />
       <Route path="/budget" element={<Budget />} />
       <Route path="/usuarios" element={<UsersPage />} />
+      <Route path="/cartao-ponto" element={<TimeCardPage/>} />
       <Route path="/equipes" element={<TeamsPage />} />
       <Route path="/clientes" element={<ClientsPage />} />
       <Route path="/perfil" element={<Profile />} />
@@ -34,9 +36,8 @@ const Router = () => {
       <Route path="/questoes" element={<QuestionsPage />} />
       <Route path="/cadastro" element={<RegisterNewUser/>} />
       <Route path="/form" element={<FormPage />} />
-      <Route path="/novasenha/:param" element={<RecoverPasswordPage/>} />
-      RegisterNewUser
-
+      <Route path="/novasenha/:param" element={<RecoverPasswordPage prop={"new"}/>} /> 
+      <Route path="/recuperar-senha/:param" element={<RecoverPasswordPage prop={""}/>} />
       <Route path="*" element={<Navigate to={logged ? "/home" : "/"} />} />
     </Routes>
   );

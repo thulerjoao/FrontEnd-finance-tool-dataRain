@@ -19,6 +19,7 @@ interface AuthProviderData{
     logged:boolean,
     login: (param:loginParams)=> void,
     logout: ()=> void,
+    logoutStay: ()=> void,
     userStorage: UserTypes,
     getUserByToken: () => void;
 
@@ -29,7 +30,7 @@ const AuthContext = createContext<AuthProviderData>({} as AuthProviderData)
 export const AuthProvider = ({children}:AuthProviderProps)=>{
     
     const navigate = useNavigate();
-    const [logged, setLogged] = useState<boolean>(false);
+    const [logged, setLogged] = useState<boolean>(true);
     const [userStorage , setUserStorage] = useState<UserTypes>({
         id: "",
         name: "",
@@ -89,7 +90,13 @@ export const AuthProvider = ({children}:AuthProviderProps)=>{
         navigate("/");
     }
 
-    return <AuthContext.Provider value={{logged, login, logout, userStorage, getUserByToken}}>{children}</AuthContext.Provider>
+    const logoutStay = () =>{
+        localStorage.clear();
+        sessionStorage.clear();
+        setLogged(false);
+    }
+
+    return <AuthContext.Provider value={{logged, login, logout, logoutStay, userStorage, getUserByToken}}>{children}</AuthContext.Provider>
 }
 
 export const useAuth = ()=> useContext(AuthContext)

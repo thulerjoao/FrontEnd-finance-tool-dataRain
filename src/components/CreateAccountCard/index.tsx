@@ -9,6 +9,7 @@ import Api from "../../services/api";
 import * as Style from "../../components/CreateAccountCard/style";
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useActive } from "../../contexts/activePage";
+import { usePositionAndFunction } from "../../contexts/positionAndFunction";
 
 interface ChangeProp {
   change: boolean
@@ -17,29 +18,19 @@ interface ChangeProp {
 
 const CreateAccountCard = ({change, setChange}:ChangeProp) => {
   const navigate = useNavigate();
-  const [ role, setRole ] = useState<any[]>();
-  const [ selectedRole, setSelectedRole  ] = useState<string>()
   const { setActive } = useActive()
   const [ billable, setBillable] = useState<boolean>(true)
-
-  console.log(change);
-  
-
-  const getRoles = () => {
-    Api.get("/role")
-      .then((res) => {
-        setRole(res.data)
-        setSelectedRole(res.data[0].id)
-      })
-      .catch((err) => {});
-  };
+  const { role, position } = usePositionAndFunction()
+  const [ selectedRole, setSelectedRole  ] = useState<string>()
+  const [ selectedPosition, setSelectedPosition ] = useState<string>()
 
   useEffect(()=>{
-    sessionStorage.clear;
-    localStorage.clear;
-    getRoles();
-  }
-    ,[])
+    setSelectedRole(role[0].id);
+    setSelectedPosition(position[0].id)
+  }, [])
+
+  console.log({selectedRole, selectedPosition});
+  
 
   interface CreateAccountData {
     name: string;
@@ -50,7 +41,6 @@ const CreateAccountCard = ({change, setChange}:ChangeProp) => {
   const registerSchema = yup.object().shape({
     name: yup.string().required("Nome obrigatório"),
     email: yup.string().email("Email inválido").required("Email obrigatório"),
-    position: yup.string().required("Função obrigatória"),
   });
 
   const handleErrorMessage = () => {
@@ -59,9 +49,6 @@ const CreateAccountCard = ({change, setChange}:ChangeProp) => {
       clearErrors();
     } else if (errors.email) {
       toast.error(`${errors.email?.message}`);
-      clearErrors();
-    } else if (errors.position) {
-      toast.error(`${errors.position?.message}`);
       clearErrors();
     } else {
       clearErrors;
@@ -80,13 +67,13 @@ const CreateAccountCard = ({change, setChange}:ChangeProp) => {
       const dataCreate = {
         name: data.name,
         email: data.email,
-        position: data.position,
+        positionId: selectedPosition,
         billable: billable,
         roleId: selectedRole,
       };
       Api.post("/user", dataCreate)
         .then((res) => {
-          toast.success("Confira sua caixa de entrada e valide seu email");
+          toast.success("Confira sua caixa de entrada");
         })
         .catch((error) => {
           toast.error("Erro ao realizar cadastro");
@@ -103,6 +90,10 @@ const CreateAccountCard = ({change, setChange}:ChangeProp) => {
       setBillable(false)
     }
   }
+
+  const firstUp = (prop: string) =>{
+    return(prop.charAt(0).toUpperCase() + prop.slice(1))
+}
 
   return (
     <Style.CreateAccountContainer>
@@ -123,14 +114,22 @@ const CreateAccountCard = ({change, setChange}:ChangeProp) => {
           <Style.Inputs type="text" {...register("name")} />
           <Style.InputLabel>Email</Style.InputLabel>
           <Style.Inputs type="text" {...register("email")} />
-          <Style.InputLabel>Função</Style.InputLabel>
-          <Style.Inputs {...register("position")} />
+          {/* <Style.InputLabel>Função</Style.InputLabel> */}
+          {/* <Style.Inputs {...register("position")} /> */}
           <section>
+          <Style.InputLabel>Função</Style.InputLabel>
+            <select onChange={(e) => setSelectedPosition(e.target.value)}>
+              {position && position.map((element:any, index:number)=>{
+                return(
+                  <option key={index} value={element.id}>{firstUp(element.name)}</option>
+                )
+              })}
+            </select>
           <Style.InputLabel>Cargo</Style.InputLabel>
             <select onChange={(e) => setSelectedRole(e.target.value)}>
               {role && role.map((element:any, index:number)=>{
                 return(
-                  <option key={index} value={element.id}>{element.name}</option>
+                  <option key={index} value={element.id}>{firstUp(element.name)}</option>
                 )
               })}
             </select>

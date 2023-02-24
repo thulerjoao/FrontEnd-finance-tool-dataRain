@@ -5,6 +5,7 @@ import theme from "../styles/theme";
 import { ActiveProvider } from "./activePage";
 import { AuthProvider } from "./auth";
 import { ClientProvider } from "./clientContext";
+import { PositionAndFunctionProvider } from "./positionAndFunction";
 import { ProjectProvider } from "./projectContext";
 import { QuestionsProvider } from "./questions";
 import { TeamProvider } from "./teamContext";
@@ -24,7 +25,9 @@ const Providers = ({ children }: ProviderProps) => {
               <QuestionsProvider>
                 <ActiveProvider>
                   <ProjectProvider>
-                    <TeamProvider>{children}</TeamProvider>
+                    <PositionAndFunctionProvider>
+                      <TeamProvider>{children}</TeamProvider>
+                    </PositionAndFunctionProvider>
                   </ProjectProvider>
                 </ActiveProvider>
               </QuestionsProvider>
