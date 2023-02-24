@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../../contexts/auth";
 import Api from "../../services/api";
 import * as Style from "./style";
@@ -16,6 +16,7 @@ const RecoverPassword = ({prop}:modelProp) => {
     const [ password, setPassword] = useState<string>("")
     const [ confirmPassword, setConfirmPassword] = useState<string>("")
     const { login } = useAuth()
+    const navigate = useNavigate()
 
 
     const handleConfirm = () => {
@@ -56,6 +57,7 @@ const RecoverPassword = ({prop}:modelProp) => {
     return (
             <Style.RecoverPasswordContainer>
                 <Style.RecoverPasswordCard>
+                {prop === "recover" && <Style.BackArrow onClick={()=> navigate("/")} />}
                     <h2>Cadastre uma nova senha</h2>
                     <div>
                         <p>Nova senha</p>

@@ -5,13 +5,14 @@ import {
   AiOutlineTeam,
   AiOutlineUserAdd,
 } from "react-icons/ai";
+import { GrDocumentTime } from 'react-icons/gr'
 import { BsGraphUp } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/auth";
 import { FaPeopleArrows, FaUsers } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { useActive } from "../../contexts/activePage";
-import { MdOutlinePersonPin } from "react-icons/md";
+
 import { IoIosPeople } from "react-icons/io";
 
 const AsideBar = () => {
@@ -43,9 +44,9 @@ const AsideBar = () => {
               onClick={() => {navigate("/cartao-ponto"); 
               setActive("timeCard")}}>
               <span>
-                <AiOutlineHome />
+                <GrDocumentTime />
               </span>
-              Cartão de Ponto
+              Ponto Digital
             </S.AsidebarContentLi>
             {userStorage.role.name === "admin" ? (
               <>

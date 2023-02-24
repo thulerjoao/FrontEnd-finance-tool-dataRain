@@ -1,6 +1,7 @@
 import AsideBar from '../../components/AsideBar';
 import Header from '../../components/Header';
-import TimeCardCard from '../../components/TimeCardCard';
+import TimerSystemCard from '../../components/TimerSystemCard';
+
 import * as Styled from './style';
 
 
@@ -15,7 +16,7 @@ const TimeCardPage = () => {
             <AsideBar />
           </div>
           <div className="HomeCard">
-            <TimeCardCard/>
+            <TimerSystemCard/>
           </div>
         </div>
       </section>

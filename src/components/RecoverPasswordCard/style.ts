@@ -84,7 +84,8 @@ ${({theme})=>css`
 `}
 `
 export const BackArrow = styled(MdArrowBackIos)`
-    height: 1.35rem;
+    /* height: 1rem; */
+    margin-bottom: .5rem;
     cursor: pointer;
     color: ${theme.colors.secundaryColor}
 `
