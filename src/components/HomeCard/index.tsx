@@ -38,7 +38,7 @@ const HomeCard = ({search}: SearchProp) => {
 
   const firstUp = (prop: string) =>{
     return(prop.charAt(0).toUpperCase() + prop.slice(1))
-}
+  }
 
   return (
           <Style.HomeContainer>

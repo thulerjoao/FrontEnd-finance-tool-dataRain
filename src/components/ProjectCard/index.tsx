@@ -8,6 +8,7 @@ import userDefault from "../../assets/images/userDefault.png";
 import logo from "../../assets/images/default.png"
 import NewUserSettings from "../ModalAddUserProject"
 import DeleteUserProject from "../ModalDeleteUserProject"
+import LoadingModal from "../LoadingModal"
 
 
 
@@ -21,7 +22,8 @@ const ProjectCard = () =>{
     const [ isManager, setIsManager ] = useState<any>(undefined)
     const [ isModalOpen, setIsModalOpen] = useState<boolean>(false)
     const [ isModalDeleteOpen, setIsModalDeleteOpen] = useState<boolean>(false)
-    const [ projectUsers, setProjectUsers ] = useState<any>() 
+    const [ projectUsers, setProjectUsers ] = useState<any>()
+    const [ isLoading, setIsLoading ] = useState<boolean>(false) 
     
     const hegisterNewClient = () =>{
         Api.post("/project/add-client",
@@ -34,11 +36,14 @@ const ProjectCard = () =>{
             handleGetProject()
             toast.success("Cliente adicionado")
         })
-        .catch(()=>toast.error("Falha ao adicionar cliente"))
+        .catch(()=>{
+            toast.error("Falha ao adicionar cliente")
+        })
     }
     
     const handleGetProject = ()=>{
         const projectId = sessionStorage.getItem("projectId")
+        setIsLoading(true)
         Api.get(`/project/${projectId}`)
             .then((res)=>{
                 setProject(res.data)
@@ -47,8 +52,9 @@ const ProjectCard = () =>{
                     setClient(res.data.client)
                     setIsManager(res.data.containsManager)
                 }
+                setIsLoading(false)
             })
-            .catch((err)=>{toast.error("eitaaaa")})
+            .catch((err)=>{setIsLoading(false)})
         }
 
     const handleGetAllClients = () =>{
@@ -115,7 +121,6 @@ const ProjectCard = () =>{
                         Cadastrar
                     </Button>
                 </div>:
-                // <div>Tem erro aqui</div>
                 <div className="bottom">
                         <div className="card newUser" onClick={()=>setIsModalOpen(true)}>
                             <img src={userDefault}></img>
@@ -148,6 +153,7 @@ const ProjectCard = () =>{
                 </div>
                 }
             </section>
+            {isLoading && <LoadingModal/>}
             <DeleteUserProject
                     isModalOpen={isModalDeleteOpen}
                     setIsModalOpen={setIsModalDeleteOpen}
