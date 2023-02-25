@@ -1,11 +1,10 @@
 import { Button } from "@mui/material"
 import { useEffect, useState } from "react"
-import { ErrorIcon, toast } from "react-hot-toast"
+import { toast } from "react-hot-toast"
 import { useNavigate } from "react-router-dom"
 import Api from "../../services/api"
 import * as Style from "./style"
 import userDefault from "../../assets/images/userDefault.png";
-import { useUsers } from "../../contexts/userContext"
 import logo from "../../assets/images/default.png"
 import NewUserSettings from "../ModalAddUserProject"
 import DeleteUserProject from "../ModalDeleteUserProject"
@@ -22,9 +21,7 @@ const ProjectCard = () =>{
     const [ isManager, setIsManager ] = useState<any>(undefined)
     const [ isModalOpen, setIsModalOpen] = useState<boolean>(false)
     const [ isModalDeleteOpen, setIsModalDeleteOpen] = useState<boolean>(false)
-  
-    console.log(client);
-    
+    const [ projectUsers, setProjectUsers ] = useState<any>() 
     
     const hegisterNewClient = () =>{
         Api.post("/project/add-client",
@@ -45,12 +42,13 @@ const ProjectCard = () =>{
         Api.get(`/project/${projectId}`)
             .then((res)=>{
                 setProject(res.data)
+                setProjectUsers(res.data.users)
                 if(res.data.client){
                     setClient(res.data.client)
                     setIsManager(res.data.containsManager)
                 }
             })
-            .catch((err)=>{()=>{setProject(undefined)}})
+            .catch((err)=>{toast.error("eitaaaa")})
         }
 
     const handleGetAllClients = () =>{
@@ -68,6 +66,17 @@ const ProjectCard = () =>{
     },[])
 
     const navigate = useNavigate()
+    
+    // const handleFirstRoleId = (prop: any) =>{
+    //     const firstRole = prop.filter((element: any)=>element.name.includes(user.role.name))[0]
+    //     setSelectedRole(firstRole.id)   
+    //   }
+
+    // const projectUsersOrdered = projectUsers.filter((element)=>element.)element.user.position.name
+    
+    const ordernedProjecUsers = projectUsers && projectUsers.sort(function(a:any,b:any){
+        return a.user.role.name.lenght < b.user.position.name.lenght ? -1 : a.user.role.name.lenght > b.user.role.name.lenght ? 1 : 0
+    })
 
     return(
         <Style.ProjectContainer>
@@ -111,12 +120,13 @@ const ProjectCard = () =>{
                         Cadastrar
                     </Button>
                 </div>:
+                // <div>Tem erro aqui</div>
                 <div className="bottom">
                         <div className="card newUser" onClick={()=>setIsModalOpen(true)}>
                             <img src={userDefault}></img>
                             <p>{isManager? "Adicionar colaborador +":'Adicionar Manager +'}</p>
                         </div>
-                        {  project.users.map((element: any, index:number)=>{
+                        {ordernedProjecUsers &&  ordernedProjecUsers.map((element: any, index:number)=>{
                             return(
                                 <div className="card oldUser" key={index}>
                                    <div>
@@ -134,12 +144,11 @@ const ProjectCard = () =>{
                                         }>
                                     </img>
                                    <h3>{element.user.name}</h3>
-                                   <p className="bottomInfo">{element.user.position}</p>
+                                   <p className="bottomInfo">{element.user.position.name}</p>
                                    <p className="bottomInfo">{`Valor/hr - R$: ${element.valuePerUserHour.toFixed(2)}`}</p>
                                 </div>
                             )
                         })
-
                         }
                 </div>
                 }

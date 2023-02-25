@@ -32,6 +32,8 @@ const TimerSystemCard = () => {
       return(prop.charAt(0).toUpperCase() + prop.slice(1))
     }
 
+    const test = ["7:30", "12:02", "13:01"]
+
 
   return (
           <Style.TimeCardContainer>
@@ -40,14 +42,23 @@ const TimerSystemCard = () => {
               </section>
               <section className="section02">
                 <div className="mainCard">
-                  <h2>{time}</h2>
-                  <h3>{firstUp(getCurrentDate())}</h3>
-                  <span className="buttons">
+                  <span className="metrics">
+                    <h2>{time}</h2>
+                    <h3>{firstUp(getCurrentDate())}</h3>
+                  </span>
+                  {test.map((element, index)=>{
+                    return(
+                      <div key={index} className="registers">
+                        {element}
+                      </div>
+                    )
+                  })}
+                  {/* <span className="buttons">
                     <Button  variant="contained" className="buttonEnter save" onClick={()=>{}}>Registrar horário
                     </Button>
                     <Button  variant="contained" className="buttonEnter save" onClick={()=>{}}>Solicitar hora extra
                     </Button>
-                  </span>
+                  </span> */}
                 </div>
               </section>
           </Style.TimeCardContainer>  

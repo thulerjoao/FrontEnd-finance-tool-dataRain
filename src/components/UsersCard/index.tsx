@@ -1,13 +1,6 @@
-import { Badge, Menu, MenuItem } from "@mui/material";
-import { BsPencil, BsTrash } from "react-icons/bs";
-
-import React, { useEffect, useState } from "react";
 import * as Style from "./style"
 import UserCard from "../UserCard";
-import Api from "../../services/api";
 import { useUsers } from "../../contexts/userContext";
-
-const teste = ['','','','','','','','','','','','','']
 
 
 const UsersCard = () => {

@@ -97,11 +97,11 @@ const ProfileSettings = ({
           <p>Nome *</p>
           <input placeholder="Digite o email para recuperação" defaultValue={userStorage.name} onChange={(e)=>setName(e.target.value)}/>
           <p>Nova senha</p>
-          <input placeholder="Digite uma nova senha" onChange={(e)=>setNewPassword(e.target.value)}/>
+          <input type="password" placeholder="Digite uma nova senha" onChange={(e)=>setNewPassword(e.target.value)}/>
           <p>Confirmação de nova senha</p>
-          <input placeholder="Confirme sua nova senha" onChange={(e)=>setConfirmPassword(e.target.value)}/>
+          <input type="password" placeholder="Confirme sua nova senha" onChange={(e)=>setConfirmPassword(e.target.value)}/>
           <p>Senha Atual *</p>
-          <input placeholder="Confirme sua senha atual" className="currentPassword" onChange={(e)=>setCurrentPassword(e.target.value)}/>
+          <input type="password" placeholder="Confirme sua senha atual" className="currentPassword" onChange={(e)=>setCurrentPassword(e.target.value)}/>
         </section>
         <section className="botton">
           <Button variant="contained" className="buttonEnter cancel" onClick={()=>handleCloseModal()}>

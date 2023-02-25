@@ -47,21 +47,36 @@ export const TimeCardContainer = styled.div`
           display: flex;
           flex-direction: column;
           align-items: center;
-          justify-content: space-around;
+          justify-content: space-between;
           width: 60%;
           height: 70%;
 
-
-          h2{
+          .metrics{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             width: 100%;
-            text-align: center;
-            font-size: 4rem;
-            color: ${theme.colors.fundamentalColor};
+            align-items: center;
+            text-align: start;
+            padding: 2rem;
+
+            h2{
+              width: 100%;
+              text-align: start;
+              font-size: 2rem;
+              color: ${theme.colors.fundamentalColor};
+            }
+  
+            h3{
+              color: ${theme.colors.fundamentalColor};
+              width: 100%;
+              
+            }
           }
 
-          h3{
-            color: ${theme.colors.fundamentalColor};
-
+          .registers{
+            display: flex;
+            flex-direction: column-reverse;
           }
 
           div{
