@@ -67,17 +67,12 @@ const ProjectCard = () =>{
 
     const navigate = useNavigate()
     
-    // const handleFirstRoleId = (prop: any) =>{
-    //     const firstRole = prop.filter((element: any)=>element.name.includes(user.role.name))[0]
-    //     setSelectedRole(firstRole.id)   
-    //   }
-
-    // const projectUsersOrdered = projectUsers.filter((element)=>element.)element.user.position.name
-    
     const ordernedProjecUsers = projectUsers && projectUsers.sort(function(a:any,b:any){
-        return a.user.role.name.lenght < b.user.position.name.lenght ? -1 : a.user.role.name.lenght > b.user.role.name.lenght ? 1 : 0
+        return a.user.role.name === "manager" ? -1 : b.user.role.name !== "manager" ? 1 : 0
     })
 
+    console.log(ordernedProjecUsers);
+    
     return(
         <Style.ProjectContainer>
             <section>
