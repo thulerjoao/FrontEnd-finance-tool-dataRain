@@ -48,43 +48,114 @@ export const TimeCardContainer = styled.div`
           flex-direction: column;
           align-items: center;
           justify-content: space-between;
-          width: 60%;
-          height: 70%;
+          padding: 3vh 0;
+          width: 65%;
+          height: 100%;
 
-          .metrics{
+          .machine{
+            background-color: #e1e1e1;
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 100%;
-            align-items: center;
-            text-align: start;
-            padding: 2rem;
+            justify-content: space-between;
+            width: 50%;
+            height: 50vh;
+            text-align: center;
+            padding: 3.5%;
+            padding-bottom: 3%;
+            border-radius: 15px;
+        
+            box-shadow: rgb(0 0 0 / 30%) 3px 3px 10px;
 
-            h2{
+            .screen{
+              background-color: ${theme.colors.secundaryColor};
               width: 100%;
-              text-align: start;
-              font-size: 2rem;
-              color: ${theme.colors.fundamentalColor};
-            }
-  
-            h3{
-              color: ${theme.colors.fundamentalColor};
-              width: 100%;
+              height: 12vh;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
               
+
+              h2{
+                width: 13vw;
+                text-align: start;
+                font-size: 6.5vh;
+                color: ${theme.colors.primaryColor};
+              }
+    
+              h3{
+                color: ${theme.colors.primaryColor};
+                width: 100%;
+                font-size: 1.8vh;
+                
+              }
             }
+
+            .cardSpace{
+              display: flex;
+              /* flex-direction: column; */
+              align-items: center;
+              justify-content: center;
+              border: 3px solid black;
+              border-top: none;
+              width: 90%;
+              height: 1.7rem;
+              border-radius: 0 0 30% 30%;
+              box-shadow: inset 0px -8px 5px 5px rgba(0, 0, 0, 0.1);
+              position: relative;
+
+              .card{
+                background-color: #FEFFCD;
+                width: 72%;
+                height: 5vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-bottom: 1px solid black;
+                position: absolute;
+                bottom: 0;
+
+                p{
+                  border-bottom: 1px solid ${theme.colors.tertiaryColor};
+                  font-size: 1.5vh;
+                  width: 90%;
+                  height: 50%;
+                  text-align: center;
+                }
+              }
+            }
+
           }
 
-          .registers{
-            display: flex;
-            flex-direction: column-reverse;
-          }
-
-          div{
-
-          }
         }
 
-      
+       .buttons{
+        width: 85%;
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 2vh;
+
+        .buttonEnter{
+              background-color: ${theme.colors.tertiaryColor};
+              height: 5vh;
+              width: 44%;
+              font-size: ${theme.constants.buttonFontSize};
+            }
+            .buttonEnter:hover{
+              background-color: ${theme.colors.tertiaryColor};
+            }
+        
+        .extra{
+          background-color: ${theme.colors.secundaryColor};
+
+        }
+        .extra:hover{
+          background-color: ${theme.colors.secundaryColor};
+
+        }
+       }
       
   
 

@@ -42,26 +42,48 @@ const TimerSystemCard = () => {
               </section>
               <section className="section02">
                 <div className="mainCard">
-                  <span className="metrics">
-                    <h2>{time}</h2>
-                    <h3>{firstUp(getCurrentDate())}</h3>
+                  <span className="machine">
+                    <div className="screen">
+                      <h2>{time}</h2>
+                      <h3>{firstUp(getCurrentDate())}</h3>
+                    </div>
+                    <div className="cardSpace">
+                      <div className="card"><p>FIM EXPEDIENTE - 15:37</p></div>
+                    </div>
+                    <div className="cardSpace">
+                      <div className="card"><p>VOLTA ALMOÇO - 12:50</p></div>
+                    </div>
+                    <div className="cardSpace">
+                      <div className="card"><p>SAIDA ALMOÇO - 11:57</p></div>
+                    </div>
+                    <div className="cardSpace">
+                      <div className="card"><p>ENTRADA - 07:59</p></div>
+                    </div>
                   </span>
-                  {test.map((element, index)=>{
+                  <span className="buttons">
+                    <Button  variant="contained" className="buttonEnter " onClick={()=>{}}>Marcar Ponto
+                    </Button>
+                    <Button  variant="contained" className="buttonEnter extra" onClick={()=>{}}>Solicitar hora extra
+                    </Button>
+                  </span>
+                </div>
+              </section>
+              
+
+
+
+
+              {/* {test.map((element, index)=>{
                     return(
                       <div key={index} className="registers">
                         {element}
                       </div>
                     )
-                  })}
-                  {/* <span className="buttons">
-                    <Button  variant="contained" className="buttonEnter save" onClick={()=>{}}>Registrar horário
-                    </Button>
-                    <Button  variant="contained" className="buttonEnter save" onClick={()=>{}}>Solicitar hora extra
-                    </Button>
-                  </span> */}
-                </div>
-              </section>
-          </Style.TimeCardContainer>  
+                  })} */}
+                  
+          </Style.TimeCardContainer>
+          
+          
   );
 };
 
