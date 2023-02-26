@@ -142,13 +142,13 @@ const CreateAccountCard = ({change, setChange}:ChangeProp) => {
           </section>
         </Style.InputsContainer>
         <Style.ButtonsContainer>
-          <Button
+          {/* <Button
             variant="contained"
             className="buttonCancel"
             onClick={() => {navigate("/home"); setActive("home")}}
           >
             Cancelar
-          </Button>
+          </Button> */}
           <Button
             type="submit"
             variant="contained"
