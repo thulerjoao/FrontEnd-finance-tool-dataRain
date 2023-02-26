@@ -113,13 +113,13 @@ const CreateClientCard = ({change, setChange}:ChangeProp) => {
             <Style.Inputs type="email" {...register("technicalContactEmail")} />
           </Style.InputsContainer>
           <Style.ButtonsContainer>
-            <Button
+            {/* <Button
               variant="contained"
               className="buttonCancel"
               onClick={() => navigate("/home")}
             >
               Cancelar
-            </Button>
+            </Button> */}
             <Button
               type="submit"
               variant="contained"

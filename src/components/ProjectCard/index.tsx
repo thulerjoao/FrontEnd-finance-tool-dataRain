@@ -1,14 +1,14 @@
 import { Button } from "@mui/material"
 import { useEffect, useState } from "react"
-import { ErrorIcon, toast } from "react-hot-toast"
+import { toast } from "react-hot-toast"
 import { useNavigate } from "react-router-dom"
 import Api from "../../services/api"
 import * as Style from "./style"
 import userDefault from "../../assets/images/userDefault.png";
-import { useUsers } from "../../contexts/userContext"
 import logo from "../../assets/images/default.png"
 import NewUserSettings from "../ModalAddUserProject"
 import DeleteUserProject from "../ModalDeleteUserProject"
+import LoadingModal from "../LoadingModal"
 
 
 
@@ -22,9 +22,8 @@ const ProjectCard = () =>{
     const [ isManager, setIsManager ] = useState<any>(undefined)
     const [ isModalOpen, setIsModalOpen] = useState<boolean>(false)
     const [ isModalDeleteOpen, setIsModalDeleteOpen] = useState<boolean>(false)
-  
-    console.log(client);
-    
+    const [ projectUsers, setProjectUsers ] = useState<any>()
+    const [ isLoading, setIsLoading ] = useState<boolean>(false) 
     
     const hegisterNewClient = () =>{
         Api.post("/project/add-client",
@@ -37,20 +36,25 @@ const ProjectCard = () =>{
             handleGetProject()
             toast.success("Cliente adicionado")
         })
-        .catch(()=>toast.error("Falha ao adicionar cliente"))
+        .catch(()=>{
+            toast.error("Falha ao adicionar cliente")
+        })
     }
     
     const handleGetProject = ()=>{
         const projectId = sessionStorage.getItem("projectId")
+        setIsLoading(true)
         Api.get(`/project/${projectId}`)
             .then((res)=>{
                 setProject(res.data)
+                setProjectUsers(res.data.users)
                 if(res.data.client){
                     setClient(res.data.client)
                     setIsManager(res.data.containsManager)
                 }
+                setIsLoading(false)
             })
-            .catch((err)=>{()=>{setProject(undefined)}})
+            .catch((err)=>{setIsLoading(false)})
         }
 
     const handleGetAllClients = () =>{
@@ -68,7 +72,13 @@ const ProjectCard = () =>{
     },[])
 
     const navigate = useNavigate()
+    
+    const ordernedProjecUsers = projectUsers && projectUsers.sort(function(a:any,b:any){
+        return a.user.role.name === "manager" ? -1 : b.user.role.name !== "manager" ? 1 : 0
+    })
 
+    console.log(ordernedProjecUsers);
+    
     return(
         <Style.ProjectContainer>
             <section>
@@ -116,7 +126,7 @@ const ProjectCard = () =>{
                             <img src={userDefault}></img>
                             <p>{isManager? "Adicionar colaborador +":'Adicionar Manager +'}</p>
                         </div>
-                        {  project.users.map((element: any, index:number)=>{
+                        {ordernedProjecUsers &&  ordernedProjecUsers.map((element: any, index:number)=>{
                             return(
                                 <div className="card oldUser" key={index}>
                                    <div>
@@ -134,16 +144,16 @@ const ProjectCard = () =>{
                                         }>
                                     </img>
                                    <h3>{element.user.name}</h3>
-                                   <p className="bottomInfo">{element.user.position}</p>
+                                   <p className="bottomInfo">{element.user.position.name}</p>
                                    <p className="bottomInfo">{`Valor/hr - R$: ${element.valuePerUserHour.toFixed(2)}`}</p>
                                 </div>
                             )
                         })
-
                         }
                 </div>
                 }
             </section>
+            {isLoading && <LoadingModal/>}
             <DeleteUserProject
                     isModalOpen={isModalDeleteOpen}
                     setIsModalOpen={setIsModalDeleteOpen}

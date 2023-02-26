@@ -14,7 +14,7 @@ import Profile from "./Pages/Profile";
 import ProjectsPage from "./Pages/Projects";
 import Project from "./Pages/Project";
 import RegisterNewUser from "./Pages/RegisterNewUser";
-import TimeCardPage from "./Pages/TimeCard";
+import TimeCardPage from "./Pages/TimerSystemCard";
 
 const Router = () => {
 
@@ -37,7 +37,7 @@ const Router = () => {
       <Route path="/cadastro" element={<RegisterNewUser/>} />
       <Route path="/form" element={<FormPage />} />
       <Route path="/novasenha/:param" element={<RecoverPasswordPage prop={"new"}/>} /> 
-      <Route path="/recuperar-senha/:param" element={<RecoverPasswordPage prop={""}/>} />
+      <Route path="/recuperar-senha/:param" element={<RecoverPasswordPage prop={"recover"}/>} />
       <Route path="*" element={<Navigate to={logged ? "/home" : "/"} />} />
     </Routes>
   );

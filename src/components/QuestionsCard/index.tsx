@@ -12,6 +12,7 @@ import QuestionCard from "../QuestionCard";
 const QuestionsCard = () => {
   
   const { questions, updateQuestion } = useQuestions();
+  
   //newQuestion states and functions:
   const [ newQuestion, setNewQuestion ] = useState<Boolean>(false)
   const [ newTitle, setNewTitle ] = useState<string>("")
