@@ -1,12 +1,13 @@
 import styled,{css} from "styled-components";
 import { MdArrowBackIos } from "react-icons/md";
 import theme from "../../styles/theme";
+import Calendar from "react-calendar";
 
 export const ModalAksForHourContainer = styled.div`
 ${({theme})=>css`
-    width: 35.5rem;
+    width: 45rem;
     /* max-width: 54.5rem; */
-    height: 30rem;
+    height: 45rem;
     margin: 0;
     padding: 2.8rem;
     display: flex;
@@ -28,48 +29,55 @@ ${({theme})=>css`
     h2{
         font-size: ${theme.constants.titleFontSize};
         color: ${theme.colors.fundamentalColor};
+        /* width: 100%; */
+        /* text-align: start; */
         font-weight: 700;
         margin-top: -2rem ;
     }
 
-    section{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-evenly;
+    /* div{
+      width: 100%;
+      height: 100%; */
+
+      /* .calendar{
         width: 100%;
-        height: 30%;
-        margin-top: -1rem;
+        max-width: 400px;
+        margin: 0 auto;
 
-        h3{
-            color: ${theme.colors.fundamentalColor};
+        .react-calendar__tile {
+          background-color: #fff;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          padding: 0.5rem;
+          height: 4rem;
+          font-size: 1rem;
+
+          &:hover {
+            background-color: #eee;
+          }
+
+          &--active,
+          &--active:hover {
+            background-color: #007bff;
+            color: #fff;
+          }
         }
 
-        p{
-            text-align:start;
-            width: 80%;
-            font-size: ${theme.constants.smallFont};
-            color: ${theme.colors.fundamentalColor};
-            margin-bottom: 0.5rem;
-            margin-top: 1rem;
-            margin-left: 2rem;
+        .react-calendar__navigation {
+          margin-bottom: 1rem;
+          button {
+            color: #007bff;
+            &:disabled {
+              color: #ccc;
+            }
+            &:hover:enabled {
+              background-color: #007bff;
+              color: #fff;
+            }
+          }
         }
-        
-        select{
-            width: 80%;
-            height: 3.5vh;
-            border: none;
-              border-radius: 5px;
-              border: 1px solid #D1D1D1;
-              font-size: ${theme.constants.smallFont};
-
-            option{
-                width: 100%;
-                text-align: center;
-                font-size: ${theme.constants.smallFont};
-              }
-        }
-    }
+      }
+    } */
 
     .botton{
         width: 100%;
@@ -102,3 +110,44 @@ export const BackArrow = styled(MdArrowBackIos)`
     cursor: pointer;
     color: ${theme.colors.secundaryColor}
 `
+
+/* export const StyledCalendar = styled(Calendar)`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+
+  .react-calendar__tile {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0.5rem;
+    height: 4rem;
+    font-size: 1rem;
+
+    &:hover {
+      background-color: #eee;
+    }
+
+    &--active,
+    &--active:hover {
+      background-color: #007bff;
+      color: #fff;
+    }
+  }
+
+  .react-calendar__navigation {
+    margin-bottom: 1rem;
+    button {
+      color: #007bff;
+      &:disabled {
+        color: #ccc;
+      }
+      &:hover:enabled {
+        background-color: #007bff;
+        color: #fff;
+      }
+    }
+  }
+`; */

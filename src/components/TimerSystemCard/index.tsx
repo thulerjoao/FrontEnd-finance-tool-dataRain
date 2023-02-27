@@ -50,17 +50,26 @@ const TimerSystemCard = () => {
                       <h3>{firstUp(getCurrentDate())}</h3>
                     </div>
                     <div className="cardSpace">
-                      <div className="card"><p>FIM EXPEDIENTE - 15:37</p></div>
+                      <div className="card title"><p>Projeto x</p></div>
+                      <div className="card"><p>Fim hora extra - 19:23</p></div>
+                      <div className="card"><p>Início hora extra - 16:48</p></div>
+                      <div className="card"><p>Fim expediente - 15:37</p></div>
+                      <div className="card"><p>Volta do almoço - 12:50</p></div>
+                      <div className="card"><p>Saida para alomoço - 11:57</p></div>
+                      <div className="card"><p>Início expediente - 07:59</p></div>
                     </div>
-                    <div className="cardSpace">
-                      <div className="card"><p>VOLTA ALMOÇO - 12:50</p></div>
-                    </div>
-                    <div className="cardSpace">
-                      <div className="card"><p>SAIDA ALMOÇO - 11:57</p></div>
-                    </div>
-                    <div className="cardSpace">
-                      <div className="card"><p>ENTRADA - 07:59</p></div>
-                    </div>
+                  {/* <div className="cardSpace">
+                    <div className="card"><p>FIM EXPEDIENTE - 15:37</p></div>
+                  </div>
+                  <div className="cardSpace">
+                    <div className="card"><p>VOLTA ALMOÇO - 12:50</p></div>
+                  </div>
+                  <div className="cardSpace">
+                    <div className="card"><p>SAIDA ALMOÇO - 11:57</p></div>
+                  </div>
+                  <div className="cardSpace">
+                    <div className="card"><p>ENTRADA - 07:59</p></div>
+                  </div> */}
                   </span>
                   <span className="buttons">
                     <Button  variant="contained" className="buttonEnter " onClick={()=>{}}>Marcar Ponto
@@ -77,20 +86,7 @@ const TimerSystemCard = () => {
               <AskForHour
                     isModalOpen={isModalOpen}
                     setIsModalOpen={setIsModalOpen}
-                  />
-              
-
-
-
-
-              {/* {test.map((element, index)=>{
-                    return(
-                      <div key={index} className="registers">
-                        {element}
-                      </div>
-                    )
-                  })} */}
-                  
+                  />    
           </Style.TimeCardContainer>
           
           

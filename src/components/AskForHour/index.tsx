@@ -2,10 +2,7 @@ import { Button } from "@mui/material";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import * as Style from "./style";
 import Modal from "react-modal";
-import React from "react";
-import toast from "react-hot-toast";
-import Api from "../../services/api";
-import { useUsers } from "../../contexts/userContext";
+import { Calendar } from 'react-calendar';
 
 interface ModalAksForHourProps {
   isModalOpen: boolean;
@@ -37,6 +34,9 @@ const AskForHour = ({
     setIsModalOpen(false);
   };
 
+
+  const [date, setDate] = useState(new Date());
+
   
 
   return (
@@ -49,9 +49,11 @@ const AskForHour = ({
         <div>
           <Style.BackArrow onClick={handleCloseModal} />
         </div>
-        <h2>Editar status do usuário</h2>
-        <section>
-        </section>
+        <h2>Selecione uma data</h2>
+        <div className="calendarSpace">
+          {/* <h1>Selecione uma data</h1> */}
+          <Calendar value={date} onChange={setDate} />
+        </div>
         <section className="botton">
           <Button variant="contained" className="buttonEnter cancel" onClick={()=>{}}>
             Cancelar

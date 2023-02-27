@@ -57,7 +57,7 @@ export const TimeCardContainer = styled.div`
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-between;
+            justify-content: flex-start;
             width: 50%;
             height: 50vh;
             text-align: center;
@@ -81,7 +81,7 @@ export const TimeCardContainer = styled.div`
 
               h2{
                 /* font-family: 'Press Start 2P', rubik; */
-                width: 15vw;
+                width: 14vw;
                 text-align: start;
                 font-size: 6.5vh;
                 color: ${theme.colors.primaryColor};
@@ -97,8 +97,52 @@ export const TimeCardContainer = styled.div`
             }
 
             .cardSpace{
+              margin-top: 2vh;
+              height: 1rem;
+              width: 65%;
+              border: 2px solid black;
+              border-bottom: none;
               display: flex;
-              /* flex-direction: column; */
+              /* justify-content: center; */
+              flex-direction: column;
+              align-items: center;
+
+              .card{
+                width: 95%;
+                min-height: 4.1vh;
+                text-align: center;
+                background-color: #FEFFCD;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                p{
+                  border-bottom: 1px solid ${theme.colors.tertiaryColor};
+                  font-size: 1.5vh;
+                  width: 90%;
+                  /* height: 50%; */
+                  text-align: center;
+                }
+              }
+
+              .title{
+                height: auto;
+                font-weight: 500;
+                height: 100%;
+
+                p{
+                  display: flex;
+                  flex-wrap: wrap;
+                  text-align: center;
+                  justify-content: center;
+                }
+
+              }
+            }
+
+            /* .cardSpace{
+              display: flex;
+              flex-direction: column;
               align-items: center;
               justify-content: center;
               border: 3px solid black;
@@ -112,7 +156,7 @@ export const TimeCardContainer = styled.div`
               .card{
                 background-color: #FEFFCD;
                 width: 72%;
-                height: 5vh;
+                height: 30vh;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -128,7 +172,7 @@ export const TimeCardContainer = styled.div`
                   text-align: center;
                 }
               }
-            }
+            } */
 
           }
 
