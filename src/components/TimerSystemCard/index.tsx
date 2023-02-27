@@ -44,6 +44,15 @@ const TimerSystemCard = () => {
               </section>
               <section className="section02">
                 <div className="mainCard">
+                <div className="topPart">
+                  <select>
+                    <option>Projeto 01</option>
+                    <option>Projeto 02</option>
+                    <option>Projeto 03</option>
+                    <option>Projeto 04</option>
+                  </select>
+                  <p>ATENÇÃO: Lançamento de hora extra liberada para o dia de hoje.</p>
+                </div>
                   <span className="machine">
                     <div className="screen">
                       <h2>{time}</h2>
@@ -56,20 +65,8 @@ const TimerSystemCard = () => {
                       <div className="card"><p>Fim expediente - 15:37</p></div>
                       <div className="card"><p>Volta do almoço - 12:50</p></div>
                       <div className="card"><p>Saida para alomoço - 11:57</p></div>
-                      <div className="card"><p>Início expediente - 07:59</p></div>
+                      <div className="card lastOne"><p>Início expediente - 07:59</p></div>
                     </div>
-                  {/* <div className="cardSpace">
-                    <div className="card"><p>FIM EXPEDIENTE - 15:37</p></div>
-                  </div>
-                  <div className="cardSpace">
-                    <div className="card"><p>VOLTA ALMOÇO - 12:50</p></div>
-                  </div>
-                  <div className="cardSpace">
-                    <div className="card"><p>SAIDA ALMOÇO - 11:57</p></div>
-                  </div>
-                  <div className="cardSpace">
-                    <div className="card"><p>ENTRADA - 07:59</p></div>
-                  </div> */}
                   </span>
                   <span className="buttons">
                     <Button  variant="contained" className="buttonEnter " onClick={()=>{}}>Marcar Ponto
@@ -78,7 +75,7 @@ const TimerSystemCard = () => {
                       variant="contained" 
                       className="buttonEnter extra" 
                       onClick={()=>{setIsModalOpen(true)}
-                      }>Solicitar hora extra
+                      }>Hora extra
                     </Button>
                   </span>
                 </div>

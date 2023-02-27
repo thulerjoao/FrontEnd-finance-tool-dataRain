@@ -52,6 +52,28 @@ export const TimeCardContainer = styled.div`
           width: 65%;
           height: 100%;
 
+          .topPart{
+            width: 100%;
+            height: 2.3vh;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            font-size: 1.5vh;
+            position: relative;
+
+            select{
+              width: 5vw;
+              position: absolute;
+              left: 3.5%;
+            }
+
+
+            p{
+              color: red;
+              font-size: 1.5vh;
+            }
+          }
+
           .machine{
             background-color: #e1e1e1;
             display: flex;
@@ -59,12 +81,12 @@ export const TimeCardContainer = styled.div`
             align-items: center;
             justify-content: flex-start;
             width: 50%;
-            height: 50vh;
+            height: 48vh;
             text-align: center;
             padding: 3.5%;
             padding-bottom: 3%;
             border-radius: 15px;
-        
+            margin-top: -2%;
             box-shadow: rgb(0 0 0 / 30%) 3px 3px 10px;
 
             .screen{
@@ -136,44 +158,13 @@ export const TimeCardContainer = styled.div`
                   text-align: center;
                   justify-content: center;
                 }
-
               }
+
+              .lastOne{
+                border-bottom: 1px dashed ${theme.colors.tertiaryColor};
+              }
+              
             }
-
-            /* .cardSpace{
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-              border: 3px solid black;
-              border-top: none;
-              width: 90%;
-              height: 1.7rem;
-              border-radius: 0 0 30% 30%;
-              box-shadow: inset 0px -8px 5px 5px rgba(0, 0, 0, 0.1);
-              position: relative;
-
-              .card{
-                background-color: #FEFFCD;
-                width: 72%;
-                height: 30vh;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                border-bottom: 1px solid black;
-                position: absolute;
-                bottom: 0;
-
-                p{
-                  border-bottom: 1px solid ${theme.colors.tertiaryColor};
-                  font-size: 1.5vh;
-                  width: 90%;
-                  height: 50%;
-                  text-align: center;
-                }
-              }
-            } */
-
           }
 
         }
