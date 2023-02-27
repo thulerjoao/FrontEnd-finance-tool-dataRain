@@ -4,6 +4,7 @@ import { Calendar } from 'react-calendar';
 import { useState } from "react";
 import moment from "moment";
 import { Button } from "@mui/material";
+import AskForHour from "../AskForHour";
 
 
 
@@ -11,6 +12,7 @@ const TimerSystemCard = () => {
 
 
   const [time, setTime] = useState(moment().format('HH:mm:ss'));
+  const [ isModalOpen, setIsModalOpen] = useState<boolean>(false)
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -63,11 +65,19 @@ const TimerSystemCard = () => {
                   <span className="buttons">
                     <Button  variant="contained" className="buttonEnter " onClick={()=>{}}>Marcar Ponto
                     </Button>
-                    <Button  variant="contained" className="buttonEnter extra" onClick={()=>{}}>Solicitar hora extra
+                    <Button  
+                      variant="contained" 
+                      className="buttonEnter extra" 
+                      onClick={()=>{setIsModalOpen(true)}
+                      }>Solicitar hora extra
                     </Button>
                   </span>
                 </div>
               </section>
+              <AskForHour
+                    isModalOpen={isModalOpen}
+                    setIsModalOpen={setIsModalOpen}
+                  />
               
 
 

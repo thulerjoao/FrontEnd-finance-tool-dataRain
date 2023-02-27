@@ -68,6 +68,7 @@ export const TimeCardContainer = styled.div`
             box-shadow: rgb(0 0 0 / 30%) 3px 3px 10px;
 
             .screen{
+              padding: 0 2%;
               background-color: ${theme.colors.secundaryColor};
               width: 100%;
               height: 12vh;
@@ -79,13 +80,15 @@ export const TimeCardContainer = styled.div`
               
 
               h2{
-                width: 13vw;
+                /* font-family: 'Press Start 2P', rubik; */
+                width: 15vw;
                 text-align: start;
                 font-size: 6.5vh;
                 color: ${theme.colors.primaryColor};
               }
     
               h3{
+                /* font-family: 'Press Start 2P', rubik; */
                 color: ${theme.colors.primaryColor};
                 width: 100%;
                 font-size: 1.8vh;
