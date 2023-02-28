@@ -1,11 +1,14 @@
+import { Dispatch, SetStateAction, useState } from 'react';
 import AsideBar from '../../components/AsideBar';
 import Header from '../../components/Header';
 import TimerSystemCard from '../../components/TimerSystemCard';
-
+import TimerSystemExtraHour from '../../components/TimerSystemExtraHour';
 import * as Styled from './style';
 
 
 const TimeCardPage = () => {
+
+  const [ isTimerSystem, setIsTimerSystem ] = useState<boolean>(true)
 
   return (
     <Styled.TimeCardContainer>
@@ -16,7 +19,10 @@ const TimeCardPage = () => {
             <AsideBar />
           </div>
           <div className="HomeCard">
-            <TimerSystemCard/>
+            { isTimerSystem?
+            <TimerSystemCard setIsTimerSystem={setIsTimerSystem}/>
+            :
+            <TimerSystemExtraHour setIsTimerSystem={setIsTimerSystem}/>}
           </div>
         </div>
       </section>

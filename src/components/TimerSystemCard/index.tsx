@@ -1,14 +1,16 @@
 import * as Style from "./style";
-import React, { useEffect } from "react";
-import { Calendar } from 'react-calendar';
+import React, { Dispatch, SetStateAction, useEffect } from "react";
 import { useState } from "react";
 import moment from "moment";
 import { Button } from "@mui/material";
 import AskForHour from "../AskForHour";
 
+interface TimerSystemProps {
+  setIsTimerSystem: Dispatch<SetStateAction<boolean>>
+}
 
 
-const TimerSystemCard = () => {
+const TimerSystemCard = ({setIsTimerSystem}:TimerSystemProps) => {
 
 
   const [time, setTime] = useState(moment().format('HH:mm:ss'));
@@ -36,7 +38,6 @@ const TimerSystemCard = () => {
 
     const test = ["7:30", "12:02", "13:01"]
 
-
   return (
           <Style.TimeCardContainer>
               <section className="section01">
@@ -51,7 +52,7 @@ const TimerSystemCard = () => {
                     <option>Projeto 03</option>
                     <option>Projeto 04</option>
                   </select>
-                  <p>ATENÇÃO: Lançamento de hora extra liberada para o dia de hoje.</p>
+                  <p>ATENÇÃO: Lançamento de hora extra liberado para o dia de hoje.</p>
                 </div>
                   <span className="machine">
                     <div className="screen">
@@ -74,7 +75,7 @@ const TimerSystemCard = () => {
                     <Button  
                       variant="contained" 
                       className="buttonEnter extra" 
-                      onClick={()=>{setIsModalOpen(true)}
+                      onClick={()=>{setIsTimerSystem(false)}
                       }>Hora extra
                     </Button>
                   </span>

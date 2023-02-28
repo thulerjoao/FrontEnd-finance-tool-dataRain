@@ -1,3 +1,4 @@
+import Calendar from "react-calendar";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import styled, { css } from "styled-components";
 import theme from "../../styles/theme";
@@ -50,8 +51,13 @@ export const TimeCardContainer = styled.div`
           padding: 3vh 0;
           width: 65%;
           height: 100%;
+          position: relative;
 
-          .topPart{
+          .fisrtSection{
+            width: 100%;
+            height: 100%;
+
+            .topPart{
             width: 100%;
             height: 2.3vh;
             display: flex;
@@ -79,96 +85,36 @@ export const TimeCardContainer = styled.div`
             }
           }
 
-          .machine{
-            background-color: #e1e1e1;
+          .calendar{
+            position: absolute;
+            width: 20vw;
+            left: 1.3vw;
+            top: 7vh;
+            font-size: 1.5vh;
+
+          }
+          }
+
+          .mainSection{
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            width: 50%;
-            height: 48vh;
-            text-align: center;
-            padding: 3.5%;
-            padding-bottom: 3%;
-            border-radius: 15px;
-            margin-top: -2%;
-            box-shadow: rgb(0 0 0 / 30%) 3px 3px 10px;
+            height: 100%;
+            width: 100%;
+            flex-direction: row;
 
-            .screen{
-              padding: 0 2%;
-              background-color: ${theme.colors.secundaryColor};
-              width: 100%;
-              height: 12vh;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-              box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
-              
-
-              h2{
-                /* font-family: 'Press Start 2P', rubik; */
-                width: 14vw;
-                text-align: start;
-                font-size: 6.5vh;
-                color: ${theme.colors.primaryColor};
-              }
-    
-              h3{
-                /* font-family: 'Press Start 2P', rubik; */
-                color: ${theme.colors.primaryColor};
-                width: 100%;
-                font-size: 1.8vh;
-                
-              }
+            div{
+              width: 50%;
+              height: 100%;
+              /* border: 1px solid black; */
             }
 
-            .cardSpace{
-              margin-top: 2vh;
-              height: 1rem;
-              width: 65%;
-              border: 2px solid black;
-              border-bottom: none;
+            .inputDiv{
               display: flex;
-              /* justify-content: center; */
               flex-direction: column;
-              align-items: center;
+              justify-content: flex-end;
 
-              .card{
-                width: 95%;
-                min-height: 4.1vh;
-                text-align: center;
-                background-color: #FEFFCD;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-
-                p{
-                  border-bottom: 1px solid ${theme.colors.tertiaryColor};
-                  font-size: 1.5vh;
-                  width: 90%;
-                  /* height: 50%; */
-                  text-align: center;
-                }
+              input{
+                width: 80%;
               }
-
-              .title{
-                height: auto;
-                font-weight: 500;
-                height: 100%;
-
-                p{
-                  display: flex;
-                  flex-wrap: wrap;
-                  text-align: center;
-                  justify-content: center;
-                }
-              }
-
-              .lastOne{
-                border-bottom: 1px dashed ${theme.colors.tertiaryColor};
-              }
-              
             }
           }
 
@@ -200,10 +146,6 @@ export const TimeCardContainer = styled.div`
         }
        }
       
-  
-
-
-     
 
     }
 
