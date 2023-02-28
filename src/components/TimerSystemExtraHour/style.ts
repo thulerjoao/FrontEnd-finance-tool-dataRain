@@ -56,6 +56,7 @@ export const TimeCardContainer = styled.div`
           .fisrtSection{
             width: 100%;
             height: 100%;
+            
 
             .topPart{
             width: 100%;
@@ -83,7 +84,70 @@ export const TimeCardContainer = styled.div`
               color: red;
               font-size: 1.5vh;
             }
+
           }
+          
+            .statusSection{
+              width: 50%;
+              height: 45vh;
+              position: absolute;
+              top: 11%;
+              right: 0.6vw;
+              border-left: 1px dotted black;
+              padding-left: 2%;
+
+              section{
+                width: 100%;
+                height: 43vh;
+                padding-right: 3%;
+                
+                div{
+                  min-height: 6vh;
+                  margin-top: 4%;
+                  background-color: ${theme.colors.backgroundColor};
+                  padding: 1% 3%;
+                  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  
+  
+                  p{
+                    width: 100%;
+                    text-align: center;
+                    font-size: 1.8vh;
+                  }
+  
+                  .description{
+                    margin-top: 0.5%;
+                    font-size: 1.5vh;
+                    /* background-color: #fff; */
+                  }
+  
+                  .approved{
+                    background-color: #3FFF0030;
+                  }
+  
+                  .reproved{
+                    background-color: #FF000030
+                  }
+                }
+  
+                overflow-y: scroll;
+                ::-webkit-scrollbar {
+                    width: 10px;
+                }
+                ::-webkit-scrollbar-track {
+                    background: ${theme.colors.inputFontColor};
+                    border-radius:5px;
+                }
+                ::-webkit-scrollbar-thumb {
+                    background: ${theme.colors.tertiaryColor};
+                    border-radius:5px;
+                }
+                ::-webkit-scrollbar-thumb:hover {
+                    background: #ED8107;
+                }
+              }
+
+            }
 
           .askForTime{
             padding-top: 1vh;
