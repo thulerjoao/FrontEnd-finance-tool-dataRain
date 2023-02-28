@@ -13,6 +13,8 @@ interface TimerSystemProps {
 const TimerSystemExtraHour = ({setIsTimerSystem}:TimerSystemProps) => {
 
   const [date, setDate] = useState(new Date());
+  const [ text, setText ] = useState<string>('')
+
 
 
   return (
@@ -32,19 +34,19 @@ const TimerSystemExtraHour = ({setIsTimerSystem}:TimerSystemProps) => {
                       </select>
                       <p>ATENÇÃO: Lançamento de hora extra liberado para o dia de hoje.</p>
                       </div>
-                      <div className="calendar">
-                          <Calendar value={date} onChange={setDate} />
+                      <div className="askForTime">
+                          <Calendar className="calendar" value={date} onChange={setDate}/>
+                          <textarea value={text} onChange={(e)=>setText(e.target.value)} wrap="hard" placeholder="Detalhes do pedido para hora extra"></textarea>
+                          <Button  variant="contained" className="buttonLaunch" onClick={()=>{}}>Lançar pedido</Button>
                       </div>
-                      <section className="mainSection">
-                        <div className="inputDiv">
-                          <input type="text"></input>
+                      {/* <section className="mainSection">
+                        <div>
+                  
                         </div>
                         <div></div>
-                      </section>
+                      </section> */}
                   </div>
                   <span className="buttons">
-                    <Button  variant="contained" className="buttonEnter " onClick={()=>{}}>Botão
-                    </Button>
                     <Button  
                       variant="contained" 
                       className="buttonEnter extra" 

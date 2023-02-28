@@ -85,12 +85,73 @@ export const TimeCardContainer = styled.div`
             }
           }
 
-          .calendar{
-            position: absolute;
-            width: 20vw;
-            left: 1.3vw;
-            top: 7vh;
+          .askForTime{
+            padding-top: 1vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            width: 50%;
+            height: 100%;
             font-size: 1.5vh;
+
+            .calendar{
+              width: 18.2vw;
+
+              .react-calendar__tile {
+                background-color: #fff;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                padding: 0.5rem;
+                font-size: 1.5vh;
+
+                &:hover {
+                  background-color: #eee;
+                }
+
+                &--active,
+                &--active:hover {
+                  background-color: #007bff;
+                  color: #fff;
+                }
+              }
+
+              .react-calendar__navigation {
+                margin-bottom: 1rem;
+                button {
+                  color: ${theme.colors.tertiaryColor};
+                  background-color: #eee;
+                  &:disabled {
+                    color: #ccc;
+                  }
+                  &:hover:enabled {
+                    background-color: ${theme.colors.tertiaryColor};
+                    color: #fff;
+                  }
+                }
+              }
+
+            }
+
+            textarea{
+                    padding-top: 1vh;
+                    resize: none;
+                    width: 18.2vw;
+                    height: 6.5vh;
+                    padding: 5px;
+                    font-size: 1.5vh;
+                }
+            
+            .buttonLaunch{
+              background-color: ${theme.colors.tertiaryColor};
+              height: 4vh;
+              width: 50%;
+              font-size: 1.5vh;
+              margin-bottom: 3vh;
+            }
+              .buttonLaunch:hover{
+                background-color: ${theme.colors.tertiaryColor};
+              }
 
           }
           }
@@ -100,6 +161,7 @@ export const TimeCardContainer = styled.div`
             height: 100%;
             width: 100%;
             flex-direction: row;
+            /* position: relative; */
 
             div{
               width: 50%;
@@ -107,15 +169,7 @@ export const TimeCardContainer = styled.div`
               /* border: 1px solid black; */
             }
 
-            .inputDiv{
-              display: flex;
-              flex-direction: column;
-              justify-content: flex-end;
-
-              input{
-                width: 80%;
-              }
-            }
+            
           }
 
         }
