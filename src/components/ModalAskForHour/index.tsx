@@ -35,8 +35,6 @@ const AskForHour = ({
   };
 
 
-  const [date, setDate] = useState(new Date());
-
   
 
   return (
@@ -49,17 +47,13 @@ const AskForHour = ({
         <div>
           <Style.BackArrow onClick={handleCloseModal} />
         </div>
-        <h2>Selecione uma data</h2>
-        <div className="calendarSpace">
-          {/* <h1>Selecione uma data</h1> */}
-          <Calendar value={date} onChange={setDate} />
-        </div>
+        <h2>Confirmar registro de horário?</h2>
         <section className="botton">
-          <Button variant="contained" className="buttonEnter cancel" onClick={()=>{}}>
+          <Button variant="contained" className="buttonEnter cancel" onClick={()=>{handleCloseModal()}}>
             Cancelar
           </Button>
           <Button variant="contained" className="buttonEnter" onClick={()=>{}}>
-            Atualizar
+            Confirmar
           </Button>
         </section>
       </Style.ModalAksForHourContainer>
