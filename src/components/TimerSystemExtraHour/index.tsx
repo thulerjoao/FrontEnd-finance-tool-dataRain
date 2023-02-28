@@ -5,6 +5,7 @@ import { useState } from "react";
 import moment from "moment";
 import { Button } from "@mui/material";
 import 'react-calendar/dist/Calendar.css';
+import AskForHour from "../ModalAskForHour";
 
 interface TimerSystemProps {
   setIsTimerSystem: Dispatch<SetStateAction<boolean>>
@@ -14,6 +15,7 @@ const TimerSystemExtraHour = ({setIsTimerSystem}:TimerSystemProps) => {
 
   const [date, setDate] = useState(new Date());
   const [ text, setText ] = useState<string>('')
+  const [ isModalOpen, setIsModalOpen] = useState<boolean>(false)
 
 
 
@@ -37,7 +39,7 @@ const TimerSystemExtraHour = ({setIsTimerSystem}:TimerSystemProps) => {
                       <div className="askForTime">
                           <Calendar className="calendar" value={date} onChange={setDate}/>
                           <textarea value={text} onChange={(e)=>setText(e.target.value)} wrap="hard" placeholder="Justificativa do pedido de hora extra"></textarea>
-                          <Button  variant="contained" className="buttonLaunch" onClick={()=>{}}>Lançar pedido</Button>
+                          <Button  variant="contained" className="buttonLaunch" onClick={()=>{setIsModalOpen(true)}}>Lançar pedido</Button>
                       </div>
                       <div className="statusSection">
                         <h3>Status de pedidos</h3>
@@ -82,7 +84,11 @@ const TimerSystemExtraHour = ({setIsTimerSystem}:TimerSystemProps) => {
                     </Button>
                   </span>
                 </div>
-              </section>   
+              </section>
+              <AskForHour
+                    isModalOpen={isModalOpen}
+                    setIsModalOpen={setIsModalOpen}
+                  />   
           </Style.TimeCardContainer>
           
           

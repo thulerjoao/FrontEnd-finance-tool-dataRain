@@ -3,7 +3,7 @@ import { MdArrowBackIos } from "react-icons/md";
 import theme from "../../styles/theme";
 import Calendar from "react-calendar";
 
-export const ModalAksForHourContainer = styled.div`
+export const ModalConfirmTimeContainer = styled.div`
 ${({theme})=>css`
     width: 40rem;
     /* max-width: 54.5rem; */
@@ -29,7 +29,8 @@ ${({theme})=>css`
     h2{
         font-size: ${theme.constants.titleFontSize};
         color: ${theme.colors.fundamentalColor};
-        text-align: center;
+        /* width: 100%; */
+        /* text-align: start; */
         font-weight: 700;
         margin-top: -2rem ;
     }

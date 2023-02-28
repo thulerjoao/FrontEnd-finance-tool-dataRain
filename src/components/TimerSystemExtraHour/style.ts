@@ -114,7 +114,8 @@ export const TimeCardContainer = styled.div`
                     text-align: center;
                     font-size: 1.8vh;
                   }
-  
+
+                 
                   .description{
                     margin-top: 0.5%;
                     font-size: 1.5vh;

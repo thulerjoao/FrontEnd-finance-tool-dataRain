@@ -4,6 +4,7 @@ import { useState } from "react";
 import moment from "moment";
 import { Button } from "@mui/material";
 import AskForHour from "../ModalAskForHour";
+import ConfirmTime from "../ModalConfirmTime";
 
 interface TimerSystemProps {
   setIsTimerSystem: Dispatch<SetStateAction<boolean>>
@@ -80,7 +81,7 @@ const TimerSystemCard = ({setIsTimerSystem}:TimerSystemProps) => {
                   </span>
                 </div>
               </section>
-              <AskForHour
+              <ConfirmTime
                     isModalOpen={isModalOpen}
                     setIsModalOpen={setIsModalOpen}
                   />    

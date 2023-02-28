@@ -4,7 +4,7 @@ import * as Style from "./style";
 import Modal from "react-modal";
 import { Calendar } from 'react-calendar';
 
-interface ModalAksForHourProps {
+interface ModalConfirmTimeProps {
   isModalOpen: boolean;
   setIsModalOpen: Dispatch<SetStateAction<boolean>>;
 }
@@ -24,18 +24,15 @@ export const customStyles = {
   },
 };
 
-const AskForHour = ({
+const ConfirmTime = ({
   isModalOpen,
   setIsModalOpen,
 
-}: ModalAksForHourProps) => {
+}: ModalConfirmTimeProps) => {
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
-
-
-  
 
   return (
     <Modal
@@ -43,11 +40,11 @@ const AskForHour = ({
       onRequestClose={handleCloseModal}
       style={customStyles}
     >
-      <Style.ModalAksForHourContainer>
+      <Style.ModalConfirmTimeContainer>
         <div>
           <Style.BackArrow onClick={handleCloseModal} />
         </div>
-        <h2>Confirmar pedido de hora extra para 26/03/2023?</h2>
+        <h2>Confirmar registro de horário?</h2>
         <section className="botton">
           <Button variant="contained" className="buttonEnter cancel" onClick={()=>{handleCloseModal()}}>
             Cancelar
@@ -56,9 +53,9 @@ const AskForHour = ({
             Confirmar
           </Button>
         </section>
-      </Style.ModalAksForHourContainer>
+      </Style.ModalConfirmTimeContainer>
     </Modal>
   );
 };
 
-export default AskForHour;
+export default ConfirmTime;
