@@ -4,7 +4,7 @@ import * as Style from "./style";
 import Modal from "react-modal";
 import { Calendar } from 'react-calendar';
 
-interface ModalAksForHourProps {
+interface ModalConfirmTimeProps {
   isModalOpen: boolean;
   setIsModalOpen: Dispatch<SetStateAction<boolean>>;
 }
@@ -24,20 +24,15 @@ export const customStyles = {
   },
 };
 
-const AskForHour = ({
+const ConfirmTime = ({
   isModalOpen,
   setIsModalOpen,
 
-}: ModalAksForHourProps) => {
+}: ModalConfirmTimeProps) => {
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
-
-
-  const [date, setDate] = useState(new Date());
-
-  
 
   return (
     <Modal
@@ -45,26 +40,22 @@ const AskForHour = ({
       onRequestClose={handleCloseModal}
       style={customStyles}
     >
-      <Style.ModalAksForHourContainer>
+      <Style.ModalConfirmTimeContainer>
         <div>
           <Style.BackArrow onClick={handleCloseModal} />
         </div>
-        <h2>Selecione uma data</h2>
-        <div className="calendarSpace">
-          {/* <h1>Selecione uma data</h1> */}
-          <Calendar value={date} onChange={setDate} />
-        </div>
+        <h2>Confirmar registro de horário?</h2>
         <section className="botton">
-          <Button variant="contained" className="buttonEnter cancel" onClick={()=>{}}>
+          <Button variant="contained" className="buttonEnter cancel" onClick={()=>{handleCloseModal()}}>
             Cancelar
           </Button>
           <Button variant="contained" className="buttonEnter" onClick={()=>{}}>
-            Atualizar
+            Confirmar
           </Button>
         </section>
-      </Style.ModalAksForHourContainer>
+      </Style.ModalConfirmTimeContainer>
     </Modal>
   );
 };
 
-export default AskForHour;
+export default ConfirmTime;

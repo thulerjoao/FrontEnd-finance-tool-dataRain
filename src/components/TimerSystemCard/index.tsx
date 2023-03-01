@@ -3,7 +3,8 @@ import React, { Dispatch, SetStateAction, useEffect } from "react";
 import { useState } from "react";
 import moment from "moment";
 import { Button } from "@mui/material";
-import AskForHour from "../AskForHour";
+import AskForHour from "../ModalAskForHour";
+import ConfirmTime from "../ModalConfirmTime";
 
 interface TimerSystemProps {
   setIsTimerSystem: Dispatch<SetStateAction<boolean>>
@@ -70,18 +71,17 @@ const TimerSystemCard = ({setIsTimerSystem}:TimerSystemProps) => {
                     </div>
                   </span>
                   <span className="buttons">
-                    <Button  variant="contained" className="buttonEnter " onClick={()=>{}}>Marcar Ponto
-                    </Button>
                     <Button  
                       variant="contained" 
                       className="buttonEnter extra" 
                       onClick={()=>{setIsTimerSystem(false)}
-                      }>Hora extra
+                    }>Hora extra
                     </Button>
+                    <Button  variant="contained" className="buttonEnter " onClick={()=>{setIsModalOpen(true)}}>Marcar Ponto</Button>
                   </span>
                 </div>
               </section>
-              <AskForHour
+              <ConfirmTime
                     isModalOpen={isModalOpen}
                     setIsModalOpen={setIsModalOpen}
                   />    
