@@ -2,6 +2,8 @@ import styled, { css } from "styled-components";
 import theme from "../../styles/theme";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { BsFolderPlus } from "react-icons/bs";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+
 
 export const QuestionContainer = styled.div`
   ${({ theme }) => css`
@@ -217,3 +219,18 @@ margin-top: 50%;
 cursor: pointer;
 margin-left: 1rem;
 `
+
+export const arrowUp = styled(IoIosArrowUp) `
+  cursor: pointer;
+  
+  :hover{
+    transform: scale(1.3);
+  }
+  `
+  export const arrowDown = styled(IoIosArrowDown) `
+      cursor: pointer;
+      
+      :hover{
+        transform: scale(1.3);
+      }
+  `

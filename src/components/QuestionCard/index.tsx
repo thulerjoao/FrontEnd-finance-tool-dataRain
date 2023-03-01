@@ -1,23 +1,21 @@
 import { useEffect, useState } from "react";
-import { useAuth } from "../../contexts/auth";
 import { useQuestions } from "../../contexts/questions";
-
 import * as Style from "./style"
 import { useTeam } from "../../contexts/teamContext";
 import toast from "react-hot-toast";
 import Api from "../../services/api";
 import DeleteQuestion from "../ModalDelete";
 
-const QuestionCard = (param:{element:any, count:number}) => {
 
-  
+const QuestionCard = (param:{element:any, count:number, lastIndex:number}) => {
+
+  const lastIndex = param.lastIndex
   const element = param.element
   const index = param.count
   const { updateQuestion } = useQuestions();
   const { team , firstTeamId } = useTeam()
 
   const [ isModalOpen, setIsModalOpen] = useState<boolean>(false)
-  
   const [ data, setData] = useState<any>(element)
   const [ questionIndex, setQuestionIndex ] = useState<number>(0)
   const [ alternativeIndex, setAlternativeIndex ] = useState<number>(0)
@@ -126,6 +124,7 @@ const QuestionCard = (param:{element:any, count:number}) => {
   return (
       <Style.QuestionContainer>                  
               <form onSubmit={(e)=>e.preventDefault()} key={index} className="section02">
+              {index!== 0 && <Style.arrowUp/>}
               <div className="title">
                 <p>{`Questão ${index+1}`}</p>
                 <div>
@@ -217,6 +216,7 @@ const QuestionCard = (param:{element:any, count:number}) => {
                     </div>
                   </div>
               </section>
+            {lastIndex !== index && <Style.arrowDown/>}
             </form>
         <DeleteQuestion 
           setIsModalOpen={setIsModalOpen}

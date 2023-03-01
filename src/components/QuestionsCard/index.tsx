@@ -40,7 +40,8 @@ const QuestionsCard = () => {
   }
 
   
-  const [ ordernedList, setOrdernedList ] = useState<any>()
+  const [ ordernedList, setOrdernedList ] = useState<any>([])
+  const lastIndex = ordernedList.length - 1;
 
   // const ordernedList = questions && questions.sort(function(a:any,b:any){
   //   return a.id < b.id ? -1 : a.id > b.id ? 1 : 0
@@ -54,7 +55,6 @@ const QuestionsCard = () => {
 
   useEffect(()=>handleOrder(),[questions])
   useEffect(()=>handleOrder(),[])
-
        
         
   return (
@@ -73,9 +73,9 @@ const QuestionsCard = () => {
               <p className="newAlternative" onClick={()=> handleNewQuestion()}>Cadastrar questão</p>
               </section>
             </section>}
-          {ordernedList && ordernedList.map((element:any, index:any)=>{
+          {ordernedList && ordernedList.map((element:any, index:number)=>{
             return(
-              <QuestionCard element={element} count={index} key={index}/>                     
+              <QuestionCard element={element} count={index} key={index} lastIndex={lastIndex}/>                     
             )
             })}
         </section>
