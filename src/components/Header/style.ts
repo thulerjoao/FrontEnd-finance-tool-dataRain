@@ -1,8 +1,9 @@
 import styled, { css } from "styled-components";
 import topBar from "../../assets/images/topBar.png";
-import { IoMdNotificationsOutline } from "react-icons/io";
+import { TbBellRinging } from "react-icons/tb";
 import { BsGear, BsThreeDotsVertical } from "react-icons/bs";
 import "animate.css";
+
 
 export const HeaderContainer = styled.div`
   ${({ theme }) => css`
@@ -59,6 +60,8 @@ export const HeaderContainer = styled.div`
         }
       }
       .badge {
+        height: 100%;
+        cursor: pointer;
       }
 
       input {
@@ -79,10 +82,11 @@ export const HeaderContainer = styled.div`
     }
   `}
 `;
-export const bell = styled(IoMdNotificationsOutline)`
-  height: 2.2rem;
-  cursor: pointer;
+export const bell = styled(TbBellRinging)`
+  height: 1.8rem;
+  width: 2.5rem;
   margin-left: 1rem;
+  
 `;
 
 export const gear = styled(BsGear)`
@@ -90,3 +94,25 @@ export const gear = styled(BsGear)`
   cursor: pointer;
   margin-left: 1rem;
 `;
+
+export const Notifications = styled.div`
+  ${({ theme }) => css`
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    /* background-color: pink; */
+
+    .mainBody{
+      top: 4.5rem;
+      left: 25rem;
+      height: 55vh;
+      width: 15vw;
+      background-color: white;
+      position: absolute;
+      border-radius: 5px;
+      z-index: 9999;
+      box-shadow: rgb(0 0 0 / 10%) 1px 1px 10px;
+    }
+  `}`

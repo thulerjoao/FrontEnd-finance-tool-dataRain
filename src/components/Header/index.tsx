@@ -16,7 +16,11 @@ interface SearchProp {
 const Header = ({setSearch}:SearchProp) => {
   const { active, setActive, fade, setFade } = useActive();
   const { userStorage, logout } = useAuth();
+
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [ openNot, setOpenNot ] = useState<boolean>(false)
+
+
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -44,10 +48,9 @@ const Header = ({setSearch}:SearchProp) => {
               | SAIR
             </p>
           </div>
-          <Badge badgeContent={2} color="warning" className="badge">
-            <Style.bell />{" "}
+          <Badge badgeContent={2} color="warning" className="badge" onClick={()=>setOpenNot(true)}>
+            <Style.bell/>
           </Badge>
-          <Style.gear />{" "}
         </div>
         {
         fade && <input
@@ -79,6 +82,11 @@ const Header = ({setSearch}:SearchProp) => {
           <MenuItem onClick={handleClose}>Logout</MenuItem>
         </Menu>
       </section>
+      {openNot && <Style.Notifications onClick={()=>setOpenNot(false)}>
+        <div className="mainBody" onClick={(event)=>{event.stopPropagation()}}>
+
+        </div>
+      </Style.Notifications>}
     </Style.HeaderContainer>
   );
 };
