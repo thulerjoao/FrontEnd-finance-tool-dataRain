@@ -3,9 +3,13 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import * as Style from "./style";
 import Modal from "react-modal";
 import { Calendar } from 'react-calendar';
+import Api from "../../services/api";
+import { toast } from "react-hot-toast";
+import { useProject } from "../../contexts/projectContext";
 
 interface ModalConfirmTimeProps {
   isModalOpen: boolean;
+  projectId: string;
   setIsModalOpen: Dispatch<SetStateAction<boolean>>;
 }
 
@@ -27,12 +31,32 @@ export const customStyles = {
 const ConfirmTime = ({
   isModalOpen,
   setIsModalOpen,
+  projectId,
 
 }: ModalConfirmTimeProps) => {
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
+
+  const { handleGetHours } = useProject()
+
+  const handleMarkHors = () =>{
+    Api.post("/normal-hour", {
+      projectId: projectId
+    }).then(()=>{
+      toast.success('Feito')
+      handleCloseModal()
+      handleGetHours(projectId)
+    }).catch(()=>{
+      toast.error('Erro ao lançar hora')
+      setIsModalOpen(false)
+    })
+  }
+
+
+
+  
 
   return (
     <Modal
@@ -49,7 +73,7 @@ const ConfirmTime = ({
           <Button variant="contained" className="buttonEnter cancel" onClick={()=>{handleCloseModal()}}>
             Cancelar
           </Button>
-          <Button variant="contained" className="buttonEnter" onClick={()=>{}}>
+          <Button variant="contained" className="buttonEnter" onClick={()=>{handleMarkHors()}}>
             Confirmar
           </Button>
         </section>

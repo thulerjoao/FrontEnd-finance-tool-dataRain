@@ -80,7 +80,6 @@ export const AuthProvider = ({children}:AuthProviderProps)=>{
         setLogged(true);
         user && setUserStorage(user)
         navigate("/home")
-        toast.success("Login bem sucedido")
     }
 
     const logout = () =>{

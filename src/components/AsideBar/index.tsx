@@ -35,7 +35,7 @@ const AsideBar = () => {
               <span>
                 <AiOutlineHome />
               </span>
-              Início
+              Formulários
             </S.AsidebarContentLi>
             <S.AsidebarContentLi 
               className={active === "timeCard"? "active" : ""} 
