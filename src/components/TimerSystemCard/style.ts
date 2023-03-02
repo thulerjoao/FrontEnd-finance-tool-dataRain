@@ -108,7 +108,7 @@ export const TimeCardContainer = styled.div`
 
               h2{
                 /* font-family: 'Press Start 2P', rubik; */
-                width: 14vw;
+                width: 14.5vw;
                 text-align: start;
                 font-size: 6.5vh;
                 color: ${theme.colors.primaryColor};

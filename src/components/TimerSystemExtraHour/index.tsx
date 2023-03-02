@@ -48,8 +48,10 @@ const TimerSystemExtraHour = ({setIsTimerSystem}:TimerSystemProps) => {
       requestDescription: text,
     }).then(()=>{
       toast.success("Pedido enviado")
+      setIsModalOpen(false)
     }).catch(()=>{
       toast.error("Falha ao realizar pedido")
+      setIsModalOpen(false)
     })
   }
   

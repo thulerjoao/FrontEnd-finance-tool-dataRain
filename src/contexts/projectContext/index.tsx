@@ -13,6 +13,8 @@ import { useAuth } from "../auth";
 interface ProjectProviderData {
   projects: ProjectTypes[];
   handleGetProjects: () => void;
+  projectHours: any;
+  handleGetHours: (prop:string)=>void
 }
 
 interface ProjectProviderProps {
@@ -25,23 +27,34 @@ const ProjectContext = createContext<ProjectProviderData>(
 
 export const ProjectProvider = ({ children }: ProjectProviderProps) => {
   const [projects, setProjects] = useState<ProjectTypes[]>([]);
+  const [ projectHours, setProjectHours ] = useState<any>()
   const { logged } = useAuth();
 
  
 
   const handleGetProjects = () => {
     Api.get("/project")
-      .then((res) => {setProjects(res.data)})
+      .then((res) => {
+        setProjects(res.data)
+        handleGetHours(res.data[0].id)
+      })
       .catch((err) => {});
   };
 
   useEffect(() => {
-    if (logged) handleGetProjects();
+    if (logged) {
+      handleGetProjects();
+    }
   }, [logged]);
+
+  const handleGetHours = (id:string) => {
+    Api.get(`/normal-hour/${id}`)
+    .then((res)=> setProjectHours(res.data))
+  } 
 
   return (
     <ProjectContext.Provider
-      value={{ projects, handleGetProjects }}
+      value={{ projects, handleGetProjects, projectHours, handleGetHours }}
     >
       {children}
     </ProjectContext.Provider>
