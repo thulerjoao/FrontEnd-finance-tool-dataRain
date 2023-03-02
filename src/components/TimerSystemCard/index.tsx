@@ -37,8 +37,6 @@ const TimerSystemCard = ({setIsTimerSystem}:TimerSystemProps) => {
       return(prop.charAt(0).toUpperCase() + prop.slice(1))
     }
 
-    const test = ["7:30", "12:02", "13:01"]
-
   return (
           <Style.TimeCardContainer>
               <section className="section01">
@@ -71,13 +69,13 @@ const TimerSystemCard = ({setIsTimerSystem}:TimerSystemProps) => {
                     </div>
                   </span>
                   <span className="buttons">
+                    <Button  variant="contained" className="buttonEnter " onClick={()=>{setIsModalOpen(true)}}>Marcar Ponto</Button>
                     <Button  
                       variant="contained" 
                       className="buttonEnter extra" 
                       onClick={()=>{setIsTimerSystem(false)}
                     }>Hora extra
                     </Button>
-                    <Button  variant="contained" className="buttonEnter " onClick={()=>{setIsModalOpen(true)}}>Marcar Ponto</Button>
                   </span>
                 </div>
               </section>

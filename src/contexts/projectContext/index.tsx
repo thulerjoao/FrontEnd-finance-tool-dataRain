@@ -13,8 +13,6 @@ import { useAuth } from "../auth";
 interface ProjectProviderData {
   projects: ProjectTypes[];
   handleGetProjects: () => void;
-  estado: boolean;
-  alteraEstado: () => void;
 }
 
 interface ProjectProviderProps {
@@ -27,12 +25,9 @@ const ProjectContext = createContext<ProjectProviderData>(
 
 export const ProjectProvider = ({ children }: ProjectProviderProps) => {
   const [projects, setProjects] = useState<ProjectTypes[]>([]);
-  const [estado, setEstado] = useState<boolean>(false)
   const { logged } = useAuth();
 
-  const alteraEstado = ()=>{
-    setEstado(!estado)
-  }
+ 
 
   const handleGetProjects = () => {
     Api.get("/project")
@@ -46,7 +41,7 @@ export const ProjectProvider = ({ children }: ProjectProviderProps) => {
 
   return (
     <ProjectContext.Provider
-      value={{ projects, handleGetProjects, estado, alteraEstado }}
+      value={{ projects, handleGetProjects }}
     >
       {children}
     </ProjectContext.Provider>

@@ -7,6 +7,8 @@ import { Calendar } from 'react-calendar';
 interface ModalAksForHourProps {
   isModalOpen: boolean;
   setIsModalOpen: Dispatch<SetStateAction<boolean>>;
+  comertialDate: string;
+  finishRequirement: ()=>void;
 }
 
 export const customStyles = {
@@ -27,6 +29,8 @@ export const customStyles = {
 const AskForHour = ({
   isModalOpen,
   setIsModalOpen,
+  comertialDate,
+  finishRequirement
 
 }: ModalAksForHourProps) => {
 
@@ -47,12 +51,12 @@ const AskForHour = ({
         <div>
           <Style.BackArrow onClick={handleCloseModal} />
         </div>
-        <h2>Confirmar pedido de hora extra para 26/03/2023?</h2>
+        <h2>{`Confirmar pedido de hora extra para ${comertialDate}?`}</h2>
         <section className="botton">
           <Button variant="contained" className="buttonEnter cancel" onClick={()=>{handleCloseModal()}}>
             Cancelar
           </Button>
-          <Button variant="contained" className="buttonEnter" onClick={()=>{}}>
+          <Button variant="contained" className="buttonEnter" onClick={()=>{finishRequirement()}}>
             Confirmar
           </Button>
         </section>

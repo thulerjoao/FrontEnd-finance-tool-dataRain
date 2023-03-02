@@ -1,5 +1,5 @@
 export interface UserTypes {
-  id?: string;
+  id: string;
   name: string;
   email: string;
   password?: string;
@@ -13,13 +13,13 @@ export interface UserTypes {
 }
 
 export interface TeamsTypes {
-  id?: string;
+  id: string;
   name: string;
   valuePerHour: number;
 }
 
 export interface ClientTypes {
-  id?: string;
+  id: string;
   email: string;
   companyName: string;
   phone: string;
@@ -30,7 +30,7 @@ export interface ClientTypes {
 }
 
 export interface ProjectTypes {
-  id?: string;
+  id: string;
   name: string;
   description: string;
   client:string,
