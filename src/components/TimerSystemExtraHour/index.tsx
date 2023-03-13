@@ -28,6 +28,12 @@ const TimerSystemExtraHour = ({setIsTimerSystem}:TimerSystemProps) => {
   const [ text, setText ] = useState<string>('')
   const [ isModalOpen, setIsModalOpen] = useState<boolean>(false)
   const [ extraHour, setExtraHour ] = useState<ExtraHour[]>([])
+  const [ isExtraHour, setIsExtraHour ] = useState<boolean>(false)
+
+  useEffect(()=>{
+    extraHour.map((element)=> element.dateToSendTime === comertialDate && setIsExtraHour(true))
+  },[extraHour])
+  
 
   const handleRequire = () =>{
     if(date >= currentDate){
@@ -61,8 +67,6 @@ const TimerSystemExtraHour = ({setIsTimerSystem}:TimerSystemProps) => {
   })
 },[])
 
-console.log(extraHour)
-
   return (
           <Style.TimeCardContainer>
               <section className="section01">
@@ -79,7 +83,7 @@ console.log(extraHour)
                           )
                         })}
                       </select>
-                      <p>ATENÇÃO: Lançamento de hora extra liberado para o dia de hoje.</p>
+                      {isExtraHour&& <p>ATENÇÃO: Lançamento de hora extra liberado para o dia de hoje.</p>}
                       </div>
                       <div className="askForTime">
                           <Calendar className="calendar" value={date} onChange={setDate}/>
@@ -92,39 +96,12 @@ console.log(extraHour)
                           {extraHour && extraHour.map((element)=>{
                             return(
                               <div>
-                                <p className="approved">- {element.dateToSendTime} - Aprovado </p>
+                                <p className={element.status}>- {element.dateToSendTime} - {element.status === "approved"? 
+                                  "Aprovado":element.status === "analyze"?"Em Análise": "Negado"} </p>
                                 <p className="description">Preciso dessa hora para ajustar o modal de editar clientes</p>
                               </div>
                             )
                           })}
-                          {/* <div>
-                            <p className="approved">- 17/03/2023 - Aprovado</p>
-                            <p className="description">Preciso dessa hora para ajustar o modal de editar clientes</p>
-                          </div>
-                          <div>
-                            <p>- 17/03/2023 - Em análise</p>
-                            <p className="description">Preciso dessa hora para ajustar o modal de editar clientes</p>
-                          </div>
-                          <div>
-                            <p>- 17/03/2023 - Em análise</p>
-                            <p className="description">Preciso dessa hora para ajustar o modal de editar clientes</p>
-                          </div>
-                          <div>
-                            <p className="reproved">- 17/03/2023 - Reprovado</p>
-                            <p className="description">Preciso dessa hora para ajustar o modal de editar clientes</p>
-                          </div>
-                          <div>
-                            <p>- 17/03/2023 - Em análise</p>
-                            <p className="description">Preciso dessa hora para ajustar o modal de editar clientes</p>
-                          </div>
-                          <div>
-                            <p className="reproved">- 17/03/2023 - Reprovado</p>
-                            <p className="description">Preciso dessa hora para ajustar o modal de editar clientes</p>
-                          </div>
-                          <div>
-                            <p className="reproved">- 17/03/2023 - Reprovado</p>
-                            <p className="description">Preciso dessa hora para ajustar o modal de editar clientes</p>
-                          </div> */}
                         </section>
                       </div>
                   </div>

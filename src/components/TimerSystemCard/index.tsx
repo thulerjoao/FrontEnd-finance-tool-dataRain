@@ -21,18 +21,6 @@ const TimerSystemCard = ({setIsTimerSystem}:TimerSystemProps) => {
   const [ isModalOpen, setIsModalOpen] = useState<boolean>(false);
   
 
-  	
-// Response body
-// Download
-// {
-//   "date": "02/03/2023",
-//   "entry": "00:10:36",
-//   "exitToBreak": null,
-//   "backFromTheBreak": null,
-//   "exit": null
-// }
-  
-
   useEffect(() => {
     const intervalId = setInterval(() => {
       setTime(moment().format('HH:mm:ss'));
