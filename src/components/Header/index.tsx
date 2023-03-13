@@ -7,6 +7,7 @@ import logo from "../../assets/images/logo.png";
 import { useAuth } from "../../contexts/auth";
 import * as Style from "./style";
 import { useActive } from "../../contexts/activePage";
+import socket from "../../socket";
 
 interface SearchProp {
   // setSearch: Dispatch<SetStateAction<string>>
@@ -28,6 +29,12 @@ const Header = ({setSearch}:SearchProp) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+
+  useEffect(() => {
+    socket.on('connection', (data: any) => {
+    });
+  }, []);
 
   return (
     <Style.HeaderContainer>

@@ -18,7 +18,7 @@ const TimerSystemCard = ({setIsTimerSystem}:TimerSystemProps) => {
   const [ projectId, setProjectId ] = useState<string>(projects[0].id)
 
   const [time, setTime] = useState(moment().format('HH:mm:ss'));
-  const [ isModalOpen, setIsModalOpen] = useState<boolean>(false)
+  const [ isModalOpen, setIsModalOpen] = useState<boolean>(false);
   
 
   	

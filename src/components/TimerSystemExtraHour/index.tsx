@@ -9,6 +9,7 @@ import AskForHour from "../ModalAskForHour";
 import { toast } from "react-hot-toast";
 import Api from "../../services/api";
 import { useProject } from "../../contexts/projectContext";
+import { ExtraHour } from "../../types/interface";
 
 interface TimerSystemProps {
   setIsTimerSystem: Dispatch<SetStateAction<boolean>>
@@ -22,12 +23,11 @@ const TimerSystemExtraHour = ({setIsTimerSystem}:TimerSystemProps) => {
   const [date, setDate] = useState(new Date());
   const currentDate = new Date()
   const comertialDate = (moment(date).format('DD/MM/YYYY'));
-
-  console.log(currentDate);
   
 
   const [ text, setText ] = useState<string>('')
   const [ isModalOpen, setIsModalOpen] = useState<boolean>(false)
+  const [ extraHour, setExtraHour ] = useState<ExtraHour[]>([])
 
   const handleRequire = () =>{
     if(date >= currentDate){
@@ -54,8 +54,14 @@ const TimerSystemExtraHour = ({setIsTimerSystem}:TimerSystemProps) => {
       setIsModalOpen(false)
     })
   }
-  
- 
+
+  useEffect(()=>{
+    Api.get(`/request-send-overtime/user/status/${projectId}`)
+    .then((res)=>{setExtraHour(res.data);
+  })
+},[])
+
+console.log(extraHour)
 
   return (
           <Style.TimeCardContainer>
@@ -83,7 +89,15 @@ const TimerSystemExtraHour = ({setIsTimerSystem}:TimerSystemProps) => {
                       <div className="statusSection">
                         <h3>Status de pedidos</h3>
                         <section>
-                          <div>
+                          {extraHour && extraHour.map((element)=>{
+                            return(
+                              <div>
+                                <p className="approved">- {element.dateToSendTime} - Aprovado </p>
+                                <p className="description">Preciso dessa hora para ajustar o modal de editar clientes</p>
+                              </div>
+                            )
+                          })}
+                          {/* <div>
                             <p className="approved">- 17/03/2023 - Aprovado</p>
                             <p className="description">Preciso dessa hora para ajustar o modal de editar clientes</p>
                           </div>
@@ -110,7 +124,7 @@ const TimerSystemExtraHour = ({setIsTimerSystem}:TimerSystemProps) => {
                           <div>
                             <p className="reproved">- 17/03/2023 - Reprovado</p>
                             <p className="description">Preciso dessa hora para ajustar o modal de editar clientes</p>
-                          </div>
+                          </div> */}
                         </section>
                       </div>
                   </div>

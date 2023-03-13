@@ -38,3 +38,19 @@ export interface ProjectTypes {
   containsManager: boolean;
   summedTimeValueOfAllUsers: number;
 }
+
+export interface NewNotificationPayload {
+  id: string;
+  receiverId: string;
+  route: string;
+  title: string;
+  message: string;
+  imageUrl: string;
+  visualized: boolean;
+}
+
+export interface ExtraHour{
+  id: string;
+  dateToSendTime: string;
+  status: string;
+}
