@@ -53,4 +53,5 @@ export interface ExtraHour{
   id: string;
   dateToSendTime: string;
   status: string;
+  requestDescription: string;
 }

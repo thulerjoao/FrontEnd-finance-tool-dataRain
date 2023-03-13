@@ -8,14 +8,17 @@ import ConfirmTime from "../ModalConfirmTime";
 import { useProject } from "../../contexts/projectContext";
 
 interface TimerSystemProps {
-  setIsTimerSystem: Dispatch<SetStateAction<boolean>>
+  setIsTimerSystem: Dispatch<SetStateAction<boolean>>,
+  projectId:string,
+  setProjectId: Dispatch<SetStateAction<string>>,
+  isExtraHour: boolean;
 }
 
 
-const TimerSystemCard = ({setIsTimerSystem}:TimerSystemProps) => {
+const TimerSystemCard = ({setIsTimerSystem, projectId, setProjectId, isExtraHour}:TimerSystemProps) => {
 
   const { projects, projectHours, handleGetHours } = useProject()
-  const [ projectId, setProjectId ] = useState<string>(projects[0].id)
+  // const [ projectId, setProjectId ] = useState<string>(projects[0].id)
 
   const [time, setTime] = useState(moment().format('HH:mm:ss'));
   const [ isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -54,14 +57,14 @@ const TimerSystemCard = ({setIsTimerSystem}:TimerSystemProps) => {
               <section className="section02">
                 <div className="mainCard">
                 <div className="topPart">
-                  <select onChange={(e)=>{handleChangeProject(e.target.value)}}>
+                  <select value={projectId} onChange={(e)=>{handleChangeProject(e.target.value)}}>
                     {projects && projects.map((element)=>{
                       return(
                         <option value={element.id}>{element.name}</option>                        
                       )
                     })}
                   </select>
-                  <p>ATENÇÃO: Lançamento de hora extra liberado para o dia de hoje</p>
+                  {isExtraHour && <p>ATENÇÃO: Lançamento de hora extra liberado para o dia de hoje</p>}
                 </div>
                   <span className="machine">
                     <div className="screen">

@@ -12,13 +12,16 @@ import { useProject } from "../../contexts/projectContext";
 import { ExtraHour } from "../../types/interface";
 
 interface TimerSystemProps {
-  setIsTimerSystem: Dispatch<SetStateAction<boolean>>
+  setIsTimerSystem: Dispatch<SetStateAction<boolean>>,
+  projectId:string,
+  setProjectId: Dispatch<SetStateAction<string>>,
+  isExtraHour: boolean,
+  extraHour: ExtraHour[],
 }
 
-const TimerSystemExtraHour = ({setIsTimerSystem}:TimerSystemProps) => {
+const TimerSystemExtraHour = ({setIsTimerSystem, projectId, setProjectId, isExtraHour, extraHour}:TimerSystemProps) => {
 
   const { projects } = useProject()
-  const [ projectId, setProjectId ] = useState<string>(projects[0].id)
   
   const [date, setDate] = useState(new Date());
   const currentDate = new Date()
@@ -27,12 +30,7 @@ const TimerSystemExtraHour = ({setIsTimerSystem}:TimerSystemProps) => {
 
   const [ text, setText ] = useState<string>('')
   const [ isModalOpen, setIsModalOpen] = useState<boolean>(false)
-  const [ extraHour, setExtraHour ] = useState<ExtraHour[]>([])
-  const [ isExtraHour, setIsExtraHour ] = useState<boolean>(false)
 
-  useEffect(()=>{
-    extraHour.map((element)=> element.dateToSendTime === comertialDate && setIsExtraHour(true))
-  },[extraHour])
   
 
   const handleRequire = () =>{
@@ -60,12 +58,6 @@ const TimerSystemExtraHour = ({setIsTimerSystem}:TimerSystemProps) => {
       setIsModalOpen(false)
     })
   }
-
-  useEffect(()=>{
-    Api.get(`/request-send-overtime/user/status/${projectId}`)
-    .then((res)=>{setExtraHour(res.data);
-  })
-},[])
 
   return (
           <Style.TimeCardContainer>
@@ -98,7 +90,7 @@ const TimerSystemExtraHour = ({setIsTimerSystem}:TimerSystemProps) => {
                               <div>
                                 <p className={element.status}>- {element.dateToSendTime} - {element.status === "approved"? 
                                   "Aprovado":element.status === "analyze"?"Em Análise": "Negado"} </p>
-                                <p className="description">Preciso dessa hora para ajustar o modal de editar clientes</p>
+                                <p className="description">{element.requestDescription}</p>
                               </div>
                             )
                           })}
