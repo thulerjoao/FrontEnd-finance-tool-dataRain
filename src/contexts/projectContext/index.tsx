@@ -49,7 +49,11 @@ export const ProjectProvider = ({ children }: ProjectProviderProps) => {
 
   const handleGetHours = (id:string) => {
     Api.get(`/normal-hour/${id}`)
-    .then((res)=> setProjectHours(res.data))
+    .then((res)=> {
+      setProjectHours(res.data);
+      console.log(res.data);
+      
+    })
   } 
 
   return (

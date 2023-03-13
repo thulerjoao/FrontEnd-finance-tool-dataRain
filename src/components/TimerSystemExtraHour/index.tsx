@@ -9,6 +9,7 @@ import AskForHour from "../ModalAskForHour";
 import { toast } from "react-hot-toast";
 import Api from "../../services/api";
 import { useProject } from "../../contexts/projectContext";
+import { ExtraHour } from "../../types/interface";
 
 interface TimerSystemProps {
   setIsTimerSystem: Dispatch<SetStateAction<boolean>>
@@ -22,12 +23,17 @@ const TimerSystemExtraHour = ({setIsTimerSystem}:TimerSystemProps) => {
   const [date, setDate] = useState(new Date());
   const currentDate = new Date()
   const comertialDate = (moment(date).format('DD/MM/YYYY'));
-
-  console.log(currentDate);
   
 
   const [ text, setText ] = useState<string>('')
   const [ isModalOpen, setIsModalOpen] = useState<boolean>(false)
+  const [ extraHour, setExtraHour ] = useState<ExtraHour[]>([])
+  const [ isExtraHour, setIsExtraHour ] = useState<boolean>(false)
+
+  useEffect(()=>{
+    extraHour.map((element)=> element.dateToSendTime === comertialDate && setIsExtraHour(true))
+  },[extraHour])
+  
 
   const handleRequire = () =>{
     if(date >= currentDate){
@@ -54,8 +60,12 @@ const TimerSystemExtraHour = ({setIsTimerSystem}:TimerSystemProps) => {
       setIsModalOpen(false)
     })
   }
-  
- 
+
+  useEffect(()=>{
+    Api.get(`/request-send-overtime/user/status/${projectId}`)
+    .then((res)=>{setExtraHour(res.data);
+  })
+},[])
 
   return (
           <Style.TimeCardContainer>
@@ -73,7 +83,7 @@ const TimerSystemExtraHour = ({setIsTimerSystem}:TimerSystemProps) => {
                           )
                         })}
                       </select>
-                      <p>ATENÇÃO: Lançamento de hora extra liberado para o dia de hoje.</p>
+                      {isExtraHour&& <p>ATENÇÃO: Lançamento de hora extra liberado para o dia de hoje.</p>}
                       </div>
                       <div className="askForTime">
                           <Calendar className="calendar" value={date} onChange={setDate}/>
@@ -83,34 +93,15 @@ const TimerSystemExtraHour = ({setIsTimerSystem}:TimerSystemProps) => {
                       <div className="statusSection">
                         <h3>Status de pedidos</h3>
                         <section>
-                          <div>
-                            <p className="approved">- 17/03/2023 - Aprovado</p>
-                            <p className="description">Preciso dessa hora para ajustar o modal de editar clientes</p>
-                          </div>
-                          <div>
-                            <p>- 17/03/2023 - Em análise</p>
-                            <p className="description">Preciso dessa hora para ajustar o modal de editar clientes</p>
-                          </div>
-                          <div>
-                            <p>- 17/03/2023 - Em análise</p>
-                            <p className="description">Preciso dessa hora para ajustar o modal de editar clientes</p>
-                          </div>
-                          <div>
-                            <p className="reproved">- 17/03/2023 - Reprovado</p>
-                            <p className="description">Preciso dessa hora para ajustar o modal de editar clientes</p>
-                          </div>
-                          <div>
-                            <p>- 17/03/2023 - Em análise</p>
-                            <p className="description">Preciso dessa hora para ajustar o modal de editar clientes</p>
-                          </div>
-                          <div>
-                            <p className="reproved">- 17/03/2023 - Reprovado</p>
-                            <p className="description">Preciso dessa hora para ajustar o modal de editar clientes</p>
-                          </div>
-                          <div>
-                            <p className="reproved">- 17/03/2023 - Reprovado</p>
-                            <p className="description">Preciso dessa hora para ajustar o modal de editar clientes</p>
-                          </div>
+                          {extraHour && extraHour.map((element)=>{
+                            return(
+                              <div>
+                                <p className={element.status}>- {element.dateToSendTime} - {element.status === "approved"? 
+                                  "Aprovado":element.status === "analyze"?"Em Análise": "Negado"} </p>
+                                <p className="description">Preciso dessa hora para ajustar o modal de editar clientes</p>
+                              </div>
+                            )
+                          })}
                         </section>
                       </div>
                   </div>

@@ -18,19 +18,7 @@ const TimerSystemCard = ({setIsTimerSystem}:TimerSystemProps) => {
   const [ projectId, setProjectId ] = useState<string>(projects[0].id)
 
   const [time, setTime] = useState(moment().format('HH:mm:ss'));
-  const [ isModalOpen, setIsModalOpen] = useState<boolean>(false)
-  
-
-  	
-// Response body
-// Download
-// {
-//   "date": "02/03/2023",
-//   "entry": "00:10:36",
-//   "exitToBreak": null,
-//   "backFromTheBreak": null,
-//   "exit": null
-// }
+  const [ isModalOpen, setIsModalOpen] = useState<boolean>(false);
   
 
   useEffect(() => {
