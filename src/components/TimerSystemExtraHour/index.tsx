@@ -94,6 +94,7 @@ const TimerSystemExtraHour = ({setIsTimerSystem, projectId, handleProject, isExt
                               </div>
                             )
                           })}
+                          {extraHour.length == 0 && <div><p>Nenhuma requisição encontrada</p></div>}
                         </section>
                       </div>
                   </div>
