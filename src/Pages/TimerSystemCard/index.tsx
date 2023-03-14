@@ -12,7 +12,7 @@ import * as Styled from './style';
 
 const TimeCardPage = () => {
 
-  const { projects } = useProject()
+  const { projects, handleGetHours } = useProject()
   const [ projectId, setProjectId ] = useState<string>(projects[0].id)
 
   const [ isTimerSystem, setIsTimerSystem ] = useState<boolean>(true)
@@ -20,8 +20,6 @@ const TimeCardPage = () => {
   const comertialDate = (moment(new Date()).format('DD/MM/YYYY'));
   const [ extraHour, setExtraHour ] = useState<ExtraHour[]>([])
   const [ isExtraHour, setIsExtraHour ] = useState<boolean>(false)
-
-  console.log(extraHour);
   
   
   useEffect(()=>{
@@ -33,6 +31,16 @@ const TimeCardPage = () => {
     .then((res)=>{setExtraHour(res.data);
   })
 },[])
+
+  const handleProject = (projectId: string) =>{
+    setProjectId(projectId);
+    Api.get(`/request-send-overtime/user/status/${projectId}`)
+    .then((res)=>{setExtraHour(res.data);
+      console.log(res.data);
+    })
+    .catch(()=>setExtraHour([]))
+    handleGetHours(projectId)
+  }
   
 
   return (
@@ -48,14 +56,14 @@ const TimeCardPage = () => {
             <TimerSystemCard 
               setIsTimerSystem={setIsTimerSystem}
               projectId={projectId}
-              setProjectId={setProjectId}
+              handleProject={handleProject}
               isExtraHour={isExtraHour}
             />
             :
             <TimerSystemExtraHour 
               setIsTimerSystem={setIsTimerSystem} 
               projectId={projectId}
-              setProjectId={setProjectId}
+              handleProject={handleProject}
               isExtraHour={isExtraHour}
               extraHour={extraHour}
             />}

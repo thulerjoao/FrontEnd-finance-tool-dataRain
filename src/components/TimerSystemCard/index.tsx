@@ -10,12 +10,12 @@ import { useProject } from "../../contexts/projectContext";
 interface TimerSystemProps {
   setIsTimerSystem: Dispatch<SetStateAction<boolean>>,
   projectId:string,
-  setProjectId: Dispatch<SetStateAction<string>>,
+  handleProject:(prop:string)=>void,
   isExtraHour: boolean;
 }
 
 
-const TimerSystemCard = ({setIsTimerSystem, projectId, setProjectId, isExtraHour}:TimerSystemProps) => {
+const TimerSystemCard = ({setIsTimerSystem, projectId, handleProject, isExtraHour}:TimerSystemProps) => {
 
   const { projects, projectHours, handleGetHours } = useProject()
   // const [ projectId, setProjectId ] = useState<string>(projects[0].id)
@@ -45,7 +45,7 @@ const TimerSystemCard = ({setIsTimerSystem, projectId, setProjectId, isExtraHour
     }
 
     const handleChangeProject = (projectId:string) =>{
-      setProjectId(projectId);
+      handleProject(projectId);
       handleGetHours(projectId)
     }
 

@@ -14,12 +14,12 @@ import { ExtraHour } from "../../types/interface";
 interface TimerSystemProps {
   setIsTimerSystem: Dispatch<SetStateAction<boolean>>,
   projectId:string,
-  setProjectId: Dispatch<SetStateAction<string>>,
+  handleProject:(prop:string)=>void,
   isExtraHour: boolean,
   extraHour: ExtraHour[],
 }
 
-const TimerSystemExtraHour = ({setIsTimerSystem, projectId, setProjectId, isExtraHour, extraHour}:TimerSystemProps) => {
+const TimerSystemExtraHour = ({setIsTimerSystem, projectId, handleProject, isExtraHour, extraHour}:TimerSystemProps) => {
 
   const { projects } = useProject()
   
@@ -68,7 +68,7 @@ const TimerSystemExtraHour = ({setIsTimerSystem, projectId, setProjectId, isExtr
                 <div className="mainCard">
                   <div className="fisrtSection">
                       <div className="topPart">
-                      <select onChange={(e)=>setProjectId(e.target.value)}>
+                      <select value={projectId} onChange={(e)=>handleProject(e.target.value)}>
                         {projects && projects.map((element)=>{
                           return(
                             <option value={element.id}>{element.name}</option>

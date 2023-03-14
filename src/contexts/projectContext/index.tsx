@@ -52,8 +52,8 @@ export const ProjectProvider = ({ children }: ProjectProviderProps) => {
     .then((res)=> {
       setProjectHours(res.data);
       console.log(res.data);
-      
     })
+    .catch(()=>setProjectHours([]))
   } 
 
   return (
