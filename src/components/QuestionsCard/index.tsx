@@ -12,6 +12,9 @@ import QuestionCard from "../QuestionCard";
 const QuestionsCard = () => {
   
   const { questions, updateQuestion } = useQuestions();
+
+  console.log(questions);
+  
   
   //newQuestion states and functions:
   const [ newQuestion, setNewQuestion ] = useState<Boolean>(false)
@@ -47,14 +50,17 @@ const QuestionsCard = () => {
   //   return a.id < b.id ? -1 : a.id > b.id ? 1 : 0
   // })
 
-  const handleOrder = () =>{
-    questions && setOrdernedList(questions.sort(function(a:any,b:any){
-      return a.id < b.id ? -1 : a.id > b.id ? 1 : 0
-    }))
-  }
+  // const handleOrder = () =>{
+  //   questions && setOrdernedList(questions.sort(function(a:any,b:any){
+  //     return a.position < b.position ? -1 : a.position > b.position ? 1 : 0
+  //   }))
+  // }
+  
+  // console.log(ordernedList);
+  
 
-  useEffect(()=>handleOrder(),[questions])
-  useEffect(()=>handleOrder(),[])
+  // useEffect(()=>handleOrder(),[questions])
+  // useEffect(()=>handleOrder(),[])
        
         
   return (
@@ -73,7 +79,7 @@ const QuestionsCard = () => {
               <p className="newAlternative" onClick={()=> handleNewQuestion()}>Cadastrar questão</p>
               </section>
             </section>}
-          {ordernedList && ordernedList.map((element:any, index:number)=>{
+          {questions.map((element:any, index:number)=>{
             return(
               <QuestionCard element={element} count={index} key={index} lastIndex={lastIndex}/>                     
             )

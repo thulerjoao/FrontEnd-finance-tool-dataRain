@@ -23,9 +23,10 @@ export const QuestionsProvider = ({children}:QuestionsProviderProps)=>{
         Api.get("/question")
         .then((res)=> {
             setQuestions(res.data);
+            
         })
         .catch(()=>{})
-    }
+    }   
     
     useEffect(() => updateQuestion(), [])
 
