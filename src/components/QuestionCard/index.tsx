@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Dispatch, useEffect, useState } from "react";
 import { useQuestions } from "../../contexts/questions";
 import * as Style from "./style"
 import { useTeam } from "../../contexts/teamContext";
@@ -7,11 +7,12 @@ import Api from "../../services/api";
 import DeleteQuestion from "../ModalDelete";
 
 
-const QuestionCard = (param:{element:any, count:number, lastIndex:number}) => {
+const QuestionCard = (param:{element:any, count:number, lastIndex:number, setReREnder:any}) => {
 
   const lastIndex = param.lastIndex
   const element = param.element
   const index = param.count
+  const setReREnder = param.setReREnder
   const { updateQuestion } = useQuestions();
   const { team , firstTeamId } = useTeam()
 
@@ -120,11 +121,48 @@ const QuestionCard = (param:{element:any, count:number, lastIndex:number}) => {
             toast.error("Valores inválidos")
           } 
         }
+
+        const handleReRender = () =>{
+          setReREnder(false);
+          setTimeout(()=>setReREnder(true),50)
+        }
+
+        const handleUp = ()=>{
+          const newPosition:number = element.position -1
+          const answearId = element.id
+          
+          Api.patch(`/question/${answearId}`,{
+            position: newPosition
+          })
+            .then(()=>{
+              toast.success("Feito");
+              updateQuestion();
+              handleReRender()
+            })
+            .catch(()=>toast.error("Erro ao atualizar"))
+            updateQuestion();
+        }
+        
+        const handleDown = ()=>{
+          const newPosition:number = element.position +1
+          console.log(newPosition);
+          const answearId = element.id
+          Api.patch(`/question/${answearId}`,{
+            position: newPosition
+          })
+            .then(()=>{
+              toast.success("Feito");
+              updateQuestion();
+              handleReRender()
+            })
+            .catch(()=>toast.error("Erro ao atualizar"))
+            updateQuestion();
+        }
         
   return (
       <Style.QuestionContainer>                  
               <form onSubmit={(e)=>e.preventDefault()} key={index} className="section02">
-              {index!== 0 && <Style.arrowUp/>}
+              {index!== 0 && <Style.arrowUp onClick={()=>handleUp()}/>}
               <div className="title">
                 <p>{`Questão ${index+1}`}</p>
                 <div>
@@ -216,7 +254,7 @@ const QuestionCard = (param:{element:any, count:number, lastIndex:number}) => {
                     </div>
                   </div>
               </section>
-            {lastIndex !== index && <Style.arrowDown/>}
+            {lastIndex !== index && <Style.arrowDown onClick={()=>handleDown()}/>}
             </form>
         <DeleteQuestion 
           setIsModalOpen={setIsModalOpen}

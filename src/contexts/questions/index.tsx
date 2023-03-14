@@ -23,9 +23,11 @@ export const QuestionsProvider = ({children}:QuestionsProviderProps)=>{
         Api.get("/question")
         .then((res)=> {
             setQuestions(res.data);
+            console.log("entrei aqui sim");
+            
         })
         .catch(()=>{})
-    }
+    }   
     
     useEffect(() => updateQuestion(), [])
 

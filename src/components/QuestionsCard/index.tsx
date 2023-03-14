@@ -12,11 +12,22 @@ import QuestionCard from "../QuestionCard";
 const QuestionsCard = () => {
   
   const { questions, updateQuestion } = useQuestions();
+
+  console.log(questions);
+  
   
   //newQuestion states and functions:
   const [ newQuestion, setNewQuestion ] = useState<Boolean>(false)
   const [ newTitle, setNewTitle ] = useState<string>("")
+  const [ reRender, setReREnder] = useState<boolean>(true)
   
+  // useEffect(()=>{
+  //   setReREnder(false);
+  //   setTimeout(()=> {
+  //     setReREnder(true);
+  //     stop
+  //   }, 50);
+  // },[questions])
 
   const handleNewQuestion = () =>{
       if(newTitle !== ""){
@@ -47,14 +58,17 @@ const QuestionsCard = () => {
   //   return a.id < b.id ? -1 : a.id > b.id ? 1 : 0
   // })
 
-  const handleOrder = () =>{
-    questions && setOrdernedList(questions.sort(function(a:any,b:any){
-      return a.id < b.id ? -1 : a.id > b.id ? 1 : 0
-    }))
-  }
+  // const handleOrder = () =>{
+  //   questions && setOrdernedList(questions.sort(function(a:any,b:any){
+  //     return a.position < b.position ? -1 : a.position > b.position ? 1 : 0
+  //   }))
+  // }
+  
+  // console.log(ordernedList);
+  
 
-  useEffect(()=>handleOrder(),[questions])
-  useEffect(()=>handleOrder(),[])
+  // useEffect(()=>handleOrder(),[questions])
+  // useEffect(()=>handleOrder(),[])
        
         
   return (
@@ -73,9 +87,14 @@ const QuestionsCard = () => {
               <p className="newAlternative" onClick={()=> handleNewQuestion()}>Cadastrar questão</p>
               </section>
             </section>}
-          {ordernedList && ordernedList.map((element:any, index:number)=>{
+          {reRender && questions.map((element:any, index:number)=>{
             return(
-              <QuestionCard element={element} count={index} key={index} lastIndex={lastIndex}/>                     
+              <QuestionCard 
+                element={element} 
+                count={index} key={index} 
+                lastIndex={lastIndex} 
+                setReREnder={setReREnder}
+              />                     
             )
             })}
         </section>
