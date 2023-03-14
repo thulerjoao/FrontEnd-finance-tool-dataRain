@@ -19,7 +19,15 @@ const QuestionsCard = () => {
   //newQuestion states and functions:
   const [ newQuestion, setNewQuestion ] = useState<Boolean>(false)
   const [ newTitle, setNewTitle ] = useState<string>("")
+  const [ reRender, setReREnder] = useState<boolean>(true)
   
+  // useEffect(()=>{
+  //   setReREnder(false);
+  //   setTimeout(()=> {
+  //     setReREnder(true);
+  //     stop
+  //   }, 50);
+  // },[questions])
 
   const handleNewQuestion = () =>{
       if(newTitle !== ""){
@@ -79,9 +87,14 @@ const QuestionsCard = () => {
               <p className="newAlternative" onClick={()=> handleNewQuestion()}>Cadastrar questão</p>
               </section>
             </section>}
-          {questions.map((element:any, index:number)=>{
+          {reRender && questions.map((element:any, index:number)=>{
             return(
-              <QuestionCard element={element} count={index} key={index} lastIndex={lastIndex}/>                     
+              <QuestionCard 
+                element={element} 
+                count={index} key={index} 
+                lastIndex={lastIndex} 
+                setReREnder={setReREnder}
+              />                     
             )
             })}
         </section>
