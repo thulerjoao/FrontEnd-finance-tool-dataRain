@@ -51,7 +51,6 @@ export const ProjectProvider = ({ children }: ProjectProviderProps) => {
     Api.get(`/normal-hour/${id}`)
     .then((res)=> {
       setProjectHours(res.data);
-      console.log(res.data);
     })
     .catch(()=>setProjectHours([]))
   } 

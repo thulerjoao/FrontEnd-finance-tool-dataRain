@@ -11,6 +11,7 @@ import socket from "../../socket";
 import { NewNotificationPayload } from "../../types/interface";
 import Api from "../../services/api";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 interface SearchProp {
   // setSearch: Dispatch<SetStateAction<string>>
@@ -49,6 +50,7 @@ const Header = ({setSearch}:SearchProp) => {
     }else if(param === "request_send_overtime"){
       navigate(`/pedido-hora-extra`)
     }
+    setOpenNot(false)
   }
 
   const open = Boolean(anchorEl);

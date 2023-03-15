@@ -29,7 +29,6 @@ const CreateAccountCard = ({change, setChange}:ChangeProp) => {
     setSelectedPosition(position[0].id)
   }, [])
 
-  console.log({selectedRole, selectedPosition});
   
 
   interface CreateAccountData {

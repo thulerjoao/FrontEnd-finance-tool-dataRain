@@ -145,7 +145,6 @@ const QuestionCard = (param:{element:any, count:number, lastIndex:number, setReR
         
         const handleDown = ()=>{
           const newPosition:number = element.position +1
-          console.log(newPosition);
           const answearId = element.id
           Api.patch(`/question/${answearId}`,{
             position: newPosition

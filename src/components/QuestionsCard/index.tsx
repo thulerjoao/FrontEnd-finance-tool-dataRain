@@ -12,8 +12,6 @@ import QuestionCard from "../QuestionCard";
 const QuestionsCard = () => {
   
   const { questions, updateQuestion } = useQuestions();
-
-  console.log(questions);
   
   
   //newQuestion states and functions:
