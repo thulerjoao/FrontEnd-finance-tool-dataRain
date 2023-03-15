@@ -130,7 +130,7 @@ const BudgetCard = () =>{
                 <section className="client">
                     <div>
                         <p onClick={()=>handleTotalValues()}>Cliente</p>
-                        <h3>{answers && answers.client.mainContact.charAt(0).toUpperCase() + answers.client.mainContact.slice(1)}</h3>
+                        <h3>{answers && answers.client.primaryContactName.charAt(0).toUpperCase() + answers.client.primaryContactName.slice(1)}</h3>
                     </div>
                     <div>
                         <p>Empresa</p>

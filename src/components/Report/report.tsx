@@ -48,7 +48,7 @@ const reportPDF = (data:any) =>{
                         {text: 'Telefone', style: 'tableHeader', fontSize:15, bold: "true"},
                     ],
                     [
-                        {text: data.client.mainContact, style: 'tableHeader', fontSize:11,margin: [0, 5, 0, 20]},
+                        {text: data.client.primaryContactName, style: 'tableHeader', fontSize:11,margin: [0, 5, 0, 20]},
                         {text: data.client.companyName, style: 'tableHeader', fontSize:11,margin: [0, 5, 0, 20]},
                         {text: data.client.email, style: 'tableHeader', fontSize:11,margin: [0, 5, 0, 20]},
                         {text: data.client.phone, style: 'tableHeader', fontSize:11,margin: [0, 5, 0, 20]},

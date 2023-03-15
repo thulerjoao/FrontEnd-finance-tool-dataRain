@@ -42,7 +42,8 @@ export const UserProvider = ({children}: userProviderProps) => {
         };
       }, [logged]);
     
-
+      console.log(budgets);
+      
 
     return (
         <UserContex.Provider value={{allUsers, budgets, handleGetUsers, handleGetBudgets}}>{children}</UserContex.Provider>

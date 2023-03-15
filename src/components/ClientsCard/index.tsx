@@ -5,8 +5,6 @@ import ClientCard from "../ClientCard";
 import * as Style from "./style"
 
 
-const teste = ['','','','','','','','','','','','','']
-
 
 const ClientsCard = () => {
 

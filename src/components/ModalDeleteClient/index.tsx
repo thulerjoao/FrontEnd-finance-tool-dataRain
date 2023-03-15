@@ -5,13 +5,14 @@ import Modal from "react-modal";
 import Api from "../../services/api";
 import { toast } from "react-hot-toast";
 import { useClient } from "../../contexts/clientContext";
+import { ClientTypes } from "../../types/interface"
 
 
 
 interface DeleteProps {
   isModalOpen: boolean;
   setIsModalOpen: Dispatch<SetStateAction<boolean>>;
-  client: any;
+  client: ClientTypes;
 }
 
 export const customStyles = {

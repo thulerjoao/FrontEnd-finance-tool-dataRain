@@ -23,12 +23,13 @@ export interface ClientTypes {
   email: string;
   companyName: string;
   phone: string;
-  mainContact: string;
-  technicalContact?: string;
-  technicalContactPhone?: string;
-  technicalContactEmail?: string;
+  primaryContactName: string;
+  technicalContact:{
+    name: string,
+    email: string,
+    phone: string
+  }
 }
-
 export interface ProjectTypes {
   id: string;
   name: string;
