@@ -1,12 +1,18 @@
 import { useEffect, useState } from "react";
 import { BsPencil, BsTrash } from "react-icons/bs";
 import Api from "../../services/api";
+import { ClientTypes } from "../../types/interface";
 import DeleteClient from "../ModalDeleteClient";
 import ClientSettings from "../ModalEditClient";
 import * as Style from "./style"
 
 
-const ClientCard = (element:any) => {
+const ClientCard = (param:{element:ClientTypes}) => {
+
+  const client:ClientTypes = param.element
+
+  console.log(client);
+  
 
   const [ open, setOpen ] = useState<boolean>(false)
   const [ isDeleteOpen, setIsDeleteOpen ] = useState<boolean>(false)
@@ -30,12 +36,12 @@ const ClientCard = (element:any) => {
           <Style.ClientContainer>
                     <div className="card">
                       <div >
-                        <h2>{firstUp(element.element.companyName)}</h2>
+                        <h2>{firstUp(client.companyName)}</h2>
                         <Style.Settings onClick={()=>{setOpen(true)}}/>{' '}
                       </div>
                       <section>
-                        <p>{element.element.email}</p>
-                        <p>{phoneMask(element.element.phone)}</p>
+                        <p>{client.email}</p>
+                        <p>{phoneMask(client.phone)}</p>
                       </section>
                   </div>
                   {
@@ -48,12 +54,12 @@ const ClientCard = (element:any) => {
                     <DeleteClient 
                     isModalOpen={isDeleteOpen}
                     setIsModalOpen={setIsDeleteOpen}
-                    client={element.element}
+                    client={client}
                   />
                   <ClientSettings
                     isModalOpen={isEditeOpen}
                     setIsModalOpen={setIsEditeOpen}
-                    client={element.element}
+                    client={client}
                   />   
           </Style.ClientContainer>  
   );

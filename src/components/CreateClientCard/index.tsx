@@ -21,7 +21,7 @@ const CreateClientCard = ({change, setChange}:ChangeProp) => {
     companyName: string;
     email: string;
     phone: string;
-    mainContact: string;
+    primaryContactName: string;
     technicalContact?: string;
     technicalContactPhone?: string;
     technicalContactEmail?: string;
@@ -34,7 +34,7 @@ const CreateClientCard = ({change, setChange}:ChangeProp) => {
       .max(11, "Campo telefone pode conter apenas 11 dígitos")
       .required("Telefone obrigatório"),
     companyName: yup.string().required("Nome obrigatório"),
-    mainContact: yup.string().required("Preencha o campo contato principal"),
+    primaryContactName: yup.string().required("Preencha o campo contato principal"),
     technicalContact: yup.string(),
     technicalContactPhone: yup.string().max(11, "Máximo 11 dígitos"),
     technicalContactEmail: yup.string().email("Email inválido"),
@@ -50,8 +50,8 @@ const CreateClientCard = ({change, setChange}:ChangeProp) => {
     } else if (errors.phone) {
       toast.error(`${errors.phone?.message}`);
       clearErrors();
-    } else if (errors.mainContact) {
-      toast.error(`${errors.mainContact?.message}`);
+    } else if (errors.primaryContactName) {
+      toast.error(`${errors.primaryContactName?.message}`);
       clearErrors();
     } else {
       clearErrors;
@@ -70,7 +70,7 @@ const CreateClientCard = ({change, setChange}:ChangeProp) => {
       data.companyName !== "" ||
       data.email !== "" ||
       data.phone !== "" ||
-      data.mainContact !== ""
+      data.primaryContactName !== ""
     ) {
       Api.post("/client", data)
         .then((res) => {
@@ -104,7 +104,7 @@ const CreateClientCard = ({change, setChange}:ChangeProp) => {
             <Style.InputLabel>Nome do cliente</Style.InputLabel>
             <Style.Inputs type="text" {...register("companyName")} />
             <Style.InputLabel>Nome do contato principal</Style.InputLabel>
-            <Style.Inputs type="text" {...register("mainContact")} />
+            <Style.Inputs type="text" {...register("primaryContactName")} />
             <Style.InputLabel>Nome do contato técnico</Style.InputLabel>
             <Style.Inputs type="text" {...register("technicalContact")} />
             <Style.InputLabel>Telefone do contato técnico</Style.InputLabel>

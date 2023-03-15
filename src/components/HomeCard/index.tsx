@@ -14,7 +14,7 @@ const HomeCard = ({search}: SearchProp) => {
   const { userStorage } = useAuth()
   
   const getByCompany = budgets? budgets.filter((element: any)=>element.client.companyName.toUpperCase().includes(search.toLocaleUpperCase())) : []
-  const getByName = budgets? budgets.filter((element: any)=>element.client.mainContact.toUpperCase().includes(search.toLocaleUpperCase())) : []
+  const getByName = budgets? budgets.filter((element: any)=>element.client.primaryContactName.toUpperCase().includes(search.toLocaleUpperCase())) : []
 
   const list = search.length > 0 ? getByCompany[0] ? getByCompany : getByName[0] ? getByName : [] : budgets
 
@@ -40,6 +40,9 @@ const HomeCard = ({search}: SearchProp) => {
     return(prop.charAt(0).toUpperCase() + prop.slice(1))
   }
 
+  console.log(budgets);
+  
+  
   return (
           <Style.HomeContainer>
               <section className="section01">
@@ -70,7 +73,7 @@ const HomeCard = ({search}: SearchProp) => {
                       navigate("/budget")
                     }}>
                       <div>
-                        <p>{firstUp(element.client.mainContact)}</p>
+                        <p>{firstUp(element.client.primaryContactName)}</p>
                       </div>
                       <div>
                         <p>{firstUp(element.client.companyName)}</p>
