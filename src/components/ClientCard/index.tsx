@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { BsPencil, BsTrash } from "react-icons/bs";
+import { useAuth } from "../../contexts/auth";
 import Api from "../../services/api";
 import { ClientTypes } from "../../types/interface";
 import DeleteClient from "../ModalDeleteClient";
@@ -10,10 +11,8 @@ import * as Style from "./style"
 const ClientCard = (param:{element:ClientTypes}) => {
 
   const client:ClientTypes = param.element
-
-  console.log(client);
   
-
+  const { userStorage } = useAuth()
   const [ open, setOpen ] = useState<boolean>(false)
   const [ isDeleteOpen, setIsDeleteOpen ] = useState<boolean>(false)
   const [ isEditeOpen, setIsEditeOpen ] = useState<boolean>(false)
@@ -37,7 +36,9 @@ const ClientCard = (param:{element:ClientTypes}) => {
                     <div className="card">
                       <div >
                         <h2>{firstUp(client.companyName)}</h2>
-                        <Style.Settings onClick={()=>{setOpen(true)}}/>{' '}
+                        { userStorage.role.name === "admin" && 
+                          <Style.Settings onClick={()=>{setOpen(true)}}/>
+                        }
                       </div>
                       <section>
                         <p>{client.email}</p>

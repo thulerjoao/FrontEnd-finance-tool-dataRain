@@ -23,7 +23,6 @@ const Header = ({setSearch}:SearchProp) => {
   const { userStorage, logout, notifications, getNotifications } = useAuth();
   const navigate = useNavigate()
 
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [ openNot, setOpenNot ] = useState<boolean>(false)
 
   const handleCount =()=>{
@@ -53,20 +52,12 @@ const Header = ({setSearch}:SearchProp) => {
     setOpenNot(false)
   }
 
-  const open = Boolean(anchorEl);
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-
-  useEffect(() => {
+  
     socket.on('new-notification', (data: any) => {
       getNotifications()
+      // console.log(data);
     });
-  }, []);
+  
 
   useEffect(()=>{
     getNotifications()
@@ -115,7 +106,6 @@ function updateElapsedTime(incomingDate: Date): string {
               ></img>
             )}
             <p>{firstUp(userStorage.name)}</p>
-            {/* <p className="secondColorElement">(Admin)</p> */}
             <p className="secondColorElement getOut" onClick={() => {logout(); setActive("")}}>
               | SAIR
             </p>
@@ -135,24 +125,7 @@ function updateElapsedTime(incomingDate: Date): string {
           onChange={(e)=> setSearch(e.target.value)}
         ></input>
         }
-        <img src={logo} onClick={handleClick}></img>
-        <Menu
-          anchorEl={anchorEl}
-          open={open}
-          onClose={handleClose}
-          anchorOrigin={{
-            vertical: "top",
-            horizontal: "left",
-          }}
-          transformOrigin={{
-            vertical: "top",
-            horizontal: "left",
-          }}
-        >
-          <MenuItem onClick={handleClose}>Profile</MenuItem>
-          <MenuItem onClick={handleClose}>My account</MenuItem>
-          <MenuItem onClick={handleClose}>Logout</MenuItem>
-        </Menu>
+        <img src={logo} ></img>
       </section>
       {openNot && <Style.Notifications onClick={()=>setOpenNot(false)}>
         <div className="mainBody" onClick={(event)=>{event.stopPropagation()}}>

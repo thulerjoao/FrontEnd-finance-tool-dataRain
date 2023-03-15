@@ -41,8 +41,6 @@ const ClientSettings = ({
   };
 
   const { handleGetClients } = useClient()
-
-  console.log(client);
   
 
   const initialName = client.technicalContact? client.technicalContact.name? client.technicalContact.name: "" : "";

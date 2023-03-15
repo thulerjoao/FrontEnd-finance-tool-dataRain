@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { toast } from "react-hot-toast";
+import { useAuth } from "../../contexts/auth";
 import { useTeam } from "../../contexts/teamContext";
 import Api from "../../services/api";
 import TeamCard from "../TeamCard";
@@ -14,6 +15,7 @@ const TeamsCard = () => {
   const [ teamValue, setTeamValue ] = useState<number>()
 
   const { team, firstTeamId, handleGetTeam } = useTeam()
+  const { userStorage } = useAuth()
 
   const handleNewTeam = () =>{
     if(teamName !=="" && teamValue !== undefined && teamValue >= 0){
@@ -33,11 +35,12 @@ const TeamsCard = () => {
 
   return (
           <Style.TeamsContainer>
-              <section className="section01">
-                <h2>Equipes</h2>         
+                <section className="section01">
+                <h2>Equipes</h2>
+                { userStorage.role.name === "admin" &&         
                 <div className="newTeam">
                   <p onClick={()=>setOpenNewTeam(!openNewTeam)}>{`Cadastrar nova equipe ${openNewTeam? '-' : '+'}`}</p>
-                </div>
+                </div>}
               </section>
               <section className="section02">
                 {openNewTeam && <section className="registerTeam newQuestion animate__animated animate__fadeInDownBig animate__delay-0.5s">

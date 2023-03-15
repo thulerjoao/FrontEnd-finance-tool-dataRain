@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { BsPencil, BsTrash } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/auth";
 import Api from "../../services/api";
 import DeleteProject from "../ModalDeleteProject";
 import ProjectSettings from "../ModalEditProject";
@@ -23,6 +24,8 @@ const ProjectIndividualCard = (param:{team:any, count:number}) => {
   const [ isDeleteOpen, setIsDeleteOpen ] = useState<boolean>(false)
   const [ isEditeOpen, setIsEditeOpen ] = useState<boolean>(false)
 
+  const { userStorage } = useAuth()
+
 
   const handleNext = (projectId: string) =>{
     projectId && sessionStorage.setItem("projectId", projectId);
@@ -36,7 +39,9 @@ const ProjectIndividualCard = (param:{team:any, count:number}) => {
                     handleNext(element.id);
                     }}>
                         <p>{`${index<9? `0${index+1}`: index+1} - ${element.name}`}</p>
-                        <Style.Settings onClick={(event)=>{event.stopPropagation();setOpen(true)}}/>{" "}
+                        { userStorage.role.name === "admin" && 
+                          <Style.Settings onClick={(event)=>{event.stopPropagation();setOpen(true)}}/>
+                        }
                   </div>
                   {
                       open && 

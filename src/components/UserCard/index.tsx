@@ -6,8 +6,11 @@ import * as Style from "./style"
 import DeleteUser from "../ModalDeleteUser";
 import { useUsers } from "../../contexts/userContext";
 import UserSettings from "../ModalEditUser";
+import { useAuth } from "../../contexts/auth";
 
 const UserCard = (element: any) => {
+
+  const { userStorage } = useAuth()
 
   const [ open, setOpen ] = useState<boolean>(false)
   const [ isDeleteOpen, setIsDeleteOpen ] = useState<boolean>(false)
@@ -23,9 +26,10 @@ const UserCard = (element: any) => {
                     <div className="card">
                       <div>
                       <p>{firstUp(element.element.role.name)}</p>
-                      <span>
+                      { userStorage.role.name === "admin" &&
+                        <span>
                         <Style.Settings onClick={()=>{setOpen(true)}}/>{' '}
-                      </span>
+                      </span>}
                     </div>
                     <section>
                       <img src={

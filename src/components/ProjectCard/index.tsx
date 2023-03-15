@@ -106,6 +106,8 @@ const ProjectCard = () =>{
                 }
                 {client === undefined ? 
                 <div className="newClient">
+                    { userStorage.role.name === "admin" || userStorage.role.name === "manager" ?
+                    <>
                     <h2>Para gerenciar a equipe, adicione um cliente ao projeto</h2>
                     <select onChange={(e)=>setClientId(e.target.value)}>
                         {
@@ -124,6 +126,9 @@ const ProjectCard = () =>{
                         >
                         Cadastrar
                     </Button>
+                    </>:
+                    <h2>Projeto sem usuários cadastrados</h2>
+                    }
                 </div>:
                 <div className="bottom">
                         {userStorage.role.name === "admin" || userStorage.role.name === "manager" &&

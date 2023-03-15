@@ -41,8 +41,6 @@ export const UserProvider = ({children}: userProviderProps) => {
           handleGetBudgets();
         };
       }, [logged]);
-    
-      console.log(budgets);
       
 
     return (
