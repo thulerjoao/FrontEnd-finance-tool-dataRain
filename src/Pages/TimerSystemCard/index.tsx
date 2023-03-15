@@ -1,5 +1,6 @@
 import moment from 'moment';
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import AsideBar from '../../components/AsideBar';
 import Header from '../../components/Header';
 import TimerSystemCard from '../../components/TimerSystemCard';
@@ -10,12 +11,15 @@ import { ExtraHour } from '../../types/interface';
 import * as Styled from './style';
 
 
-const TimeCardPage = (param:{prop:boolean}) => {
+const TimeCardPage = () => {
+
+  const { param } = useParams();
+  const inital:boolean = param === "extra"? false : true
 
   const { projects, handleGetHours } = useProject()
   const [ projectId, setProjectId ] = useState<string>(projects[0].id)
 
-  const [ isTimerSystem, setIsTimerSystem ] = useState<boolean>(param.prop)
+  const [ isTimerSystem, setIsTimerSystem ] = useState<boolean>(inital)
   
   const comertialDate = (moment(new Date()).format('DD/MM/YYYY'));
   const [ extraHour, setExtraHour ] = useState<ExtraHour[]>([])

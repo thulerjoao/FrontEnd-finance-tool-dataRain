@@ -39,7 +39,7 @@ const AsideBar = () => {
             </S.AsidebarContentLi>
             <S.AsidebarContentLi 
               className={active === "timeCard"? "active" : ""} 
-              onClick={() => {navigate("/cartao-ponto"); 
+              onClick={() => {navigate("/cartao-ponto/dot"); 
               setActive("timeCard")}}>
               <span>
                 <GrDocumentTime />
