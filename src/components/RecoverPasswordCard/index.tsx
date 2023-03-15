@@ -45,7 +45,7 @@ const RecoverPassword = ({prop}:modelProp) => {
         :
             Api.patch(`/auth/password-recovery/${param}`, data)
                 .then((res)=>{
-                    toast.success("Senha redefinida")
+                    toast.success("Senha definida")
                     login({token: res.data.token, user: res.data.user, isChecked: true})
                 })
                 .catch(()=>{

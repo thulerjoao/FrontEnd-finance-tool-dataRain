@@ -50,7 +50,6 @@ const UserSettings = ({
     setSelectedRole(firstRole.id)   
   }
 
-  console.log(role);
   
 
   const firstBilable = () =>{

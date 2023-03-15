@@ -42,7 +42,6 @@ const TimeCardPage = () => {
     setProjectId(projectId);
     Api.get(`/request-send-overtime/user/status/${projectId}`)
     .then((res)=>{setExtraHour(res.data);
-      console.log(res.data);
     })
     .catch(()=>setExtraHour([]))
     handleGetHours(projectId)

@@ -27,6 +27,7 @@ const FirstPageCard = ({setStepNumber}:FirstPageProp) =>{
     const localClient = JSON.parse(sessionStorage.getItem("client") || "[]")
     const clientId = sessionStorage.getItem("clientId")
     
+    
     useEffect(()=>{
         setCompanyName(localClient.companyName)
         setMainContact(localClient.mainContact);
@@ -42,10 +43,12 @@ const FirstPageCard = ({setStepNumber}:FirstPageProp) =>{
             email: email,
             phone: phone,
             companyName: companyName,
-            mainContact: mainContact,
-            technicalContact: technicalContact,
-            technicalContactPhone: technicalContactPhone,
-            technicalContactEmail: technicalContactEmail      
+            primaryContactName: mainContact,
+            technicalContact: {
+                name: technicalContact,
+                email: technicalContactEmail,
+                phone: technicalContactPhone
+            }     
     }
 
     const regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.([a-z]+)?$/i

@@ -17,7 +17,6 @@ const ProjectsCard = () => {
 
   // const allProjects = projects
 
-  console.log(projects);
   
 
   const handleNewProject = () =>{

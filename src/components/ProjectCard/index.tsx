@@ -80,7 +80,6 @@ const ProjectCard = () =>{
         return a.user.role.name === "manager" ? -1 : b.user.role.name !== "manager" ? 1 : 0
     })
 
-    console.log(ordernedProjecUsers);
     
     return(
         <Style.ProjectContainer>

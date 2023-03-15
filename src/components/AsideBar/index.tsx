@@ -17,8 +17,6 @@ const AsideBar = () => {
   const navigate = useNavigate();
   const { userStorage } = useAuth()
   const { active, setActive } = useActive();
-
-  console.log(userStorage);
   
 
   return (
