@@ -10,12 +10,12 @@ import { ExtraHour } from '../../types/interface';
 import * as Styled from './style';
 
 
-const TimeCardPage = () => {
+const TimeCardPage = (param:{prop:boolean}) => {
 
   const { projects, handleGetHours } = useProject()
   const [ projectId, setProjectId ] = useState<string>(projects[0].id)
 
-  const [ isTimerSystem, setIsTimerSystem ] = useState<boolean>(true)
+  const [ isTimerSystem, setIsTimerSystem ] = useState<boolean>(param.prop)
   
   const comertialDate = (moment(new Date()).format('DD/MM/YYYY'));
   const [ extraHour, setExtraHour ] = useState<ExtraHour[]>([])

@@ -116,7 +116,7 @@ export const Notifications = styled.div`
       box-shadow: rgb(0 0 0 / 10%) 1px 1px 10px;
 
       .mainCard{
-        background-color: #d1d1d190;
+        background-color: #f2f4f6;
         min-height: 12vh;
         border-bottom: 1px dashed #d1d1d1;
         display: flex;
@@ -156,7 +156,7 @@ export const Notifications = styled.div`
       }
 
       .botton: hover{
-        background-color: #d1d1d190;
+        background-color: #f2f4f6;
 
       }
 
