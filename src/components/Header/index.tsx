@@ -9,6 +9,8 @@ import * as Style from "./style";
 import { useActive } from "../../contexts/activePage";
 import socket from "../../socket";
 import { NewNotificationPayload } from "../../types/interface";
+import Api from "../../services/api";
+import { useNavigate } from "react-router-dom";
 
 interface SearchProp {
   // setSearch: Dispatch<SetStateAction<string>>
@@ -18,14 +20,34 @@ interface SearchProp {
 const Header = ({setSearch}:SearchProp) => {
   const { active, setActive, fade, setFade } = useActive();
   const { userStorage, logout, notifications, getNotifications } = useAuth();
+  const navigate = useNavigate()
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [ openNot, setOpenNot ] = useState<boolean>(false)
-  const [ Notification, setNotification ] = useState<NewNotificationPayload>()
 
-  console.log(notifications);
-  
+  const handleCount =()=>{
+    let count = 0
+    notifications.map((element: NewNotificationPayload)=>{
+      if(!element.visualized){
+        count= count + 1
+      }
+    })
+    return count
+  }
 
+  const handleVisualize = () =>{
+    notifications.map((element)=>{
+      if(!element.visualized){
+        // Api.patch()
+      }
+    })
+  }
+
+  const handleNavigate = (param:string) =>{
+    if(param === "overtime_status"){
+      return navigate(`/`,)
+    }
+  }
 
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -38,7 +60,7 @@ const Header = ({setSearch}:SearchProp) => {
 
   useEffect(() => {
     socket.on('new-notification', (data: any) => {
-      console.log(data)
+      getNotifications()
     });
   }, []);
 
@@ -90,7 +112,7 @@ function updateElapsedTime(incomingDate: Date): string {
               | SAIR
             </p>
           </div>
-          <Badge badgeContent={2} color="warning" className="badge" onClick={()=>setOpenNot(true)}>
+          <Badge badgeContent={handleCount()} color="warning" className="badge" onClick={()=>setOpenNot(true)}>
             <Style.bell/>
           </Badge>
         </div>
@@ -128,7 +150,9 @@ function updateElapsedTime(incomingDate: Date): string {
         <div className="mainBody" onClick={(event)=>{event.stopPropagation()}}>
           {notifications.map((element)=>{
             return(
-              <div className={`mainCard ${element.visualized&& "read"}`}>
+              <div className={`mainCard ${element.visualized&& "read"}`} onClick={()=>{
+                
+              }}>
             <img
                 alt="Imagem do Perfil"
                 src={element.imageUrl!==null? 
@@ -141,47 +165,6 @@ function updateElapsedTime(incomingDate: Date): string {
             )
           })
           }
-          {/* <div className="mainCard">
-            <img
-                alt="Imagem do Perfil"
-                src="http://t0.gstatic.com/licensed-image?q=tbn:ANd9GcQkrjYxSfSHeCEA7hkPy8e2JphDsfFHZVKqx-3t37E4XKr-AT7DML8IwtwY0TnZsUcQ"
-                // src={`https://back-btc-finance-tool-production.up.railway.app${userStorage.imageUrl}`}
-            ></img>
-            <p>Requisição de hora extra aceita</p>
-          </div>
-          <div className="mainCard read">
-          <img
-                alt="Imagem do Perfil"
-                src="http://t0.gstatic.com/licensed-image?q=tbn:ANd9GcQkrjYxSfSHeCEA7hkPy8e2JphDsfFHZVKqx-3t37E4XKr-AT7DML8IwtwY0TnZsUcQ"
-                // src={`https://back-btc-finance-tool-production.up.railway.app${userStorage.imageUrl}`}
-            ></img>
-            <p>Requisição de hora extra aceita</p>
-          </div>
-          <div className="mainCard read">
-          <img
-                alt="Imagem do Perfil"
-                src="http://t0.gstatic.com/licensed-image?q=tbn:ANd9GcQkrjYxSfSHeCEA7hkPy8e2JphDsfFHZVKqx-3t37E4XKr-AT7DML8IwtwY0TnZsUcQ"
-                // src={`https://back-btc-finance-tool-production.up.railway.app${userStorage.imageUrl}`}
-            ></img>
-            <p>Nova requisição de hora extra</p>
-          </div>
-          <div className="mainCard read">
-          <img
-                alt="Imagem do Perfil"
-                src="http://t0.gstatic.com/licensed-image?q=tbn:ANd9GcQkrjYxSfSHeCEA7hkPy8e2JphDsfFHZVKqx-3t37E4XKr-AT7DML8IwtwY0TnZsUcQ"
-                // src={`https://back-btc-finance-tool-production.up.railway.app${userStorage.imageUrl}`}
-            ></img>
-            <p>Requisição de hora extra aceita</p>
-          </div>
-          <div className="mainCard read">
-          <img
-                alt="Imagem do Perfil"
-                src="http://t0.gstatic.com/licensed-image?q=tbn:ANd9GcQkrjYxSfSHeCEA7hkPy8e2JphDsfFHZVKqx-3t37E4XKr-AT7DML8IwtwY0TnZsUcQ"
-                // src={`https://back-btc-finance-tool-production.up.railway.app${userStorage.imageUrl}`}
-            ></img>
-            <p>Requisição de hora extra aceita</p>
-          </div> */}
-          {/* <div className="botton"><p>visualizar tudo</p></div> */}
         </div>
       </Style.Notifications>}
     </Style.HeaderContainer>
