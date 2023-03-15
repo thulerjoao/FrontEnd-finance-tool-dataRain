@@ -100,8 +100,9 @@ export const AuthProvider = ({children}:AuthProviderProps)=>{
 
     const getNotifications = () =>{
         Api.get(`/notification`)
-            .then((res)=>{setNotifications(res.data)})
-            .catch((err)=>{setNotifications([])})
+            .then((res)=>{setNotifications(res.data); console.log("Deu certo");
+            })
+            .catch((err)=>{setNotifications([]);console.log(err)})
     }
 
     return <AuthContext.Provider value={{logged, login, logout, logoutStay, userStorage, getUserByToken, notifications, getNotifications}}>{children}</AuthContext.Provider>

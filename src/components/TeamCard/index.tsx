@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { BsPencil, BsTrash } from "react-icons/bs";
+import { useAuth } from "../../contexts/auth";
 import { useTeam } from "../../contexts/teamContext";
 import Api from "../../services/api";
 import DeleteTeam from "../ModalDeleteTeam";
@@ -11,6 +12,8 @@ import * as Style from "./style";
 
 
 const TeamCard = (param:{team:any, count:number}) => {
+
+  const { userStorage } = useAuth()
 
 const element = param.team
 const index = param.count
@@ -24,7 +27,9 @@ const [ isEditeOpen, setIsEditeOpen ] = useState<boolean>(false)
                     <section className="card">
                       <p>{`${index<9? `0${index+1}`: index+1} - ${element.name}`}</p>
                       <p>{`R$: ${element.valuePerHour.toFixed(2)} /hr`}</p>
-                      <Style.Settings onClick={()=>{setOpen(true)}}/>{" "}
+                      { userStorage.role.name === "admin" && 
+                        <Style.Settings onClick={()=>{setOpen(true)}}/>
+                      }
                       {
                       open && 
                         <section className="dropMenu" onMouseLeave={()=>setOpen(false)}>

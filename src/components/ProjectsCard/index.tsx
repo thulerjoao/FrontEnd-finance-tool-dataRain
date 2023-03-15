@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/auth";
 import { useProject } from "../../contexts/projectContext";
 import Api from "../../services/api";
 import ProjectIndividualCard from "../ProjectsIndividualCard";
@@ -10,12 +11,12 @@ const ProjectsCard = () => {
 
   const navigate = useNavigate()
   const [ openNewTeam, setOpenNewTeam ] = useState<boolean>(false)
-  // const [ allProjects, setAllProjects ] = useState<any>([])
+  const { userStorage } = useAuth()
   const [ newTeam, setNewTeam ] = useState<string>()
   const [ newTeamValue, setNewTeamValue ] = useState<string>()
   const { projects, handleGetProjects } = useProject()
 
-  // const allProjects = projects
+
 
   
 
@@ -40,10 +41,12 @@ const ProjectsCard = () => {
   return (
           <Style.ProjectsContainer>
               <section className="section01">
-                <h2>Projetos</h2>         
-                <div className="newTeam">
-                  <p onClick={()=>setOpenNewTeam(!openNewTeam)}>{`Adicionar novo projeto ${openNewTeam? '-' : '+'}`}</p>
-                </div>
+                <h2>Projetos</h2>
+                { userStorage.role.name === "admin" && 
+                  <div className="newTeam">
+                    <p onClick={()=>setOpenNewTeam(!openNewTeam)}>{`Adicionar novo projeto ${openNewTeam? '-' : '+'}`}</p>
+                  </div>
+                }         
               </section>
               <section className="section02">
                 {openNewTeam && <section className="registerTeam newQuestion animate__animated animate__fadeInDownBig animate__delay-0.5s">

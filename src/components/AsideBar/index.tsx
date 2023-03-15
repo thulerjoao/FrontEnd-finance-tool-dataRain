@@ -49,7 +49,7 @@ const AsideBar = () => {
               </span>
               Ponto Digital
             </S.AsidebarContentLi>}
-            {userStorage.role.name === "admin" ? (
+            {(userStorage.role.name === "admin" || userStorage.role.name === "pre sale" || userStorage.role.name === "pre sale")? (
               <>
                 <S.AsidebarContentLi
                   className={active === "users" ? "active" : ""}
