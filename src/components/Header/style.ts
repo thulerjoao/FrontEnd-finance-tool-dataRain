@@ -118,7 +118,6 @@ export const Notifications = styled.div`
       .mainCard{
         background-color: #f2f4f6;
         min-height: 12vh;
-        border-bottom: 1px dashed #d1d1d1;
         display: flex;
         flex-direction: row;
         width: 100%;
@@ -126,6 +125,10 @@ export const Notifications = styled.div`
         align-items: center;
         padding-left: 1rem;
         cursor: pointer;
+
+        & + div{
+        border-top: 1px dashed #d1d1d1;
+      }
 
         img{
           width: 7vh;
@@ -147,6 +150,9 @@ export const Notifications = styled.div`
         }
 
       }
+
+      
+
       .botton{
         text-align: center;
         cursor: pointer;

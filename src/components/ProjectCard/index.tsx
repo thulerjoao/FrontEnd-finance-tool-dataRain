@@ -9,6 +9,7 @@ import logo from "../../assets/images/default.png"
 import NewUserSettings from "../ModalAddUserProject"
 import DeleteUserProject from "../ModalDeleteUserProject"
 import LoadingModal from "../LoadingModal"
+import { useAuth } from "../../contexts/auth"
 
 
 
@@ -23,7 +24,9 @@ const ProjectCard = () =>{
     const [ isModalOpen, setIsModalOpen] = useState<boolean>(false)
     const [ isModalDeleteOpen, setIsModalDeleteOpen] = useState<boolean>(false)
     const [ projectUsers, setProjectUsers ] = useState<any>()
-    const [ isLoading, setIsLoading ] = useState<boolean>(false) 
+    const [ isLoading, setIsLoading ] = useState<boolean>(false)
+    
+    const { userStorage } = useAuth()
     
     const hegisterNewClient = () =>{
         Api.post("/project/add-client",
@@ -91,7 +94,9 @@ const ProjectCard = () =>{
                     <div className="top">
                         <h2>{project.name}</h2>
                         <p>{project.description}</p>
-                        <p>{`Valor total por hora - R$: ${project.summedTimeValueOfAllUsers.toFixed(2)}`}</p>
+                        {userStorage.role.name === "admin" || userStorage.role.name === "manager" &&
+                            <p>{`Valor total por hora - R$: ${project.summedTimeValueOfAllUsers.toFixed(2)}`}</p>
+                        }
                     </div>
                     {client !== undefined &&
                     <div className="top">
@@ -122,21 +127,23 @@ const ProjectCard = () =>{
                     </Button>
                 </div>:
                 <div className="bottom">
-                        <div className="card newUser" onClick={()=>setIsModalOpen(true)}>
+                        {userStorage.role.name === "admin" || userStorage.role.name === "manager" &&
+                            <div className="card newUser" onClick={()=>setIsModalOpen(true)}>
                             <img src={userDefault}></img>
                             <p>{isManager? "Adicionar colaborador +":'Adicionar Manager +'}</p>
-                        </div>
+                        </div>}
                         {ordernedProjecUsers &&  ordernedProjecUsers.map((element: any, index:number)=>{
                             return(
                                 <div className="card oldUser" key={index}>
                                    <div>
                                         <p className={element.user.role.name === "manager"? "manager": ""}>{element.user.role.name === "manager"? "MANAGER": "P. SERVICES"}</p>
-                                        <span onClick={()=>{
+                                        {userStorage.role.name === "admin" || userStorage.role.name === "manager" &&
+                                            <span onClick={()=>{
                                             setdeleteUserId(element.user.id)
                                             setIsModalDeleteOpen(true)
                                         }}>
                                             <Style.trash/>{" "}
-                                        </span>
+                                        </span>}
                                    </div>
                                    <img src={
                                         element.user.imageUrl === null? logo :

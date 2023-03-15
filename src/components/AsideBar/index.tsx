@@ -18,6 +18,9 @@ const AsideBar = () => {
   const { userStorage } = useAuth()
   const { active, setActive } = useActive();
 
+  console.log(userStorage);
+  
+
   return (
     <S.AsidebarContainer>
       <S.AsidebarLogo onClick={
@@ -28,7 +31,8 @@ const AsideBar = () => {
         </S.AsidebarLogo>
         <S.AsidebarContent>
           <S.AsidebarContentUl>
-            <S.AsidebarContentLi 
+            {(userStorage.role.name === "admin" || userStorage.role.name === "financial" || userStorage.role.name === "pre sale") &&
+              <S.AsidebarContentLi 
               className={active === "home" || active === ""? "active" : ""} 
               onClick={() => {navigate("/home"); 
               setActive("home")}}>
@@ -36,8 +40,9 @@ const AsideBar = () => {
                 <AiOutlineHome />
               </span>
               Formulários
-            </S.AsidebarContentLi>
-            <S.AsidebarContentLi 
+            </S.AsidebarContentLi>}
+            { (userStorage.role.name === "manager" || userStorage.role.name === "professional services") &&
+              <S.AsidebarContentLi 
               className={active === "timeCard"? "active" : ""} 
               onClick={() => {navigate("/cartao-ponto/dot"); 
               setActive("timeCard")}}>
@@ -45,7 +50,7 @@ const AsideBar = () => {
                 <GrDocumentTime />
               </span>
               Ponto Digital
-            </S.AsidebarContentLi>
+            </S.AsidebarContentLi>}
             {userStorage.role.name === "admin" ? (
               <>
                 <S.AsidebarContentLi
@@ -100,7 +105,7 @@ const AsideBar = () => {
               </span>
               Perfil
             </S.AsidebarContentLi>
-            {userStorage.role.name === "admin" || userStorage.role.name === "manager"? (
+            {(userStorage.role.name === "admin" || userStorage.role.name === "manager")? (
             <S.AsidebarContentLi
               className={active === "extra-hour" ? "active" : ""}
               onClick={() => {
