@@ -100,7 +100,7 @@ export const AuthProvider = ({children}:AuthProviderProps)=>{
 
     const getNotifications = () =>{
         Api.get(`/notification`)
-            .then((res)=>{setNotifications(res.data); console.log("Deu certo");
+            .then((res)=>{setNotifications(res.data);
             })
             .catch((err)=>{setNotifications([]);console.log(err)})
     }
