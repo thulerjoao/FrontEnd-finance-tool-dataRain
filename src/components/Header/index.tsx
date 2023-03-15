@@ -45,7 +45,9 @@ const Header = ({setSearch}:SearchProp) => {
 
   const handleNavigate = (param:string) =>{
     if(param === "overtime_status"){
-      return navigate(`/`,)
+      navigate(`/cartao-ponto/extra`)
+    }else if(param === "request_send_overtime"){
+      navigate(`/pedido-hora-extra`)
     }
   }
 
@@ -63,6 +65,10 @@ const Header = ({setSearch}:SearchProp) => {
       getNotifications()
     });
   }, []);
+
+  useEffect(()=>{
+    getNotifications()
+  },[])
 
   const firstUp = (prop: string) =>{
     return(prop.charAt(0).toUpperCase() + prop.slice(1)).split(' ').slice(0, 1)
@@ -151,7 +157,7 @@ function updateElapsedTime(incomingDate: Date): string {
           {notifications.map((element)=>{
             return(
               <div className={`mainCard ${element.visualized&& "read"}`} onClick={()=>{
-                
+                handleNavigate(element.type)
               }}>
             <img
                 alt="Imagem do Perfil"

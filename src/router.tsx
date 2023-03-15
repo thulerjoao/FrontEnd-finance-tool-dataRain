@@ -26,7 +26,7 @@ const Router = () => {
       <Route path="/home" element={<HomePage />} />
       <Route path="/budget" element={<Budget />} />
       <Route path="/usuarios" element={<UsersPage />} />
-      <Route path="/cartao-ponto" element={<TimeCardPage prop={true}/>} />
+      <Route path="/cartao-ponto/:param" element={<TimeCardPage/>} />
       <Route path="/equipes" element={<TeamsPage />} />
       <Route path="/clientes" element={<ClientsPage />} />
       <Route path="/perfil" element={<Profile />} />
