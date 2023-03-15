@@ -114,7 +114,14 @@ export const Notifications = styled.div`
       border-radius: 5px;
       z-index: 9999;
       box-shadow: rgb(0 0 0 / 10%) 1px 1px 10px;
-
+      max-height: 50vh;
+      overflow-y: scroll;
+              ::-webkit-scrollbar {
+                  width: 0px;
+              }
+      
+      
+      
       .mainCard{
         background-color: #f2f4f6;
         min-height: 12vh;

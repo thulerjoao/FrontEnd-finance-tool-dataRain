@@ -24,6 +24,7 @@ const Header = ({setSearch}:SearchProp) => {
   const navigate = useNavigate()
 
   const [ openNot, setOpenNot ] = useState<boolean>(false)
+  
 
   const handleCount =()=>{
     let count = 0
@@ -53,9 +54,11 @@ const Header = ({setSearch}:SearchProp) => {
   }
 
   
-    socket.on('new-notification', (data: any) => {
+    socket.on('new-notification', (data: NewNotificationPayload) => {
       getNotifications()
-      // console.log(data);
+      toast("Nova mensagem", {
+        icon: '💬',
+      });
     });
   
 
