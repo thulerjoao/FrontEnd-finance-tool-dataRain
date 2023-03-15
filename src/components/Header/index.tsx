@@ -24,7 +24,6 @@ const Header = ({setSearch}:SearchProp) => {
   const navigate = useNavigate()
 
   const [ openNot, setOpenNot ] = useState<boolean>(false)
-  
 
   const handleCount =()=>{
     let count = 0
@@ -39,7 +38,7 @@ const Header = ({setSearch}:SearchProp) => {
   const handleVisualize = () =>{
     notifications.map((element)=>{
       if(!element.visualized){
-        // Api.patch()
+        Api.patch(`/notification/visualized/${element.id}`)
       }
     })
   }
@@ -51,14 +50,12 @@ const Header = ({setSearch}:SearchProp) => {
       navigate(`/pedido-hora-extra`)
     }
     setOpenNot(false)
+    handleVisualize()
+    handleCount()
   }
-
   
     socket.on('new-notification', (data: NewNotificationPayload) => {
       getNotifications()
-      toast("Nova mensagem", {
-        icon: '💬',
-      });
     });
   
 
@@ -113,7 +110,7 @@ function updateElapsedTime(incomingDate: Date): string {
               | SAIR
             </p>
           </div>
-          <Badge badgeContent={handleCount()} color="warning" className="badge" onClick={()=>setOpenNot(true)}>
+          <Badge badgeContent={handleCount()} color="warning" className="badge" onClick={()=>{setOpenNot(true)}}>
             <Style.bell/>
           </Badge>
         </div>
@@ -130,7 +127,7 @@ function updateElapsedTime(incomingDate: Date): string {
         }
         <img src={logo} ></img>
       </section>
-      {openNot && <Style.Notifications onClick={()=>setOpenNot(false)}>
+      {openNot && <Style.Notifications onClick={()=>{setOpenNot(false);handleVisualize();handleCount()}}>
         <div className="mainBody" onClick={(event)=>{event.stopPropagation()}}>
           {notifications.map((element)=>{
             return(
