@@ -23,7 +23,9 @@ const TimeCardPage = () => {
   
   
   useEffect(()=>{
-    extraHour.map((element)=> element.dateToSendTime === comertialDate && setIsExtraHour(true))
+    extraHour.map((element)=>{ 
+      if(element.dateToSendTime === comertialDate && element.status === "approved") setIsExtraHour(true)
+    })
   },[extraHour])
 
   useEffect(()=>{

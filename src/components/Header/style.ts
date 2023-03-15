@@ -107,12 +107,52 @@ export const Notifications = styled.div`
     .mainBody{
       top: 4.5rem;
       left: 25rem;
-      height: 55vh;
-      width: 15vw;
+      /* height: 55vh; */
+      width: 27vh;
       background-color: white;
       position: absolute;
       border-radius: 5px;
       z-index: 9999;
       box-shadow: rgb(0 0 0 / 10%) 1px 1px 10px;
+
+      .mainCard{
+        background-color: #d1d1d190;
+        height: 10vh;
+        border-bottom: 1px dashed #d1d1d1;
+        display: flex;1
+        flex-direction: row;
+        align-items: center;
+        padding: 0 1rem;
+        cursor: pointer;
+
+        img{
+          width: 7vh;
+          height: 7vh;
+          border-radius: 50%;
+        }
+
+        p{
+          padding-left: 1rem;
+          color: ${theme.colors.fundamentalColor};
+          font-size: 1.7vh;
+        }
+
+      }
+      .botton{
+        text-align: center;
+        cursor: pointer;
+        font-size: 1.7vh;
+        color: ${theme.colors.fundamentalColor};
+
+      }
+
+      .botton: hover{
+        background-color: #d1d1d190;
+
+      }
+
+      .read{
+        background-color: white;
+      }
     }
   `}`
