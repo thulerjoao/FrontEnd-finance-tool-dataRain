@@ -62,7 +62,7 @@ export const TimeCardContainer = styled.div`
 
             select{
               cursor: pointer;
-              width: 7vw;
+              width: 10vw;
               position: absolute;
               left: 3.5%;
 
