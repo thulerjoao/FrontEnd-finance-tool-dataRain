@@ -39,14 +39,18 @@ export interface ProjectTypes {
   summedTimeValueOfAllUsers: number;
 }
 
+export type NotificationTypes = 'request_send_overtime' | 'budget_request';
 export interface NewNotificationPayload {
   id: string;
   receiverId: string;
   route: string;
   title: string;
   message: string;
-  imageUrl: string;
   visualized: boolean;
+  imageUrl: string;
+  type: NotificationTypes;
+  sent: boolean;
+  createdAt: Date;
 }
 
 export interface ExtraHour{

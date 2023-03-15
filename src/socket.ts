@@ -10,7 +10,7 @@ const token = localStorage.getItem('token');
 socket.on('connect', () => {
     console.log('Conectado ao servidor Socket.io');
     socket.on('connection', (data: any) => {
-        console.log(data);
+        // console.log(data);
     });
     
   });

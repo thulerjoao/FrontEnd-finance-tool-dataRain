@@ -1,8 +1,8 @@
-import { createContext, useContext, ReactNode, useState, useEffect } from "react";
+import { createContext, useContext, ReactNode, useState, useEffect, Dispatch } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import Api from "../../services/api";
-import { UserTypes } from "../../types/interface";
+import { NewNotificationPayload, UserTypes } from "../../types/interface";
 import React from "react";
 
 interface AuthProviderProps{
@@ -22,7 +22,8 @@ interface AuthProviderData{
     logoutStay: ()=> void,
     userStorage: UserTypes,
     getUserByToken: () => void;
-
+    notifications: NewNotificationPayload[];
+    getNotifications: ()=> void;
 }
 
 const AuthContext = createContext<AuthProviderData>({} as AuthProviderData)
@@ -30,6 +31,7 @@ const AuthContext = createContext<AuthProviderData>({} as AuthProviderData)
 export const AuthProvider = ({children}:AuthProviderProps)=>{
     
     const navigate = useNavigate();
+    const [ notifications, setNotifications ] = useState<NewNotificationPayload[]>([])
     const [logged, setLogged] = useState<boolean>(true);
     const [userStorage , setUserStorage] = useState<UserTypes>({
         id: "",
@@ -79,6 +81,7 @@ export const AuthProvider = ({children}:AuthProviderProps)=>{
         sessionStorage.setItem("token", token)
         setLogged(true);
         user && setUserStorage(user)
+        getNotifications()
         navigate("/home")
     }
 
@@ -95,7 +98,13 @@ export const AuthProvider = ({children}:AuthProviderProps)=>{
         setLogged(false);
     }
 
-    return <AuthContext.Provider value={{logged, login, logout, logoutStay, userStorage, getUserByToken}}>{children}</AuthContext.Provider>
+    const getNotifications = () =>{
+        Api.get(`/notification`)
+            .then((res)=>{setNotifications(res.data)})
+            .catch((err)=>{setNotifications([])})
+    }
+
+    return <AuthContext.Provider value={{logged, login, logout, logoutStay, userStorage, getUserByToken, notifications, getNotifications}}>{children}</AuthContext.Provider>
 }
 
 export const useAuth = ()=> useContext(AuthContext)
