@@ -20,6 +20,9 @@ const Router = () => {
 
   const { logged, userStorage } = useAuth();
   const role = userStorage.role.name
+
+  console.log(role);
+  
   
 
   return (
@@ -34,14 +37,23 @@ const Router = () => {
               <Route path="/equipes" element={<TeamsPage />} />
               <Route path="/clientes" element={<ClientsPage />} />
               <Route path="/perfil" element={<Profile />} />
-              <Route path="/projetos" element={<ProjectsPage />} />
-              <Route path="/projeto" element={<Project/>} />
+              <Route path="/questoes" element={<QuestionsPage />} />
             </>          
           }
           { (role === 'manager' || role === 'professional services')&&
             <>
-              <Route path="/usuarios" element={<UsersPage />} />
               <Route path="/cartao-ponto/:param" element={<TimeCardPage/>} />
+              <Route path="/perfil" element={<Profile />} />
+              {role === 'manager' && <Route path="/pedido-hora-extra" element={<ExtraHour />} />}
+              <Route path="/projetos" element={<ProjectsPage />} />
+              <Route path="/projeto" element={<Project/>} />            
+            </>
+          }
+          {(role === "admin")&&
+            <>
+              <Route path="/home" element={<HomePage />} />
+              <Route path="/budget" element={<Budget />} />
+              <Route path="/usuarios" element={<UsersPage />} />
               <Route path="/equipes" element={<TeamsPage />} />
               <Route path="/clientes" element={<ClientsPage />} />
               <Route path="/perfil" element={<Profile />} />
@@ -52,22 +64,8 @@ const Router = () => {
               <Route path="/cadastro" element={<RegisterNewUser/>} />
               <Route path="/novasenha/:param" element={<RecoverPasswordPage prop={"new"}/>} /> 
               <Route path="/recuperar-senha/:param" element={<RecoverPasswordPage prop={"recover"}/>} />
-            </>
-          }
-          <Route path="/home" element={<HomePage />} />
-          <Route path="/budget" element={<Budget />} />
-          <Route path="/usuarios" element={<UsersPage />} />
-          <Route path="/cartao-ponto/:param" element={<TimeCardPage/>} />
-          <Route path="/equipes" element={<TeamsPage />} />
-          <Route path="/clientes" element={<ClientsPage />} />
-          <Route path="/perfil" element={<Profile />} />
-          <Route path="/pedido-hora-extra" element={<ExtraHour />} />
-          <Route path="/projetos" element={<ProjectsPage />} />
-          <Route path="/projeto" element={<Project/>} />
-          <Route path="/questoes" element={<QuestionsPage />} />
-          <Route path="/cadastro" element={<RegisterNewUser/>} />
-          <Route path="/novasenha/:param" element={<RecoverPasswordPage prop={"new"}/>} /> 
-          <Route path="/recuperar-senha/:param" element={<RecoverPasswordPage prop={"recover"}/>} />
+          </>
+        }
         </>
         :
         <>
@@ -77,7 +75,7 @@ const Router = () => {
           <Route path="/" element={<Login />} />
         </>
       }
-      <Route path="*" element={<Navigate to={logged ? "/home" : "/"} />} />
+      <Route path="*" element={<Navigate to={logged ? (role !== 'manager' && role !== 'professional services')? "/home": "/cartao-ponto/dot" : "/"} />} />
     </Routes>
   );
 };

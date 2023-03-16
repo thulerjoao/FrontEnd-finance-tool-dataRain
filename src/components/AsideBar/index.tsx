@@ -21,12 +21,7 @@ const AsideBar = () => {
 
   return (
     <S.AsidebarContainer>
-      <S.AsidebarLogo 
-          // onClick={
-          // ()=>{navigate("/home");
-          // setActive("home")}
-          // }
-          >
+      <S.AsidebarLogo>
           <S.AsidebarImg src={Logo} alt="Logo da empresa" />
         </S.AsidebarLogo>
         <S.AsidebarContent>
@@ -51,7 +46,7 @@ const AsideBar = () => {
               </span>
               Ponto Digital
             </S.AsidebarContentLi>}
-            {(userStorage.role.name === "admin" || userStorage.role.name === "pre sale" || userStorage.role.name === "finantial" || userStorage.role.name === "manager")? (
+            {(userStorage.role.name === "admin" || userStorage.role.name === "pre sale" || userStorage.role.name === "finantial")? (
               <>
                 <S.AsidebarContentLi
                   className={active === "users" ? "active" : ""}
@@ -105,7 +100,7 @@ const AsideBar = () => {
               </span>
               Perfil
             </S.AsidebarContentLi>
-            {(userStorage.role.name === "admin" || userStorage.role.name === "manager")? (
+            {(userStorage.role.name === "admin" || userStorage.role.name === "manager")&& (
             <S.AsidebarContentLi
               className={active === "extra-hour" ? "active" : ""}
               onClick={() => {
@@ -118,20 +113,22 @@ const AsideBar = () => {
               </span>
               Hora Extra
             </S.AsidebarContentLi>
-            ) : null}
-            <S.AsidebarContentLi
-              className={active === "projects" ? "active" : ""}
-              onClick={() => {
-                navigate("/projetos");
-                setActive("projects");
-              }}
-            >
-              <span>
-                <S.ProjectIcon />
-              </span>
-              Projetos
-            </S.AsidebarContentLi>
-            {userStorage.role.name === "admin"? (
+            )}
+            {(userStorage.role.name === "admin" || userStorage.role.name === "manager" || userStorage.role.name === "professional services" )&&
+              <S.AsidebarContentLi
+                className={active === "projects" ? "active" : ""}
+                onClick={() => {
+                  navigate("/projetos");
+                  setActive("projects");
+                }}
+              >
+                <span>
+                  <S.ProjectIcon />
+                </span>
+                Projetos
+              </S.AsidebarContentLi>
+            }
+            {(userStorage.role.name === "admin" || userStorage.role.name === "pre sale" || userStorage.role.name === "finantial")?(
             <S.AsidebarContentLi
             className={active === "questoes" ? "active" : ""}
             onClick={() => {
