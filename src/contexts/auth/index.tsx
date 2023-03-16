@@ -11,7 +11,7 @@ interface AuthProviderProps{
 
 interface loginParams{
     token:string,
-    user:UserTypes | null,
+    user:UserTypes,
     isChecked: Boolean,
 }
 
@@ -74,6 +74,14 @@ export const AuthProvider = ({children}:AuthProviderProps)=>{
         if(token) checkTokenExpiration();
     } , [])
 
+    const handleNavigate = (user:UserTypes) =>{
+        if( user.role.name ==="admin" || user.role.name ==="financial" || user.role.name ==="pre sale"){
+            navigate("/home")
+        }else if(user.role.name ==="manager" || user.role.name ==="professional services"){
+            navigate("/cartao-ponto/dot")
+        }
+    }
+
     const login = ({token, user, isChecked}:loginParams) =>{
         if(isChecked){
             localStorage.setItem("token", token)
@@ -82,7 +90,7 @@ export const AuthProvider = ({children}:AuthProviderProps)=>{
         setLogged(true);
         user && setUserStorage(user)
         getNotifications()
-        navigate("/home")
+        handleNavigate(user)
     }
 
     const logout = () =>{
