@@ -54,12 +54,11 @@ const Header = ({setSearch}:SearchProp) => {
     handleCount()
   }
   
+
+  useEffect(()=>{
     socket.on('new-notification', (data: NewNotificationPayload) => {
       getNotifications()
     });
-  
-
-  useEffect(()=>{
     getNotifications()
   },[])
 

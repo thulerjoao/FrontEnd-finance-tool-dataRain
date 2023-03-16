@@ -60,12 +60,18 @@ export const TimeCardContainer = styled.div`
             font-size: 1.5vh;
             position: relative;
 
+            .extraAlert{
+              max-width: 17vw;
+              text-align: center;
+              margin-top: -0.2rem;
+            }
+
             select{
               cursor: pointer;
               width: 10vw;
               position: absolute;
               left: 3.5%;
-
+ma
               option{
                 text-align: center;
 

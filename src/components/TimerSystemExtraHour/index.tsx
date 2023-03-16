@@ -34,7 +34,9 @@ const TimerSystemExtraHour = ({setIsTimerSystem, projectId, handleProject, isExt
   
 
   const handleRequire = () =>{
-    if(date >= currentDate){
+    var umDiaAtras = new Date();
+    umDiaAtras.setDate(umDiaAtras.getDate() - 1)
+    if(date >= umDiaAtras ){
       if(text !== ''){
         setIsModalOpen(true)
       }else{
@@ -75,7 +77,7 @@ const TimerSystemExtraHour = ({setIsTimerSystem, projectId, handleProject, isExt
                           )
                         })}
                       </select>
-                      {isExtraHour&& <p>ATENÇÃO: Lançamento de hora extra liberado para o dia de hoje.</p>}
+                      {isExtraHour&& <p className="extraAlert">ATENÇÃO: Lançamento de hora extra liberado para o dia de hoje.</p>}
                       </div>
                       <div className="askForTime">
                           <Calendar className="calendar" value={date} onChange={setDate}/>

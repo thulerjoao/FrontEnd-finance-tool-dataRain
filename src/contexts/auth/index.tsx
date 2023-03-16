@@ -77,7 +77,7 @@ export const AuthProvider = ({children}:AuthProviderProps)=>{
     const handleNavigate = (user:UserTypes) =>{
         if( user.role.name ==="admin" || user.role.name ==="financial" || user.role.name ==="pre sale"){
             navigate("/home")
-        }else if(user.role.name ==="manager" || user.role.name ==="professional services"){
+        }else{
             navigate("/cartao-ponto/dot")
         }
     }
