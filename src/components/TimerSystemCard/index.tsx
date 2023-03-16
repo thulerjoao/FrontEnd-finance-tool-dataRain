@@ -17,7 +17,7 @@ interface TimerSystemProps {
 
 const TimerSystemCard = ({setIsTimerSystem, projectId, handleProject, isExtraHour}:TimerSystemProps) => {
 
-  const { projects, projectHours, projectExtraHours, handleGetHours } = useProject()
+  const { projects, projectHours, handleGetHours } = useProject()
   // const [ projectId, setProjectId ] = useState<string>(projects[0].id)
 
   const [time, setTime] = useState(moment().format('HH:mm:ss'));
