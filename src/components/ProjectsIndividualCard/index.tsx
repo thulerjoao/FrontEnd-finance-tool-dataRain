@@ -13,7 +13,7 @@ const ProjectIndividualCard = (param:{team:any, count:number}) => {
 
   const element = param.team
   const index = param.count
-
+  
   const navigate = useNavigate()
   const [ openNewTeam, setOpenNewTeam ] = useState<boolean>(false)
   const [ allProjectIndividual, setAllProjectIndividual ] = useState<any>([])

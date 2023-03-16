@@ -45,8 +45,8 @@ const TimerSystemCard = ({setIsTimerSystem, projectId, handleProject, isExtraHou
     }
 
     const handleChangeProject = (projectId:string) =>{
-      handleProject(projectId);
-      handleGetHours(projectId)
+        handleProject(projectId);
+        handleGetHours(projectId)
     }
 
   return (
