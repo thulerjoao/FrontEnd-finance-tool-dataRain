@@ -1,5 +1,6 @@
 import { toast } from 'react-hot-toast';
 import io from 'socket.io-client';
+import { useAuth } from './contexts/auth';
 import { NewNotificationPayload } from './types/interface';
 
 const token = localStorage.getItem('token');
@@ -14,6 +15,11 @@ socket.on('connect', () => {
     socket.on('connection', (data: any) => {
         // console.log(data);
     });
+  
+      socket.on('new-notification', (data: NewNotificationPayload) => {
+        const { getNotifications } = useAuth();
+        getNotifications()
+      });
 
 
     
