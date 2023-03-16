@@ -21,13 +21,14 @@ const Router = () => {
   const { logged, userStorage } = useAuth();
   const role = userStorage.role.name
 
-  console.log(role);
+  console.log(role)
+
   
   
 
   return (
     <Routes>
-      { logged?
+      { logged &&
         <>
           { (role === 'financial' || role === 'pre sale')&&
             <>
@@ -67,15 +68,12 @@ const Router = () => {
           </>
         }
         </>
-        :
-        <>
-          <Route path="/recuperar-senha/:param" element={<RecoverPasswordPage prop={"recover"}/>} />
-          <Route path="/novasenha/:param" element={<RecoverPasswordPage prop={"new"}/>} /> 
-          <Route path="/form" element={<FormPage />} />
-          <Route path="/" element={<Login />} />
-        </>
       }
-      <Route path="*" element={<Navigate to={logged ? (role !== 'manager' && role !== 'professional services')? "/home": "/cartao-ponto/dot" : "/"} />} />
+      <Route path="/recuperar-senha/:param" element={<RecoverPasswordPage prop={"recover"}/>} />
+      <Route path="/novasenha/:param" element={<RecoverPasswordPage prop={"new"}/>} /> 
+      <Route path="/form" element={<FormPage />} />
+      <Route path="/" element={<Login />} />
+      <Route path="*" element={<Navigate to={logged ? ((role === 'manager' || role === 'professional services')? "/cartao-ponto/dot" :"/home") : "/"} />} />
     </Routes>
   );
 };

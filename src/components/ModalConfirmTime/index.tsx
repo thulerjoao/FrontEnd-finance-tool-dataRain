@@ -6,6 +6,7 @@ import { Calendar } from 'react-calendar';
 import Api from "../../services/api";
 import { toast } from "react-hot-toast";
 import { useProject } from "../../contexts/projectContext";
+import moment from "moment";
 
 interface ModalConfirmTimeProps {
   isModalOpen: boolean;
@@ -54,9 +55,27 @@ const ConfirmTime = ({
     })
   }
 
+  // const [ overtimeObject, setOvertimeObject ] = useState<any>([])
+  // const today = new Date()
+  // const overtimeId = overtimeObject.length > 0 && overtimeObject.filter((element: any)=>element.dateToSendTime.includes(moment(today).format('DD/MM/YYYY')))[0].id
+
+  // const handleMarkExtraHors = () =>{
+  //   Api.get(`/request-send-overtime/user/status/${projectId}`)
+  //     .then((res)=> setOvertimeObject(res.data))
+  //     .catch(()=>{})
 
 
-  
+  //   Api.post("/overtime/user", {
+  //     requestSendOvertimeId: overtimeId
+  //   }).then(()=>{
+  //     toast.success('Feito')
+  //     handleCloseModal()
+  //     handleGetExtraHours(projectId)
+  //   }).catch((err)=>{
+  //     toast.error('Erro ao lançar hora')
+  //     setIsModalOpen(false)
+  //   })
+  // }
 
   return (
     <Modal
@@ -68,13 +87,13 @@ const ConfirmTime = ({
         <div>
           <Style.BackArrow onClick={handleCloseModal} />
         </div>
-        <h2>Confirmar registro de horário?</h2>
+        <h2>Excolha o tipo de hora a ser registrada</h2>
         <section className="botton">
-          <Button variant="contained" className="buttonEnter cancel" onClick={()=>{handleCloseModal()}}>
-            Cancelar
+          <Button variant="contained" className="buttonEnter " onClick={()=>{handleMarkHors()}}>
+            Hora Ordirdaria
           </Button>
-          <Button variant="contained" className="buttonEnter" onClick={()=>{handleMarkHors()}}>
-            Confirmar
+          <Button variant="contained" className="buttonEnter cancel">
+            Hora Extra
           </Button>
         </section>
       </Style.ModalConfirmTimeContainer>

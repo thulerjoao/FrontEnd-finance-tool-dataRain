@@ -64,7 +64,7 @@ const TimerSystemCard = ({setIsTimerSystem, projectId, handleProject, isExtraHou
                       )
                     })}
                   </select>
-                  {isExtraHour && <p>ATENÇÃO: Lançamento de hora extra liberado para o dia de hoje</p>}
+                  {isExtraHour && <p className="extraAlert">ATENÇÃO: Lançamento de hora extra liberado para o dia de hoje</p>}
                 </div>
                   <span className="machine">
                     <div className="screen">
@@ -73,8 +73,8 @@ const TimerSystemCard = ({setIsTimerSystem, projectId, handleProject, isExtraHou
                     </div>
                     {projectHours && <div className="cardSpace">
                       {projectHours.date && <div className="card title"><p>{projectHours.date}</p></div>}
-                      {/* <div className="card"><p>{`Fim hora extra - 19:23`}</p></div> */}
-                      {/* <div className="card"><p>{`Início hora extra - 16:48`}</p></div> */}
+                      {/* {projectExtraHours.exit && <div className="card"><p>{`Início hora extra - ${projectExtraHours.entry.slice(0, 5)}`}</p></div>}
+                      {projectExtraHours.entry &&<div className="card"><p>{`Fim hora extra - ${projectExtraHours.exit.slice(0, 5)}`}</p></div>} */}
                       {projectHours.exit && <div className="card"><p>{`Fim expediente - ${projectHours.exit.slice(0, 5)}`}</p></div>}
                       {projectHours.backFromTheBreak && <div className="card"><p>{`Volta do almoço - ${projectHours.backFromTheBreak.slice(0, 5)}`}</p></div>}
                       {projectHours.exitToBreak && <div className="card"><p>{`Saida para alomoço - ${projectHours.exitToBreak.slice(0, 5)}`}</p></div>}
