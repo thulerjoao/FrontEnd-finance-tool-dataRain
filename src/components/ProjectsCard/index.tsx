@@ -17,7 +17,6 @@ const ProjectsCard = () => {
   const { projects, handleGetProjects } = useProject()
 
 
-
   
 
   const handleNewProject = () =>{

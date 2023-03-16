@@ -21,10 +21,12 @@ const AsideBar = () => {
 
   return (
     <S.AsidebarContainer>
-      <S.AsidebarLogo onClick={
-          ()=>{navigate("/home");
-          setActive("home")}
-          }>
+      <S.AsidebarLogo 
+          // onClick={
+          // ()=>{navigate("/home");
+          // setActive("home")}
+          // }
+          >
           <S.AsidebarImg src={Logo} alt="Logo da empresa" />
         </S.AsidebarLogo>
         <S.AsidebarContent>
@@ -49,7 +51,7 @@ const AsideBar = () => {
               </span>
               Ponto Digital
             </S.AsidebarContentLi>}
-            {(userStorage.role.name === "admin" || userStorage.role.name === "pre sale" || userStorage.role.name === "pre sale")? (
+            {(userStorage.role.name === "admin" || userStorage.role.name === "pre sale" || userStorage.role.name === "finantial" || userStorage.role.name === "manager")? (
               <>
                 <S.AsidebarContentLi
                   className={active === "users" ? "active" : ""}

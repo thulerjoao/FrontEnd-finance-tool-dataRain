@@ -28,17 +28,27 @@ const ProjectContext = createContext<ProjectProviderData>(
 export const ProjectProvider = ({ children }: ProjectProviderProps) => {
   const [projects, setProjects] = useState<ProjectTypes[]>([]);
   const [ projectHours, setProjectHours ] = useState<any>()
-  const { logged } = useAuth();
+  const { logged, userStorage } = useAuth();
 
  
 
   const handleGetProjects = () => {
-    Api.get("/project")
+    if(userStorage.role.name === "admin"){
+        Api.get("/project")
+        .then((res) => {
+          setProjects(res.data)
+          handleGetHours(res.data[0].id)
+        })
+        .catch((err) => {});
+      }else{
+        Api.get(`/project/user`)
       .then((res) => {
         setProjects(res.data)
+
         handleGetHours(res.data[0].id)
       })
       .catch((err) => {});
+      }
   };
 
   useEffect(() => {

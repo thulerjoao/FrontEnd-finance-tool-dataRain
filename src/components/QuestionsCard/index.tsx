@@ -12,12 +12,15 @@ import QuestionCard from "../QuestionCard";
 const QuestionsCard = () => {
   
   const { questions, updateQuestion } = useQuestions();
+
+  useEffect(()=>{
+    
+  },[questions])
   
   
   //newQuestion states and functions:
   const [ newQuestion, setNewQuestion ] = useState<Boolean>(false)
   const [ newTitle, setNewTitle ] = useState<string>("")
-  const [ reRender, setReREnder] = useState<boolean>(true)
   
   // useEffect(()=>{
   //   setReREnder(false);
@@ -85,13 +88,13 @@ const QuestionsCard = () => {
               <p className="newAlternative" onClick={()=> handleNewQuestion()}>Cadastrar questão</p>
               </section>
             </section>}
-          {reRender && questions.map((element:any, index:number)=>{
+          {questions.map((element:any, index:number)=>{
             return(
-              <QuestionCard 
+              <QuestionCard
+                key={element.position} 
                 element={element} 
-                count={index} key={index} 
+                count={index}
                 lastIndex={lastIndex} 
-                setReREnder={setReREnder}
               />                     
             )
             })}

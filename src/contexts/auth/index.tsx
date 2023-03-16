@@ -90,7 +90,7 @@ export const AuthProvider = ({children}:AuthProviderProps)=>{
         setLogged(true);
         user && setUserStorage(user)
         getNotifications()
-        handleNavigate(user)
+        handleNavigate(user)   
     }
 
     const logout = () =>{
@@ -110,7 +110,7 @@ export const AuthProvider = ({children}:AuthProviderProps)=>{
         Api.get(`/notification`)
             .then((res)=>{setNotifications(res.data);
             })
-            .catch((err)=>{setNotifications([]);console.log(err)})
+            .catch((err)=>{setNotifications([])})
     }
 
     return <AuthContext.Provider value={{logged, login, logout, logoutStay, userStorage, getUserByToken, notifications, getNotifications}}>{children}</AuthContext.Provider>

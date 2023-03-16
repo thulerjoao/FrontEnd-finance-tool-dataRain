@@ -47,17 +47,31 @@ const ProjectCard = () =>{
     const handleGetProject = ()=>{
         const projectId = sessionStorage.getItem("projectId")
         setIsLoading(true)
-        Api.get(`/project/${projectId}`)
-            .then((res)=>{
-                setProject(res.data)
-                setProjectUsers(res.data.users)
-                if(res.data.client){
-                    setClient(res.data.client)
-                    setIsManager(res.data.containsManager)
-                }
-                setIsLoading(false)
-            })
-            .catch((err)=>{setIsLoading(false)})
+            { userStorage.role.name === 'admin'?
+                Api.get(`/project/${projectId}`)
+                    .then((res)=>{
+                        setProject(res.data)
+                        setProjectUsers(res.data.users)
+                        if(res.data.client){
+                            setClient(res.data.client)
+                            setIsManager(res.data.containsManager)
+                        }
+                        setIsLoading(false)
+                    })
+                    .catch((err)=>{setIsLoading(false)})
+                :
+                Api.get(`/project/${projectId}/user`)
+                .then((res)=>{
+                    setProject(res.data)
+                    setProjectUsers(res.data.users)
+                    if(res.data.client){
+                        setClient(res.data.client)
+                        setIsManager(res.data.containsManager)
+                    }
+                    setIsLoading(false)
+                })
+                .catch((err)=>{setIsLoading(false)})
+            }
         }
 
     const handleGetAllClients = () =>{
@@ -93,7 +107,7 @@ const ProjectCard = () =>{
                     <div className="top">
                         <h2>{project.name}</h2>
                         <p>{project.description}</p>
-                        {userStorage.role.name === "admin" || userStorage.role.name === "manager" &&
+                        {project.summedTimeValueOfAllUsers &&
                             <p>{`Valor total por hora - R$: ${project.summedTimeValueOfAllUsers.toFixed(2)}`}</p>
                         }
                     </div>
@@ -131,7 +145,7 @@ const ProjectCard = () =>{
                     }
                 </div>:
                 <div className="bottom">
-                        {userStorage.role.name === "admin" || userStorage.role.name === "manager" &&
+                        {userStorage.role.name === "admin" &&
                             <div className="card newUser" onClick={()=>setIsModalOpen(true)}>
                             <img src={userDefault}></img>
                             <p>{isManager? "Adicionar colaborador +":'Adicionar Manager +'}</p>
@@ -141,7 +155,7 @@ const ProjectCard = () =>{
                                 <div className="card oldUser" key={index}>
                                    <div>
                                         <p className={element.user.role.name === "manager"? "manager": ""}>{element.user.role.name === "manager"? "MANAGER": "P. SERVICES"}</p>
-                                        {userStorage.role.name === "admin" || userStorage.role.name === "manager" &&
+                                        {userStorage.role.name === "admin" &&
                                             <span onClick={()=>{
                                             setdeleteUserId(element.user.id)
                                             setIsModalDeleteOpen(true)
@@ -156,7 +170,7 @@ const ProjectCard = () =>{
                                     </img>
                                    <h3>{element.user.name}</h3>
                                    <p className="bottomInfo">{element.user.position.name}</p>
-                                   <p className="bottomInfo">{`Valor/hr - R$: ${element.valuePerUserHour.toFixed(2)}`}</p>
+                                   {element.valuePerUserHour && <p className="bottomInfo">{`Valor/hr - R$: ${element.valuePerUserHour.toFixed(2)}`}</p>}
                                 </div>
                             )
                         })
