@@ -17,6 +17,9 @@ const ProjectsCard = () => {
   const { projects, handleGetProjects } = useProject()
 
 
+  useEffect(()=>{
+    handleGetProjects()
+  },[])
   
 
   const handleNewProject = () =>{
