@@ -26,9 +26,8 @@ const FirstPageCard = ({setStepNumber}:FirstPageProp) =>{
     
     const localClient = JSON.parse(sessionStorage.getItem("client") || "[]")
     const clientId = sessionStorage.getItem("clientId")
-    
-    
-    useEffect(()=>{
+
+    const handleInicialize = () =>{
         setCompanyName(localClient.companyName)
         setMainContact(localClient.mainContact);
         setEmail(localClient.email);
@@ -36,6 +35,11 @@ const FirstPageCard = ({setStepNumber}:FirstPageProp) =>{
         setTechnicalContact(localClient.technicalContact);
         setTechnicalContactEmail(localClient.technicalContactEmail)
         setTechnicalContactPhone(localClient.technicalContactPhone)
+    }
+    
+    
+    useEffect(()=>{
+        handleInicialize()
     },[])
 
     const handleNewClient = () =>{

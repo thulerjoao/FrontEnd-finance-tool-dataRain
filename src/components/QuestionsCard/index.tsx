@@ -12,10 +12,6 @@ import QuestionCard from "../QuestionCard";
 const QuestionsCard = () => {
   
   const { questions, updateQuestion } = useQuestions();
-
-  useEffect(()=>{
-    
-  },[questions])
   
   
   //newQuestion states and functions:
