@@ -34,9 +34,7 @@ export const AsidebarLogo = styled.div`
   padding: 15px 20px;
   height: 9.2%;
   padding-bottom: 2rem;
-
   margin-top: 1%;
-  cursor: pointer;
 `;
 
 export const AsidebarImg = styled.img`

@@ -24,7 +24,6 @@ const TimerSystemExtraHour = ({setIsTimerSystem, projectId, handleProject, isExt
   const { projects } = useProject()
   
   const [date, setDate] = useState(new Date());
-  const currentDate = new Date()
   const comertialDate = (moment(date).format('DD/MM/YYYY'));
   
 

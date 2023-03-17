@@ -24,12 +24,15 @@ const TimerSystemCard = ({setIsTimerSystem, projectId, handleProject, isExtraHou
   const [ isModalOpen, setIsModalOpen] = useState<boolean>(false);
   
 
-  useEffect(() => {
+  const handleInterval = () =>{
     const intervalId = setInterval(() => {
       setTime(moment().format('HH:mm:ss'));
     }, 1000);
-
     return () => clearInterval(intervalId);
+  }
+
+  useEffect(() => {
+    handleInterval()
   }, []);
 
 
