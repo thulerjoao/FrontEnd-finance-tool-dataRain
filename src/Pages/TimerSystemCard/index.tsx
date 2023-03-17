@@ -16,16 +16,24 @@ const TimeCardPage = () => {
   const { param } = useParams();
   const initial:boolean = param === "extra"? false : true
   const { projects, handleGetHours } = useProject()
-  const initialProjectId = projects.length > 0 ? projects[0].id : ""
-  const [ projectId, setProjectId ] = useState<string>(initialProjectId)
+  const [ projectId, setProjectId ] = useState<string>("")
   
   const [ isTimerSystem, setIsTimerSystem ] = useState<boolean>(initial)
   
   const comertialDate = (moment(new Date()).format('DD/MM/YYYY'));
   const [ extraHour, setExtraHour ] = useState<ExtraHour[]>([])
   const [ isExtraHour, setIsExtraHour ] = useState<boolean>(false)
+
+
+  const setInitalId = () =>{
+     setProjectId(projects.length > 0 ? projects[0].id : "")
+  }
   
-  
+  useEffect(()=>{
+    setInitalId()
+  },[projects])
+
+
   useEffect(()=>{
     extraHour.map((element)=>{ 
       if(element.dateToSendTime === comertialDate && element.status === "approved") setIsExtraHour(true)
@@ -36,7 +44,7 @@ const TimeCardPage = () => {
       Api.get(`/request-send-overtime/user/status/${projectId}`)
     .then((res)=>{setExtraHour(res.data);
     })
-},[])
+},[projectId])
 
   const handleProject = (projectId: string) =>{
     setProjectId(projectId);

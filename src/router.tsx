@@ -21,11 +21,6 @@ const Router = () => {
   const { logged, userStorage } = useAuth();
   const role = userStorage.role.name
 
-  console.log(role)
-
-  
-  
-
   return (
     <Routes>
       { logged &&
