@@ -14,15 +14,11 @@ socket.on('connect', () => {
     // console.log('Conectado ao servidor Socket.io');
     socket.on('connection', (data: any) => {
         // console.log(data);
-    });
-  
-      socket.on('new-notification', (data: NewNotificationPayload) => {
-        const { getNotifications } = useAuth();
-        getNotifications()
-      });
-
-
-    
+        // socket.on('new-notification', (data: NewNotificationPayload) => {
+        //   const { getNotifications } = useAuth();
+        //   getNotifications()
+        // });
+    }); 
   });
-
+  
 export default socket;

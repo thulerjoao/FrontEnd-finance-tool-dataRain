@@ -77,7 +77,7 @@ const TimerSystemExtraHour = ({setIsTimerSystem, projectId, handleProject, isExt
                           )
                         })}
                       </select>
-                      {isExtraHour&& <p className="extraAlert">ATENÇÃO: Lançamento de hora extra liberado para o dia de hoje.</p>}
+                      {isExtraHour&& <p className="extraAlert">ATENÇÃO: Lançamento de hora extra liberado para o dia de hoje</p>}
                       </div>
                       <div className="askForTime">
                           <Calendar className="calendar" value={date} onChange={setDate}/>

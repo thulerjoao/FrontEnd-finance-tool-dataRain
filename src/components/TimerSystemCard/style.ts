@@ -71,10 +71,10 @@ export const TimeCardContainer = styled.div`
               width: 10vw;
               position: absolute;
               left: 3.5%;
-ma
+              
               option{
                 text-align: center;
-
+                
               }
             }
 

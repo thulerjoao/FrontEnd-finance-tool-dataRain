@@ -81,7 +81,7 @@ export const TimeCardContainer = styled.div`
 
               option{
                 text-align: center;
-
+                
               }
             }
 
