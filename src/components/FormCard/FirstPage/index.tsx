@@ -56,7 +56,7 @@ const FirstPageCard = ({ setStepNumber }: FirstPageProp) => {
 
     const newData = validateValuesClient(data);
     if (typeof newData !== "string") {
-      Api.post("/client", data)
+      Api.post("/client/register", data)
         .then((res) => {
           setStepNumber(1);
           sessionStorage.setItem("client", JSON.stringify(data));

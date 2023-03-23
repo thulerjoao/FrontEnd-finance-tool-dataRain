@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import Api from "../../services/api";
 import * as Style from "./style";
 import { Dispatch, SetStateAction, useState } from "react";
-import { useClient } from "../../contexts/clientContext"
+import { useClient } from "../../contexts/clientContext";
 import { validateValuesClient } from "../../utils/validateClientsValue";
 import { CreateClientData } from "../../types/interface";
 
@@ -13,9 +13,7 @@ interface ChangeProp {
 }
 
 const CreateClientCard = ({ change, setChange }: ChangeProp) => {
-
-  const {handleGetClients} = useClient()
-
+  const { handleGetClients } = useClient();
 
   const [companyName, setCompanyName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -24,10 +22,9 @@ const CreateClientCard = ({ change, setChange }: ChangeProp) => {
   const [technicalPhone, setTechnicalPhone] = useState<string>("");
   const [technicalEmail, setTechnicalEmail] = useState<string>("");
   const [technicalName, setTechnicalName] = useState<string>("");
-  
 
-  const handleCreateClient = () =>{
-    const data:CreateClientData = {
+  const handleCreateClient = () => {
+    const data: CreateClientData = {
       companyName: companyName,
       email: email,
       phone: phone,
@@ -35,23 +32,24 @@ const CreateClientCard = ({ change, setChange }: ChangeProp) => {
       technicalContact: {
         phone: technicalPhone,
         email: technicalEmail,
-        name: technicalName
-      }
+        name: technicalName,
+      },
+    };
+
+    const newData = validateValuesClient(data);
+    if (typeof newData !== "string") {
+      Api.post("/client/create", newData)
+        .then((res) => {
+          toast.success("Cliente cadastrado");
+          handleGetClients();
+        })
+        .catch((error) => {
+          toast.error("Falha ao cadastrar cliente");
+          console.log(error);
+          
+        });
     }
-    
-    const newData = validateValuesClient(data)
-    if(typeof newData !== "string"){
-      Api.post("/client", newData)
-      .then((res)=>{
-        toast.success("Cliente cadastrado");
-        handleGetClients()
-        console.log(res);
-        
-      })
-      .catch((error)=>{toast.error("Falha ao cadastrar cliente")})  
-    }
-    
-  }
+  };
 
   return (
     <Style.CreateClientContainer>
@@ -84,7 +82,10 @@ const CreateClientCard = ({ change, setChange }: ChangeProp) => {
             onChange={(e) => setEmail(e.target.value)}
           />
           <Style.InputLabel>Telefone</Style.InputLabel>
-          <Style.Inputs type="number" onChange={(e) => setPhone(e.target.value)} />
+          <Style.Inputs
+            type="number"
+            onChange={(e) => setPhone(e.target.value)}
+          />
           <Style.InputLabel>Nome do contato técnico</Style.InputLabel>
           <Style.Inputs
             type="text"
@@ -109,7 +110,11 @@ const CreateClientCard = ({ change, setChange }: ChangeProp) => {
             >
               Cancelar
             </Button> */}
-          <Button variant="contained" className="buttonRegister" onClick={()=>handleCreateClient()}>
+          <Button
+            variant="contained"
+            className="buttonRegister"
+            onClick={() => handleCreateClient()}
+          >
             Cadastrar
           </Button>
         </Style.ButtonsContainer>

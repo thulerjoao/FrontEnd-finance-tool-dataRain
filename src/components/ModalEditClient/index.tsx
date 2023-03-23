@@ -5,8 +5,9 @@ import Modal from "react-modal";
 import React from "react";
 import toast from "react-hot-toast";
 import Api from "../../services/api";
-import { ClientTypes } from "../../types/interface"
+import { ClientTypes, CreateClientData } from "../../types/interface"
 import { useClient } from "../../contexts/clientContext";
+import { validateValuesClient } from "../../utils/validateClientsValue";
 
 interface ModalClientProps {
   isModalOpen: boolean;
@@ -47,31 +48,31 @@ const ClientSettings = ({
   const initialPhone = client.technicalContact? client.technicalContact.phone? client.technicalContact.phone: "" : "";
   const initialEmail = client.technicalContact? client.technicalContact.email? client.technicalContact.email: "" : "";
 
-  const [ comapnyName, setComapnyName ] = useState<string>(client.companyName)
-  const [ comapnyEmail, setComapnyEmail ] = useState<string>(client.email)
-  const [ mainContact, setMainContact ] = useState<string>(client.primaryContactName)
-  const [ mainPhone, setMainPhone ] = useState<string>(client.phone)
-  const [ technicalContact, setTechnicalContact ] = useState<string>(initialName)
+  const [ companyName, setCompanyName ] = useState<string>(client.companyName)
+  const [ email, setEmail ] = useState<string>(client.email)
+  const [ phone, setPhone ] = useState<string>(client.phone)
+  const [ primaryContactName, setPrimaryContactName ] = useState<string>(client.primaryContactName)
   const [ technicalPhone, setTechnicalPhone ] = useState<string>(initialPhone)
   const [ technicalEmail, setTechnicalEmail ] = useState<string>(initialEmail)
+  const [ technicalName, setTechnicalName ] = useState<string>(initialName)
 
-  const regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.([a-z]+)?$/i
 
-  const updateClient = () =>{
-      if(comapnyName !== "" && comapnyEmail !== "" && mainContact !== ""){
-        if(mainPhone.length >= 8){
-          if(comapnyEmail.match(regex)){
-            Api.patch(`/client/${client.id}`,
-            {
-              email: comapnyEmail,
-              phone: mainPhone,
-              companyName: comapnyName,
-              primaryContactName: mainContact,
-              technicalContact: technicalContact,
-              technicalContactPhone: technicalPhone,
-              technicalContactEmail : technicalEmail
-            }
-            )
+  const handleUpdateClient = () => {
+    const data: CreateClientData = {
+      companyName: companyName,
+      email: email,
+      phone: phone,
+      primaryContactName: primaryContactName,
+      technicalContact: {
+        phone: technicalPhone,
+        email: technicalEmail,
+        name: technicalName,
+      },
+    };
+
+    const newData = validateValuesClient(data);
+    if (typeof newData !== "string") {
+      Api.patch(`/client/${client.id}`, newData)
             .then(()=>{
               toast.success("Cliente atualizado")
               handleGetClients()
@@ -79,16 +80,43 @@ const ClientSettings = ({
             }).catch(()=>{
               toast.error("Falha ao atualizar cliente")
             })
-          }else{
-            toast.error("Email principal inválido")
-          }
-        }else{
-        toast.error("Telefone principal inválido")
-      }
-      }else{
-        toast.error("Preencha os campos origatórios")
-      }
-  }
+    }
+  };
+
+  // const regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.([a-z]+)?$/i
+
+  // const updateClient = () =>{
+  //     if(comapnyName !== "" && comapnyEmail !== "" && mainContact !== ""){
+  //       if(mainPhone.length >= 8){
+  //         if(comapnyEmail.match(regex)){
+  //           Api.patch(`/client/${client.id}`,
+  //           {
+  //             email: comapnyEmail,
+  //             phone: mainPhone,
+  //             companyName: comapnyName,
+  //             primaryContactName: mainContact,
+  //             technicalContact: technicalContact,
+  //             technicalContactPhone: technicalPhone,
+  //             technicalContactEmail : technicalEmail
+  //           }
+  //           )
+  //           .then(()=>{
+  //             toast.success("Cliente atualizado")
+  //             handleGetClients()
+  //             handleCloseModal()
+  //           }).catch(()=>{
+  //             toast.error("Falha ao atualizar cliente")
+  //           })
+  //         }else{
+  //           toast.error("Email principal inválido")
+  //         }
+  //       }else{
+  //       toast.error("Telefone principal inválido")
+  //     }
+  //     }else{
+  //       toast.error("Preencha os campos origatórios")
+  //     }
+  // }
 
   return (
     <Modal
@@ -103,15 +131,15 @@ const ClientSettings = ({
         <h2>Editar cliente</h2>
         <section>
           <p>Nome da empresa *</p>
-          <input type="text" defaultValue={comapnyName} onChange={(e)=>setComapnyName(e.target.value)}></input>
+          <input type="text" defaultValue={companyName} onChange={(e)=>setCompanyName(e.target.value)}></input>
           <p>Email *</p>
-          <input type="text" defaultValue={comapnyEmail} onChange={(e)=>setComapnyEmail(e.target.value)}></input>
+          <input type="text" defaultValue={email} onChange={(e)=>setEmail(e.target.value)}></input>
           <p>Contato principal *</p>
-          <input type="text" defaultValue={mainContact} onChange={(e)=>setMainContact(e.target.value)}></input>
+          <input type="text" defaultValue={primaryContactName} onChange={(e)=>setPrimaryContactName(e.target.value)}></input>
           <p>Telefone contato principal *</p>
-          <input type="number" defaultValue={mainPhone} onChange={(e)=>setMainPhone(e.target.value)}></input>
+          <input type="number" defaultValue={phone} onChange={(e)=>setPhone(e.target.value)}></input>
           <p>Contato técnico</p>
-          <input type="text" defaultValue={technicalContact} onChange={(e)=>setTechnicalContact(e.target.value)}></input>
+          <input type="text" defaultValue={technicalName} onChange={(e)=>setTechnicalName(e.target.value)}></input>
           <p>Telefone contato técnico</p>
           <input type="number" defaultValue={technicalPhone} onChange={(e)=>setTechnicalPhone(e.target.value)}></input>
           <p>Email contato técnico</p>
@@ -121,7 +149,7 @@ const ClientSettings = ({
           <Button variant="contained" className="buttonEnter cancel" onClick={()=>handleCloseModal()}>
             Cancelar
           </Button>
-          <Button variant="contained" className="buttonEnter" onClick={()=>{updateClient()}}>
+          <Button variant="contained" className="buttonEnter" onClick={()=>{handleUpdateClient()}}>
             Atualizar
           </Button>
         </section>
