@@ -34,7 +34,8 @@ const UserCard = (element: any) => {
                     <section>
                       <img src={
                         element.element.imageUrl === null? logo :
-                        `https://back-btc-finance-tool-production.up.railway.app${element.element.imageUrl}`
+                        // `https://back-btc-finance-tool-production.up.railway.app${element.element.imageUrl}`
+                        `http://localhost:3333/${element.element.imageUrl}`
                         }></img>
                       <h2>{firstUp(element.element.name)}</h2>
                       <p>{element.element.email}</p>
