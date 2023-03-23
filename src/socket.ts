@@ -4,7 +4,9 @@ import { useAuth } from './contexts/auth';
 import { NewNotificationPayload } from './types/interface';
 
 const token = localStorage.getItem('token');
-  const socket = io('https://back-btc-finance-tool-production.up.railway.app/', {
+// const socket = io('https://back-btc-finance-tool-production.up.railway.app/', {
+
+  const socket = io('http://localhost:3333/', {
     auth: {
       token,
     },
