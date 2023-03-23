@@ -7,18 +7,6 @@ import { isEmpty } from "./validateEmpty";
 export const validateValuesClient = (data:CreateClientData) => {
     console.log(data);
     const { companyName, email, phone, primaryContactName, technicalContact } = data
-    if (!isEmpty(email)) {
-      return toast.error("Email não informado");
-    }
-    if (!checkIfEmailIsValid(email)) {
-      return toast.error("Email inválido");
-    }
-    if (!isEmpty(phone)) {
-      return toast.error("Telefone não informado");
-    }
-    if (phone.length < 8 || phone.length > 16) {
-      return toast.error("Telefone inválido")
-    }
     if(!isEmpty(companyName)){
       return toast.error("Nome de cliente obrigatório")
     }
@@ -30,6 +18,18 @@ export const validateValuesClient = (data:CreateClientData) => {
     }
     if(primaryContactName.length < 2 || primaryContactName.length > 25){
       return toast.error("Contato principal inválido")
+    }
+    if (!isEmpty(email)) {
+      return toast.error("Email não informado");
+    }
+    if (!checkIfEmailIsValid(email)) {
+      return toast.error("Email inválido");
+    }
+    if (!isEmpty(phone)) {
+      return toast.error("Telefone não informado");
+    }
+    if (phone.length < 8 || phone.length > 16) {
+      return toast.error("Telefone inválido")
     }
     
     if(!isEmpty(technicalContact?.email) && !isEmpty(technicalContact?.name) && !isEmpty(technicalContact?.phone)){
@@ -44,11 +44,11 @@ export const validateValuesClient = (data:CreateClientData) => {
       if(technicalContact.name.length < 2 || technicalContact.name.length > 40){
         return toast.error("Nome de contato técnico inválido")
       }
-      if(technicalContact.phone.length < 8 || technicalContact.phone.length > 16){
-        return toast.error("Telefone de contato técnico inválido")
-      }
       if(!checkIfEmailIsValid(technicalContact.email)){
         return toast.error("Email de contato técnico inválido")
+      }
+      if(technicalContact.phone.length < 8 || technicalContact.phone.length > 16){
+        return toast.error("Telefone de contato técnico inválido")
       }
     }else{
       return toast.error("Informe todos os dados do contato técnico")

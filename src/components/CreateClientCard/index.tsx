@@ -1,15 +1,9 @@
-import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "@mui/material";
-import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
-import * as yup from "yup";
 import Api from "../../services/api";
 import * as Style from "./style";
-import TopBar from "../TopBar";
 import { Dispatch, SetStateAction, useState } from "react";
-import { checkIfEmailIsValid } from "../../utils/validateEmail";
-import { isEmpty } from "../../utils/validateEmpty";
+import { useClient } from "../../contexts/clientContext"
 import { validateValuesClient } from "../../utils/validateClientsValue";
 import { CreateClientData } from "../../types/interface";
 
@@ -19,7 +13,9 @@ interface ChangeProp {
 }
 
 const CreateClientCard = ({ change, setChange }: ChangeProp) => {
-  const navigate = useNavigate();
+
+  const {handleGetClients} = useClient()
+
 
   const [companyName, setCompanyName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -46,7 +42,13 @@ const CreateClientCard = ({ change, setChange }: ChangeProp) => {
     const newData = validateValuesClient(data)
     if(typeof newData !== "string"){
       Api.post("/client", newData)
-      .then(()=>{toast.success("Cliente cadastrado")})  
+      .then((res)=>{
+        toast.success("Cliente cadastrado");
+        handleGetClients()
+        console.log(res);
+        
+      })
+      .catch((error)=>{toast.error("Falha ao cadastrar cliente")})  
     }
     
   }
@@ -66,13 +68,6 @@ const CreateClientCard = ({ change, setChange }: ChangeProp) => {
           <h2>- Dados do novo cliente -</h2>
         </Style.TopContainer>
         <Style.InputsContainer>
-          <Style.InputLabel>Email</Style.InputLabel>
-          <Style.Inputs
-            type="email"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <Style.InputLabel>Telefone</Style.InputLabel>
-          <Style.Inputs type="number" onChange={(e) => setPhone(e.target.value)} />
           <Style.InputLabel>Nome do cliente</Style.InputLabel>
           <Style.Inputs
             type="text"
@@ -83,20 +78,27 @@ const CreateClientCard = ({ change, setChange }: ChangeProp) => {
             type="text"
             onChange={(e) => setPrimaryContactName(e.target.value)}
           />
+          <Style.InputLabel>Email</Style.InputLabel>
+          <Style.Inputs
+            type="email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <Style.InputLabel>Telefone</Style.InputLabel>
+          <Style.Inputs type="number" onChange={(e) => setPhone(e.target.value)} />
           <Style.InputLabel>Nome do contato técnico</Style.InputLabel>
           <Style.Inputs
             type="text"
             onChange={(e) => setTechnicalName(e.target.value)}
           />
-          <Style.InputLabel>Telefone do contato técnico</Style.InputLabel>
-          <Style.Inputs
-            type="number"
-            onChange={(e) => setTechnicalPhone(e.target.value)}
-          />
           <Style.InputLabel>E-mail do contato técnico</Style.InputLabel>
           <Style.Inputs
             type="email"
             onChange={(e) => setTechnicalEmail(e.target.value)}
+          />
+          <Style.InputLabel>Telefone do contato técnico</Style.InputLabel>
+          <Style.Inputs
+            type="number"
+            onChange={(e) => setTechnicalPhone(e.target.value)}
           />
         </Style.InputsContainer>
         <Style.ButtonsContainer>
