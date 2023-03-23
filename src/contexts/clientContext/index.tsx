@@ -23,13 +23,7 @@ export const ClientProvider = ({ children }: ClientProviderProps) => {
   const handleGetClients = () => {
     const token = localStorage.getItem("token");
 
-    const headers = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
-
-    Api.get("/client", headers)
+    Api.get("/client")
       .then((res) => setClients(res.data))
       .catch((err) =>{});
   };

@@ -1,136 +1,125 @@
-import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "@mui/material";
-import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
-import * as yup from "yup";
 import Api from "../../services/api";
 import * as Style from "./style";
-import TopBar from "../TopBar";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
+import { useClient } from "../../contexts/clientContext";
+import { validateValuesClient } from "../../utils/validateClientsValue";
+import { CreateClientData } from "../../types/interface";
 
 interface ChangeProp {
-  change: boolean,
-  setChange: Dispatch<SetStateAction<boolean>>
+  change: boolean;
+  setChange: Dispatch<SetStateAction<boolean>>;
 }
 
-const CreateClientCard = ({change, setChange}:ChangeProp) => {
-  const navigate = useNavigate();
+const CreateClientCard = ({ change, setChange }: ChangeProp) => {
+  const { handleGetClients } = useClient();
 
-  interface CreateClientData {
-    companyName: string;
-    email: string;
-    phone: string;
-    primaryContactName: string;
-    technicalContact?: string;
-    technicalContactPhone?: string;
-    technicalContactEmail?: string;
-  }
+  const [companyName, setCompanyName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [phone, setPhone] = useState<string>("");
+  const [primaryContactName, setPrimaryContactName] = useState<string>("");
+  const [technicalPhone, setTechnicalPhone] = useState<string>("");
+  const [technicalEmail, setTechnicalEmail] = useState<string>("");
+  const [technicalName, setTechnicalName] = useState<string>("");
 
-  const registerSchema = yup.object().shape({
-    email: yup.string().email("Email inválido").required("Email obrigatório"),
-    phone: yup
-      .string()
-      .max(11, "Campo telefone pode conter apenas 11 dígitos")
-      .required("Telefone obrigatório"),
-    companyName: yup.string().required("Nome obrigatório"),
-    primaryContactName: yup.string().required("Preencha o campo contato principal"),
-    technicalContact: yup.string(),
-    technicalContactPhone: yup.string().max(11, "Máximo 11 dígitos"),
-    technicalContactEmail: yup.string().email("Email inválido"),
-  });
+  const handleCreateClient = () => {
+    const data: CreateClientData = {
+      companyName: companyName,
+      email: email,
+      phone: phone,
+      primaryContactName: primaryContactName,
+      technicalContact: {
+        phone: technicalPhone,
+        email: technicalEmail,
+        name: technicalName,
+      },
+    };
 
-  const handleErrorMessage = () => {
-    if (errors.companyName) {
-      toast.error(`${errors.companyName?.message}`);
-      clearErrors();
-    } else if (errors.email) {
-      toast.error(`${errors.email?.message}`);
-      clearErrors();
-    } else if (errors.phone) {
-      toast.error(`${errors.phone?.message}`);
-      clearErrors();
-    } else if (errors.primaryContactName) {
-      toast.error(`${errors.primaryContactName?.message}`);
-      clearErrors();
-    } else {
-      clearErrors;
-    }
-  };
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    clearErrors,
-  } = useForm<CreateClientData>({ resolver: yupResolver(registerSchema) });
-
-  const handleRegister = (data: CreateClientData) => {
-    if (
-      data.companyName !== "" ||
-      data.email !== "" ||
-      data.phone !== "" ||
-      data.primaryContactName !== ""
-    ) {
-      Api.post("/client", data)
+    const newData = validateValuesClient(data);
+    if (typeof newData !== "string") {
+      Api.post("/client/create", newData)
         .then((res) => {
-          toast.success("Cliente criado com sucesso");
+          toast.success("Cliente cadastrado");
+          handleGetClients();
         })
         .catch((error) => {
-          toast.error("Erro ao realizar cadastro");
+          toast.error("Falha ao cadastrar cliente");
+          console.log(error);
+          
         });
     }
   };
 
   return (
     <Style.CreateClientContainer>
-        <Style.CreateClientCard onSubmit={handleSubmit(handleRegister)}>
-          <Style.CreateUserTitleContainer>
-          <div onClick={()=>setChange(true)}>
-            <h1 className="h1title" >Usuário</h1>
+      <Style.CreateClientCard>
+        <Style.CreateUserTitleContainer>
+          <div onClick={() => setChange(true)}>
+            <h1 className="h1title">Usuário</h1>
           </div>
-          <div className="active" >
+          <div className="active">
             <h1 className="h1title">Cliente</h1>
           </div>
-          </Style.CreateUserTitleContainer>
-          <Style.TopContainer>
-            <h2>- Dados do novo cliente -</h2>
-          </Style.TopContainer>
-          <Style.InputsContainer>
-            <Style.InputLabel>Email</Style.InputLabel>
-            <Style.Inputs type="email" {...register("email")} />
-            <Style.InputLabel>Telefone</Style.InputLabel>
-            <Style.Inputs type="tel" {...register("phone")} />
-            <Style.InputLabel>Nome do cliente</Style.InputLabel>
-            <Style.Inputs type="text" {...register("companyName")} />
-            <Style.InputLabel>Nome do contato principal</Style.InputLabel>
-            <Style.Inputs type="text" {...register("primaryContactName")} />
-            <Style.InputLabel>Nome do contato técnico</Style.InputLabel>
-            <Style.Inputs type="text" {...register("technicalContact")} />
-            <Style.InputLabel>Telefone do contato técnico</Style.InputLabel>
-            <Style.Inputs type="tel" {...register("technicalContactPhone")} />
-            <Style.InputLabel>E-mail do contato técnico</Style.InputLabel>
-            <Style.Inputs type="email" {...register("technicalContactEmail")} />
-          </Style.InputsContainer>
-          <Style.ButtonsContainer>
-            {/* <Button
+        </Style.CreateUserTitleContainer>
+        <Style.TopContainer>
+          <h2>- Dados do novo cliente -</h2>
+        </Style.TopContainer>
+        <Style.InputsContainer>
+          <Style.InputLabel>Nome do cliente</Style.InputLabel>
+          <Style.Inputs
+            type="text"
+            onChange={(e) => setCompanyName(e.target.value)}
+          />
+          <Style.InputLabel>Nome do contato principal</Style.InputLabel>
+          <Style.Inputs
+            type="text"
+            onChange={(e) => setPrimaryContactName(e.target.value)}
+          />
+          <Style.InputLabel>Email</Style.InputLabel>
+          <Style.Inputs
+            type="email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <Style.InputLabel>Telefone</Style.InputLabel>
+          <Style.Inputs
+            type="number"
+            onChange={(e) => setPhone(e.target.value)}
+          />
+          <Style.InputLabel>Nome do contato técnico</Style.InputLabel>
+          <Style.Inputs
+            type="text"
+            onChange={(e) => setTechnicalName(e.target.value)}
+          />
+          <Style.InputLabel>E-mail do contato técnico</Style.InputLabel>
+          <Style.Inputs
+            type="email"
+            onChange={(e) => setTechnicalEmail(e.target.value)}
+          />
+          <Style.InputLabel>Telefone do contato técnico</Style.InputLabel>
+          <Style.Inputs
+            type="number"
+            onChange={(e) => setTechnicalPhone(e.target.value)}
+          />
+        </Style.InputsContainer>
+        <Style.ButtonsContainer>
+          {/* <Button
               variant="contained"
               className="buttonCancel"
               onClick={() => navigate("/home")}
             >
               Cancelar
             </Button> */}
-            <Button
-              type="submit"
-              variant="contained"
-              className="buttonRegister"
-              onClick={() => handleErrorMessage()}
-            >
-              Cadastrar
-            </Button>
-          </Style.ButtonsContainer>
-        </Style.CreateClientCard>
-      </Style.CreateClientContainer>
+          <Button
+            variant="contained"
+            className="buttonRegister"
+            onClick={() => handleCreateClient()}
+          >
+            Cadastrar
+          </Button>
+        </Style.ButtonsContainer>
+      </Style.CreateClientCard>
+    </Style.CreateClientContainer>
   );
 };
 

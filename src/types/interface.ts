@@ -30,6 +30,17 @@ export interface ClientTypes {
     phone: string
   }
 }
+export interface CreateClientData {
+  companyName: string;
+  email: string;
+  phone: string;
+  primaryContactName: string;
+  technicalContact?: {
+    phone: string;
+    email: string;
+    name: string;
+  };
+}
 export interface ProjectTypes {
   id: string;
   name: string;

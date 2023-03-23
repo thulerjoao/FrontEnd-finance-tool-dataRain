@@ -7,14 +7,12 @@ ${({theme})=>css`
     width: 44.5rem;
     max-width: 54.5rem;
     height: 34rem;
-
     margin: 0;
     padding: 2.8rem;
     display: flex;
     justify-content:space-between;
     align-items: center;
     flex-direction: column;
-    user-select: none;
 
 
     div{
