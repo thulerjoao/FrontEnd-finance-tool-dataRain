@@ -15,11 +15,12 @@ interface TimerSystemProps {
   setIsTimerSystem: Dispatch<SetStateAction<boolean>>,
   projectId:string,
   handleProject:(prop:string)=>void,
+  handleStatus:()=>void,
   isExtraHour: boolean,
   extraHour: ExtraHour[],
 }
 
-const TimerSystemExtraHour = ({setIsTimerSystem, projectId, handleProject, isExtraHour, extraHour}:TimerSystemProps) => {
+const TimerSystemExtraHour = ({setIsTimerSystem, projectId, handleProject, handleStatus, isExtraHour, extraHour}:TimerSystemProps) => {
 
   const { projects } = useProject()
   
@@ -59,6 +60,11 @@ const TimerSystemExtraHour = ({setIsTimerSystem, projectId, handleProject, isExt
       setIsModalOpen(false)
     })
   }
+
+  useEffect(() => {
+    handleStatus()
+  }, []);
+  
 
   return (
           <Style.TimeCardContainer>

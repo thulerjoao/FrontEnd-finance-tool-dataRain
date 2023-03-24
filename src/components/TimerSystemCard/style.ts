@@ -1,4 +1,5 @@
 import { BsThreeDotsVertical } from "react-icons/bs";
+import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
 import styled, { css } from "styled-components";
 import theme from "../../styles/theme";
 
@@ -86,6 +87,7 @@ export const TimeCardContainer = styled.div`
           }
 
           .machine{
+            position: relative;
             background-color: #e1e1e1;
             display: flex;
             flex-direction: column;
@@ -173,9 +175,38 @@ export const TimeCardContainer = styled.div`
 
               .lastOne{
                 border-bottom: 1px dashed ${theme.colors.tertiaryColor};
-              }
-              
+              } 
             }
+
+            .selectHourType{
+              position: absolute;
+              bottom: 2vh;
+              display: flex;
+              flex-direction: row;
+              justify-content: center;
+              padding: 0 0.5rem;
+              align-items: center;
+              width: 70%;
+              height: 3.5vh;
+              background-color: ${theme.colors.darkGrey};
+              box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+              border-radius: 5px;
+              cursor: pointer;
+              user-select: none; 
+
+
+              p{
+                font-size: ${theme.constants.smallFont};
+                color: ${theme.colors.fundamentalColor}
+                  
+              }
+              .on{
+                color: ${theme.colors.primaryColor};
+              }
+            }
+            .on{
+                background-color: #01db84;
+              }
           }
 
         }
@@ -205,12 +236,6 @@ export const TimeCardContainer = styled.div`
 
         }
        }
-      
-  
-
-
-     
-
     }
 
   `}
@@ -220,3 +245,24 @@ export const Settings = styled(BsThreeDotsVertical)`
   height: 5rem;
   cursor: pointer;
 `
+
+export const leftArrow = styled(BiLeftArrow)`
+  height: 5rem;
+  cursor: pointer;
+  color: black;
+
+  :hover{
+    transform: scale(1.2);
+  }
+`;
+
+export const rightArrow = styled(BiRightArrow)`
+  height: 5rem;
+  cursor: pointer;
+  color: black;
+
+  :hover{
+    transform: scale(1.2);
+  }
+`;
+

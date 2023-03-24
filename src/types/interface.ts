@@ -5,7 +5,7 @@ export interface UserTypes {
   password?: string;
   imageUrl: string;
   position: string;
-  role: {name:string};
+  role: { name: string };
   billable?: boolean;
   allocated?: boolean;
   createdAt?: Date;
@@ -24,11 +24,11 @@ export interface ClientTypes {
   companyName: string;
   phone: string;
   primaryContactName: string;
-  technicalContact:{
-    name: string,
-    email: string,
-    phone: string
-  }
+  technicalContact: {
+    name: string;
+    email: string;
+    phone: string;
+  };
 }
 export interface CreateClientData {
   companyName: string;
@@ -45,13 +45,13 @@ export interface ProjectTypes {
   id: string;
   name: string;
   description: string;
-  client:string,
+  client: string;
   users: UserTypes[];
   containsManager: boolean;
   summedTimeValueOfAllUsers: number;
 }
 
-export type NotificationTypes = 'request_send_overtime' | 'budget_request';
+export type NotificationTypes = "request_send_overtime" | "budget_request";
 export interface NewNotificationPayload {
   id: string;
   receiverId: string;
@@ -65,9 +65,16 @@ export interface NewNotificationPayload {
   createdAt: Date;
 }
 
-export interface ExtraHour{
+export interface ExtraHour {
   id: string;
-  dateToSendTime: string;
+  dateToSendTime: any;
   status: string;
   requestDescription: string;
+}
+
+export interface ExtraHourStatus {
+  id: string;
+  requestDescription: string;
+  dateToSendTime: any;
+  status: string;
 }
