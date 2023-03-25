@@ -2,8 +2,8 @@ import axios from "axios";
 
 const Api = axios.create({
 
-  // baseURL: "https://back-btc-finance-tool-production.up.railway.app/",
-  baseURL: "http://localhost:3333/",
+  baseURL: "https://data-rain-finance-tool-server-production.up.railway.app/",
+  // baseURL: "http://localhost:3333/",
 
   
 });
