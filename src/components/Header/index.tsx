@@ -102,9 +102,8 @@ function updateElapsedTime(incomingDate: Date): string {
               <img alt="Imagem do Perfil" src={userDefault}></img>
             ) : (
               <img
-                alt="Imagem do Perfil"
-                // src={`https://back-btc-finance-tool-production.up.railway.app${userStorage.imageUrl}`} 
-                src={`http://localhost:3333/${userStorage.imageUrl}`}
+                src={`http://data-rain-finance-tool-server-production.up.railway.app${userStorage.imageUrl}`} 
+                // src={`http://localhost:3333/${userStorage.imageUrl}`}
               ></img>
             )}
             <p>{firstUp(userStorage.name)}</p>
