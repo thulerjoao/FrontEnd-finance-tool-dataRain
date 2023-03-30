@@ -36,7 +36,7 @@ const TeamsCard = () => {
                   <img src={
                     userStorage.imageUrl === null? Logo :
                     // `https://back-btc-finance-tool-production.up.railway.app${userStorage.imageUrl}`
-                    `http://localhost:3333/${userStorage.imageUrl}`
+                    `https://data-rain-finance-tool-server-production.up.railway.app${userStorage.imageUrl}`
                     }></img>
                   <div>
                     <div className="top">

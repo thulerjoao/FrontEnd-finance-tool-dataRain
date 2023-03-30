@@ -103,8 +103,7 @@ function updateElapsedTime(incomingDate: Date): string {
             ) : (
               <img
                 alt="Imagem do Perfil"
-                // src={`https://back-btc-finance-tool-production.up.railway.app${userStorage.imageUrl}`} 
-                src={`http://localhost:3333/${userStorage.imageUrl}`}
+                src={`https://data-rain-finance-tool-server-production.up.railway.app${userStorage.imageUrl}`}
               ></img>
             )}
             <p>{firstUp(userStorage.name)}</p>
@@ -140,7 +139,7 @@ function updateElapsedTime(incomingDate: Date): string {
                 alt="Imagem do Perfil"
                 src={element.imageUrl!==null? 
                   // `https://back-btc-finance-tool-production.up.railway.app${element.imageUrl}`
-                  `http://localhost:3333/${element.imageUrl}`
+                  `https://data-rain-finance-tool-server-production.up.railway.app${element.imageUrl}`
                   : userDefault}
             ></img>
             <p>{element.message}</p>
