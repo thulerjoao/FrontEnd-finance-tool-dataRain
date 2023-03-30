@@ -15,8 +15,8 @@ interface ProjectProviderData {
   handleGetProjects: () => void;
   projectHours: any;
   handleGetHours: (prop:string)=>void;
-  // projectExtraHours: any;
-  // handleGetExtraHours: (prop:string)=>void;
+  projectExtraHours: any;
+  handleGetExtraHours: (prop:string)=>void;
 }
 
 interface ProjectProviderProps {
@@ -30,7 +30,7 @@ const ProjectContext = createContext<ProjectProviderData>(
 export const ProjectProvider = ({ children }: ProjectProviderProps) => {
   const [projects, setProjects] = useState<ProjectTypes[]>([]);
   const [ projectHours, setProjectHours ] = useState<any>()
-  // const [ projectExtraHours, setProjectExtraHours ] = useState<any>()
+  const [ projectExtraHours, setProjectExtraHours ] = useState<any>()
   const { logged, userStorage } = useAuth();
 
  
@@ -47,8 +47,8 @@ export const ProjectProvider = ({ children }: ProjectProviderProps) => {
         Api.get(`/project/user`)
       .then((res) => {
         setProjects(res.data)
-
         handleGetHours(res.data[0].id)
+        handleGetExtraHours(res.data[0].id)
       })
       .catch((err) => {});
       }
@@ -68,17 +68,17 @@ export const ProjectProvider = ({ children }: ProjectProviderProps) => {
     .catch(()=>setProjectHours([]))
   }
 
-  // const handleGetExtraHours = (id:string) => {
-  //   Api.get(`/overtime/user/status/${id}`)
-  //   .then((res)=> {
-  //     setProjectExtraHours(res.data);
-  //     setProjectHours([]);
-  //   })
-  //   .catch(()=>setProjectHours([]))
-  // }
+  const handleGetExtraHours = (id:string) => {
+    Api.get(`/overtime/user/status/${id}`)
+    .then((res)=> {
+      setProjectExtraHours(res.data);
+    })
+    .catch(()=>setProjectExtraHours([]))
+  }
+
   return (
     <ProjectContext.Provider
-      value={{ projects, handleGetProjects, projectHours, handleGetHours }}
+      value={{ projects, handleGetProjects, projectHours, projectExtraHours, handleGetExtraHours, handleGetHours }}
     >
       {children}
     </ProjectContext.Provider>

@@ -166,7 +166,7 @@ const ProjectCard = () =>{
                                    <img src={
                                         element.user.imageUrl === null? logo :
                                         // `https://back-btc-finance-tool-production.up.railway.app${element.user.imageUrl}`
-                                        `http://localhost:3333/${element.user.imageUrl}`
+                                        `https://data-rain-finance-tool-server-production.up.railway.app${element.user.imageUrl}`
                                         }>
                                     </img>
                                    <h3>{element.user.name}</h3>
