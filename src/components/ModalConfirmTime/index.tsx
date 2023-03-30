@@ -12,6 +12,8 @@ interface ModalConfirmTimeProps {
   isModalOpen: boolean;
   projectId: string;
   setIsModalOpen: Dispatch<SetStateAction<boolean>>;
+  extraHourId:string;
+  active: boolean;
 }
 
 export const customStyles = {
@@ -33,6 +35,8 @@ const ConfirmTime = ({
   isModalOpen,
   setIsModalOpen,
   projectId,
+  active,
+  extraHourId,
 
 }: ModalConfirmTimeProps) => {
 
@@ -40,9 +44,10 @@ const ConfirmTime = ({
     setIsModalOpen(false);
   };
 
-  const { handleGetHours } = useProject()
+  const { handleGetHours, handleGetExtraHours } = useProject()
 
   const handleMarkHors = () =>{
+    !active?
     Api.post("/normal-hour", {
       projectId: projectId
     }).then(()=>{
@@ -53,29 +58,15 @@ const ConfirmTime = ({
       toast.error('Erro ao lançar hora')
       setIsModalOpen(false)
     })
+    :
+    Api.post("/overtime/user", {
+      requestSendOvertimeId: extraHourId
+    }).then(()=>{
+      toast.success('Feito')
+      handleCloseModal()
+      handleGetExtraHours(projectId)
+    })
   }
-
-  // const [ overtimeObject, setOvertimeObject ] = useState<any>([])
-  // const today = new Date()
-  // const overtimeId = overtimeObject.length > 0 && overtimeObject.filter((element: any)=>element.dateToSendTime.includes(moment(today).format('DD/MM/YYYY')))[0].id
-
-  // const handleMarkExtraHors = () =>{
-  //   Api.get(`/request-send-overtime/user/status/${projectId}`)
-  //     .then((res)=> setOvertimeObject(res.data))
-  //     .catch(()=>{})
-
-
-  //   Api.post("/overtime/user", {
-  //     requestSendOvertimeId: overtimeId
-  //   }).then(()=>{
-  //     toast.success('Feito')
-  //     handleCloseModal()
-  //     handleGetExtraHours(projectId)
-  //   }).catch((err)=>{
-  //     toast.error('Erro ao lançar hora')
-  //     setIsModalOpen(false)
-  //   })
-  // }
 
   return (
     <Modal
@@ -87,13 +78,13 @@ const ConfirmTime = ({
         <div>
           <Style.BackArrow onClick={handleCloseModal} />
         </div>
-        <h2>Excolha o tipo de hora a ser registrada</h2>
+        <h2>Registar horário de serviço</h2>
         <section className="botton">
           <Button variant="contained" className="buttonEnter " onClick={()=>{handleMarkHors()}}>
-            Hora Ordirdaria
+            Confirmar
           </Button>
-          <Button variant="contained" className="buttonEnter cancel">
-            Hora Extra
+          <Button variant="contained" className="buttonEnter cancel" onClick={()=>handleCloseModal()}>
+            Cancelar
           </Button>
         </section>
       </Style.ModalConfirmTimeContainer>

@@ -25,7 +25,13 @@ const TimerSystemCard = ({
   isExtraHour,
   extraHour,
 }: TimerSystemProps) => {
-  const { projects, projectHours, handleGetHours } = useProject();
+  const {
+    projects,
+    projectHours,
+    handleGetHours,
+    projectExtraHours,
+    handleGetExtraHours,
+  } = useProject();
   // const [ projectId, setProjectId ] = useState<string>(projects[0].id)
 
   const [time, setTime] = useState(moment().format("HH:mm:ss"));
@@ -57,13 +63,12 @@ const TimerSystemCard = ({
     handleInterval();
   }, []);
 
-  const handleregisteOvertime = () => {
-    Api.post(`/overtime/user`,{
-      requestSendOvertimeId: extraHourId
-    })
-    .then(()=>{
-      Api.get(`/overtime/user/status/${projectId}`)
-    })
+  const handleRegisteOvertime = () => {
+    Api.post(`/overtime/user`, {
+      requestSendOvertimeId: extraHourId,
+    }).then(() => {
+      handleGetExtraHours(projectId);
+    });
   };
 
   const getCurrentDate = (): string => {
@@ -90,6 +95,10 @@ const TimerSystemCard = ({
     setActive(!active);
   };
 
+ console.log(projectExtraHours);
+ 
+  
+
   return (
     <Style.TimeCardContainer>
       <section className="section01">
@@ -106,7 +115,7 @@ const TimerSystemCard = ({
             >
               {projects &&
                 projects.map((element) => {
-                  return <option value={element.id}>{element.name}</option>;
+                  return <option key={element.id} value={element.id}>{element.name}</option>;
                 })}
             </select>
             {isExtraHour && (
@@ -120,45 +129,57 @@ const TimerSystemCard = ({
               <h2>{time}</h2>
               <h3>{firstUp(getCurrentDate())}</h3>
             </div>
-            {projectHours && (
+            <p className="topTitle">{!active ?"Hora ordinária": "Hora extra"}</p>
+            {active ? 
+            projectExtraHours && (
               <div className="cardSpace">
-                {projectHours.date && (
+                {projectExtraHours.date && (
                   <div className="card title">
                     <p>{projectHours.date}</p>
                   </div>
                 )}
-                {/* {projectExtraHours.exit && <div className="card"><p>{`Início hora extra - ${projectExtraHours.entry.slice(0, 5)}`}</p></div>}
-                      {projectExtraHours.entry &&<div className="card"><p>{`Fim hora extra - ${projectExtraHours.exit.slice(0, 5)}`}</p></div>} */}
-                {projectHours.exit && (
+                {projectExtraHours.exit && (
                   <div className="card">
-                    <p>{`Fim expediente - ${projectHours.exit.slice(0, 5)}`}</p>
+                    <p>{`Fim hora extra - ${projectExtraHours.exit.slice(0,5)}`}</p>
                   </div>
                 )}
-                {projectHours.backFromTheBreak && (
-                  <div className="card">
-                    <p>{`Volta do almoço - ${projectHours.backFromTheBreak.slice(
-                      0,
-                      5
-                    )}`}</p>
-                  </div>
-                )}
-                {projectHours.exitToBreak && (
-                  <div className="card">
-                    <p>{`Saida para alomoço - ${projectHours.exitToBreak.slice(
-                      0,
-                      5
-                    )}`}</p>
-                  </div>
-                )}
-                {projectHours.entry && (
+                {projectExtraHours.entry && (
                   <div className="card lastOne">
-                    <p>{`Início expediente - ${projectHours.entry.slice(
-                      0,
-                      5
-                    )}`}</p>
+                    <p>{`Início hora extra - ${projectExtraHours.entry.slice(0,5)}`}</p>
                   </div>
                 )}
               </div>
+            ) : 
+            (
+              projectHours && (
+                <div className="cardSpace">
+                  {projectHours.date && (
+                    <div className="card title">
+                      <p>{projectHours.date}</p>
+                    </div>
+                  )}
+                  {projectHours.exit && (
+                    <div className="card">
+                      <p>{`Fim expediente - ${projectHours.exit.slice(0, 5)}`}</p>
+                    </div>
+                  )}
+                  {projectHours.backFromTheBreak && (
+                    <div className="card">
+                      <p>{`Volta do almoço - ${projectHours.backFromTheBreak.slice(0,5)}`}</p>
+                    </div>
+                  )}
+                  {projectHours.exitToBreak && (
+                    <div className="card">
+                      <p>{`Saida para alomoço - ${projectHours.exitToBreak.slice(0,5)}`}</p>
+                    </div>
+                  )}
+                  {projectHours.entry && (
+                    <div className="card lastOne">
+                      <p>{`Início expediente - ${projectHours.entry.slice(0,5)}`}</p>
+                    </div>
+                  )}
+                </div>
+              )
             )}
             {isExtraHour && (
               <div
@@ -197,6 +218,8 @@ const TimerSystemCard = ({
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
         projectId={projectId}
+        extraHourId={extraHourId}
+        active={active}
       />
     </Style.TimeCardContainer>
   );

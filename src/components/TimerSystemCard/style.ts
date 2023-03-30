@@ -102,6 +102,13 @@ export const TimeCardContainer = styled.div`
             margin-top: -2%;
             box-shadow: rgb(0 0 0 / 30%) 3px 3px 10px;
 
+            .topTitle{
+              font-size: 1.5vh;
+              color: ${theme.colors.fundamentalColor};
+              margin-top: 0.5rem;
+              margin-bottom: -0.5rem;
+            }
+
             .screen{
               padding: 0 2%;
               background-color: ${theme.colors.secundaryColor};
