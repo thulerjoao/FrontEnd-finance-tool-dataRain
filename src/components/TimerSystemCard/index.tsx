@@ -89,6 +89,7 @@ const TimerSystemCard = ({
   const handleChangeProject = (projectId: string) => {
     handleProject(projectId);
     handleGetHours(projectId);
+    handleGetExtraHours(projectId)
   };
 
   const handleExtraHourOn = () => {

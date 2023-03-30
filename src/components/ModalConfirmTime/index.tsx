@@ -55,7 +55,7 @@ const ConfirmTime = ({
       handleCloseModal()
       handleGetHours(projectId)
     }).catch(()=>{
-      toast.error('Erro ao lançar hora')
+      toast.error('Erro ao registrar hora')
       setIsModalOpen(false)
     })
     :
@@ -65,6 +65,9 @@ const ConfirmTime = ({
       toast.success('Feito')
       handleCloseModal()
       handleGetExtraHours(projectId)
+    }).catch(()=> {
+      toast.error('Erro ao registrar hora extra')
+      handleCloseModal()
     })
   }
 
@@ -78,7 +81,7 @@ const ConfirmTime = ({
         <div>
           <Style.BackArrow onClick={handleCloseModal} />
         </div>
-        <h2>Registar horário de serviço</h2>
+        <h2>{!active? "Registrar hora ordinária" : "Registar hora extra"}</h2>
         <section className="botton">
           <Button variant="contained" className="buttonEnter " onClick={()=>{handleMarkHors()}}>
             Confirmar
