@@ -7,7 +7,6 @@ import { Button } from "@mui/material";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Api from "../../../services/api";
 import { toast } from "react-hot-toast";
-import React from "react";
 import { CreateClientData } from "../../../types/interface";
 import { validateValuesClient } from "../../../utils/validateClientsValue";
 
@@ -55,15 +54,18 @@ const FirstPageCard = ({ setStepNumber }: FirstPageProp) => {
     };
 
     const newData = validateValuesClient(data);
+    console.log(newData);
     if (typeof newData !== "string") {
-      Api.post("/client/register", data)
+      Api.post("/client/register", newData)
         .then((res) => {
           setStepNumber(1);
-          sessionStorage.setItem("client", JSON.stringify(data));
+          sessionStorage.setItem("client", JSON.stringify(newData));
           sessionStorage.setItem("clientId", res.data.id);
         })
-        .catch(() => toast.error("Dados de usuário inválido"));
+        .catch(() => toast.error("Erro ao iniciar formulário"));
     }
+    
+    
   };
 
   return (
