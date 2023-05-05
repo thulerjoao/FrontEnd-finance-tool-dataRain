@@ -44,9 +44,7 @@ const CreateClientCard = ({ change, setChange }: ChangeProp) => {
           handleGetClients();
         })
         .catch((error) => {
-          toast.error("Falha ao cadastrar cliente");
-          console.log(error);
-          
+          toast.error("Falha ao cadastrar cliente");        
         });
     }
   };

@@ -95,8 +95,6 @@ const TimerSystemCard = ({
   const handleExtraHourOn = () => {
     setActive(!active);
   };
-
- console.log(projectExtraHours);
  
   
 
