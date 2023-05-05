@@ -5,7 +5,6 @@ import { isEmpty } from "./validateEmpty";
 
 
 export const validateValuesClient = (data:CreateClientData) => {
-    console.log(data);
     const { companyName, email, phone, primaryContactName, technicalContact } = data
     if(!isEmpty(companyName)){
       return toast.error("Nome de cliente obrigatório")
